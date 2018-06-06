@@ -19,7 +19,7 @@ class App extends React.Component {
   public render() {
     return (
       <div className="App" onClick={this.ss(11)}>
-        <h1 className="App-title">Welcome to React</h1>
+        <h1 className="App-title">Welcome to React adsasdas </h1>
       </div>
     );
   }

@@ -6,3 +6,4 @@
 // }
 
 //declare module 'why-did-you-update';
+declare module 'qs';

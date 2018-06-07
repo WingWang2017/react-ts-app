@@ -1,0 +1,417 @@
+html,
+body,
+#root {
+  display: flex;
+  overflow: hidden;
+  align-items: stretch;
+
+  width: 100%;
+  height: 100%;
+}
+html {
+  font-size: calc(100vw / 19.2);
+}
+body {
+  margin: 0;
+  padding: 0;
+
+  color: #333;
+  background: #f3f5f7;
+
+  font-family: PingFangSC;
+  font-size: .18rem;
+}
+ul {
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+p {
+  margin: 0;
+}
+input,
+button,
+a {
+  text-decoration: none;
+
+  outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+
+  appearance: none !important;
+}
+input[type="number"] {
+  appearance: textfield;
+}
+button {
+  border: 0;
+}
+body,
+div,
+ul,
+li,
+p,
+a,
+span,
+i,
+button,
+input,
+label {
+  box-sizing: border-box;
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.border-bottom {
+  border-bottom: 1px solid #ebebeb;
+}
+.padding-2 {
+  padding: .2rem;
+}
+.padding-20 {
+  padding: 0 .2rem;
+}
+.padding-2-0 {
+  padding: .2rem 0;
+}
+.padding-4-2 {
+  padding: .4rem .2rem;
+}
+.padding-3-2 {
+  padding: .3rem .2rem;
+}
+.margin-0-26 {
+  margin: 0 .26rem;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100% - 1rem);
+
+  font-size: .3rem;
+}
+.flex-both-sides {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex-stretch {
+  display: flex;
+  align-items: stretch;
+}
+.width-3 {
+  width: calc(100% / 3);
+}
+
+.button {
+  margin: 0 .05rem;
+  padding: .1rem .12rem;
+
+  cursor: pointer;
+
+  color: #fff;
+  border-radius: 4px;
+  background: #00beb9;
+
+  font-size: .14rem;
+}
+.button:hover {
+  box-shadow: 1px 1px 4px #b5b6b6;
+}
+.button2 {
+  padding: .1rem .38rem;
+
+  font-size: .18rem;
+}
+.bgGreen {
+  background: #00beb9;
+}
+.bgStool {
+  background: #fc9e03;
+}
+.bgRed {
+  background: red;
+}
+
+.right-arrow {
+  cursor: pointer;
+
+  background: url("../img/jiantou_icon1.png") no-repeat right center;
+  background-origin: content-box;
+}
+.centered {
+  display: block;
+
+  margin: 0 auto;
+}
+.bg-hui {
+  background-color: #f3f5f7;
+}
+
+.height33 {
+  height: .73rem;
+}
+
+.sidebar {
+  flex: 0 0 3rem;
+
+  background: #00beb9;
+}
+.logo {
+  display: flex;
+  align-content: center;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  height: 1rem;
+
+  text-align: center;
+
+  color: #fff;
+  border-bottom: 1px solid #dde1e6;
+
+  font-size: .2rem;
+  line-height: 1.6;
+  & p {
+    width: 100%;
+  }
+  & p:last-child {
+    font-size: .24rem;
+  }
+}
+.footer {
+  flex: 1 1 100%;
+
+  height: .6rem;
+
+  text-align: center;
+
+  color: #fff;
+
+  line-height: .6rem;
+}
+.nav {
+  position: relative;
+
+  flex: 1 1 100%;
+
+  height: calc(100% - 1rem - .6rem);
+  & .ul {
+    padding: .2rem 0;
+  }
+  & .li {
+    position: relative;
+
+    font-size: .18rem;
+    line-height: .3rem;
+  }
+  & .link {
+    display: block;
+
+    padding: .2rem 0;
+
+    text-align: center;
+
+    color: #fff;
+    border-left: .06rem solid transparent;
+    &:hover {
+      border-left-color: #fff;
+      background: rgba(0,0,0,.2);
+    }
+  }
+}
+.subNav {
+  position: absolute;
+  top: -.2rem;
+  left: 3rem;
+
+  display: none;
+
+  width: 3rem;
+  height: 1600%;
+  padding-top: .25rem;
+
+  background: #b5b6b6;
+}
+.nav .li:hover .subNav {
+  display: block;
+}
+
+.content-right {
+  flex: 1 1 100%;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 1rem;
+  padding: 0 .2rem;
+
+  border-bottom: 1px solid #dde1e6;
+  background: #fff;
+}
+.header > div {
+  width: 33%;
+}
+
+.marginBox {
+  margin: .46rem .26rem .26rem;
+}
+.heightBox {
+  height: calc(100% - 1.72rem);
+}
+.cententBox {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0,0,0,.2);
+}
+.title {
+  height: .8rem;
+
+  text-align: center;
+
+  line-height: .8rem;
+}
+.title + .scroll {
+  height: calc(100% - .8rem);
+}
+.title + .scroll.height {
+  height: calc(100% - .8rem - 1.32rem);
+}
+.height {
+  height: calc(100% - .8rem - 1.32rem);
+}
+
+.content {
+  width: 100%;
+  height: calc(100% - .8rem);
+}
+.scroll {
+  overflow: -moz-scrollbars-none;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  -ms-overflow-style: none;
+}
+.scroll::-webkit-scrollbar {
+  width: 0 !important;
+}
+.table-title {
+  display: flex;
+  align-items: center;
+
+  height: .5rem;
+}
+.list {
+  display: flex;
+  align-items: center;
+
+  /* font-size: .16rem; */
+}
+.list:hover {
+  background-color: #f9f9f9;
+}
+
+.statistics {
+  height: calc(100% - .5rem);
+}
+
+.management {
+  display: flex;
+  justify-content: space-between;
+}
+.management .cententBox {
+  width: 49%;
+}
+.cententFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 1.32rem;
+}
+.qrcodeBox {
+  height: 3.88rem;
+  padding: .4rem 0;
+
+  text-align: center;
+
+  color: #aeaeae;
+
+  line-height: 1.6;
+}
+.qrcodeBox img {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: .1rem;
+}
+.qrcodeBox p {
+  width: 100%;
+}
+
+
+.selectionBox {
+  position: relative;
+
+  width: .8rem;
+  height: .33rem;
+  padding: 0 .1rem 0 .15rem;
+
+  cursor: pointer;
+  user-select: none;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  background: url("../img/jiantou_icon1.png") no-repeat right center;
+  background-origin: content-box;
+  background-size: .06rem .09rem;
+
+  font-size: .16rem;
+  line-height: .33rem;
+}
+
+.selectBox {
+  position: absolute;
+  z-index: 9;
+  top: .32rem;
+  left: -1px;
+
+  overflow: hidden;
+
+  width: .8rem;
+
+  user-select: none;
+  text-align: center;
+
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  background: #fff;
+}
+.selectBox li:hover {
+  background: #d9d9d9;
+}
+
+.animation {
+  animation: myfirst .7s;
+}
+@keyframes myfirst {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -5,13 +5,11 @@
     "tslint-config-prettier"
   ],
   "rules": {
-    "no-console": [
-      true,
-      "log",
-      "error"
-    ],
+    "no-console": false,
     "no-debugger": true,
-    "no-var-requires": false
+    "no-var-requires": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false
   },
   "linterOptions": {
     "exclude": [

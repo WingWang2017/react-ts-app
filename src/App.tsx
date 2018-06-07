@@ -11,8 +11,10 @@ if (process.env.NODE_ENV !== 'production') {
 class App extends React.Component {
 
   public ss = (n: number) => (): number => {
+    const ss = 0;
     console.info(n)
     alert(n)
+    console.log(ss);
     return n;
   }
 

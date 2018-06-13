@@ -54,7 +54,7 @@ class App extends React.Component<{}, IState> {
       <div className="App" onClick={this.ss(11)}>
         <h1 className="App-title">Welcome to React{this.state.index}</h1>
         <Bottom poo='222' onSove='1'>
-          <div>ssss</div>
+          <div>ssss 123456</div>
         </Bottom>
         <Text ss={undefined} />
       </div>

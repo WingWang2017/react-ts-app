@@ -1,3 +1,6 @@
+// import 'framework7';
+
+
 const enToCh = (value: string) => {
   switch (value) {
     case 'present':

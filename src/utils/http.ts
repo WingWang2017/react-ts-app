@@ -28,8 +28,8 @@ function checkStatus(response: any) {
 
   // 异常状态下，把错误信息返回去
   return {
-    msg: response.errmsg || '网络错误',
-    status: response.status
+    msg: '网络错误', // response.errmsg ||
+    status: '500' // response.status
   };
 }
 

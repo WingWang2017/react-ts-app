@@ -9,7 +9,13 @@
     "no-debugger": true,
     "no-var-requires": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": false
+    "ordered-imports": false,
+    "no-empty": false,
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "locale": "zh-CN"
   },
   "linterOptions": {
     "exclude": [

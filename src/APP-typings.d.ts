@@ -7,3 +7,8 @@
 
 //declare module 'why-did-you-update';
 declare module 'qs';
+declare module 'framework7';
+// declare var Window: {
+//   prototype: Window;
+//   new(): Window;
+// }

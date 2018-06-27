@@ -7,7 +7,7 @@ import { observer, inject } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { LoginView, InputText, InputPassword, Button, Alert } from './../../components';
+import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from './../../components';
 
 import fetchAjax from './../../fetch';
 
@@ -19,35 +19,49 @@ import SelectRoles from './select-roles';
 class School extends React.Component<{ f7?: any }, IState> {
 
   public state = {
-    phone: '',
+    schoolList: [],
+    userType: 'student',
+    schoolType: '',
+    account: '',
     password: ''
   };
 
   public render() {
     return (
-      <div className='page login' data-page='roles'>
+      <div className='page login' data-page='school'>
         <LoginView>
-          <SelectRoles />
+
+          <Back />
+
+          <SelectRoles
+            value={this.state.userType}
+            onChange={this.onChangeRoles} />
+
           <StyledDiv>
-            <select>
-              <option>杭州医学院</option>
-              <option>浙江传媒学院</option>
-              <option>浙江中医药大学</option>
-            </select>
+
+            <Select
+              data={this.state.schoolList}
+              value='学校'
+              onChange={this.onChangeSchool} />
+
             <InputText
-              placeholder='学号'
+              placeholder={this.state.userType === 'student' ? '学号' : '工号'}
               marginBottom={true}
               onChange={this.onPhone}
               onClear={this.onClear} />
+
             <InputPassword
               placeholder='密码'
               marginBottom={true}
               length={16}
               onChange={this.onPassword} />
+
             <Button
               content='登录'
               onClick={this.onSignIn} />
+
           </StyledDiv>
+
         </LoginView>
       </div>
     );
@@ -55,12 +69,31 @@ class School extends React.Component<{ f7?: any }, IState> {
 
   public componentDidMount(): void {
     // ss
+    const user = JSON.parse(localStorage.user);
+    fetchAjax.getSchoolList(user.token).then(res => {
+      this.setState({
+        schoolList: res.resource
+      });
+    });
 
   }
 
-  public onPhone = (phone: string): void => {
+  public onChangeRoles = (userType: string): void => {
     this.setState({
-      phone
+      userType
+    });
+  }
+
+  public onChangeSchool = (e: any) => {
+    const schoolType: string = e.target.value;
+    this.setState({
+      schoolType
+    });
+  }
+
+  public onPhone = (account: string): void => {
+    this.setState({
+      account
     });
   }
 
@@ -72,44 +105,81 @@ class School extends React.Component<{ f7?: any }, IState> {
 
   public onClear = (): void => {
     this.setState({
-      phone: ''
+      account: ''
     });
   }
 
-  public onSignIn = (): void => {
+  public onSignIn = async (): Promise<any> => {
 
-    if (!this.state.phone) {
+    const user = JSON.parse(localStorage.user);
+    const { schoolList, schoolType, userType, account, password } = this.state;
+    const { f7App, currentRoute } = this.props.f7;
+    let res: any;
+
+    if (!schoolType) {
       return Alert.default({
-        content: '请输入手机号！'
+        content: '请选择学校！'
       });
     }
 
-    if (!this.state.password) {
+    if (!account) {
+      return Alert.default({
+        content: `请输入${this.state.userType === 'student' ? '学号' : '工号'}！`
+      });
+    }
+
+    if (!password) {
       return Alert.default({
         content: '请输入密码！'
       });
     }
 
-    if (this.state.password.length < 6) {
+    if (password.length < 6) {
       return Alert.default({
         content: '密码不能小于6位数！'
       });
     }
 
-    const user = JSON.parse(localStorage.user);
+    // currentRoute.params.state 为0 没有注册过，进行绑定
+    // currentRoute.params.state 为1 注册过，直接登录
+    if (currentRoute.params.state) {
+      res = await fetchAjax.doubleSignin(user.token, schoolType, userType, account, password);
+    } else {
+      res = await fetchAjax.doubleSigninBind(user.token, schoolType, userType, account, password);
+    }
 
-    fetchAjax.doubleSignin(user.token, 'yxy', 'student', this.state.phone, this.state.password).then(res => {
-      console.log(res);
-      if (res.errcode) {
-        Alert.default({
-          content: '登陆成功！'
-        });
-      } else {
-        Alert.default({
-          content: res.errmsg
-        });
+    console.log(res);
+    if (res.errcode) {
+
+      interface IObj {
+        number: string;
+        school_type: string;
+        school_name: string;
+        user_id: number;
       }
+
+      const obj: IObj = JSON.parse(localStorage.user);
+      obj.number = account;
+      obj.school_type = schoolType;
+      obj.school_name = this.getSchoolName(schoolType, schoolList).school_name;
+      obj.user_id = res.resource.user_id;
+      localStorage.user = JSON.stringify(obj);
+
+      localStorage.hasSchool = true;
+
+      f7App.mainView.router.loadPage('/home');
+    }
+
+    Alert.default({
+      content: res.errmsg
     });
+
+  }
+
+  public getSchoolName(schoolType: string, schoolList: any[]): any {
+    return schoolList.filter((e: any) => {
+      return e.school_type === schoolType;
+    })[0];
   }
 
 }
@@ -119,7 +189,10 @@ class School extends React.Component<{ f7?: any }, IState> {
 // }
 
 interface IState {
-  phone: string;
+  schoolList: any[];
+  schoolType: string;
+  userType: string;
+  account: string;
   password: string;
 }
 

@@ -12,27 +12,32 @@ import { student, teacher, login_selected } from '../../images';
 
 @inject('f7')
 @observer
-class School extends React.Component<{ f7?: any }, IState> {
+class School extends React.Component<IProps, IState> {
+
+  public static defaultProps = {
+    value: 'student',
+    onChange: () => { }
+  };
 
   public state = {
-    num: 1
+    num: this.props.value
   };
 
   public render() {
     return (
       <StyledDiv>
-        <div className='head' onClick={this.onClick(1)}>
+        <div className='head' onClick={this.onClick('student')}>
           <img src={student} alt='我是学生' />
           我是学生
         </div>
-        <div className='head' onClick={this.onClick(2)}>
+        <div className='head' onClick={this.onClick('teacher')}>
           <img src={teacher} alt='我是教师' />
           我是教师
         </div>
         <img
           src={login_selected}
           alt=''
-          className={`img ${this.state.num === 1 ? 'student' : 'teacher'}`} />
+          className={`img ${this.state.num === 'student' ? 'student' : 'teacher'}`} />
       </StyledDiv>
     );
   }
@@ -42,21 +47,23 @@ class School extends React.Component<{ f7?: any }, IState> {
 
   }
 
-  public onClick = (num: number) => (): void => {
-    console.log(num);
+  public onClick = (num: string) => (): void => {
     this.setState({
       num
     });
+    this.props.onChange(num);
   }
 
 }
 
-// interface IProps {
-
-// }
+interface IProps {
+  f7?: any;
+  value: string;
+  onChange?: any;
+}
 
 interface IState {
-  num: number;
+  num: string;
 }
 
 const StyledDiv = Styled.div`

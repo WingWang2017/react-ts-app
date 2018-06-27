@@ -9,6 +9,13 @@ import student from './assets/img/login/student_selected.svg';
 import teacher from './assets/img/login/teacher_selected.svg';
 import login_selected from './assets/img/login/login_selected.svg';
 
+import back_arrow from './assets/img/login/back_arrow.svg';
+
+import backIcon from './assets/img/nav/back_arrow.svg';
+
+import scanIcon from './assets/img/nav/scan.svg';
+import messageIcon from './assets/img/nav/message.svg';
+
 
 export {
   login,
@@ -18,5 +25,9 @@ export {
   login_display,
   student,
   teacher,
-  login_selected
+  login_selected,
+  back_arrow,
+  backIcon,
+  scanIcon,
+  messageIcon
 };

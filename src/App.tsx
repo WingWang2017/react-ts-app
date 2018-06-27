@@ -3,7 +3,7 @@ import * as React from 'react';
 // import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
 import { Framework7App, Statusbar, Views, View, Pages } from 'framework7-react';
 
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 
 import routes from './routes';
 
@@ -14,6 +14,8 @@ if (process.env.NODE_ENV !== 'production') {
   whyDidYouUpdate(React);
 }
 
+$$ = Dom7;
+
 const f7AppConfig = {
   modalTitle: '提示信息',
   modalButtonOk: '确认',
@@ -23,9 +25,8 @@ const f7AppConfig = {
   // pushState: true
 };
 
-@inject('f7')
 @observer
-class App extends React.Component<{ f7?: any }, IState> {
+class App extends React.Component<{}, IState> {
 
   public state = {
     index: '1',
@@ -34,14 +35,23 @@ class App extends React.Component<{ f7?: any }, IState> {
 
   public componentDidMount(): void {
 
+    const user: any = JSON.parse(localStorage.user);
+    const hasSchool: boolean = localStorage.hasSchool;
+
+    if (hasSchool && user) {
+      f7App.mainView.router.loadPage({
+        url: '/home',
+        animatePages: false
+      });
+    }
   }
 
   public onFramework7Init = (f7: any): void => {
-    this.props.f7.setF7App(f7);
+    f7App = f7;
   }
 
   public onRouteChange = (route: any): void => {
-    this.props.f7.setCurrentRoute(route);
+    currentRoute = route;
   }
 
   public render() {

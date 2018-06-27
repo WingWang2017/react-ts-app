@@ -7,6 +7,13 @@ const StyledDiv = Styled.div`
   border: 1px solid #fff;
   border-radius: 6px;
   margin-bottom: ${props => props['margin-bottom'] ? '.3rem' : '0'};
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledCentent = Styled.div`
+  position: relative;
+  flex: 1 1 100%;
 `;
 
 const Input = Styled.input`
@@ -25,7 +32,7 @@ const StyledImg = Styled.div`
   top: 0;
   width: .8rem;
   height: 100%;
-  display: flex;
+  display: ${ props => props.hidden ? 'none' : 'flex'};
   justify-content: center;
   align-items: center;
   img {
@@ -36,6 +43,7 @@ const StyledImg = Styled.div`
 
 export {
   StyledDiv,
+  StyledCentent,
   Input,
   StyledImg
 };

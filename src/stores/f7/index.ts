@@ -7,12 +7,12 @@ class F7 {
 
   @action public setF7App = (res: any) => {
     this.f7App = res;
-    console.log(this.f7App);
+    // console.log(this.f7App);
   }
 
   @action public setCurrentRoute(res: any) {
     this.currentRoute = res;
-    console.log(this.currentRoute);
+    // console.log(this.currentRoute);
   }
 
 }

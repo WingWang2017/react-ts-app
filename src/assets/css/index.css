@@ -85,7 +85,20 @@ i {
 
 button {
   border: 0;
+  padding: 0;
   background: none;
+}
+
+select {
+  background: url("../img/login/down_arrow.svg") no-repeat right center;
+  background-origin: content-box;
+  background-size: .28rem .16rem;
+
+  appearance: none;
+}
+
+select option {
+  color:#222;
 }
 
 #root {
@@ -105,4 +118,46 @@ button {
 
 .page {
   overflow: hidden;
+}
+
+.navbar {
+  height: .88rem;
+  background: #81d8d0;
+}
+
+.navbar > .left {
+  padding-left: 0;
+}
+
+.navbar .center {
+  font-size: .36rem;
+  font-weight: inherit !important;
+}
+
+.navbar > .right {
+  padding-right: 0;
+}
+
+.navbar .left .link {
+  padding-left: .2rem;
+}
+
+.navbar .right .link {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: .2rem;
+  font-size: .3rem;
+}
+
+.navbar-fixed .page-content,
+.navbar-through .page-content {
+  padding-top: .88rem;
+}
+
+.toolbar-fixed .page-content {
+  padding-bottom: .98rem;
+}
+
+.padding {
+  padding: 0;
 }

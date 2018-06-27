@@ -49,7 +49,7 @@ function checkCode(res: any) {
 export default {
   post(url: any, data: any) {
     return axios({
-      baseURL: 'http://yixueyuantest.mostyouth.cn/',
+      baseURL: 'http://phone.mostyouth.cn/api',
       data: qs.stringify(data),
       timeout: 10000,
       method: 'post',
@@ -67,13 +67,14 @@ export default {
   },
   get(url: any, params: any) {
     return axios({
+      baseURL: 'http://phone.mostyouth.cn/api',
       method: 'get',
       timeout: 10000,
       url,
       params, // get 请求时带的参数
       headers: {
         // 'X-CSRF-Token': base.csrf_token,
-        'X-Requested-With': 'XMLHttpRequest'
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       }
     }).then((response) => {
       return checkStatus(response);

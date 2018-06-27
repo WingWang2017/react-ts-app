@@ -3,7 +3,8 @@ import * as React from 'react';
 // import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
 // import { Framework7 } from 'framework7-react';
 
-import { observer, inject } from 'mobx-react';
+import { trace } from "mobx";
+import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
@@ -12,9 +13,8 @@ import { LoginView, Logo, InputText, InputPassword, Button, Alert } from './../.
 import fetchAjax from './../../fetch';
 
 
-@inject('f7')
 @observer
-class Login extends React.Component<{ f7?: any }, IState> {
+class Login extends React.Component<{}, IState> {
 
   public state = {
     phone: '',
@@ -22,6 +22,7 @@ class Login extends React.Component<{ f7?: any }, IState> {
   };
 
   public render() {
+    trace();
     return (
       <div className='page login' data-page='login'>
         <LoginView>
@@ -37,10 +38,10 @@ class Login extends React.Component<{ f7?: any }, IState> {
               marginBottom={true}
               length={16}
               onChange={this.onPassword} />
-            <div>
-              <a href='#' title=''>忘记密码</a>
-              <a href='#' title=''>新用户注册</a>
-            </div>
+            <StyledFooter>
+              <a href='/registerlAndRegisterl/retrieve' title='' className='link'>忘记密码</a>
+              <a href='/registerlAndRegisterl/registerl' title='' className='link'>新用户注册</a>
+            </StyledFooter>
             <Button
               content='下一步'
               onClick={this.onSignIn} />
@@ -109,7 +110,7 @@ class Login extends React.Component<{ f7?: any }, IState> {
           tel: this.state.phone,
           token: res.resource.token
         });
-        this.props.f7.f7App.mainView.router.loadPage('/login/school');
+        f7App.mainView.router.loadPage('/login/school/1');
       } else {
         Alert.default({
           content: res.errmsg
@@ -131,6 +132,16 @@ interface IState {
 
 const StyledDiv = Styled.div`
   padding: 0 .64rem;
+`;
+
+const StyledFooter = Styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .3rem;
+  font-size: .26rem;
+  > a {
+    color: #fff;
+  }
 `;
 
 export default Login;

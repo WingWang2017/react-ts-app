@@ -1,7 +1,8 @@
 import * as React from 'react';
+
 import { observer } from 'mobx-react';
 
-import { StyledDiv, Input, StyledImg } from './style';
+import { StyledDiv, StyledCentent, Input, StyledImg } from './style';
 
 import { signin_delete } from './../../images';
 
@@ -12,7 +13,8 @@ class InputText extends React.Component<IProps, IState> {
     placeholder: '请输入',
     length: 11,
     onChange: () => { },
-    onClear: () => { }
+    onClear: () => { },
+    onBlur: () => { }
   };
 
   public state = {
@@ -22,15 +24,21 @@ class InputText extends React.Component<IProps, IState> {
   public render() {
     return (
       <StyledDiv margin-bottom={this.props.marginBottom}>
-        <Input
-          type='text'
-          placeholder={this.props.placeholder}
-          maxLength={this.props.length}
-          value={this.state.value}
-          onChange={this.onChange} />
-        <StyledImg onClick={this.onClear} styled-width='.36rem'>
-          <img src={signin_delete} alt='' />
-        </StyledImg>
+        <StyledCentent>
+          <Input
+            type='text'
+            placeholder={this.props.placeholder}
+            maxLength={this.props.length}
+            value={this.state.value}
+            onBlur={this.onBlur}
+            onChange={this.onChange} />
+          <StyledImg onClick={this.onClear} styled-width='.28rem' hidden={this.state.value.length === 0} >
+            <img src={signin_delete} alt='' />
+          </StyledImg>
+        </StyledCentent>
+        {
+          this.props.children && this.props.children
+        }
       </StyledDiv>
     );
   }
@@ -45,6 +53,15 @@ class InputText extends React.Component<IProps, IState> {
     this.props.onChange(value);
   }
 
+  public onBlur = (e: any): void => {
+    const value: string = e.target.value;
+
+    this.setState({
+      value
+    });
+    this.props.onBlur(value);
+  }
+
   public onClear = (): void => {
     this.setState({
       value: ''
@@ -55,11 +72,13 @@ class InputText extends React.Component<IProps, IState> {
 }
 
 interface IProps {
+  children?: any;
   placeholder?: string;
   length?: number;
   marginBottom?: boolean;
   onChange?: any;
   onClear?: any;
+  onBlur?: any;
 }
 
 interface IState {

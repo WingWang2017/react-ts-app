@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { logo } from './../../images';
+import { logo } from 'src/images';
 
 
 const Logo = observer((props: any) =>

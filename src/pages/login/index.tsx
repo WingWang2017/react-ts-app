@@ -8,9 +8,9 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { LoginView, Logo, InputText, InputPassword, Button, Alert } from './../../components';
+import { LoginView, Logo, InputText, InputPassword, Button, Alert } from 'src/components';
 
-import fetchAjax from './../../fetch';
+import fetchAjax from 'src/fetch';
 
 
 @observer

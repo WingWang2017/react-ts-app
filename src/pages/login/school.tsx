@@ -3,20 +3,19 @@ import * as React from 'react';
 // import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
 // import { Framework7 } from 'framework7-react';
 
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from './../../components';
+import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from 'src/components';
 
-import fetchAjax from './../../fetch';
+import fetchAjax from 'src/fetch';
 
 import SelectRoles from './select-roles';
 
 
-@inject('f7')
 @observer
-class School extends React.Component<{ f7?: any }, IState> {
+class School extends React.Component<{}, IState> {
 
   public state = {
     schoolList: [],
@@ -113,7 +112,6 @@ class School extends React.Component<{ f7?: any }, IState> {
 
     const user = JSON.parse(localStorage.user);
     const { schoolList, schoolType, userType, account, password } = this.state;
-    const { f7App, currentRoute } = this.props.f7;
     let res: any;
 
     if (!schoolType) {
@@ -152,17 +150,27 @@ class School extends React.Component<{ f7?: any }, IState> {
     if (res.errcode) {
 
       interface IObj {
+        token: string;
+        access_token: string;
+        tel: string;
         number: string;
         school_type: string;
         school_name: string;
+        user_type: string;
         user_id: number;
       }
 
-      const obj: IObj = JSON.parse(localStorage.user);
-      obj.number = account;
-      obj.school_type = schoolType;
-      obj.school_name = this.getSchoolName(schoolType, schoolList).school_name;
-      obj.user_id = res.resource.user_id;
+      const token = await this.gettoken(user.token);
+
+      const obj: IObj = {
+        ...JSON.parse(localStorage.user),
+        access_token: token.resource.access_token,
+        number: account,
+        school_type: schoolType,
+        school_name: this.getSchoolName(schoolType, schoolList).school_name,
+        user_id: res.resource.user_id,
+        user_type: userType,
+      };
       localStorage.user = JSON.stringify(obj);
 
       localStorage.hasSchool = true;
@@ -174,6 +182,10 @@ class School extends React.Component<{ f7?: any }, IState> {
       content: res.errmsg
     });
 
+  }
+
+  public async gettoken(token: string): Promise<any> {
+    return await fetchAjax.gettoken(token);
   }
 
   public getSchoolName(schoolType: string, schoolList: any[]): any {

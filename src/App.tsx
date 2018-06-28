@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
 import { Framework7App, Statusbar, Views, View, Pages } from 'framework7-react';
 
 import { observer } from 'mobx-react';
@@ -77,7 +76,6 @@ class App extends React.Component<{}, IState> {
     );
   }
 }
-
 
 interface IState {
   index: string;

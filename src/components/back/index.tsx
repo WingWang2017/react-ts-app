@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { back_arrow } from './../../images';
+import { back_arrow } from 'src/images';
 
 
 const Link = observer((): any => {

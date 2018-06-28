@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 
 import { StyledDiv, Input, StyledImg } from './style';
 
-import { signin_hide, login_display } from './../../images';
+import { signin_hide, login_display } from 'src/images';
 
 @observer
 class InputPassword extends React.Component<IProps, IState> {

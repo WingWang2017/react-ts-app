@@ -7,9 +7,9 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, RefreshLoad } from './../../components';
+import { Header, RefreshLoad } from 'src/components';
 
-import { scanIcon, messageIcon } from './../../images';
+import { scanIcon, messageIcon } from 'src/images';
 // import { Dom7 } from 'framework7';
 
 // import fetchAjax from './../../fetch';

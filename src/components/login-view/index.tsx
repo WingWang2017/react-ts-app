@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { login } from './../../images';
+import { login } from 'src/images';
 
 
 const LoginView = observer((props: any) =>

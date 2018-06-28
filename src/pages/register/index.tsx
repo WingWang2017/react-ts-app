@@ -7,12 +7,12 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { LoginView, Logo, InputText, InputPassword, Button, Back, SmsCode, Alert } from './../../components';
+import { LoginView, Logo, InputText, InputPassword, Button, Back, SmsCode, Alert } from 'src/components';
 
-import fetchAjax from './../../fetch';
+import fetchAjax from 'src/fetch';
 
 @observer
-class Register extends React.Component<IProps, IState> {
+class Register extends React.Component<{}, IState> {
 
   public state = {
     phone: '',
@@ -195,7 +195,7 @@ class Register extends React.Component<IProps, IState> {
     }
 
     console.log(res);
-    if (!res.errcode) {
+    if (res.errcode) {
       const obj = {
         tel: this.state.phone,
         token: res.resource.token
@@ -212,9 +212,6 @@ class Register extends React.Component<IProps, IState> {
 
 }
 
-interface IProps {
-  f7?: any;
-}
 
 interface IState {
   phone: string;

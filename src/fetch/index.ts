@@ -1,4 +1,4 @@
-import { http } from '../utils';
+import { http } from 'src/utils';
 
 class FetchAjax {
 
@@ -84,6 +84,16 @@ class FetchAjax {
       }
     );
   }
+
+  // token过期获取新的access_token
+  public async gettoken(token: string) {
+    return await http.post('/gettoken',
+      {
+        token
+      }
+    );
+  }
+
 
 }
 

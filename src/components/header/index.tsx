@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 
 // import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from './../../components';
 
-import { backIcon } from './../../images';
+import { backIcon } from 'src/images';
 
 @observer
 class Header extends React.Component<IProps, {}> {

@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import { StyledDiv, StyledCentent, Input, StyledImg } from './style';
 
-import { signin_delete } from './../../images';
+import { signin_delete } from 'src/images';
 
 @observer
 class InputText extends React.Component<IProps, IState> {

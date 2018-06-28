@@ -8,6 +8,17 @@
       "es6",
       "dom"
     ],
+    "paths": {
+      "src/*": [
+        "src/*"
+      ],
+      "common/*": [
+        "src/components/*"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ]
+    },
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",

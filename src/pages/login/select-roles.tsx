@@ -3,14 +3,13 @@ import * as React from 'react';
 // import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
 // import { Framework7 } from 'framework7-react';
 
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { student, teacher, login_selected } from '../../images';
+import { student, teacher, login_selected } from 'src/images';
 
 
-@inject('f7')
 @observer
 class School extends React.Component<IProps, IState> {
 
@@ -57,7 +56,6 @@ class School extends React.Component<IProps, IState> {
 }
 
 interface IProps {
-  f7?: any;
   value: string;
   onChange?: any;
 }

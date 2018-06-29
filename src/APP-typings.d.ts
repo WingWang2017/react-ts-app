@@ -9,6 +9,8 @@
 //declare module 'why-did-you-update';
 declare module 'qs';
 declare module 'framework7';
+declare module 'react-loadable';
+declare module 'react-transition-group';
 
 declare var Dom7: any;
 declare var $$: any;

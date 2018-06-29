@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-// import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
-// import { Framework7 } from 'framework7-react';
-
 import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
@@ -12,7 +9,6 @@ import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from
 import fetchAjax from 'src/fetch';
 
 import SelectRoles from './select-roles';
-
 
 @observer
 class School extends React.Component<{}, IState> {
@@ -50,7 +46,7 @@ class School extends React.Component<{}, IState> {
               onClear={this.onClear} />
 
             <InputPassword
-              placeholder='密码'
+              placeholder='教务密码'
               marginBottom={true}
               length={16}
               onChange={this.onPassword} />
@@ -128,13 +124,13 @@ class School extends React.Component<{}, IState> {
 
     if (!password) {
       return Alert.default({
-        content: '请输入密码！'
+        content: '请输入教务密码！'
       });
     }
 
     if (password.length < 6) {
       return Alert.default({
-        content: '密码不能小于6位数！'
+        content: '教务密码不能小于6位数！'
       });
     }
 

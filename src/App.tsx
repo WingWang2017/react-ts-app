@@ -34,15 +34,18 @@ class App extends React.Component<{}, IState> {
 
   public componentDidMount(): void {
 
-    const user: any = JSON.parse(localStorage.user);
-    const hasSchool: boolean = localStorage.hasSchool;
+    if (localStorage.user) {
+      const user: any = JSON.parse(localStorage.user);
+      const hasSchool: boolean = localStorage.hasSchool;
 
-    if (hasSchool && user) {
-      f7App.mainView.router.loadPage({
-        url: '/home',
-        animatePages: false
-      });
+      if (hasSchool && user) {
+        f7App.mainView.router.loadPage({
+          url: '/home',
+          animatePages: false
+        });
+      }
     }
+
   }
 
   public onFramework7Init = (f7: any): void => {

@@ -16,6 +16,14 @@ import backIcon from './assets/img/nav/back_arrow.svg';
 import scanIcon from './assets/img/nav/scan.svg';
 import messageIcon from './assets/img/nav/message.svg';
 
+import fenxiangIcon from './assets/img/nav/fenxiang.svg';
+
+import pengyouquan from './assets/img/fenxiang/pengyouquan.svg';
+import weixin from './assets/img/fenxiang/weixin.svg';
+import qq from './assets/img/fenxiang/qq.svg';
+import mostyouth from './assets/img/fenxiang/mostyouth_icon.svg';
+import copylink from './assets/img/fenxiang/copylink_icon.svg';
+
 
 export {
   login,
@@ -29,5 +37,11 @@ export {
   back_arrow,
   backIcon,
   scanIcon,
-  messageIcon
+  messageIcon,
+  fenxiangIcon,
+  pengyouquan,
+  weixin,
+  qq,
+  mostyouth,
+  copylink
 };

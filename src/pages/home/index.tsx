@@ -1,18 +1,16 @@
 import * as React from 'react';
 
-// import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
-// import { Framework7 } from 'framework7-react';
-
 import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, RefreshLoad } from 'src/components';
+import { Header, RefreshLoad, Ttitle, List } from 'src/components';
 
 import { scanIcon, messageIcon } from 'src/images';
-// import { Dom7 } from 'framework7';
 
-// import fetchAjax from './../../fetch';
+import fetchAjax from 'src/fetch';
+
+import { dateC } from 'src/utils';
 
 
 @observer
@@ -24,7 +22,8 @@ class Home extends React.Component<{}, IState> {
     userType: 'student',
     schoolType: '',
     account: '',
-    password: ''
+    password: '',
+    dynamicList: []
   };
 
   private lastPage: number = 0;
@@ -45,6 +44,10 @@ class Home extends React.Component<{}, IState> {
             </a>
           } />
         <RefreshLoad>
+          <Ttitle centent='动态校园' link='#' />
+          <ul>
+            <DynamicList data={this.state.dynamicList} />
+          </ul>
           <StyledDiv>ada</StyledDiv>
         </RefreshLoad>
       </div>
@@ -54,6 +57,16 @@ class Home extends React.Component<{}, IState> {
   public componentDidMount(): void {
     // ss
     this.refreshLoad();
+
+    fetchAjax.getDynamicCampus(this.state.user.access_token, this.state.user.school_type).then(res => {
+      console.log(res);
+      if (res && res.errcode) {
+        this.setState({
+          dynamicList: res.resource.data
+        });
+      }
+      console.log(this.state.dynamicList);
+    });
   }
 
   public refreshLoad() {
@@ -93,6 +106,16 @@ class Home extends React.Component<{}, IState> {
 
 }
 
+const DynamicList = observer((props: any) => {
+  return (
+    props.data.map((item: any) =>
+      <li key={item.id}>
+        <List link={`/announcement/${item.id}`} linkName={item.title} rightName={dateC(item.public_time)} />
+      </li>
+    )
+  );
+});
+
 // interface IProps {
 
 // }
@@ -104,6 +127,7 @@ interface IState {
   userType: string;
   account: string;
   password: string;
+  dynamicList: any[];
 }
 
 const StyledDiv = Styled.div`

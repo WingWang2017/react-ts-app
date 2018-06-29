@@ -1,6 +1,42 @@
-import { http } from 'src/utils';
+import http from 'src/utils/http';
 
 class FetchAjax {
+
+  //  ajaxPost
+  public async ajaxPost(url: string, dataObj: any) {
+    const user = JSON.parse(localStorage.user);
+    const data = {
+      access_token: user.access_token,
+      school_type: user.school_type,
+      ...dataObj
+    };
+    const res = await http.post(url, data);
+
+    if (res.errcode) {
+      return await res;
+    }
+
+    if (res.errStatus === 101 || res.errStatus === 102) {
+      return await this.getAccessToken(url, data);
+    }
+
+  }
+
+  // token过期获取新的access_token
+  public async getAccessToken(url: string, data: any): Promise<any> {
+    const user = JSON.parse(localStorage.user);
+
+    const res = await http.post('/gettoken', { token: user.token });
+
+    user.access_token = res.resource.access_token;
+    localStorage.user = JSON.stringify(user);
+    // access_token change
+    const dataObj = {
+      ...data,
+      access_token: res.resource.access_token
+    };
+    return await this.ajaxPost(url, dataObj);
+  }
 
   // 第一重登录接口
   public async signin(phone: string, password: string) {
@@ -92,6 +128,21 @@ class FetchAjax {
         token
       }
     );
+  }
+
+  // 获取动态校园展示
+  public async getDynamicCampus(accessToken: string, schoolType: string) {
+    return await this.ajaxPost('/dynamic/campus',
+      {
+        access_token: accessToken,
+        school_type: schoolType,
+      }
+    );
+  }
+
+  // 获取动态校园展示
+  public async getDynamicCampusInfo(id: string) {
+    return await this.ajaxPost('/dynamic/campus/info', { id });
   }
 
 

@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, Ttitle, List, ForumList } from 'src/components';
+import { Header, Footer, Ttitle, List, ForumList } from 'src/components';
 
 import { scanIcon, messageIcon } from 'src/images';
 
@@ -47,7 +47,6 @@ class Home extends React.Component<IProps, IState> {
               <img src={messageIcon} width='.42rem' height='auto' />
             </a>
           } />
-        {/* <RefreshLoad> */}
         <HomeCentent
           pageName='home'
           lastPage={this.lastPage}
@@ -60,7 +59,8 @@ class Home extends React.Component<IProps, IState> {
           onLike={this.onLike}
           sendComments={this.sendComments}
           onDeleteThisComment={this.onDeleteThisComment} />
-        {/* </RefreshLoad> */}
+
+        <Footer activedLink={1} />
       </div>
     );
   }

@@ -110,6 +110,10 @@ select option {
   overflow: hidden;
 }
 
+.statusbar-overlay {
+  background: #81d8d0;
+}
+
 .pages {
   overflow: hidden;
 

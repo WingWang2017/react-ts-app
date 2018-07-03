@@ -9,7 +9,7 @@ const HOCRefreshLoad = (Component: any) => {
         <div
           className={`page-content pull-to-refresh-content infinite-scroll ${this.props.className || ''}`}
           data-ptr-distance={this.props.ptrDistance || 55}
-          data-distance={this.props.distance || 10} >
+          data-distance={this.props.distance || 1} >
           <div className='pull-to-refresh-layer'>
             <div className='preloader' />
             <div className='pull-to-refresh-arrow' />
@@ -65,6 +65,5 @@ const HOCRefreshLoad = (Component: any) => {
     }
   };
 };
-
 
 export default HOCRefreshLoad;

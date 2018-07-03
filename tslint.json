@@ -11,6 +11,7 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "no-empty": false,
+    "no-string-literal": false,
     "semicolon": [
       true,
       "always"
@@ -20,7 +21,8 @@
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
-      "node_modules/**/*.ts"
+      "node_modules/**/*.ts",
+      "www/**/*.js"
     ]
   }
 }

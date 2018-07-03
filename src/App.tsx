@@ -54,6 +54,15 @@ class App extends React.Component<{}, IState> {
       });
     }
 
+    document.addEventListener('backbutton', () => {
+      const page = f7App.mainView.url;
+      if (page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login') {
+        navigator['app'].exitApp();
+      } else {
+        f7App.mainView.router.back();
+      }
+    }, false);
+
   }
 
   public onFramework7Init = (f7: any): void => {
@@ -73,7 +82,7 @@ class App extends React.Component<{}, IState> {
         onRouteChange={this.onRouteChange}
         {...f7AppConfig} >
 
-        <Statusbar />
+        <Statusbar theme='#81d8d0' />
 
         <Views>
           <View main={true} id='main-view'>

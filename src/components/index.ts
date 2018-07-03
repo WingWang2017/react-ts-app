@@ -6,6 +6,7 @@ import Select from './select';
 import Back from './back';
 import SmsCode from './sms-code';
 import Header from './header';
+import Footer from './footer';
 import Ttitle from './title';
 import List from './list';
 
@@ -32,6 +33,7 @@ export {
   SendBox,
   Actions,
   Header,
+  Footer,
   Ttitle,
   List,
   Share,

@@ -29,6 +29,16 @@ import Girl from './assets/img/Girl.jpg';
 
 import emojiIcon from './assets/img/emoji.svg';
 
+import xiaoquanNormal from './assets/img/footer/xiaoquan_normal.svg';
+import xiaoquanSelected from './assets/img/footer/xiaoquan_selected.svg';
+import yunketangNormal from './assets/img/footer/yunketang_normal.svg';
+import yunketangSelected from './assets/img/footer/yunketang_selected.svg';
+import fabu from './assets/img/footer/fabu.svg';
+import faxianNormal from './assets/img/footer/faxian_normal.svg';
+import faxianSelected from './assets/img/footer/faxian_selected.svg';
+import wodeNormal from './assets/img/footer/wode_normal.svg';
+import wodeSelected from './assets/img/footer/wode_selected.svg';
+
 
 export {
   login,
@@ -51,5 +61,14 @@ export {
   copylink,
   Boy,
   Girl,
-  emojiIcon
+  emojiIcon,
+  xiaoquanNormal,
+  xiaoquanSelected,
+  yunketangNormal,
+  yunketangSelected,
+  fabu,
+  faxianNormal,
+  faxianSelected,
+  wodeNormal,
+  wodeSelected
 };

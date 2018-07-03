@@ -1,7 +1,10 @@
 import * as React from 'react';
 
+import { observer } from 'mobx-react';
+
 import Styled from 'styled-components';
 
+@observer
 export default class MaskLayer extends React.Component<Iprops, {}> {
 
   public static defalutProps = {
@@ -16,8 +19,13 @@ export default class MaskLayer extends React.Component<Iprops, {}> {
       <StyledDiv
         className={this.props.className}
         onClick={this.props.onClick}
+        onTouchStart={this.touchstart}
         theme={theme} />
     );
+  }
+
+  public touchstart = (e: any) => {
+    e.preventDefault();
   }
 }
 

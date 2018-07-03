@@ -24,6 +24,11 @@ import qq from './assets/img/fenxiang/qq.svg';
 import mostyouth from './assets/img/fenxiang/mostyouth_icon.svg';
 import copylink from './assets/img/fenxiang/copylink_icon.svg';
 
+import Boy from './assets/img/Boy.jpg';
+import Girl from './assets/img/Girl.jpg';
+
+import emojiIcon from './assets/img/emoji.svg';
+
 
 export {
   login,
@@ -43,5 +48,8 @@ export {
   weixin,
   qq,
   mostyouth,
-  copylink
+  copylink,
+  Boy,
+  Girl,
+  emojiIcon
 };

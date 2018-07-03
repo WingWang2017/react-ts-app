@@ -1,0 +1,97 @@
+.clearMaskLayer{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+}
+.clearMask{
+	height: 100%;
+	width: 100%;
+}
+.sendBox{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 999;
+
+	height: 1.02rem;
+	padding: 0 0.24rem;
+
+	display: flex;
+	align-items: center;
+
+	border-top: 2px solid #fff;
+	box-sizing: border-box;
+
+	background: rgba(245, 245, 247, .85);
+}
+
+.sendBox::after{
+	position: absolute;
+	top: -1px;
+	right: 0;
+	left: 0;
+	z-index: 1;
+
+	content: '';
+	
+	height: 1px;
+	background: #ebebeb;
+}
+
+.sendInput{
+	height: 0.75rem;
+	padding: 0 0.15rem;
+	border: 1px solid #dcdcdc;
+	border-radius: 12px;
+	background: #FDFDFE;
+
+	flex: 1 0 auto;
+}
+
+.sendFace,
+.sendFace img{
+	width: 0.66rem;
+	height: 0.66rem;
+}
+
+.sendFace{
+	margin: 0 0.2rem;
+}
+
+.sendMes{
+	width: 1.14rem;
+	height: 0.75rem;
+	line-height: 0.75rem;
+	text-align: center;
+	background: #fdfdff;
+	border: 1px solid #dcdcdc;
+	border-radius: 4px;
+	box-shadow: border-box;
+	color: #b2b2b2;
+}
+
+.sendMesOn{
+	background: #119c8f;
+	border-color: #078579;
+	color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@ import { observer } from 'mobx-react';
 
 import routes from './routes';
 
-import Login from './pages/login';
+// import Home from './pages/home';
 
 if (process.env.NODE_ENV !== 'production') {
   const { whyDidYouUpdate } = require('why-did-you-update');
@@ -21,6 +21,7 @@ const f7AppConfig = {
   modalButtonCancel: '取消',
   swipeBackPage: true,
   imagesLazyLoadThreshold: 50,
+  uniqueHistory: true, // App将保持View的导航历史独一无二，它也将删除重复的页面
   // pushState: true
 };
 
@@ -37,13 +38,20 @@ class App extends React.Component<{}, IState> {
     if (localStorage.user) {
       const user: any = JSON.parse(localStorage.user);
       const hasSchool: boolean = localStorage.hasSchool;
-
+      console.log(hasSchool);
       if (hasSchool && user) {
         f7App.mainView.router.loadPage({
           url: '/home',
           animatePages: false
         });
       }
+    }
+
+    if (!localStorage.hasSchool) {
+      f7App.mainView.router.loadPage({
+        url: '/login',
+        animatePages: false
+      });
     }
 
   }
@@ -70,7 +78,7 @@ class App extends React.Component<{}, IState> {
         <Views>
           <View main={true} id='main-view'>
             <Pages>
-              <Login />
+              <div className='page' data-page='page' />
             </Pages>
           </View>
         </Views>

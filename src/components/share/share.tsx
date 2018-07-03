@@ -9,7 +9,7 @@ import { mostyouth, pengyouquan, weixin, qq, copylink } from 'src/images';
 
 import MaskLayer from '../mask-layer';
 
-class WpShare extends React.Component<Iprops, {}> {
+class WpShare extends React.Component<Iprops, IState> {
 
   public static defaultProps = {
     content: '',
@@ -92,6 +92,10 @@ interface Iprops {
   content?: string;
 }
 
+interface IState {
+  in: boolean;
+}
+
 const StyledDiv = Styled.div`
 	position: fixed;
 	right: 0;
@@ -154,7 +158,7 @@ export default function ContainerWpAlert(config: any) {
         ReactDOM.unmountComponentAtNode(div);
         div.parentNode.removeChild(div);
       }
-    }, 1000);
+    }, 500);
   }
   ReactDOM.render(
     <WpShare removeChild={removeChild.bind(this, div)} {...config} />,

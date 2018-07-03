@@ -6,13 +6,17 @@ import Select from './select';
 import Back from './back';
 import SmsCode from './sms-code';
 import Header from './header';
-import RefreshLoad from './refresh-load';
 import Ttitle from './title';
 import List from './list';
 
 import Alert from './alert';
+import Confirm from './confirm';
+import SendBox from './send-box';
+import Actions from './actions';
 
 import Share from './share';
+
+import ForumList from './forum-list';
 
 export {
   LoginView,
@@ -24,9 +28,12 @@ export {
   Back,
   SmsCode,
   Alert,
+  Confirm,
+  SendBox,
+  Actions,
   Header,
-  RefreshLoad,
   Ttitle,
   List,
-  Share
+  Share,
+  ForumList
 };

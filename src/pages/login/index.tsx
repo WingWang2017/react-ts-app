@@ -53,6 +53,14 @@ class Login extends React.Component<{}, IState> {
 
   public componentDidMount(): void {
     // ss
+    // f7App.mainView.params.swipeBackPage = false;
+    const cached = $$('#main-view .pages>.page');
+    if (cached.length >= 1) {
+      const leng = cached.length - 1;
+      for (let i = 0; i < leng; i++) {
+        cached[i].remove();
+      }
+    }
 
   }
 

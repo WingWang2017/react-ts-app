@@ -139,15 +139,15 @@ select option {
   padding-right: 0;
 }
 
-.navbar .link {
+.header .link {
   width: .78rem;
 }
 
-.navbar .left .link {
+.header .left .link {
   padding-left: .2rem;
 }
 
-.navbar .right .link {
+.header .right .link {
   display: flex;
   justify-content: flex-end;
   padding-right: .2rem;
@@ -181,6 +181,138 @@ select option {
   transform: scaleY(.5);
   background: #ebebeb;
 }
+
+
+.wpForumText{
+	line-height: 1.6;
+	font-size: 0.3rem;
+	color: #353535;
+}
+
+.wpForumFunction{
+	line-height: 0.63rem;
+	margin: 0.05rem 0;
+}
+.wpTime{
+	line-height: .63rem;
+	font-size: 0.28rem;
+	color: #5b5b5d;
+}
+.wpDelete{
+	line-height: .63rem;
+	font-size: 0.26rem;
+  color: #E64340;
+  padding: 0 .2rem;
+}
+.wpLikes{
+	background: url('../img/like_normal.svg') no-repeat left center;
+	background-size: 0.3rem 0.26rem;
+  padding: 0 .2rem 0 .39rem;
+}
+.wpLikes-on{
+	background-image: url('../img/like_selected.svg');
+}
+
+.wpComment{
+	background: url('../img/comment.svg') no-repeat left center;
+	background-size: 0.28rem 0.28rem;
+	padding-left: 0.35rem;
+}
+.wpForumFunction .wpLikes,
+.wpForumFunction .wpComment{
+	float: right;
+	height: 0.63rem;
+	font-size: 0.28rem;
+	color: #353535;
+}
+
+.wpCommentMes{
+	background: #f4f4f4;
+	font-size: 0.28rem;
+	line-height: 1.6;
+	word-break:break-all;
+}
+
+.wpCommentMes .wpButton{
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #119C8F;
+}
+
+.wpMes{
+	display: block;
+	padding: 0.15rem 0.2rem;
+	box-sizing: border-box;
+	overflow: hidden;
+	color: #5b5b5d;
+}
+.wpMes.border1px::after{
+	background: #CCD2DF;
+	background-clip: content-box;
+	padding: 0 0.2rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+.wpMes:last-child::after{
+	height: 0;
+}
+.wpMes.active-state{
+	background: #CCD2DF;
+}
+.wpMesName{
+	float: left;
+	color: #119C8F;
+}
+.wpMesTime{
+	float: right;
+	font-size: 0.24rem;
+}
+.wpMesText{
+	clear: both;
+}
+
+.wpForumImg{
+	display: flex;
+	flex-wrap: wrap;
+}
+.wpForumOneImg{
+	display: block;
+}
+
+.wpForumImg img{
+	width: 1.6rem;
+	height: 1.6rem;
+	margin: 0.14rem 0.14rem 0 0;
+}
+
+.wpForumImg .oneImg{
+	width: 2.88rem;
+	height: auto;
+	max-height: 3.88rem;
+}
+.noData{
+	text-align: center;
+	line-height: 2;
+	font-size: 0.3rem;
+}
+
+
+.flexBox {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* 动画 */
 
 .fade {
   transition: all .2s ease;
@@ -218,4 +350,22 @@ select option {
 }
 .mask-unmounted {
   opacity: 0;
+}
+
+
+.zooming-entering {
+  transform: scale(0);
+}
+.zooming-entered {
+  transform: scale(1);
+}
+.zooming-exiting {
+  transform: scale(1);
+}
+.zooming-exited {
+  transform: scale(.5);
+  opacity: 0;
+}
+.zooming-unmounted {
+  transform: scale(.5);
 }

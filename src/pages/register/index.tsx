@@ -201,7 +201,9 @@ class Register extends React.Component<{}, IState> {
         token: res.resource.token
       };
       localStorage.user = JSON.stringify(obj);
-      f7App.mainView.router.loadPage(`/login/school/${currentRoute.params.type === 'registerl' ? 0 : 1}`);
+      f7App.mainView.router.loadPage({
+        url: `/login/school/${currentRoute.params.type === 'registerl' ? 0 : 1}`
+      });
     }
 
     Alert.default({

@@ -22,7 +22,7 @@ class Header extends React.Component<IProps, {}> {
   public render() {
     return (
       <div className='navbar'>
-        <div className='navbar-inner padding'>
+        <div className='navbar-inner header padding'>
           <Left
             left={this.props.left}
             back={this.props.back}

@@ -43,6 +43,52 @@ const monthAndDayHours = (ns: any) => {
   return ` ${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
 };
 
+// 表情转码
+function utf16toEntities(str: string) {
+  const patt = /[\ud800-\udbff][\udc00-\udfff]/g;
+  // 检测utf16字符正则
+  str = str.replace(patt, (char: any) => {
+    let H;
+    let L;
+    let code;
+    if (char.length === 2) {
+      H = char.charCodeAt(0);
+      // 取出高位
+      L = char.charCodeAt(1);
+      // 取出低位
+      code = (H - 0xD800) * 0x400 + 0x10000 + L - 0xDC00;
+      // 转换算法
+      return "&#" + code + ";";
+    } else {
+      return char;
+    }
+  });
+  return str;
+}
+
+// 表情解码
+function entitiestoUtf16(str: string) {
+  // 检测出形如&#12345;形式的字符串
+  let strObj: string = utf16toEntities(str);
+  const patt: any = /&#\d+;/g;
+  let H;
+  let L;
+  let code;
+  const arr = strObj.match(patt) || [];
+  for (const i of arr) {
+    code = arr[i];
+    code = code.replace('&#', '').replace(';', '');
+    // 高位
+    H = Math.floor((code - 0x10000) / 0x400) + 0xD800;
+    // 低位
+    L = (code - 0x10000) % 0x400 + 0xDC00;
+    code = "&#" + code + ";";
+    const s: string = String.fromCharCode(H, L);
+    strObj = strObj.replace(code, s);
+  }
+  return strObj;
+}
+
 
 const enToCh = (value: string) => {
   switch (value) {
@@ -72,5 +118,7 @@ export {
   foreAddZero,
   enToCh,
   yearAndMonthAndDayHours,
-  monthAndDayHours
+  monthAndDayHours,
+  utf16toEntities,
+  entitiestoUtf16
 };

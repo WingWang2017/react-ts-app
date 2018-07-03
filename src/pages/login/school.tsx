@@ -171,7 +171,11 @@ class School extends React.Component<{}, IState> {
 
       localStorage.hasSchool = true;
 
-      f7App.mainView.router.loadPage('/home');
+      f7App.mainView.router.loadPage({
+        url: '/home',
+        animatePages: false,
+        reload: true
+      });
     }
 
     Alert.default({

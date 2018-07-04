@@ -24,7 +24,7 @@ class Register extends React.Component<{}, IState> {
 
   public render() {
     return (
-      <div className='page login' data-page='school'>
+      <div className='page login' data-page='register'>
         <LoginView>
 
           <Back />

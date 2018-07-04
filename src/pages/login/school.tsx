@@ -63,6 +63,9 @@ class School extends React.Component<{}, IState> {
   }
 
   public componentDidMount(): void {
+
+    const mainPage = f7App.mainView.url;
+    console.log(mainPage);
     // ss
     const user = JSON.parse(localStorage.user);
     fetchAjax.getSchoolList(user.token).then(res => {

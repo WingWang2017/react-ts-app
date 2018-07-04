@@ -89,6 +89,13 @@ function entitiestoUtf16(str: string) {
   return strObj;
 }
 
+// deviceready  设备加载完成后的回调
+const deviceready = (fun: any) => {
+  document.addEventListener('deviceready', () => {
+    fun();
+  }, false);
+};
+
 
 const enToCh = (value: string) => {
   switch (value) {
@@ -120,5 +127,6 @@ export {
   yearAndMonthAndDayHours,
   monthAndDayHours,
   utf16toEntities,
-  entitiestoUtf16
+  entitiestoUtf16,
+  deviceready
 };

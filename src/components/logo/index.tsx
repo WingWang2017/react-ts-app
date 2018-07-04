@@ -15,7 +15,7 @@ const Logo = observer((props: any) =>
 const StyledLogo = Styled.div`
   width: 100%;
   height: 5.5rem;
-  padding-top: 2.5rem;
+  padding-top: 2.8rem;
   box-sizing: border-box;
   img {
     width: 4.26rem;

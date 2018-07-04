@@ -4,14 +4,14 @@
 /node_modules
 /.history
 /.vscode
-/platforms
+/platforms/
+/www/
 
 # testing
 /coverage
 
 # production
 /build
-/www
 
 # misc
 .DS_Store

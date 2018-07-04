@@ -38,7 +38,6 @@ class App extends React.Component<{}, IState> {
     if (localStorage.user) {
       const user: any = JSON.parse(localStorage.user);
       const hasSchool: boolean = localStorage.hasSchool;
-      console.log(hasSchool);
       if (hasSchool && user) {
         f7App.mainView.router.loadPage({
           url: '/home',
@@ -53,6 +52,11 @@ class App extends React.Component<{}, IState> {
         animatePages: false
       });
     }
+
+    // f7App.mainView.router.loadPage({
+    //   url: '/home',
+    //   animatePages: false
+    // });
 
     this.deviceready();
 
@@ -72,7 +76,7 @@ class App extends React.Component<{}, IState> {
       }, false);
 
       // 获取app的版本号
-      window['cordova'].getAppVersion.getVersionNumber((version: any) => {
+      cordova.getAppVersion.getVersionNumber((version: any) => {
         console.log(version);
       });
 

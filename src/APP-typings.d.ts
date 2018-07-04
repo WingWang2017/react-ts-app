@@ -16,3 +16,6 @@ declare var Dom7: any;
 declare var $$: any;
 declare var f7App: any;
 declare var currentRoute: any;
+
+declare var StatusBar: any;
+declare var cordova: any;

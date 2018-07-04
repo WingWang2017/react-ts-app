@@ -12,6 +12,8 @@ import { LoginView, Logo, InputText, InputPassword, Button, Alert } from 'src/co
 
 import fetchAjax from 'src/fetch';
 
+import { deviceready } from 'src/utils';
+
 
 @observer
 class Login extends React.Component<{}, IState> {
@@ -61,6 +63,10 @@ class Login extends React.Component<{}, IState> {
         cached[i].remove();
       }
     }
+
+    deviceready(() => {
+      StatusBar.hide();
+    });
 
   }
 

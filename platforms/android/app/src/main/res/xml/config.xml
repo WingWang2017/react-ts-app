@@ -11,6 +11,9 @@
     <feature name="BackbuttonPlugin">
         <param name="android-package" value="com.badrit.Backbutton.BackbuttonPlugin" />
     </feature>
+    <feature name="AppVersion">
+        <param name="android-package" value="uk.co.whiteoctober.cordova.AppVersion" />
+    </feature>
     <name>最青春</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

@@ -54,15 +54,29 @@ class App extends React.Component<{}, IState> {
       });
     }
 
-    document.addEventListener('backbutton', () => {
-      const page = f7App.mainView.url;
-      if (page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login') {
-        navigator['app'].exitApp();
-      } else {
-        f7App.mainView.router.back();
-      }
-    }, false);
+    this.deviceready();
 
+  }
+
+  public deviceready(): void {
+    document.addEventListener('deviceready', () => {
+
+      // 主页面上安卓点击实体键后退直接退出app
+      document.addEventListener('backbutton', () => {
+        const page = f7App.mainView.url;
+        if (page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login') {
+          navigator['app'].exitApp();
+        } else {
+          f7App.mainView.router.back();
+        }
+      }, false);
+
+      // 获取app的版本号
+      window['cordova'].getAppVersion.getVersionNumber((version: any) => {
+        console.log(version);
+      });
+
+    }, false);
   }
 
   public onFramework7Init = (f7: any): void => {

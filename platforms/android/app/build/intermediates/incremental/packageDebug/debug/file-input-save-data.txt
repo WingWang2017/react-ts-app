@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jul 04 19:20:44 CST 2018
+#Wed Jul 04 19:28:20 CST 2018
 5.base=D\:\\gongzuoApp\\ts-app\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 42.base=D\:\\gongzuoApp\\ts-app\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 32.set=ANDROID_RESOURCE

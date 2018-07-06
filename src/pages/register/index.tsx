@@ -11,6 +11,8 @@ import { LoginView, Logo, InputText, InputPassword, Button, Back, SmsCode, Alert
 
 import fetchAjax from 'src/fetch';
 
+import { deviceready } from 'src/utils';
+
 @observer
 class Register extends React.Component<{}, IState> {
 
@@ -81,6 +83,10 @@ class Register extends React.Component<{}, IState> {
   public componentDidMount(): void {
     // ss
     // console.log(this.props.f7.currentRoute.params.type);
+
+    deviceready(() => {
+      StatusBar.hide();
+    });
   }
 
   public onRef = (ref: any): void => {

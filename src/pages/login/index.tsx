@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-// import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
-// import { Framework7 } from 'framework7-react';
-
 import { trace } from "mobx";
 import { observer } from 'mobx-react';
 
@@ -13,7 +10,6 @@ import { LoginView, Logo, InputText, InputPassword, Button, Alert } from 'src/co
 import fetchAjax from 'src/fetch';
 
 import { deviceready } from 'src/utils';
-
 
 @observer
 class Login extends React.Component<{}, IState> {
@@ -134,6 +130,7 @@ class Login extends React.Component<{}, IState> {
   }
 
 }
+
 
 // interface IProps {
 

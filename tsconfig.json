@@ -21,6 +21,14 @@
     },
     "sourceMap": true,
     "allowJs": true,
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "tags": [
+          "Styled"
+        ]
+      }
+    ],
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",

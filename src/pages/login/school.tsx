@@ -8,6 +8,8 @@ import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from
 
 import fetchAjax from 'src/fetch';
 
+import { deviceready } from 'src/utils';
+
 import SelectRoles from './select-roles';
 
 @observer
@@ -63,6 +65,10 @@ class School extends React.Component<{}, IState> {
   }
 
   public componentDidMount(): void {
+
+    deviceready(() => {
+      StatusBar.hide();
+    });
 
     const mainPage = f7App.mainView.url;
     console.log(mainPage);

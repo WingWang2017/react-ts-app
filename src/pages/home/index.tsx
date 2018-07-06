@@ -11,7 +11,7 @@ import { scanIcon, messageIcon } from 'src/images';
 
 import fetchAjax from 'src/fetch';
 
-import { dateC } from 'src/utils';
+import { dateC, deviceready } from 'src/utils';
 
 import HOCRefreshLoad from 'src/hocComponents/refresh-load';
 
@@ -66,6 +66,10 @@ class Home extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
+
+    deviceready(() => {
+      StatusBar.show();
+    });
 
     this.removeCached();
 

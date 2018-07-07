@@ -19,10 +19,12 @@ class Login extends React.Component<{}, IState> {
     password: ''
   };
 
+  public $f7: any;
+
   public render() {
     trace();
     return (
-      <div className='page login' data-page='login'>
+      <div className='page login' data-name='login'>
         <LoginView>
           <Logo />
           <StyledDiv>
@@ -50,20 +52,10 @@ class Login extends React.Component<{}, IState> {
   }
 
   public componentDidMount(): void {
-    // ss
-    // f7App.mainView.params.swipeBackPage = false;
-    const cached = $$('#main-view .pages>.page');
-    if (cached.length >= 1) {
-      const leng = cached.length - 1;
-      for (let i = 0; i < leng; i++) {
-        cached[i].remove();
-      }
-    }
-
     deviceready(() => {
-      StatusBar.hide();
+      this.$f7.statusbar.setBackgroundColor('#9bb1b3');
+      this.$f7.$('.navbar').hide();
     });
-
   }
 
   public onPhone = (phone: string): void => {
@@ -120,7 +112,7 @@ class Login extends React.Component<{}, IState> {
           tel: this.state.phone,
           token: res.resource.token
         });
-        f7App.mainView.router.loadPage('/login/school/1');
+        this.$f7.router.navigate('/login/school/1');
       } else {
         Alert.default({
           content: res.errmsg

@@ -66,9 +66,9 @@ class SendBox extends React.Component<IProps, IState> {
 	}
 
 	public onFocus = () => {
-		setTimeout(() => {
-			$$('body')[0].scrollTop = 10000;
-		}, 500);
+		// setTimeout(() => {
+		// 	$$('body')[0].scrollTop = 10000;
+		// }, 500);
 	}
 
 	public componentDidMount() {

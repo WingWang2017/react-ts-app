@@ -1,116 +1,129 @@
 import * as React from 'react';
 
-import { Framework7App, Statusbar, Views, View, Pages } from 'framework7-react';
+import { App, Views, View, Statusbar } from 'framework7-react';
 
 import { observer } from 'mobx-react';
 
 import routes from './routes';
 
+import { deviceready } from 'src/utils';
+
 // import Home from './pages/home';
 
-if (process.env.NODE_ENV !== 'production') {
-  const { whyDidYouUpdate } = require('why-did-you-update');
-  whyDidYouUpdate(React);
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   const { whyDidYouUpdate } = require('why-did-you-update');
+//   whyDidYouUpdate(React);
+// }
 
-$$ = Dom7;
+// $$ = Dom7;
 
-const f7AppConfig = {
-  modalTitle: '提示信息',
-  modalButtonOk: '确认',
-  modalButtonCancel: '取消',
-  swipeBackPage: true,
-  imagesLazyLoadThreshold: 50,
-  uniqueHistory: true, // App将保持View的导航历史独一无二，它也将删除重复的页面
-  // pushState: true
+const f7Params = {
+  // Array with app routes
+  routes,
+  // App Name
+  name: 'mostyouth',
+  // App id
+  id: 'com.mostyouth.hdzz',
+  // App版本
+  version: '1.0.0',
+  // App应用主题
+  theme: 'ios',
+  params: {
+    swipeBackPage: true,
+    animate: false
+  },
+  statusbar: {
+    overlay: true,
+    iosBackgroundColor: '#81D8D0'
+  },
+  methods: {
+    backbutton: (f7router: any) => {
+      document.addEventListener('backbutton', () => {
+        f7router.back();
+      });
+    },
+    exitApp: () => {
+      document.addEventListener('backbutton', () => {
+        navigator['app'].exitApp();
+      });
+    }
+  },
+
 };
 
 @observer
-class App extends React.Component<{}, IState> {
+class MyApp extends React.Component<{}, IState> {
 
   public state = {
     index: '1',
     data: []
   };
 
+  public $f7: any;
+
+  public $f7router: any;
+
+  public $f7route: any;
+
+  public $f7ready: any;
+
   public componentDidMount(): void {
 
-    if (localStorage.user) {
-      const user: any = JSON.parse(localStorage.user);
-      const hasSchool: boolean = localStorage.hasSchool;
-      if (hasSchool && user) {
-        f7App.mainView.router.loadPage({
-          url: '/home',
+    this.$f7ready((f7: any) => {
+
+      if (localStorage.user) {
+        const user: any = JSON.parse(localStorage.user);
+        const hasSchool: boolean = localStorage.hasSchool;
+        if (hasSchool && user) {
+          f7.router.navigate({
+            url: '/home',
+            animatePages: false
+          });
+        }
+      }
+
+      if (!localStorage.hasSchool) {
+        f7.router.navigate({
+          url: '/login',
           animatePages: false
         });
       }
-    }
+    });
 
-    if (!localStorage.hasSchool) {
-      f7App.mainView.router.loadPage({
-        url: '/login',
-        animatePages: false
-      });
-    }
+    deviceready(() => {
 
-    // f7App.mainView.router.loadPage({
-    //   url: '/home',
-    //   animatePages: false
-    // });
-
-    this.deviceready();
-
-  }
-
-  public deviceready(): void {
-    document.addEventListener('deviceready', () => {
-
-      // 主页面上安卓点击实体键后退直接退出app
-      document.addEventListener('backbutton', () => {
-        const page = f7App.mainView.url;
-        if (page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login') {
-          navigator['app'].exitApp();
-        } else {
-          f7App.mainView.router.back();
-        }
-      }, false);
+      // StatusBar.backgroundColorByHexString('#9bb1b3');
 
       // 获取app的版本号
       cordova.getAppVersion.getVersionNumber((version: any) => {
         console.log(version);
       });
 
-    }, false);
+      // 主页面上安卓点击实体键后退直接退出app
+      // document.addEventListener('backbutton', () => {
+      //   const page = this.$f7route.url;
+      //   if (page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login') {
+      //     navigator['app'].exitApp();
+      //   } else {
+      //     this.$f7router.back();
+      //   }
+      // }, false);
+
+    });
   }
 
-  public onFramework7Init = (f7: any): void => {
-    f7App = f7;
-  }
-
-  public onRouteChange = (route: any): void => {
-    currentRoute = route;
-  }
 
   public render() {
     return (
-      <Framework7App
-        themeType='ios'
-        routes={routes}
-        onFramework7Init={this.onFramework7Init}
-        onRouteChange={this.onRouteChange}
-        {...f7AppConfig} >
+      <App params={f7Params} >
 
-        <Statusbar theme='#81d8d0' />
+        <Statusbar />
 
         <Views>
-          <View main={true} id='main-view'>
-            <Pages>
-              <div className='page' data-page='page' />
-            </Pages>
-          </View>
+          <View main={true} />
         </Views>
 
-      </Framework7App>
+      </App>
     );
   }
 }
@@ -120,4 +133,4 @@ interface IState {
   data: any[];
 }
 
-export default App;
+export default MyApp;

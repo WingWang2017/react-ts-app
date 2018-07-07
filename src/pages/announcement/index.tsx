@@ -12,21 +12,27 @@ import fetchAjax from 'src/fetch';
 
 import { fenxiangIcon } from 'src/images';
 
+interface IProps {
+	f7router?: any;
+	f7route?: any;
+}
 interface IState {
 	data: any;
 	opened: boolean;
 }
 
-
 @observer
-export default class Announcement extends React.Component<{}, IState> {
+export default class Announcement extends React.Component<IProps, IState> {
 
 	public state = {
 		data: {},
 		opened: false // <= 分享弹出框默认状态，隐藏
 	};
 
+	public $f7: any;
+
 	public componentDidMount(): void {
+
 		// const { thumb_type } = currentRoute.params;
 		// if (thumb_type === '0') {
 		// 	this.getInfoData();
@@ -41,7 +47,7 @@ export default class Announcement extends React.Component<{}, IState> {
 	}
 
 	public getInfoData(): void {
-		fetchAjax.getDynamicCampusInfo(currentRoute.params.id).then(res => {
+		fetchAjax.getDynamicCampusInfo(this.props.f7route.params.id).then(res => {
 			if (res.errcode) {
 				this.setState({
 					data: res.resource
@@ -56,7 +62,7 @@ export default class Announcement extends React.Component<{}, IState> {
 
 	public render() {
 		return (
-			<div data-page='announcement' className='navbar-fixed page'>
+			<div data-name='announcement' className='navbar-fixed page'>
 				<Header
 					center='公告'
 					back={true}

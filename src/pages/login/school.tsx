@@ -8,8 +8,6 @@ import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from
 
 import fetchAjax from 'src/fetch';
 
-import { deviceready } from 'src/utils';
-
 import SelectRoles from './select-roles';
 
 @observer
@@ -23,9 +21,13 @@ class School extends React.Component<{}, IState> {
     password: ''
   };
 
+  public $f7: any;
+  public $f7router: any;
+  public $f7route: any;
+
   public render() {
     return (
-      <div className='page login' data-page='school'>
+      <div className='page login' data-name='school'>
         <LoginView>
 
           <Back />
@@ -66,13 +68,8 @@ class School extends React.Component<{}, IState> {
 
   public componentDidMount(): void {
 
-    deviceready(() => {
-      StatusBar.hide();
-    });
+    // this.$f7.statusbar.hide();
 
-    const mainPage = f7App.mainView.url;
-    console.log(mainPage);
-    // ss
     const user = JSON.parse(localStorage.user);
     fetchAjax.getSchoolList(user.token).then(res => {
       this.setState({
@@ -143,9 +140,10 @@ class School extends React.Component<{}, IState> {
       });
     }
 
+
     // currentRoute.params.state 为0 没有注册过，进行绑定
     // currentRoute.params.state 为1 注册过，直接登录
-    if (currentRoute.params.state) {
+    if (this.$f7route.params.state) {
       res = await fetchAjax.doubleSignin(user.token, schoolType, userType, account, password);
     } else {
       res = await fetchAjax.doubleSigninBind(user.token, schoolType, userType, account, password);
@@ -180,7 +178,7 @@ class School extends React.Component<{}, IState> {
 
       localStorage.hasSchool = true;
 
-      f7App.mainView.router.loadPage({
+      this.$f7router.navigate({
         url: '/home',
         animatePages: false,
         reload: true

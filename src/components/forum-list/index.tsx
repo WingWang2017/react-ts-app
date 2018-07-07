@@ -118,14 +118,14 @@ class ForumList extends React.Component<Iprops, {}> {
   }
 
   public onPhotoPage = (imgs: string, index: number) => () => {
-    const photoBrowser = f7App.photoBrowser({
-      init: true,
-      photos: imgs.slice(),
-      theme: 'dark',
-      backLinkText: '关闭',
-      exposition: false
-    });
-    photoBrowser.open(index);
+    // const photoBrowser = f7App.photoBrowser({
+    //   init: true,
+    //   photos: imgs.slice(),
+    //   theme: 'dark',
+    //   backLinkText: '关闭',
+    //   exposition: false
+    // });
+    // photoBrowser.open(index);
   }
 
 }

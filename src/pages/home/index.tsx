@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { observable, action, trace } from 'mobx';
+import { observable, action } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
 import Styled from 'styled-components';
@@ -24,6 +24,8 @@ class Home extends React.Component<IProps, IState> {
     user: JSON.parse(localStorage.user)
   };
 
+  public $f7: any;
+
   @observable private dynamicList: any[] = [];
   @observable private lastPage: number = 1;
 
@@ -32,7 +34,6 @@ class Home extends React.Component<IProps, IState> {
   }
 
   public render() {
-    trace();
     return (
       <div className='navbar-fixed toolbar-fixed page home' data-page='home'>
         <Header
@@ -66,12 +67,17 @@ class Home extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
+    // setTimeout(() => {
+    //   this.$f7.$('.navbar').removeClass('navbar-hidden');
+    // }, 500);
+
+    // this.$f7.statusbar.setBackgroundColor('#81D8D0');
 
     deviceready(() => {
-      StatusBar.show();
+      this.$f7.$('.navbar').show();
+      this.$f7.$('.navbar').removeClass('navbar-hidden');
+      this.$f7.statusbar.setBackgroundColor('#81D8D0');
     });
-
-    this.removeCached();
 
     this.getAjax();
   }
@@ -109,21 +115,9 @@ class Home extends React.Component<IProps, IState> {
         ? this.props.forumState.setData(res.resource.data)
         : this.props.forumState.pushData(res.resource.data);
       this.setData('lastPage', res.resource.lastPage);
-      f7App.initImagesLazyLoad($$('.page-content'));
+      // f7App.initImagesLazyLoad($$('.page-content'));
     }
     return res;
-  }
-
-  // 加载首页的时候，删除上页的page, 禁用当前页面的右滑回上一页
-  public removeCached(): void {
-    // f7App.mainView.params.swipeBackPage = false;
-    const cached = $$('#main-view .pages>.page');
-    if (cached.length >= 1) {
-      const leng = cached.length - 1;
-      for (let i = 0; i < leng; i++) {
-        cached[i].remove();
-      }
-    }
   }
 
   // 点击删除自己发的论坛
@@ -192,7 +186,6 @@ class Home extends React.Component<IProps, IState> {
 const HomeCentent = observer(HOCRefreshLoad((props: any) => {
   return (
     <>
-      <div style={{ height: '210px' }}>asdasd</div>
       <div>
         <Ttitle centent='动态校园' link='#' />
         <ul>
@@ -223,6 +216,7 @@ const DynamicList = observer((props: any) => {
 });
 
 interface IProps {
+  f7router?: any;
   forumState: any;
 }
 

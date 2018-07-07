@@ -14,7 +14,7 @@ import fetchAjax from 'src/fetch';
 import { deviceready } from 'src/utils';
 
 @observer
-class Register extends React.Component<{}, IState> {
+class Register extends React.Component<IProps, IState> {
 
   public state = {
     phone: '',
@@ -71,7 +71,7 @@ class Register extends React.Component<{}, IState> {
           </StyledDiv>
 
           {
-            currentRoute.params.type === 'registerl' &&
+            this.props.f7route.params.type === 'registerl' &&
             <Footer>注册代表您已阅读并同意<a href='#'>《最青春网络使用协议》</a></Footer>
           }
 
@@ -81,11 +81,9 @@ class Register extends React.Component<{}, IState> {
   }
 
   public componentDidMount(): void {
-    // ss
-    // console.log(this.props.f7.currentRoute.params.type);
 
     deviceready(() => {
-      StatusBar.hide();
+
     });
   }
 
@@ -109,9 +107,9 @@ class Register extends React.Component<{}, IState> {
       });
     }
 
-    if (currentRoute.params.type === 'registerl') {
+    if (this.props.f7route.params.type === 'registerl') {
       res = await fetchAjax.getSmscode(this.state.phone);
-    } else if (currentRoute.params.type === 'retrieve') {
+    } else if (this.props.f7route.params.type === 'retrieve') {
       res = await fetchAjax.getSmsBackCode(this.state.phone);
     }
 
@@ -194,9 +192,9 @@ class Register extends React.Component<{}, IState> {
 
     let res: any;
 
-    if (currentRoute.params.type === 'registerl') {
+    if (this.props.f7route.params.type === 'registerl') {
       res = await fetchAjax.register(this.state.phone, this.state.password);
-    } else if (currentRoute.params.type === 'retrieve') {
+    } else if (this.props.f7route.params.type === 'retrieve') {
       res = await fetchAjax.pwdback(this.state.phone, this.state.password);
     }
 
@@ -207,8 +205,8 @@ class Register extends React.Component<{}, IState> {
         token: res.resource.token
       };
       localStorage.user = JSON.stringify(obj);
-      f7App.mainView.router.loadPage({
-        url: `/login/school/${currentRoute.params.type === 'registerl' ? 0 : 1}`
+      this.props.f7router.navigate({
+        url: `/login/school/${this.props.f7route.params.type === 'registerl' ? 0 : 1}`
       });
     }
 
@@ -220,7 +218,10 @@ class Register extends React.Component<{}, IState> {
 
 }
 
-
+interface IProps {
+  f7router?: any;
+  f7route?: any;
+}
 interface IState {
   phone: string;
   code: string;

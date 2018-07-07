@@ -3,15 +3,19 @@ import * as ReactDOM from 'react-dom';
 
 import { Provider } from 'mobx-react';
 
+import Framework7 from 'framework7/framework7.esm.bundle';
+import Framework7React from 'framework7-react';
+
 import * as stores from './stores';
 
-import "../node_modules/framework7/dist/css/framework7.ios.min.css";
-import "../node_modules/framework7/dist/css/framework7.ios.colors.min.css";
+import './assets/css/framework7.ios.css';
 import './assets/css/index.css';
 
 import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';
+
+Framework7.use(Framework7React);
 
 ReactDOM.render(
   <Provider {...stores}>

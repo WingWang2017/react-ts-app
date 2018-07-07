@@ -1,41 +1,4 @@
-html {
-  box-sizing: border-box;
 
-  font-size: calc(100vw / 7.5); /* 设计稿计算公式 */
-
-  overscroll-behavior: contain;
-}
-
-@media screen and (min-width: 750px) {
-  html {
-    font-size: 100px;
-  }
-}
-
-body {
-  word-break: break-all;
-
-  color: #222;
-
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei",Tahoma, Simsun, sans-serif;
-  font-size: .34rem;
-}
-html,
-body {
-  overflow: hidden;
-
-  height: 100%;
-  margin: 0;
-  padding: 0;
-
-  user-select: none; /* 禁止选择文本 */
-
-  -webkit-touch-callout: none; /* 系统默认菜单被禁用 */
-}
-
-a {
-  color: #222;
-}
 p,
 ul,
 li {
@@ -101,40 +64,29 @@ select option {
   color:#222;
 }
 
-#root {
-  width: 100%;
-  height: 100%;
-}
-
-#root .views {
-  overflow: hidden;
-}
-
-.statusbar-overlay {
+.ios .statusbar {
   background: #81d8d0;
 }
 
-.pages {
-  overflow: hidden;
-
-  background: #fff;
-}
-
-.page {
+.ios .page {
   overflow: hidden;
   background: #fff;
 }
 
-.navbar {
+.ios .navbar {
   height: .88rem;
   background: #81d8d0;
+}
+
+.ios .navbar-inner {
+  padding: 0;
 }
 
 .navbar > .left {
   padding-left: 0;
 }
 
-.navbar .center {
+.ios .navbar .title {
   font-size: .36rem;
   font-weight: inherit !important;
 }

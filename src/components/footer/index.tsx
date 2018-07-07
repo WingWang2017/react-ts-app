@@ -20,20 +20,24 @@ import {
 
 interface IProps {
   activedLink: number;
+  f7route?: any;
 }
 
 @observer
 export default class Footer extends React.Component<IProps, {}> {
 
+  public $f7: any;
+
   // 判断当前路由page页数,>=2就删除cached(0)
   public handleClick = () => {
-    const cached = $$('#main-view .pages>.page');
-    if (cached.length >= 1) {
-      const leng = cached.length - 1;
-      for (let i = 0; i < leng; i++) {
-        cached[i].remove();
-      }
-    }
+    // const cached = $$('#main-view .pages>.page');
+    // if (cached.length >= 1) {
+    //   const leng = cached.length - 1;
+    //   for (let i = 0; i < leng; i++) {
+    //     cached[i].remove();
+    //   }
+    // }
+    this.$f7.router.navigate('/login');
   }
 
   public render() {

@@ -1,0 +1,671 @@
+/* === button === */
+button {
+  appearance: none;
+}
+.button {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  appearance: none;
+  background: none;
+  padding: 0 10px;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+  cursor: pointer;
+  outline: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+input[type="submit"].button,
+input[type="button"].button {
+  width: 100%;
+}
+.segmented {
+  align-self: center;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.segmented .button,
+.segmented button {
+  width: 100%;
+  flex-shrink: 1;
+  min-width: 0;
+}
+.subnavbar .segmented {
+  width: 100%;
+}
+.ios .button {
+  border: 1px solid #007aff;
+  color: #007aff;
+  border-radius: 5px;
+  line-height: 27px;
+  height: 29px;
+}
+.ios .button.active-state {
+  background: rgba(0, 122, 255, 0.15);
+}
+.ios .button.button-round,
+.ios .button.button-round-ios {
+  border-radius: 29px;
+}
+.ios .button.button-active,
+.ios .button.tab-link-active {
+  background: #007aff;
+  color: #fff;
+}
+.ios .button.button-big,
+.ios .button.button-big-ios {
+  font-size: 17px;
+  height: 44px;
+  line-height: 42px;
+}
+.ios .button.button-small,
+.ios .button.button-small-ios {
+  height: 26px;
+  line-height: 22px;
+  border-width: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition-duration: 200ms;
+}
+.ios .button.button-small.button-fill.active-state,
+.ios .button.button-small-ios.button-fill.active-state,
+.ios .button.button-small.button-fill-ios.active-state,
+.ios .button.button-small-ios.button-fill-ios.active-state {
+  color: #007aff;
+  border: 2px solid #007aff;
+  background-color: transparent;
+  opacity: 1;
+}
+.ios .button.button-fill,
+.ios .button.button-fill-ios {
+  color: #fff;
+  background: #007aff;
+  border-color: transparent;
+}
+.ios .button.button-fill.active-state,
+.ios .button.button-fill-ios.active-state {
+  opacity: 0.8;
+}
+.ios .button i.icon:first-child {
+  margin-right: 10px;
+}
+.ios .button i.icon:last-child {
+  margin-left: 10px;
+}
+.ios .button i.icon:first-child:last-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+.ios .segmented .button {
+  border-radius: 0;
+  border-left-width: 0;
+}
+.ios .segmented .button:first-child {
+  border-radius: 5px 0 0 5px;
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+.ios .segmented .button:first-child.button-small {
+  border-left-width: 2px;
+}
+.ios .segmented .button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.ios .segmented .button:first-child:last-child {
+  border-radius: 5px;
+}
+.ios .segmented .button.button-round:first-child,
+.ios .segmented .button.button-round-ios:first-child {
+  border-radius: 29px 0 0 29px;
+}
+.ios .segmented .button.button-round:last-child,
+.ios .segmented .button.button-round-ios:last-child {
+  border-radius: 0 29px 29px 0;
+}
+.ios .color-theme-red .button {
+  border-color: #ff3b30;
+  color: #ff3b30;
+}
+.ios .color-theme-red .button.active-state {
+  background: rgba(255, 59, 48, 0.15);
+}
+.ios .color-theme-red .button.button-active,
+.ios .color-theme-red .button.tab-link-active,
+.ios .color-theme-red .button.button-fill,
+.ios .color-theme-red .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-red .button.button-active,
+.ios .color-theme-red .button.tab-link-active {
+  background: #ff3b30;
+}
+.ios .color-theme-red .button.button-fill,
+.ios .color-theme-red .button.button-fill-ios {
+  background: #ff3b30;
+  border-color: transparent;
+}
+.ios .color-theme-red .button.button-small.button-fill.active-state,
+.ios .color-theme-red .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-red .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-red .button.button-small-ios.button-fill-ios.active-state {
+  color: #ff3b30;
+  border: 2px solid #ff3b30;
+  background-color: transparent;
+}
+.ios .color-theme-green .button {
+  border-color: #4cd964;
+  color: #4cd964;
+}
+.ios .color-theme-green .button.active-state {
+  background: rgba(76, 217, 100, 0.15);
+}
+.ios .color-theme-green .button.button-active,
+.ios .color-theme-green .button.tab-link-active,
+.ios .color-theme-green .button.button-fill,
+.ios .color-theme-green .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-green .button.button-active,
+.ios .color-theme-green .button.tab-link-active {
+  background: #4cd964;
+}
+.ios .color-theme-green .button.button-fill,
+.ios .color-theme-green .button.button-fill-ios {
+  background: #4cd964;
+  border-color: transparent;
+}
+.ios .color-theme-green .button.button-small.button-fill.active-state,
+.ios .color-theme-green .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-green .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-green .button.button-small-ios.button-fill-ios.active-state {
+  color: #4cd964;
+  border: 2px solid #4cd964;
+  background-color: transparent;
+}
+.ios .color-theme-blue .button {
+  border-color: #007aff;
+  color: #007aff;
+}
+.ios .color-theme-blue .button.active-state {
+  background: rgba(0, 122, 255, 0.15);
+}
+.ios .color-theme-blue .button.button-active,
+.ios .color-theme-blue .button.tab-link-active,
+.ios .color-theme-blue .button.button-fill,
+.ios .color-theme-blue .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-blue .button.button-active,
+.ios .color-theme-blue .button.tab-link-active {
+  background: #007aff;
+}
+.ios .color-theme-blue .button.button-fill,
+.ios .color-theme-blue .button.button-fill-ios {
+  background: #007aff;
+  border-color: transparent;
+}
+.ios .color-theme-blue .button.button-small.button-fill.active-state,
+.ios .color-theme-blue .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-blue .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-blue .button.button-small-ios.button-fill-ios.active-state {
+  color: #007aff;
+  border: 2px solid #007aff;
+  background-color: transparent;
+}
+.ios .color-theme-pink .button {
+  border-color: #ff2d55;
+  color: #ff2d55;
+}
+.ios .color-theme-pink .button.active-state {
+  background: rgba(255, 45, 85, 0.15);
+}
+.ios .color-theme-pink .button.button-active,
+.ios .color-theme-pink .button.tab-link-active,
+.ios .color-theme-pink .button.button-fill,
+.ios .color-theme-pink .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-pink .button.button-active,
+.ios .color-theme-pink .button.tab-link-active {
+  background: #ff2d55;
+}
+.ios .color-theme-pink .button.button-fill,
+.ios .color-theme-pink .button.button-fill-ios {
+  background: #ff2d55;
+  border-color: transparent;
+}
+.ios .color-theme-pink .button.button-small.button-fill.active-state,
+.ios .color-theme-pink .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-pink .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-pink .button.button-small-ios.button-fill-ios.active-state {
+  color: #ff2d55;
+  border: 2px solid #ff2d55;
+  background-color: transparent;
+}
+.ios .color-theme-yellow .button {
+  border-color: #ffcc00;
+  color: #ffcc00;
+}
+.ios .color-theme-yellow .button.active-state {
+  background: rgba(255, 204, 0, 0.15);
+}
+.ios .color-theme-yellow .button.button-active,
+.ios .color-theme-yellow .button.tab-link-active,
+.ios .color-theme-yellow .button.button-fill,
+.ios .color-theme-yellow .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-yellow .button.button-active,
+.ios .color-theme-yellow .button.tab-link-active {
+  background: #ffcc00;
+}
+.ios .color-theme-yellow .button.button-fill,
+.ios .color-theme-yellow .button.button-fill-ios {
+  background: #ffcc00;
+  border-color: transparent;
+}
+.ios .color-theme-yellow .button.button-small.button-fill.active-state,
+.ios .color-theme-yellow .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-yellow .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-yellow .button.button-small-ios.button-fill-ios.active-state {
+  color: #ffcc00;
+  border: 2px solid #ffcc00;
+  background-color: transparent;
+}
+.ios .color-theme-orange .button {
+  border-color: #ff9500;
+  color: #ff9500;
+}
+.ios .color-theme-orange .button.active-state {
+  background: rgba(255, 149, 0, 0.15);
+}
+.ios .color-theme-orange .button.button-active,
+.ios .color-theme-orange .button.tab-link-active,
+.ios .color-theme-orange .button.button-fill,
+.ios .color-theme-orange .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-orange .button.button-active,
+.ios .color-theme-orange .button.tab-link-active {
+  background: #ff9500;
+}
+.ios .color-theme-orange .button.button-fill,
+.ios .color-theme-orange .button.button-fill-ios {
+  background: #ff9500;
+  border-color: transparent;
+}
+.ios .color-theme-orange .button.button-small.button-fill.active-state,
+.ios .color-theme-orange .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-orange .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-orange .button.button-small-ios.button-fill-ios.active-state {
+  color: #ff9500;
+  border: 2px solid #ff9500;
+  background-color: transparent;
+}
+.ios .color-theme-gray .button {
+  border-color: #8e8e93;
+  color: #8e8e93;
+}
+.ios .color-theme-gray .button.active-state {
+  background: rgba(142, 142, 147, 0.15);
+}
+.ios .color-theme-gray .button.button-active,
+.ios .color-theme-gray .button.tab-link-active,
+.ios .color-theme-gray .button.button-fill,
+.ios .color-theme-gray .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-gray .button.button-active,
+.ios .color-theme-gray .button.tab-link-active {
+  background: #8e8e93;
+}
+.ios .color-theme-gray .button.button-fill,
+.ios .color-theme-gray .button.button-fill-ios {
+  background: #8e8e93;
+  border-color: transparent;
+}
+.ios .color-theme-gray .button.button-small.button-fill.active-state,
+.ios .color-theme-gray .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-gray .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-gray .button.button-small-ios.button-fill-ios.active-state {
+  color: #8e8e93;
+  border: 2px solid #8e8e93;
+  background-color: transparent;
+}
+.ios .color-theme-white .button {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.ios .color-theme-white .button.active-state {
+  background: rgba(255, 255, 255, 0.15);
+}
+.ios .color-theme-white .button.button-active,
+.ios .color-theme-white .button.tab-link-active,
+.ios .color-theme-white .button.button-fill,
+.ios .color-theme-white .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-white .button.button-active,
+.ios .color-theme-white .button.tab-link-active {
+  background: #ffffff;
+}
+.ios .color-theme-white .button.button-fill,
+.ios .color-theme-white .button.button-fill-ios {
+  background: #ffffff;
+  border-color: transparent;
+}
+.ios .color-theme-white .button.button-small.button-fill.active-state,
+.ios .color-theme-white .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-white .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-white .button.button-small-ios.button-fill-ios.active-state {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+}
+.ios .color-theme-black .button {
+  border-color: #000000;
+  color: #000000;
+}
+.ios .color-theme-black .button.active-state {
+  background: rgba(0, 0, 0, 0.15);
+}
+.ios .color-theme-black .button.button-active,
+.ios .color-theme-black .button.tab-link-active,
+.ios .color-theme-black .button.button-fill,
+.ios .color-theme-black .button.button-fill-ios {
+  color: #fff;
+}
+.ios .color-theme-black .button.button-active,
+.ios .color-theme-black .button.tab-link-active {
+  background: #000000;
+}
+.ios .color-theme-black .button.button-fill,
+.ios .color-theme-black .button.button-fill-ios {
+  background: #000000;
+  border-color: transparent;
+}
+.ios .color-theme-black .button.button-small.button-fill.active-state,
+.ios .color-theme-black .button.button-small-ios.button-fill.active-state,
+.ios .color-theme-black .button.button-small.button-fill-ios.active-state,
+.ios .color-theme-black .button.button-small-ios.button-fill-ios.active-state {
+  color: #000000;
+  border: 2px solid #000000;
+  background-color: transparent;
+}
+.ios .button.color-red {
+  border-color: #ff3b30;
+  color: #ff3b30;
+}
+.ios .button.color-red.active-state {
+  background: rgba(255, 59, 48, 0.15);
+}
+.ios .button.color-red.button-active,
+.ios .button.color-red.tab-link-active,
+.ios .button.color-red.button-fill,
+.ios .button.color-red.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-red.button-active,
+.ios .button.color-red.tab-link-active {
+  background: #ff3b30;
+}
+.ios .button.color-red.button-fill,
+.ios .button.color-red.button-fill-ios {
+  background: #ff3b30;
+  border-color: transparent;
+}
+.ios .button.color-red.button-small.button-fill.active-state,
+.ios .button.color-red.button-small-ios.button-fill.active-state,
+.ios .button.color-red.button-small.button-fill-ios.active-state,
+.ios .button.color-red.button-small-ios.button-fill-ios.active-state {
+  color: #ff3b30;
+  border: 2px solid #ff3b30;
+  background-color: transparent;
+}
+.ios .button.color-green {
+  border-color: #4cd964;
+  color: #4cd964;
+}
+.ios .button.color-green.active-state {
+  background: rgba(76, 217, 100, 0.15);
+}
+.ios .button.color-green.button-active,
+.ios .button.color-green.tab-link-active,
+.ios .button.color-green.button-fill,
+.ios .button.color-green.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-green.button-active,
+.ios .button.color-green.tab-link-active {
+  background: #4cd964;
+}
+.ios .button.color-green.button-fill,
+.ios .button.color-green.button-fill-ios {
+  background: #4cd964;
+  border-color: transparent;
+}
+.ios .button.color-green.button-small.button-fill.active-state,
+.ios .button.color-green.button-small-ios.button-fill.active-state,
+.ios .button.color-green.button-small.button-fill-ios.active-state,
+.ios .button.color-green.button-small-ios.button-fill-ios.active-state {
+  color: #4cd964;
+  border: 2px solid #4cd964;
+  background-color: transparent;
+}
+.ios .button.color-blue {
+  border-color: #007aff;
+  color: #007aff;
+}
+.ios .button.color-blue.active-state {
+  background: rgba(0, 122, 255, 0.15);
+}
+.ios .button.color-blue.button-active,
+.ios .button.color-blue.tab-link-active,
+.ios .button.color-blue.button-fill,
+.ios .button.color-blue.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-blue.button-active,
+.ios .button.color-blue.tab-link-active {
+  background: #007aff;
+}
+.ios .button.color-blue.button-fill,
+.ios .button.color-blue.button-fill-ios {
+  background: #007aff;
+  border-color: transparent;
+}
+.ios .button.color-blue.button-small.button-fill.active-state,
+.ios .button.color-blue.button-small-ios.button-fill.active-state,
+.ios .button.color-blue.button-small.button-fill-ios.active-state,
+.ios .button.color-blue.button-small-ios.button-fill-ios.active-state {
+  color: #007aff;
+  border: 2px solid #007aff;
+  background-color: transparent;
+}
+.ios .button.color-pink {
+  border-color: #ff2d55;
+  color: #ff2d55;
+}
+.ios .button.color-pink.active-state {
+  background: rgba(255, 45, 85, 0.15);
+}
+.ios .button.color-pink.button-active,
+.ios .button.color-pink.tab-link-active,
+.ios .button.color-pink.button-fill,
+.ios .button.color-pink.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-pink.button-active,
+.ios .button.color-pink.tab-link-active {
+  background: #ff2d55;
+}
+.ios .button.color-pink.button-fill,
+.ios .button.color-pink.button-fill-ios {
+  background: #ff2d55;
+  border-color: transparent;
+}
+.ios .button.color-pink.button-small.button-fill.active-state,
+.ios .button.color-pink.button-small-ios.button-fill.active-state,
+.ios .button.color-pink.button-small.button-fill-ios.active-state,
+.ios .button.color-pink.button-small-ios.button-fill-ios.active-state {
+  color: #ff2d55;
+  border: 2px solid #ff2d55;
+  background-color: transparent;
+}
+.ios .button.color-yellow {
+  border-color: #ffcc00;
+  color: #ffcc00;
+}
+.ios .button.color-yellow.active-state {
+  background: rgba(255, 204, 0, 0.15);
+}
+.ios .button.color-yellow.button-active,
+.ios .button.color-yellow.tab-link-active,
+.ios .button.color-yellow.button-fill,
+.ios .button.color-yellow.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-yellow.button-active,
+.ios .button.color-yellow.tab-link-active {
+  background: #ffcc00;
+}
+.ios .button.color-yellow.button-fill,
+.ios .button.color-yellow.button-fill-ios {
+  background: #ffcc00;
+  border-color: transparent;
+}
+.ios .button.color-yellow.button-small.button-fill.active-state,
+.ios .button.color-yellow.button-small-ios.button-fill.active-state,
+.ios .button.color-yellow.button-small.button-fill-ios.active-state,
+.ios .button.color-yellow.button-small-ios.button-fill-ios.active-state {
+  color: #ffcc00;
+  border: 2px solid #ffcc00;
+  background-color: transparent;
+}
+.ios .button.color-orange {
+  border-color: #ff9500;
+  color: #ff9500;
+}
+.ios .button.color-orange.active-state {
+  background: rgba(255, 149, 0, 0.15);
+}
+.ios .button.color-orange.button-active,
+.ios .button.color-orange.tab-link-active,
+.ios .button.color-orange.button-fill,
+.ios .button.color-orange.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-orange.button-active,
+.ios .button.color-orange.tab-link-active {
+  background: #ff9500;
+}
+.ios .button.color-orange.button-fill,
+.ios .button.color-orange.button-fill-ios {
+  background: #ff9500;
+  border-color: transparent;
+}
+.ios .button.color-orange.button-small.button-fill.active-state,
+.ios .button.color-orange.button-small-ios.button-fill.active-state,
+.ios .button.color-orange.button-small.button-fill-ios.active-state,
+.ios .button.color-orange.button-small-ios.button-fill-ios.active-state {
+  color: #ff9500;
+  border: 2px solid #ff9500;
+  background-color: transparent;
+}
+.ios .button.color-gray {
+  border-color: #8e8e93;
+  color: #8e8e93;
+}
+.ios .button.color-gray.active-state {
+  background: rgba(142, 142, 147, 0.15);
+}
+.ios .button.color-gray.button-active,
+.ios .button.color-gray.tab-link-active,
+.ios .button.color-gray.button-fill,
+.ios .button.color-gray.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-gray.button-active,
+.ios .button.color-gray.tab-link-active {
+  background: #8e8e93;
+}
+.ios .button.color-gray.button-fill,
+.ios .button.color-gray.button-fill-ios {
+  background: #8e8e93;
+  border-color: transparent;
+}
+.ios .button.color-gray.button-small.button-fill.active-state,
+.ios .button.color-gray.button-small-ios.button-fill.active-state,
+.ios .button.color-gray.button-small.button-fill-ios.active-state,
+.ios .button.color-gray.button-small-ios.button-fill-ios.active-state {
+  color: #8e8e93;
+  border: 2px solid #8e8e93;
+  background-color: transparent;
+}
+.ios .button.color-white {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.ios .button.color-white.active-state {
+  background: rgba(255, 255, 255, 0.15);
+}
+.ios .button.color-white.button-active,
+.ios .button.color-white.tab-link-active,
+.ios .button.color-white.button-fill,
+.ios .button.color-white.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-white.button-active,
+.ios .button.color-white.tab-link-active {
+  background: #ffffff;
+}
+.ios .button.color-white.button-fill,
+.ios .button.color-white.button-fill-ios {
+  background: #ffffff;
+  border-color: transparent;
+}
+.ios .button.color-white.button-small.button-fill.active-state,
+.ios .button.color-white.button-small-ios.button-fill.active-state,
+.ios .button.color-white.button-small.button-fill-ios.active-state,
+.ios .button.color-white.button-small-ios.button-fill-ios.active-state {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+}
+.ios .button.color-black {
+  border-color: #000000;
+  color: #000000;
+}
+.ios .button.color-black.active-state {
+  background: rgba(0, 0, 0, 0.15);
+}
+.ios .button.color-black.button-active,
+.ios .button.color-black.tab-link-active,
+.ios .button.color-black.button-fill,
+.ios .button.color-black.button-fill-ios {
+  color: #fff;
+}
+.ios .button.color-black.button-active,
+.ios .button.color-black.tab-link-active {
+  background: #000000;
+}
+.ios .button.color-black.button-fill,
+.ios .button.color-black.button-fill-ios {
+  background: #000000;
+  border-color: transparent;
+}
+.ios .button.color-black.button-small.button-fill.active-state,
+.ios .button.color-black.button-small-ios.button-fill.active-state,
+.ios .button.color-black.button-small.button-fill-ios.active-state,
+.ios .button.color-black.button-small-ios.button-fill-ios.active-state {
+  color: #000000;
+  border: 2px solid #000000;
+  background-color: transparent;
+}

@@ -1,3 +1,13 @@
+html {
+  box-sizing: border-box;
+  font-size: calc(100vw / 7.5); /* 设计稿计算公式 */
+  overscroll-behavior: contain;
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 100px;
+  }
+}
 
 p,
 ul,
@@ -64,18 +74,9 @@ select option {
   color:#222;
 }
 
-.ios .statusbar {
-  background: #81d8d0;
-}
-
 .ios .page {
   overflow: hidden;
   background: #fff;
-}
-
-.ios .navbar {
-  height: .88rem;
-  background: #81d8d0;
 }
 
 .ios .navbar-inner {
@@ -110,13 +111,13 @@ select option {
   font-size: .3rem;
 }
 
-.navbar-fixed .page-content,
-.navbar-through .page-content {
-  padding-top: .88rem;
-}
-
 .toolbar-fixed .page-content {
   padding-bottom: .98rem;
+}
+
+.ios .ptr-preloader {
+  height: .88rem;
+  margin-top: -.88rem;
 }
 
 .padding {

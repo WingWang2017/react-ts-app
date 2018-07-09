@@ -1,0 +1,234 @@
+/* === Card === */
+.cards-list > ul:before,
+.card .list > ul:before {
+  display: none !important;
+}
+.cards-list > ul:after,
+.card .list > ul:after {
+  display: none !important;
+}
+.card {
+  background: #fff;
+  position: relative;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.card .list,
+.card .block {
+  margin: 0;
+}
+.row:not(.no-gap) .col > .card {
+  margin-left: 0;
+  margin-right: 0;
+}
+.card-content {
+  position: relative;
+}
+.card-content-padding {
+  position: relative;
+}
+.card-content-padding > p:first-child {
+  margin-top: 0;
+}
+.card-content-padding > p:last-child {
+  margin-bottom: 0;
+}
+.card-header,
+.card-footer {
+  min-height: 44px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.card-header[valign="top"],
+.card-footer[valign="top"] {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.card-header[valign="bottom"],
+.card-footer[valign="bottom"] {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+.card-header a.link,
+.card-footer a.link {
+  position: relative;
+}
+.card-header a.link i.icon,
+.card-footer a.link i.icon {
+  display: block;
+}
+.card-header a.icon-only,
+.card-footer a.icon-only {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0;
+}
+.card-header {
+  border-radius: 4px 4px 0 0;
+}
+.card-header:after {
+  content: '';
+  position: absolute;
+  background-color: #e1e1e1;
+  display: block;
+  z-index: 15;
+  top: auto;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+html.device-pixel-ratio-2 .card-header:after {
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+html.device-pixel-ratio-3 .card-header:after {
+  -webkit-transform: scaleY(0.33);
+  transform: scaleY(0.33);
+}
+.card-header.no-hairline:after {
+  display: none !important;
+}
+.card-footer {
+  border-radius: 0 0 4px 4px;
+}
+.card-footer:before {
+  content: '';
+  position: absolute;
+  background-color: #e1e1e1;
+  display: block;
+  z-index: 15;
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+html.device-pixel-ratio-2 .card-footer:before {
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+html.device-pixel-ratio-3 .card-footer:before {
+  -webkit-transform: scaleY(0.33);
+  transform: scaleY(0.33);
+}
+.card-footer.no-hairline:before {
+  display: none !important;
+}
+.ios .cards-list ul,
+.ios .card .list ul {
+  background: none;
+}
+.ios .card {
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+}
+.ios .card-outline {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.ios .card-header a.link,
+.ios .card-footer a.link {
+  line-height: 44px;
+  height: 44px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+.ios .card-header a.icon-only,
+.ios .card-footer a.icon-only {
+  min-width: 44px;
+}
+.ios .card-content-padding {
+  padding: 15px;
+}
+.ios .card-content-padding > .list,
+.ios .card-content-padding > .block {
+  margin: -15px;
+}
+.ios .card-header,
+.ios .card-footer {
+  min-height: 44px;
+  padding: 10px 15px;
+}
+.ios .card-header {
+  font-size: 17px;
+}
+.ios .card-footer {
+  color: #6d6d72;
+}
+@media (orientation: landscape) {
+  .ios.device-iphone-x .ios-left-edge .card:not(.no-ios-edges):not(.no-ios-left-edge),
+  .ios.device-iphone-x .ios-edges .card:not(.no-ios-edges):not(.no-ios-left-edge),
+  .ios.device-iphone-x .popup .card:not(.no-ios-edges):not(.no-ios-left-edge),
+  .ios.device-iphone-x .sheet-modal .card:not(.no-ios-edges):not(.no-ios-left-edge),
+  .ios.device-iphone-x .panel-left .card:not(.no-ios-edges):not(.no-ios-left-edge) {
+    margin-left: calc(10px + constant(safe-area-inset-left));
+    margin-left: calc(10px + env(safe-area-inset-left));
+  }
+  .ios.device-iphone-x .ios-right-edge .card:not(.no-ios-edges):not(.no-ios-right-edge),
+  .ios.device-iphone-x .ios-edges .card:not(.no-ios-edges):not(.no-ios-right-edge),
+  .ios.device-iphone-x .popup .card:not(.no-ios-edges):not(.no-ios-right-edge),
+  .ios.device-iphone-x .sheet-modal .card:not(.no-ios-edges):not(.no-ios-right-edge),
+  .ios.device-iphone-x .panel-right .card:not(.no-ios-edges):not(.no-ios-right-edge) {
+    margin-right: calc(10px + constant(safe-area-inset-right));
+    margin-right: calc(10px + env(safe-area-inset-right));
+  }
+}
+.ios .theme-dark .card {
+  background-color: #1c1c1d;
+}
+.ios .theme-dark .card-outline {
+  border-color: #282829;
+}
+.ios .theme-dark .card-header:after {
+  background-color: #282829;
+}
+.ios .theme-dark .card-footer {
+  color: #8E8E93;
+}
+.ios .theme-dark .card-footer:before {
+  background-color: #282829;
+}

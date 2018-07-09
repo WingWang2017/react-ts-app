@@ -19,6 +19,8 @@ class Header extends React.Component<IProps, {}> {
 
   };
 
+  public $f7: any;
+
   public render() {
     return (
       <div className='navbar'>
@@ -43,6 +45,7 @@ class Header extends React.Component<IProps, {}> {
     // Dom7('.infinite-scroll-preloader').show();
 
     // console.log(Dom7);
+    this.$f7.$('.infinite-scroll-preloader').show();
     this.props.onBack();
   }
 

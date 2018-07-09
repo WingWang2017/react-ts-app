@@ -9,6 +9,7 @@ import Framework7React from 'framework7-react';
 import * as stores from './stores';
 
 import './assets/css/framework7.ios.css';
+import './assets/css/typography.css';
 import './assets/css/index.css';
 
 import App from './App';

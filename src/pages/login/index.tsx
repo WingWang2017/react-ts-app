@@ -12,7 +12,7 @@ import fetchAjax from 'src/fetch';
 import { deviceready } from 'src/utils';
 
 @observer
-class Login extends React.Component<{}, IState> {
+class Login extends React.Component<IProps, IState> {
 
   public state = {
     phone: '',
@@ -52,9 +52,12 @@ class Login extends React.Component<{}, IState> {
   }
 
   public componentDidMount(): void {
+    f7App = {
+      f7router: this.props.f7router,
+      f7route: this.props.f7route
+    };
     deviceready(() => {
       this.$f7.statusbar.setBackgroundColor('#9bb1b3');
-      this.$f7.$('.navbar').hide();
     });
   }
 
@@ -124,9 +127,10 @@ class Login extends React.Component<{}, IState> {
 }
 
 
-// interface IProps {
-
-// }
+interface IProps {
+  f7router?: any;
+  f7route?: any;
+}
 
 interface IState {
   phone: string;

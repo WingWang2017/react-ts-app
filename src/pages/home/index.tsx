@@ -67,14 +67,11 @@ class Home extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    // setTimeout(() => {
-    //   this.$f7.$('.navbar').removeClass('navbar-hidden');
-    // }, 500);
-
-    // this.$f7.statusbar.setBackgroundColor('#81D8D0');
-
+    f7App = {
+      f7router: this.props.f7router,
+      f7route: this.props.f7route
+    };
     deviceready(() => {
-      this.$f7.$('.navbar').show();
       this.$f7.$('.navbar').removeClass('navbar-hidden');
       this.$f7.statusbar.setBackgroundColor('#81D8D0');
     });
@@ -217,6 +214,7 @@ const DynamicList = observer((props: any) => {
 
 interface IProps {
   f7router?: any;
+  f7route?: any;
   forumState: any;
 }
 

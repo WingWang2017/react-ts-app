@@ -1,39 +1,22 @@
-// import * as React from 'react';
-
-// import Loadable from 'react-loadable';
-
-// 登录
-// import Login from './pages/login';
-
-// // 第二重登录
-// import School from './pages/login/school';
-
-// // 注册和找回密码
-// import Register from './pages/register';
-
-// 首页
-import Home from './pages/home';
-
-// 公告
-// import Announcement from './pages/announcement';
-
-// class Loading extends React.Component {
-//   public render() {
-//     return 'asdasd';
-//   }
-// }
-
-// const Login = Loadable({
-//   loader: () => import('./pages/login'),
-//   loading: Loading,
-// });
+import InitialPage from './pages/initialPage';
 
 
 const routes: any[] = [
   {
+    // 初始页
+    path: '/',
+    options: {
+      animate: false,
+      reloadAll: true
+    },
+    component: InitialPage
+  },
+  {
+    // 登录
     path: '/login',
     options: {
-      animate: false
+      animate: false,
+      reloadAll: true
     },
     async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
       const reactComponent = () => import('./pages/login');
@@ -41,17 +24,21 @@ const routes: any[] = [
         resolve({ component: rc.default });
       });
     },
+    routes: [
+      {
+        // 第二重登录
+        path: '/school/:state',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/login/school');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      },
+    ]
   },
   {
-    path: '/login/school/:state',
-    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
-      const reactComponent = () => import('./pages/login/school');
-      reactComponent().then((rc) => {
-        resolve({ component: rc.default });
-      });
-    },
-  },
-  {
+    // 注册和找回密码
     path: '/registerlAndRegisterl/:type',
     async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
       const reactComponent = () => import('./pages/register');
@@ -61,13 +48,21 @@ const routes: any[] = [
     },
   },
   {
+    // 首页
     path: '/home',
     options: {
-      animate: false
+      animate: false,
+      reloadAll: true
     },
-    component: Home
+    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+      const reactComponent = () => import('./pages/home');
+      reactComponent().then((rc) => {
+        resolve({ component: rc.default });
+      });
+    },
   },
   {
+    // 公告
     path: '/announcement/:id',
     async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
       const reactComponent = () => import('./pages/announcement');

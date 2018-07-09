@@ -32,21 +32,15 @@ const f7Params = {
     swipeBackPage: true,
     animate: false
   },
+  // 状态栏设置
   statusbar: {
-    overlay: true,
-    iosBackgroundColor: '#81D8D0'
+    enabled: false,
+    iosBackgroundColor: '#81D8D0',
+    iosTextColor: 'white'
   },
+  // f7自定义方法
   methods: {
-    backbutton: (f7router: any) => {
-      document.addEventListener('backbutton', () => {
-        f7router.back();
-      });
-    },
-    exitApp: () => {
-      document.addEventListener('backbutton', () => {
-        navigator['app'].exitApp();
-      });
-    }
+
   },
 
 };
@@ -75,39 +69,34 @@ class MyApp extends React.Component<{}, IState> {
         const user: any = JSON.parse(localStorage.user);
         const hasSchool: boolean = localStorage.hasSchool;
         if (hasSchool && user) {
-          f7.router.navigate({
-            url: '/home',
-            animatePages: false
-          });
+          f7.router.navigate('/home');
         }
       }
 
       if (!localStorage.hasSchool) {
-        f7.router.navigate({
-          url: '/login',
-          animatePages: false
-        });
+        f7.router.navigate('/login');
       }
+
     });
 
     deviceready(() => {
-
-      // StatusBar.backgroundColorByHexString('#9bb1b3');
 
       // 获取app的版本号
       cordova.getAppVersion.getVersionNumber((version: any) => {
         console.log(version);
       });
 
-      // 主页面上安卓点击实体键后退直接退出app
-      // document.addEventListener('backbutton', () => {
-      //   const page = this.$f7route.url;
-      //   if (page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login') {
-      //     navigator['app'].exitApp();
-      //   } else {
-      //     this.$f7router.back();
-      //   }
-      // }, false);
+
+      // 主页面上安卓点击实体键后退直接退出app;
+      document.addEventListener('backbutton', () => {
+        const page = f7App.f7router.currentRoute.url;
+        const isPage = page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login' || !page || page === '/';
+        if (isPage) {
+          navigator['app'].exitApp();
+        } else {
+          f7App.f7router.back();
+        }
+      }, false);
 
     });
   }
@@ -120,7 +109,7 @@ class MyApp extends React.Component<{}, IState> {
         <Statusbar />
 
         <Views>
-          <View main={true} />
+          <View main={true} url='/' />
         </Views>
 
       </App>

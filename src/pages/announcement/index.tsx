@@ -32,7 +32,6 @@ export default class Announcement extends React.Component<IProps, IState> {
 	public $f7: any;
 
 	public componentDidMount(): void {
-
 		// const { thumb_type } = currentRoute.params;
 		// if (thumb_type === '0') {
 		// 	this.getInfoData();

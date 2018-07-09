@@ -32,7 +32,7 @@ class FetchAjax {
       Alert.default({
         content: '已过期，重新登录！',
         afterHide: () => {
-          // f7App.mainView.router.loadPage(`/login`);
+          f7App.f7router.navigate('/login');
         }
       });
       return res;

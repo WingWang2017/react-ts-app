@@ -17,3 +17,5 @@ declare var module: NodeModule;
 
 declare var StatusBar: any;
 declare var cordova: any;
+
+declare var f7App: any;

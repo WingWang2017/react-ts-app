@@ -30,5 +30,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-device": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-device"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "com.joandilee.imeiplugin": {
+    "source": {
+      "type": "registry",
+      "id": "imeiplugin"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -211,7 +211,8 @@ html.with-statusbar.device-iphone-x .framework7-root {
   top: 44px;
 }
 .ios .page {
-  background: #efeff4;
+  overflow: hidden;
+  background: #fff;
 }
 .ios .page-previous {
   transform: translate3d(-20%, 0, 0);
@@ -5307,6 +5308,9 @@ button.swiper-pagination-bullet {
   background: none;
 }
 .photo-browser-popup {
+  background: none;
+}
+.photo-browser-popup.popup {
   background: none;
 }
 .photo-browser-exposed .navbar,

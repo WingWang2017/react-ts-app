@@ -7,16 +7,22 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
+    "com.joandilee.imeiplugin": {
       "PACKAGE_NAME": "com.example.hello"
     },
-    "cordova-plugin-statusbar": {
+    "cordova-plugin-app-version": {
       "PACKAGE_NAME": "com.example.hello"
     },
     "cordova-plugin-backbutton": {
       "PACKAGE_NAME": "com.example.hello"
     },
-    "cordova-plugin-app-version": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.example.hello"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.example.hello"
+    },
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.example.hello"
     }
   },

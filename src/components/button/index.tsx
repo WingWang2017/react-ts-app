@@ -8,6 +8,7 @@ class Button extends React.Component<IProps, {}> {
 
   public static defaultProps = {
     content: '确定',
+    disabled: false,
     onClick: () => { }
   };
 
@@ -24,6 +25,7 @@ class Button extends React.Component<IProps, {}> {
     return (
       <StyledButton
         theme={theme}
+        disabled={this.props.disabled}
         onClick={this.props.onClick}>
         {this.props.content}
       </StyledButton>
@@ -41,6 +43,7 @@ interface IProps {
   color?: string;
   fontSize?: string;
   content?: string;
+  disabled?: boolean;
   onClick?: any;
 }
 

@@ -1,0 +1,61 @@
+{
+  "_from": "imeiplugin",
+  "_id": "imeiplugin@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha1-LI3YRyC75t72hMCPF3Mqsa4zhDI=",
+  "_location": "/imeiplugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "imeiplugin",
+    "name": "imeiplugin",
+    "escapedName": "imeiplugin",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/imeiplugin/-/imeiplugin-1.0.1.tgz",
+  "_shasum": "2c8dd84720bbe6def684c08f17732ab1ae338432",
+  "_spec": "imeiplugin",
+  "_where": "D:\\gongzuoApp\\ts-app",
+  "author": {
+    "name": "Joandi"
+  },
+  "bugs": {
+    "url": "https://github.com/zho/phonegap-imeiplugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "com.joandilee.imeiplugin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Get The Real IMEI Number on Device",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.5.0"
+    }
+  ],
+  "homepage": "https://github.com/zho/phonegap-imeiplugin#readme",
+  "keywords": [
+    "cordova",
+    "imei",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "Apache 2.0",
+  "name": "imeiplugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zho/phonegap-imeiplugin.git"
+  },
+  "version": "1.0.1"
+}

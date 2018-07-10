@@ -18,6 +18,12 @@
     },
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "com.example.hello"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.example.hello"
+    },
+    "com.joandilee.imeiplugin": {
+      "PACKAGE_NAME": "com.example.hello"
     }
   },
   "dependent_plugins": {}

@@ -9,12 +9,10 @@
   z-index: 13000;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition-duration: 400ms;
   transition-duration: 400ms;
   z-index: 10500;
 }
 .popup-backdrop.not-animated {
-  -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
 }
 .popup-backdrop.backdrop-in {
@@ -28,33 +26,24 @@
   width: 100%;
   height: 100%;
   display: none;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
   transition-property: transform;
-  transition-property: transform, -webkit-transform;
-  -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
   background: #fff;
   z-index: 11000;
 }
 .popup.modal-in,
 .popup.modal-out {
-  -webkit-transition-duration: 400ms;
   transition-duration: 400ms;
 }
 .popup.not-animated {
-  -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
 }
 .popup.modal-in {
   display: block;
-  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 .popup.modal-out {
-  -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
 }
 @media (min-width: 630px) and (min-height: 630px) {
@@ -65,15 +54,12 @@
     top: 50%;
     margin-left: -315px;
     margin-top: -315px;
-    -webkit-transform: translate3d(0, 100vh, 0);
     transform: translate3d(0, 100vh, 0);
   }
   .popup:not(.popup-tablet-fullscreen).modal-in {
-    -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
   .popup:not(.popup-tablet-fullscreen).modal-out {
-    -webkit-transform: translate3d(0, 100vh, 0);
     transform: translate3d(0, 100vh, 0);
   }
 }

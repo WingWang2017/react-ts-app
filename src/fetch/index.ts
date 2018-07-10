@@ -49,6 +49,13 @@ class FetchAjax {
   }
 
   // 第一重登录接口
+  public async sss(): Promise<any> {
+    return await http.post('http://10.200.13.103/laravelhdzz2.0/public/admin/version/add',
+      { "number": "1.0.1", "desc": "test", "os_type": "ios", "status": "1" }
+    );
+  }
+
+  // 第一重登录接口
   public async signin(phone: string, password: string): Promise<any> {
     return await http.post('/login',
       {

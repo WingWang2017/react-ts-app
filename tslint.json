@@ -16,7 +16,12 @@
       true,
       "always"
     ],
-    "locale": "zh-CN"
+    "locale": "zh-CN",
+    "max-classes-per-file": [
+      true,
+      2,
+      "exclude-class-expressions"
+    ]
   },
   "linterOptions": {
     "exclude": [

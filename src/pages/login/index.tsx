@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { trace } from "mobx";
+import { observable, action, computed, trace } from "mobx";
 import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
@@ -11,15 +11,41 @@ import fetchAjax from 'src/fetch';
 
 import { deviceready } from 'src/utils';
 
+
+class Store {
+
+  @observable public state: IState = {
+    phone: '',
+    password: '',
+    is: false
+  };
+
+  @action public setState = (obj: any) => {
+    const keys = Object.keys(obj);
+
+    keys.forEach((key) => {
+      if (typeof obj[key] !== 'undefined') {
+        this.state[key] = obj[key];
+      }
+    });
+  }
+
+  @computed public get isDisabled(): boolean {
+    const { phone, password } = this.state;
+    return phone.length > 0 && (/^1[34578]\d{9}$/.test(phone)) && password.length > 0 && password.length >= 6;
+  }
+
+}
+
 @observer
-class Login extends React.Component<IProps, IState> {
+class Login extends React.Component<IProps, {}> {
 
   public state = {
-    phone: '',
-    password: ''
   };
 
   public $f7: any;
+
+  public store: any = new Store;
 
   public render() {
     trace();
@@ -29,7 +55,9 @@ class Login extends React.Component<IProps, IState> {
           <Logo />
           <StyledDiv>
             <InputText
+              type='tel'
               placeholder='手机号'
+              length={11}
               marginBottom={true}
               onChange={this.onPhone}
               onClear={this.onClear} />
@@ -44,6 +72,7 @@ class Login extends React.Component<IProps, IState> {
             </StyledFooter>
             <Button
               content='下一步'
+              disabled={!this.store.isDisabled}
               onClick={this.onSignIn} />
           </StyledDiv>
         </LoginView>
@@ -59,60 +88,34 @@ class Login extends React.Component<IProps, IState> {
     deviceready(() => {
       this.$f7.statusbar.setBackgroundColor('#9bb1b3');
     });
+
+    fetchAjax.sss();
   }
 
   public onPhone = (phone: string): void => {
-    this.setState({
-      phone
-    });
+    this.store.setState({ phone });
   }
 
   public onPassword = (password: string): void => {
-    this.setState({
-      password
-    });
+    this.store.setState({ password });
   }
 
   public onClear = (): void => {
-    this.setState({
-      phone: ''
-    });
+    this.store.setState({ phone: '' });
   }
 
   public onSignIn = (): void => {
 
-    if (!this.state.phone) {
-      return Alert.default({
-        content: '请输入手机号！'
-      });
-    }
+    const { phone, password } = this.store.state;
 
-    if (!(/^1[34578]\d{9}$/.test(this.state.phone))) {
-      return Alert.default({
-        content: '请输入正确的手机号!'
-      });
-    }
-
-    if (!this.state.password) {
-      return Alert.default({
-        content: '请输入密码！'
-      });
-    }
-
-    if (this.state.password.length < 6) {
-      return Alert.default({
-        content: '密码不能小于6位数！'
-      });
-    }
-
-    fetchAjax.signin(this.state.phone, this.state.password).then(res => {
+    fetchAjax.signin(phone, password).then(res => {
       console.log(res);
       if (res.errcode) {
         Alert.default({
           content: '登陆成功！'
         });
         localStorage.user = JSON.stringify({
-          tel: this.state.phone,
+          tel: phone,
           token: res.resource.token
         });
         this.$f7.router.navigate('/login/school/1');
@@ -126,7 +129,6 @@ class Login extends React.Component<IProps, IState> {
 
 }
 
-
 interface IProps {
   f7router?: any;
   f7route?: any;
@@ -135,6 +137,7 @@ interface IProps {
 interface IState {
   phone: string;
   password: string;
+  is?: boolean;
 }
 
 const StyledDiv = Styled.div`

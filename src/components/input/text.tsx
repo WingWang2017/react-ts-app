@@ -1,15 +1,33 @@
 import * as React from 'react';
 
+import { observable, action } from "mobx";
 import { observer } from 'mobx-react';
 
 import { StyledDiv, StyledCentent, Input, StyledImg } from './style';
 
 import { signin_delete } from 'src/images';
 
+class Store {
+  @observable public state: IState = {
+    value: ''
+  };
+
+  @action public setState = (obj: any) => {
+    const keys = Object.keys(obj);
+
+    keys.forEach((key) => {
+      if (typeof obj[key] !== 'undefined') {
+        this.state[key] = obj[key];
+      }
+    });
+  }
+
+}
 @observer
-class InputText extends React.Component<IProps, IState> {
+class InputText extends React.Component<IProps, {}> {
 
   public static defaultProps = {
+    type: 'text',
     placeholder: '请输入',
     length: 11,
     onChange: () => { },
@@ -18,21 +36,22 @@ class InputText extends React.Component<IProps, IState> {
   };
 
   public state = {
-    value: ''
   };
+
+  public store: any = new Store;
 
   public render() {
     return (
       <StyledDiv margin-bottom={this.props.marginBottom}>
         <StyledCentent>
           <Input
-            type='text'
+            type={this.props.type}
             placeholder={this.props.placeholder}
             maxLength={this.props.length}
-            value={this.state.value}
+            value={this.store.state.value}
             onBlur={this.onBlur}
             onChange={this.onChange} />
-          <StyledImg onClick={this.onClear} styled-width='.28rem' hidden={this.state.value.length === 0} >
+          <StyledImg onClick={this.onClear} styled-width='.28rem' hidden={this.store.state.value.length === 0} >
             <img src={signin_delete} alt='' />
           </StyledImg>
         </StyledCentent>
@@ -47,23 +66,28 @@ class InputText extends React.Component<IProps, IState> {
     // console.log(e.target.value);
     const value: string = e.target.value;
 
-    this.setState({
+    if (this.props.length && value.length > this.props.length) {
+      return;
+    }
+
+    this.store.setState({
       value
     });
+
     this.props.onChange(value);
   }
 
   public onBlur = (e: any): void => {
     const value: string = e.target.value;
 
-    this.setState({
+    this.store.setState({
       value
     });
     this.props.onBlur(value);
   }
 
   public onClear = (): void => {
-    this.setState({
+    this.store.setState({
       value: ''
     });
     this.props.onClear();
@@ -73,6 +97,7 @@ class InputText extends React.Component<IProps, IState> {
 
 interface IProps {
   children?: any;
+  type?: string;
   placeholder?: string;
   length?: number;
   marginBottom?: boolean;

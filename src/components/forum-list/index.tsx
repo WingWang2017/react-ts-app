@@ -7,7 +7,7 @@ import Styled from 'styled-components';
 import Like from '../like';
 import { Confirm, SendBox, Actions } from 'src/components';
 
-import { dateC, entitiestoUtf16 } from 'src/utils';
+import { dateC, entitiestoUtf16, deviceready } from 'src/utils';
 
 import { Boy, Girl } from 'src/images';
 
@@ -122,10 +122,29 @@ class ForumList extends React.Component<Iprops, {}> {
   public onPhotoPage = (imgs: string, index: number) => () => {
     const photoBrowser = this.$f7.photoBrowser.create({
       photos: imgs.slice(),
-      theme: 'light',
-      backLinkText: '关闭',
+      theme: 'dark',
       type: 'standalone',
-      exposition: false
+      exposition: true,
+      navbar: false,
+      toolbar: false,
+      on: {
+        open: () => {
+          deviceready(() => {
+            StatusBar.backgroundColorByHexString("#000000");
+            // StatusBar.hide();
+          });
+        },
+        closed: () => {
+          deviceready(() => {
+            // StatusBar.show();
+            StatusBar.backgroundColorByHexString("#81D8D0");
+          });
+          photoBrowser.destroy();
+        },
+        click: () => {
+          photoBrowser.close();
+        }
+      }
     });
     photoBrowser.open(index);
   }

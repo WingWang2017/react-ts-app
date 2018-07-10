@@ -45,7 +45,7 @@ class Header extends React.Component<IProps, {}> {
     // Dom7('.infinite-scroll-preloader').show();
 
     // console.log(Dom7);
-    this.$f7.$('.infinite-scroll-preloader').show();
+    // this.$f7.$('.infinite-scroll-preloader').show();
     this.props.onBack();
   }
 

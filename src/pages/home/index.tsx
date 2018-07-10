@@ -35,7 +35,7 @@ class Home extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <div className='navbar-fixed toolbar-fixed page home' data-page='home'>
+      <div className='navbar-fixed toolbar-fixed page home' data-name='home'>
         <Header
           left={
             <a href='/qrscanner' data-animate-pages={false} className='link'>
@@ -76,21 +76,22 @@ class Home extends React.Component<IProps, IState> {
       this.$f7.statusbar.setBackgroundColor('#81D8D0');
     });
 
-    this.getAjax();
+    this.getAjax(1);
+
   }
 
-  public async getAjax(): Promise<any> {
+  public async getAjax(page: number): Promise<any> {
     await this.getDynamicCampus();
-    await this.getSchoolForum(1);
+    await this.getSchoolForum(page);
   }
 
   // 下拉刷新后的回调
-  public onRefresh = () => {
-    this.getAjax();
+  public onRefresh = (page: number) => {
+    this.getAjax(page);
   }
 
   // 上拉加载后的回调
-  public onPullUp = (page: any) => {
+  public onPullUp = (page: number) => {
     this.getSchoolForum(page);
   }
 
@@ -112,7 +113,7 @@ class Home extends React.Component<IProps, IState> {
         ? this.props.forumState.setData(res.resource.data)
         : this.props.forumState.pushData(res.resource.data);
       this.setData('lastPage', res.resource.lastPage);
-      // f7App.initImagesLazyLoad($$('.page-content'));
+      this.$f7.lazy.create('.page-content');
     }
     return res;
   }

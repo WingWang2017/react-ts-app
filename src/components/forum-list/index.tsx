@@ -23,6 +23,8 @@ class ForumList extends React.Component<Iprops, {}> {
     onDeleteThisComment: () => { }
   };
 
+  public $f7: any;
+
   public render() {
     return (
       <ul>
@@ -118,14 +120,14 @@ class ForumList extends React.Component<Iprops, {}> {
   }
 
   public onPhotoPage = (imgs: string, index: number) => () => {
-    // const photoBrowser = f7App.photoBrowser({
-    //   init: true,
-    //   photos: imgs.slice(),
-    //   theme: 'dark',
-    //   backLinkText: '关闭',
-    //   exposition: false
-    // });
-    // photoBrowser.open(index);
+    const photoBrowser = this.$f7.photoBrowser.create({
+      photos: imgs.slice(),
+      theme: 'light',
+      backLinkText: '关闭',
+      type: 'standalone',
+      exposition: false
+    });
+    photoBrowser.open(index);
   }
 
 }

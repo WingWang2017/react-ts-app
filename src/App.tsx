@@ -69,7 +69,9 @@ class MyApp extends React.Component<{}, IState> {
         const user: any = JSON.parse(localStorage.user);
         const hasSchool: boolean = localStorage.hasSchool;
         if (hasSchool && user) {
-          f7.router.navigate('/home');
+          setTimeout(() => {
+            f7.router.navigate('/home');
+          }, 100);
         }
       }
 

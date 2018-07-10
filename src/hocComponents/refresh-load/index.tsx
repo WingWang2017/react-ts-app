@@ -1,69 +1,108 @@
 import * as React from 'react';
 
+import { Page } from 'framework7-react';
+
 const HOCRefreshLoad = (Component: any) => {
   return class RefreshLoad extends React.Component<any, {}> {
+
+    public state = {
+      allowInfinite: true,
+      showPreloader: true,
+      page: 1
+    };
 
     public $f7: any;
 
     public render() {
       const { className, ptrDistance, distance, lastPage, ...iProps } = this.props;
       return (
-        <div
-          className={`page-content ptr-content infinite-scroll-content ${this.props.className || ''}`}
-          data-ptr-distance={this.props.ptrDistance || 100}
-          data-distance={this.props.distance || 0} >
-
-          <div className='ptr-preloader'>
-            <div className='preloader' />
-            <div className='ptr-arrow' />
-          </div>
+        <Page
+          infinite={true}
+          infiniteDistance={0}
+          infinitePreloader={this.state.showPreloader}
+          onInfinite={this.onScroll}
+          ptr={true}
+          onPtrRefresh={this.onPtrRefresh}>
 
           <Component {...iProps} />
 
-          <div className='preloader infinite-scroll-preloader' />
-
-        </div>
+        </Page>
       );
     }
 
     public componentDidMount(): void {
-      this.refreshLoad();
+      // this.refreshLoad();
     }
 
-    public refreshLoad(): void {
-      let loading = false;
-      let page = 1;
-      const ptr = this.$f7.$(`.${this.props.pageName} .page-content`);
-      const scroll = this.$f7.$(`.${this.props.pageName} .infinite-scroll-content`);
-
-      this.$f7.infiniteScroll.create(scroll);
-
-      ptr.on('ptr:refresh', () => {
-        page = 1;
-        setTimeout(() => {
-          this.props.onRefresh();
-          this.$f7.ptr.done();
-          // this.$f7.infiniteScroll.create(scroll);
-          this.$f7.$('.infinite-scroll-preloader').show();
-        }, 600);
-      });
-
-      scroll.on('infinite', () => {
-        if (loading) { return; }
-        loading = true;
-        if (page >= this.props.lastPage) {
-          loading = false;
-          // this.$f7.infiniteScroll.destroy(scroll);
-          this.$f7.$('.infinite-scroll-preloader').hide();
-        } else {
-          setTimeout(() => {
-            loading = false;
-            page++;
-            this.props.onPullUp(page);
-          }, 300);
-        }
-      });
+    // 下拉刷新
+    public onPtrRefresh = (event: any, done: any): void => {
+      setTimeout(() => {
+        this.setState({
+          page: 1
+        }, () => {
+          this.props.onRefresh(this.state.page);
+        });
+        done();
+      }, 600);
     }
+
+    // 滚动到底触发事件
+    public onScroll = (): void => {
+      if (!this.state.allowInfinite) { return; }
+      this.setState({ allowInfinite: false });
+
+      if (this.state.page >= this.props.lastPage) {
+        this.setState({ showPreloader: false });
+        return;
+      }
+
+      setTimeout(() => {
+        this.setState({ allowInfinite: true });
+        this.setState((prevState: { page: number }) => {
+          return {
+            page: prevState.page + 1
+          };
+        }, () => {
+          this.props.onPullUp(this.state.page);
+        });
+      }, 300);
+    }
+
+
+    // public refreshLoad(): void {
+    //   let loading = false;
+    //   let page = 1;
+    //   const ptr = this.$f7.$(`.${this.props.pageName} .page-content`);
+    //   const scroll = this.$f7.$(`.${this.props.pageName} .infinite-scroll-content`);
+
+    //   this.$f7.infiniteScroll.create(scroll);
+
+    //   ptr.on('ptr:refresh', () => {
+    //     page = 1;
+    //     setTimeout(() => {
+    //       this.props.onRefresh();
+    //       this.$f7.ptr.done();
+    //       // this.$f7.infiniteScroll.create(scroll);
+    //       this.$f7.$('.infinite-scroll-preloader').show();
+    //     }, 600);
+    //   });
+
+    //   scroll.on('infinite', () => {
+    //     if (loading) { return; }
+    //     loading = true;
+    //     if (page >= this.props.lastPage) {
+    //       loading = false;
+    //       // this.$f7.infiniteScroll.destroy(scroll);
+    //       this.$f7.$('.infinite-scroll-preloader').hide();
+    //     } else {
+    //       setTimeout(() => {
+    //         loading = false;
+    //         page++;
+    //         this.props.onPullUp(page);
+    //       }, 300);
+    //     }
+    //   });
+    // }
 
     // public refreshLoad() {
     //   let loading = false;

@@ -5,7 +5,8 @@ const StyledDiv = Styled.div`
   height: .8rem;
   position: relative;
   border: 1px solid #fff;
-  border-radius: 6px;
+  border-radius: 4px;
+  box-sizing: border-box;
   margin-bottom: ${props => props['margin-bottom'] ? '.3rem' : '0'};
   display: flex;
   justify-content: space-between;

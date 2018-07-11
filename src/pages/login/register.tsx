@@ -100,12 +100,12 @@ const Footer = Styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: .6rem;
+  bottom: .44rem;
   text-align: center;
   color: #fff;
   font-size: .24rem;
   > a {
-    color: #fff;
+    color: #90F6EC;
   }
 `;
 

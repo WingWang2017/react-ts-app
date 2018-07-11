@@ -17,10 +17,10 @@ const Link = observer((): any => {
 
 const StyledLink = Styled.a`
   position: absolute;
-  top: .78rem;
-  left: .3rem;
-  width: .4rem;
-  height: .4rem;
+  top: .26rem;
+  left: .32rem;
+  width: .44rem;
+  height: .44rem;
 `;
 
 

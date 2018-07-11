@@ -53,11 +53,11 @@ interface IProps {
 
 const StyledButton = Styled.button`
   width: ${props => props.theme.width || '100%'};
-  height: ${props => props.theme.height || '.8rem'};
+  height: ${props => props.theme.height || '.88rem'};
   border: ${props => props.theme.border || '0'};
-  border-radius: ${props => props.theme.borderRadius || '6px'};
+  border-radius: ${props => props.theme.borderRadius || '4px'};
   background-color: ${props => props.theme.bgColor || '#81D8D0'};
-  font-size: ${props => props.theme.fontSize || '.3rem'};
+  font-size: ${props => props.theme.fontSize || '.32rem'};
   color: ${props => props.theme.color || '#fff'};
 `;
 

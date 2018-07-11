@@ -50,7 +50,7 @@ class Login extends React.Component<IProps, {}> {
     return (
       <div className='page login' data-name='login'>
         <LoginView>
-          <Logo />
+          <Logo theme='large' />
           <StyledDiv>
             <InputText
               type='tel'
@@ -143,9 +143,9 @@ const StyledFooter = Styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: .3rem;
-  font-size: .26rem;
+  font-size: .24rem;
   > a {
-    color: #fff;
+    color: #90F6EC;
   }
 `;
 

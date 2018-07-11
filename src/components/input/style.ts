@@ -7,7 +7,7 @@ const StyledDiv = Styled.div`
   border: 1px solid #fff;
   border-radius: 4px;
   box-sizing: border-box;
-  margin-bottom: ${props => props['margin-bottom'] ? '.3rem' : '0'};
+  margin-bottom: ${props => props['margin-bottom'] ? '.32rem' : '0'};
   display: flex;
   justify-content: space-between;
 `;
@@ -20,7 +20,7 @@ const StyledCentent = Styled.div`
 const Input = Styled.input`
   width: 100%;
   height: 100%;
-  padding: 0 .8rem 0 .25rem;
+  padding: 0 .8rem 0 .26rem;
   border: 0;
   background-color: transparent;
   font-size: .28rem;

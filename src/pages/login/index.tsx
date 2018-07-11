@@ -107,9 +107,9 @@ class Login extends React.Component<IProps, {}> {
     fetchAjax.signin(phone, password).then(res => {
       console.log(res);
       if (!res.errcode) {
-        Alert.default({
-          content: '登陆成功！'
-        });
+        // Alert.success({
+        //   content: '登陆成功！'
+        // });
         localStorage.user = JSON.stringify({
           tel: phone,
           token: res.resource.token

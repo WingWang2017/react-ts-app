@@ -59,6 +59,7 @@ class Register extends React.Component<IProps, {}> {
 
   // 注册的提交
   public onSubmit = async (data: IState): Promise<any> => {
+
     interface IObj {
       tel: string;
       token: string;
@@ -67,19 +68,24 @@ class Register extends React.Component<IProps, {}> {
     const res = await fetchAjax.register(phone, password, code);
 
     if (!res.errcode) {
-      const obj: IObj = {
-        tel: phone,
-        token: res.resource.token
-      };
-      localStorage.user = JSON.stringify(obj);
-      this.props.f7router.navigate({
-        url: `/login/school`
+      Alert.success({
+        content: res.errmsg,
+        afterHide: () => {
+          const obj: IObj = {
+            tel: phone,
+            token: res.resource.token
+          };
+          localStorage.user = JSON.stringify(obj);
+          this.props.f7router.navigate({
+            url: `/login/school`
+          });
+        }
+      });
+    } else {
+      Alert.default({
+        content: res.errmsg
       });
     }
-
-    Alert.default({
-      content: res.errmsg
-    });
   }
 
 }

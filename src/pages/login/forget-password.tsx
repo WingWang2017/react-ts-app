@@ -57,19 +57,24 @@ class ForgetPassword extends React.Component<IProps, {}> {
     const res = await fetchAjax.pwdback(phone, password, code);
 
     if (!res.errcode) {
-      const obj: IObj = {
-        tel: phone,
-        token: res.resource.token
-      };
-      localStorage.user = JSON.stringify(obj);
-      this.props.f7router.navigate({
-        url: `/login`
+      Alert.success({
+        content: res.errmsg,
+        afterHide: () => {
+          const obj: IObj = {
+            tel: phone,
+            token: res.resource.token
+          };
+          localStorage.user = JSON.stringify(obj);
+          this.props.f7router.navigate({
+            url: `/login`
+          });
+        }
+      });
+    } else {
+      Alert.default({
+        content: res.errmsg
       });
     }
-
-    Alert.default({
-      content: res.errmsg
-    });
   }
 
 }

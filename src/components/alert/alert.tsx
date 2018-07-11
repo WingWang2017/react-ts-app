@@ -7,7 +7,8 @@ class WpAlert extends React.Component<Iprops, {}> {
 
   public static defaultProps = {
     content: '',
-    time: 1000,
+    icon: '',
+    time: 1500,
     afterHide: () => { }
   };
 
@@ -28,7 +29,10 @@ class WpAlert extends React.Component<Iprops, {}> {
   public render() {
     return (
       <StyledDiv>
-        {this.props.content}
+        {
+          this.props.icon && <img src={this.props.icon} className='icon' />
+        }
+        <p>{this.props.content}</p>
       </StyledDiv>
     );
   }
@@ -39,27 +43,40 @@ interface Iprops {
   removeChild?: any;
   time?: number;
   content?: string;
+  icon?: string;
 }
 
 const StyledDiv = Styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-
   transform: translate(-50%, -50%);
-
-  padding: .15rem .2rem;
+  padding: .24rem;
   border-radius: 6px;
   color: #fff;
   font-size: .28rem;
-
   background: rgba(0, 0, 0, .5);
   z-index: 999999;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+
+  .icon {
+    margin: .15rem 0;
+  }
+
+  p {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 export default function ContainerWpAlert(config: any) {
   const div = document.createElement('div') as HTMLElement;
-  document.body.appendChild(div);
+  setTimeout(() => {
+    document.body.appendChild(div);
+  }, 350);
   function removeChild() {
     const unmountResult = ReactDOM.findDOMNode(div);
     if (unmountResult && div.parentNode) {

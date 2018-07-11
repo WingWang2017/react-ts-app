@@ -39,6 +39,8 @@ import faxianSelected from './assets/img/footer/faxian_selected.svg';
 import wodeNormal from './assets/img/footer/wode_normal.svg';
 import wodeSelected from './assets/img/footer/wode_selected.svg';
 
+import success from './assets/img/success.svg';
+
 
 export {
   login,
@@ -70,5 +72,6 @@ export {
   faxianNormal,
   faxianSelected,
   wodeNormal,
-  wodeSelected
+  wodeSelected,
+  success
 };

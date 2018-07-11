@@ -1,4 +1,5 @@
 import WpAlert from './alert';
+import { success } from 'src/images';
 
 interface IAlert { default: any; success: any; }
 
@@ -12,7 +13,8 @@ alert.default = (props: any) => {
 
 alert.success = (props: any) => {
   return WpAlert(Object.assign({}, {
-    type: 'success'
+    type: 'success',
+    icon: success
   }, props));
 };
 

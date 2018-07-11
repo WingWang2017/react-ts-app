@@ -1,32 +1,46 @@
-import LoginView from './login-view';
-import Logo from './logo';
+// 输入框 和 密码输入框
 import { InputText, InputPassword } from './input';
+
+// 按钮
 import Button from './button';
-import Select from './select';
-import Back from './back';
+
+// 验证码
 import SmsCode from './sms-code';
+
+// 头部
 import Header from './header';
+
+// 底部
 import Footer from './footer';
+
+// 标题
 import Ttitle from './title';
+
+// 动态校园类型列表组件
 import List from './list';
 
+// 提示框
 import Alert from './alert';
+
+// 选择框
 import Confirm from './confirm';
+
+// 消息发送框
 import SendBox from './send-box';
+
+// 操作表
 import Actions from './actions';
 
+// 分享框
 import Share from './share';
 
+// 校圈列表
 import ForumList from './forum-list';
 
 export {
-  LoginView,
-  Logo,
   InputText,
   InputPassword,
   Button,
-  Select,
-  Back,
   SmsCode,
   Alert,
   Confirm,

@@ -1,11 +1,14 @@
 import * as React from 'react';
 
-import { observable, action, computed, trace } from "mobx";
+import { observable, action, computed } from "mobx";
 import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { LoginView, Logo, InputText, InputPassword, Button, Alert } from 'src/components';
+import { InputText, InputPassword, Button, Alert } from 'src/components';
+
+import LoginView from './components/login-view';
+import Logo from './components/logo';
 
 import fetchAjax from 'src/fetch';
 
@@ -46,7 +49,6 @@ class Login extends React.Component<IProps, {}> {
   public store: any = new Store();
 
   public render() {
-    trace();
     return (
       <div className='page login' data-name='login'>
         <LoginView>

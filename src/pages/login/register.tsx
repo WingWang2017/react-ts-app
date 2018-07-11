@@ -6,7 +6,7 @@ import Styled from 'styled-components';
 
 import { Alert } from 'src/components';
 
-import RegisterCentent from './register-centent';
+import RegisterCentent from './components/register-centent';
 
 import fetchAjax from 'src/fetch';
 

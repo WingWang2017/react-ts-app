@@ -5,11 +5,13 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { LoginView, InputText, InputPassword, Button, Select, Alert } from 'src/components';
+import { InputText, InputPassword, Button, Alert } from 'src/components';
+import LoginView from './components/login-view';
+import Select from './components/select';
 
 import fetchAjax from 'src/fetch';
 
-import SelectRoles from './select-roles';
+import SelectRoles from './components/select-roles';
 
 class Store {
 
@@ -51,7 +53,7 @@ export default class DindInfo extends React.Component<{}, {}> {
   public render() {
     trace();
     return (
-      <div className='page login' data-name='school'>
+      <div className='page login' data-name='dindInfo'>
         <LoginView>
 
           {/* <Back /> */}

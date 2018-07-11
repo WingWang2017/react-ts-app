@@ -5,7 +5,10 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { LoginView, Logo, InputText, InputPassword, Button, Back, SmsCode, Alert } from 'src/components';
+import { InputText, InputPassword, Button, SmsCode, Alert } from 'src/components';
+import LoginView from './login-view';
+import Logo from './logo';
+import Back from './back';
 
 
 class Store {

@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-// import { Dom7 } from 'framework7-react/dist/commonjs/framework7/Framework7';
-// import { Framework7 } from 'framework7-react';
-
 import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';

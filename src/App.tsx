@@ -55,16 +55,11 @@ class MyApp extends React.Component<{}, IState> {
   };
 
   public $f7: any;
-
-  public $f7router: any;
-
-  public $f7route: any;
-
-  public $f7ready: any;
+  public $f7ready: (f7: any) => void;
 
   public componentDidMount(): void {
 
-    this.$f7ready((f7: any) => {
+    this.$f7ready((f7: any): void => {
 
       if (localStorage.user) {
 
@@ -115,11 +110,24 @@ class MyApp extends React.Component<{}, IState> {
       // 主页面上安卓点击实体键后退直接退出app;
       document.addEventListener('backbutton', () => {
         const page = f7App.f7router.currentRoute.url;
-        const isPage = page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login' || !page || page === '/';
-        if (isPage) {
-          navigator['app'].exitApp();
-        } else {
-          f7App.f7router.back();
+        // const isPage = page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login' || page === '/dindInfo' || !page || page === '/';
+        // if (isPage) {
+        //   navigator['app'].exitApp();
+        // } else {
+        //   f7App.f7router.back();
+        // }
+        switch (page) {
+          case '/home':
+          case '/cloudClassroom':
+          case '/discover':
+          case '/mine':
+          case '/login':
+          case '/dindInfo':
+          case '/':
+            navigator['app'].exitApp();
+            break;
+          default:
+            f7App.f7router.back();
         }
       }, false);
 

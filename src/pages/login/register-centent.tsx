@@ -28,7 +28,7 @@ class Store {
 
   @computed public get isDisabled(): boolean {
     const { phone, password, code } = this.state;
-    return phone.length > 0 && (/^1[34578]\d{9}$/.test(phone)) && code.length > 0 && password.length > 0 && password.length >= 6;
+    return phone.length > 0 && (/^1[34578]\d{9}$/.test(phone)) && code.length > 0 && password.length >= 6;
   }
 
 }
@@ -36,14 +36,14 @@ class Store {
 @observer
 class Register extends React.Component<IProps, {}> {
 
-  public defaultProps = {
+  public static defaultProps = {
     onCode: () => { },
     onSubmit: () => { }
   };
 
   public state = {};
 
-  public store = new Store;
+  public store = new Store();
 
   public render() {
     return (
@@ -51,7 +51,7 @@ class Register extends React.Component<IProps, {}> {
 
         <Back />
 
-        <Logo />
+        <Logo theme='small' />
 
         <StyledDiv>
 
@@ -85,7 +85,7 @@ class Register extends React.Component<IProps, {}> {
           </StyledFooter>
 
           <Button
-            content='注册'
+            content={this.props.buttonName}
             disabled={!this.store.isDisabled}
             onClick={this.onRegister} />
 
@@ -148,6 +148,7 @@ interface IProps {
   onCode: (phone: string) => {};
   onSubmit: (data: IState) => {};
   onRef: any;
+  buttonName?: string;
 }
 interface IState {
   phone: string;

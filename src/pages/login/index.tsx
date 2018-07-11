@@ -31,7 +31,7 @@ class Store {
 
   @computed public get isDisabled(): boolean {
     const { phone, password } = this.state;
-    return phone.length > 0 && (/^1[34578]\d{9}$/.test(phone)) && password.length > 0 && password.length >= 6;
+    return phone.length > 0 && (/^1[34578]\d{9}$/.test(phone)) && password.length >= 6;
   }
 
 }
@@ -43,7 +43,7 @@ class Login extends React.Component<IProps, {}> {
 
   public $f7: any;
 
-  public store: any = new Store;
+  public store: any = new Store();
 
   public render() {
     trace();
@@ -106,18 +106,25 @@ class Login extends React.Component<IProps, {}> {
 
     fetchAjax.signin(phone, password).then(res => {
       console.log(res);
-      if (!res.errcode) {
+      if (!res.errcode && res.data) {
         // Alert.success({
         //   content: '登陆成功！'
         // });
         localStorage.user = JSON.stringify({
-          tel: phone,
-          token: res.resource.token
+          ...res.data
         });
-        this.$f7.router.navigate('/login/school');
+        localStorage.hasSchool = true;
+        this.$f7.router.navigate('/home');
+      } else if (res.errcode === 2) {
+        localStorage.user = JSON.stringify({
+          mobile: phone,
+          user_id: res.data.user_id,
+          token: res.data.token
+        });
+        this.$f7.router.navigate('/login/bindInfo');
       } else {
         Alert.default({
-          content: res.errmsg
+          content: res.msg
         });
       }
     });

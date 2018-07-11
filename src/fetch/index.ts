@@ -48,6 +48,12 @@ class FetchAjax {
     return await this.ajaxPost(url, dataObj);
   }
 
+  // 判断token 是否失效
+  public async isToken(token: string): Promise<any> {
+    return await http.post('/token', { token }
+    );
+  }
+
   // 发送设备信息
   public async getDevice(): Promise<any> {
     const device_sn = localStorage.device_sn;
@@ -75,35 +81,22 @@ class FetchAjax {
     );
   }
 
-  // 第二重登录接口
-  public async doubleSignin(token: string, schoolType: string, userType: string, num: string, userPassword: string): Promise<any> {
-    return await http.post('/select/login',
-      {
-        token,
-        school_type: schoolType,
-        user_type: userType,
-        number: num,
-        user_password: userPassword
-      }
-    );
-  }
-
-  // 第二重登录，第一次登录时绑定
-  public async doubleSigninBind(token: string, schoolType: string, userType: string, num: string, userPassword: string): Promise<any> {
+  // 绑定学校信息
+  public async bindInfo(data: object): Promise<any> {
+    const device_sn = localStorage.device_sn;
+    const { token } = JSON.parse(localStorage.user);
     return await http.post('/bind',
       {
         token,
-        school_type: schoolType,
-        user_type: userType,
-        number: num,
-        user_password: userPassword
+        device_sn,
+        ...data
       }
     );
   }
 
   // 获取学校列表
   public async getSchoolList(token: string): Promise<any> {
-    return await http.post('/school/type',
+    return await http.post('/school/get',
       {
         token
       }

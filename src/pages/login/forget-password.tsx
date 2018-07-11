@@ -21,7 +21,8 @@ class ForgetPassword extends React.Component<IProps, {}> {
         <RegisterCentent
           onRef={this.onRef}
           onCode={this.onCode}
-          onSubmit={this.onSubmit} />
+          onSubmit={this.onSubmit}
+          buttonName='重置' />
       </div>
     );
   }
@@ -37,42 +38,31 @@ class ForgetPassword extends React.Component<IProps, {}> {
     const res = await fetchAjax.getSmsBackCode(phone);
     console.log(res);
     if (!res.errcode) {
-      alert(res.resource.code);
+      alert(res.data.code);
       console.log(this.child);
       this.child.onStartCountdown();
     }
 
     Alert.default({
-      content: res.errmsg
+      content: res.msg
     });
   }
 
   // 重置密码的提交
   public onSubmit = async (data: IState): Promise<any> => {
-    interface IObj {
-      tel: string;
-      token: string;
-    }
     const { phone, password, code } = data;
     const res = await fetchAjax.pwdback(phone, password, code);
 
     if (!res.errcode) {
       Alert.success({
-        content: res.errmsg,
+        content: res.msg,
         afterHide: () => {
-          const obj: IObj = {
-            tel: phone,
-            token: res.resource.token
-          };
-          localStorage.user = JSON.stringify(obj);
-          this.props.f7router.navigate({
-            url: `/login`
-          });
+          this.props.f7router.back();
         }
       });
     } else {
       Alert.default({
-        content: res.errmsg
+        content: res.msg
       });
     }
   }

@@ -32,7 +32,7 @@ const f7Params = {
   theme: 'ios',
   params: {
     swipeBackPage: true,
-    animate: false
+    animate: true
   },
   // 状态栏设置
   statusbar: {
@@ -43,8 +43,7 @@ const f7Params = {
   // f7自定义方法
   methods: {
 
-  },
-
+  }
 };
 
 @observer
@@ -68,13 +67,23 @@ class MyApp extends React.Component<{}, IState> {
     this.$f7ready((f7: any) => {
 
       if (localStorage.user) {
+
         const user: any = JSON.parse(localStorage.user);
         const hasSchool: boolean = localStorage.hasSchool;
-        if (hasSchool && user) {
-          setTimeout(() => {
-            f7.router.navigate('/home');
-          }, 100);
-        }
+
+        fetchAjax.isToken(user.token).then((res: any) => {
+          if (!res.errcode) {
+            if (hasSchool && user) {
+              localStorage.hasSchool = true;
+              setTimeout(() => {
+                f7.router.navigate('/home');
+              }, 100);
+            }
+          } else {
+            f7.router.navigate('/login');
+          }
+        });
+
       }
 
       if (!localStorage.hasSchool) {
@@ -84,7 +93,9 @@ class MyApp extends React.Component<{}, IState> {
     });
 
     fetchAjax.getDevice().then((res: any) => {
-      localStorage.device_sn = res.resource.device_sn;
+      if (!res.errcode && res.data) {
+        localStorage.device_sn = res.data.device_sn;
+      }
     });
 
     deviceready(() => {
@@ -123,7 +134,9 @@ class MyApp extends React.Component<{}, IState> {
         <Statusbar />
 
         <Views>
-          <View main={true} url='/' />
+          <View
+            url='/'
+            main={true} />
         </Views>
 
       </App>

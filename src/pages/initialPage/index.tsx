@@ -5,11 +5,9 @@ import { observer } from 'mobx-react';
 // import { Header } from 'src/components';
 
 @observer
-class InitialPage extends React.Component<IProps, IState> {
+class InitialPage extends React.Component<IProps, {}> {
 
-  public state = {
-    user: JSON.parse(localStorage.user)
-  };
+  public state = {};
 
   public $f7: any;
 
@@ -36,9 +34,9 @@ interface IProps {
   forumState: any;
 }
 
-interface IState {
-  user: any;
-}
+// interface IState {
+//   user: any;
+// }
 
 
 export default InitialPage;

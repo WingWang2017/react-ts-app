@@ -25,18 +25,18 @@ class School extends React.Component<IProps, IState> {
   public render() {
     return (
       <StyledDiv>
-        <div className='head' onClick={this.onClick('student')}>
+        <div className='head' onClick={this.onClick(1)}>
           <img src={student} alt='我是学生' />
           我是学生
         </div>
-        <div className='head' onClick={this.onClick('teacher')}>
+        <div className='head' onClick={this.onClick(2)}>
           <img src={teacher} alt='我是教师' />
           我是教师
         </div>
         <img
           src={login_selected}
           alt=''
-          className={`img ${this.state.num === 'student' ? 'student' : 'teacher'}`} />
+          className={`img ${this.state.num === 1 ? 'student' : 'teacher'}`} />
       </StyledDiv>
     );
   }
@@ -46,7 +46,7 @@ class School extends React.Component<IProps, IState> {
 
   }
 
-  public onClick = (num: string) => (): void => {
+  public onClick = (num: number) => (): void => {
     this.setState({
       num
     });
@@ -56,18 +56,18 @@ class School extends React.Component<IProps, IState> {
 }
 
 interface IProps {
-  value: string;
+  value: number;
   onChange?: any;
 }
 
 interface IState {
-  num: string;
+  num: number;
 }
 
 const StyledDiv = Styled.div`
   display: flex;
   width: 4.24rem;
-  height: 5.2rem;
+  height: 4.9rem;
   padding-top: 2rem;
   box-sizing: border-box;
   position: relative;

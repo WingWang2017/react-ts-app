@@ -27,9 +27,9 @@ const routes: any[] = [
     routes: [
       {
         // 第二重登录
-        path: '/school',
+        path: '/bindInfo',
         async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
-          const reactComponent = () => import('./pages/login/school');
+          const reactComponent = () => import('./pages/login/bindInfo');
           reactComponent().then((rc) => {
             resolve({ component: rc.default });
           });

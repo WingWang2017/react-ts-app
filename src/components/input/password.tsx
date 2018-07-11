@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { trace } from "mobx";
 import { observer } from 'mobx-react';
 
 import { StyledDiv, Input, StyledImg } from './style';
@@ -22,7 +21,6 @@ class InputPassword extends React.Component<IProps, IState> {
   };
 
   public render() {
-    trace();
     return (
       <StyledDiv margin-bottom={this.props.marginBottom}>
         <Input

@@ -15,16 +15,25 @@ class Select extends React.Component<IProps, IState> {
 
   public state = {
     value: '',
-    type: true
+    type: true,
+    theme: '#d8d8d8'
   };
 
   public render() {
     return (
-      <StyledSelect defaultValue={this.props.value} onChange={this.props.onChange}>
+      <StyledSelect defaultValue={this.props.value} onChange={this.onChange} theme={this.state.theme}>
         <option value={this.props.value} hidden={true} >{this.props.value}</option>
         <Option data={this.props.data} />
       </StyledSelect>
     );
+  }
+
+  public onChange = (e: any): void => {
+    const value: string = e.target.value;
+    this.setState({
+      theme: '#fff'
+    });
+    this.props.onChange(value);
   }
 
 }
@@ -33,7 +42,7 @@ const Option: React.SFC<IPropsFn> = observer((props): any => {
   if (props.data) {
     return (
       props.data.map((item: any) =>
-        <option key={item.id} value={item.school_type}>{item.school_name}</option>
+        <option key={item.id} value={item.id}>{item.name}</option>
       )
     );
   } else {
@@ -55,6 +64,7 @@ interface IProps {
 interface IState {
   value: string;
   type: boolean;
+  theme: string;
 }
 
 const StyledSelect = Styled.select`
@@ -66,7 +76,7 @@ const StyledSelect = Styled.select`
   border-radius: 6px;
   background-color: transparent;
   font-size: .28rem;
-  color: #fff;
+  color: ${props => props.theme || '#fff'};
 `;
 
 export default Select;

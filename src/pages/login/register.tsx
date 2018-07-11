@@ -25,7 +25,8 @@ class Register extends React.Component<IProps, {}> {
         <RegisterCentent
           onRef={this.onRef}
           onCode={this.onCode}
-          onSubmit={this.onSubmit} />
+          onSubmit={this.onSubmit}
+          buttonName='注册' />
         <Footer>注册代表您已阅读并同意<a href='#'>《最青春网络使用协议》</a></Footer>
       </div>
     );
@@ -47,13 +48,13 @@ class Register extends React.Component<IProps, {}> {
     const res = await fetchAjax.getSmscode(phone);
     console.log(res);
     if (!res.errcode) {
-      alert(res.resource.code);
+      alert(res.data.code);
       console.log(this.child);
       this.child.onStartCountdown();
     }
 
     Alert.default({
-      content: res.errmsg
+      content: res.msg
     });
   }
 
@@ -61,7 +62,8 @@ class Register extends React.Component<IProps, {}> {
   public onSubmit = async (data: IState): Promise<any> => {
 
     interface IObj {
-      tel: string;
+      mobile: string;
+      user_id: string;
       token: string;
     }
     const { phone, password, code } = data;
@@ -69,21 +71,22 @@ class Register extends React.Component<IProps, {}> {
 
     if (!res.errcode) {
       Alert.success({
-        content: res.errmsg,
+        content: res.msg,
         afterHide: () => {
           const obj: IObj = {
-            tel: phone,
-            token: res.resource.token
+            mobile: phone,
+            user_id: res.data.user_id,
+            token: res.data.token
           };
           localStorage.user = JSON.stringify(obj);
           this.props.f7router.navigate({
-            url: `/login/school`
+            url: `/login/bindInfo`
           });
         }
       });
     } else {
       Alert.default({
-        content: res.errmsg
+        content: res.msg
       });
     }
   }

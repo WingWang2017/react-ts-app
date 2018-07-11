@@ -27,7 +27,7 @@ const routes: any[] = [
     routes: [
       {
         // 第二重登录
-        path: '/school/:state',
+        path: '/school',
         async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
           const reactComponent = () => import('./pages/login/school');
           reactComponent().then((rc) => {
@@ -38,10 +38,20 @@ const routes: any[] = [
     ]
   },
   {
-    // 注册和找回密码
-    path: '/registerlAndRegisterl/:type',
+    // 注册
+    path: '/registerl',
     async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
-      const reactComponent = () => import('./pages/register');
+      const reactComponent = () => import('./pages/login/register');
+      reactComponent().then((rc) => {
+        resolve({ component: rc.default });
+      });
+    },
+  },
+  {
+    // 找回密码
+    path: '/forgetPassword',
+    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+      const reactComponent = () => import('./pages/login/forget-password');
       reactComponent().then((rc) => {
         resolve({ component: rc.default });
       });

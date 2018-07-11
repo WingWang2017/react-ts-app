@@ -16,11 +16,10 @@ class Store {
 
   @observable public state: IState = {
     phone: '',
-    password: '',
-    is: false
+    password: ''
   };
 
-  @action public setState = (obj: any) => {
+  @action public setState = (obj: object) => {
     const keys = Object.keys(obj);
 
     keys.forEach((key) => {
@@ -40,8 +39,7 @@ class Store {
 @observer
 class Login extends React.Component<IProps, {}> {
 
-  public state = {
-  };
+  public state = {};
 
   public $f7: any;
 
@@ -67,11 +65,11 @@ class Login extends React.Component<IProps, {}> {
               length={16}
               onChange={this.onPassword} />
             <StyledFooter>
-              <a href='/registerlAndRegisterl/retrieve' title='' className='link'>忘记密码</a>
-              <a href='/registerlAndRegisterl/registerl' title='' className='link'>新用户注册</a>
+              <a href='/forgetPassword' title='' className='link'>忘记密码</a>
+              <a href='/registerl' title='' className='link'>新用户注册</a>
             </StyledFooter>
             <Button
-              content='下一步'
+              content='登录'
               disabled={!this.store.isDisabled}
               onClick={this.onSignIn} />
           </StyledDiv>
@@ -88,8 +86,6 @@ class Login extends React.Component<IProps, {}> {
     deviceready(() => {
       this.$f7.statusbar.setBackgroundColor('#9bb1b3');
     });
-
-    fetchAjax.sss();
   }
 
   public onPhone = (phone: string): void => {
@@ -110,7 +106,7 @@ class Login extends React.Component<IProps, {}> {
 
     fetchAjax.signin(phone, password).then(res => {
       console.log(res);
-      if (res.errcode) {
+      if (!res.errcode) {
         Alert.default({
           content: '登陆成功！'
         });
@@ -118,7 +114,7 @@ class Login extends React.Component<IProps, {}> {
           tel: phone,
           token: res.resource.token
         });
-        this.$f7.router.navigate('/login/school/1');
+        this.$f7.router.navigate('/login/school');
       } else {
         Alert.default({
           content: res.errmsg
@@ -137,7 +133,6 @@ interface IProps {
 interface IState {
   phone: string;
   password: string;
-  is?: boolean;
 }
 
 const StyledDiv = Styled.div`

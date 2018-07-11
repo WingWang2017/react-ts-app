@@ -48,18 +48,28 @@ class FetchAjax {
     return await this.ajaxPost(url, dataObj);
   }
 
-  // 第一重登录接口
-  public async sss(): Promise<any> {
-    return await http.post('http://10.200.13.103/laravelhdzz2.0/public/admin/version/add',
-      { "number": "1.0.1", "desc": "test", "os_type": "ios", "status": "1" }
+  // 发送设备信息
+  public async getDevice(): Promise<any> {
+    const device_sn = localStorage.device_sn;
+    return await http.post('/device/get',
+      {
+        idfa: '',
+        imei: '',
+        os_type: 'Android',
+        os_info: '8.2.0',
+        version: '1.0.0',
+        device_sn
+      }
     );
   }
 
-  // 第一重登录接口
-  public async signin(phone: string, password: string): Promise<any> {
+  // 登录接口
+  public async signin(mobile: string, password: string): Promise<any> {
+    const device_sn = localStorage.device_sn;
     return await http.post('/login',
       {
-        phone,
+        device_sn,
+        mobile,
         password
       }
     );
@@ -101,39 +111,45 @@ class FetchAjax {
   }
 
   // 获取注册验证码
-  public async getSmscode(phone: string): Promise<any> {
-    return await http.get('/smscode',
+  public async getSmscode(mobile: string): Promise<any> {
+    return await http.post('/code',
       {
-        phone
+        mobile
       }
     );
   }
 
   // 获取找回密码验证码
-  public async getSmsBackCode(phone: string): Promise<any> {
-    return await http.get('/smsbackcode',
+  public async getSmsBackCode(mobile: string): Promise<any> {
+    return await http.post('/recode',
       {
-        phone
+        mobile
       }
     );
   }
 
-  // 找回密码
-  public async register(phone: string, password: string): Promise<any> {
+  // 注册
+  public async register(mobile: string, password: string, code: string): Promise<any> {
+    const device_sn = localStorage.device_sn;
     return await http.post('/register',
       {
-        phone,
+        device_sn,
+        mobile,
+        code,
         password
       }
     );
   }
 
   // 找回密码
-  public async pwdback(phone: string, password: string): Promise<any> {
-    return await http.post('/pwdback',
+  public async pwdback(mobile: string, password: string, code: string): Promise<any> {
+    const device_sn = localStorage.device_sn;
+    return await http.post('/repass',
       {
-        phone,
-        new_password: password
+        device_sn,
+        mobile,
+        password,
+        code
       }
     );
   }

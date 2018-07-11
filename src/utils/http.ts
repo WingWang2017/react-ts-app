@@ -64,7 +64,7 @@ function checkCode(res: any) {
 export default {
   post(url: string, data: any) {
     return axios({
-      baseURL: 'http://phone.mostyouth.cn/api',
+      baseURL: 'http://10.200.13.103:8080/api',
       data: qs.stringify(data),
       timeout: 10000,
       method: 'post',
@@ -82,7 +82,7 @@ export default {
   },
   get(url: string, params: any) {
     return axios({
-      baseURL: 'http://phone.mostyouth.cn/api',
+      baseURL: 'http://10.200.13.103:8080/api',
       method: 'get',
       timeout: 10000,
       url,

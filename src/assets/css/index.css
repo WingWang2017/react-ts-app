@@ -37,7 +37,7 @@ textarea {
 }
 
 input::-webkit-input-placeholder {
-  color: currentColor;
+  color: #d8d8d8;
 }
 
 input[type=search]::-webkit-search-cancel-button {

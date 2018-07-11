@@ -8,6 +8,8 @@ import routes from './routes';
 
 import { deviceready } from 'src/utils';
 
+import fetchAjax from 'src/fetch';
+
 // import Home from './pages/home';
 
 // if (process.env.NODE_ENV !== 'production') {
@@ -79,6 +81,10 @@ class MyApp extends React.Component<{}, IState> {
         f7.router.navigate('/login');
       }
 
+    });
+
+    fetchAjax.getDevice().then((res: any) => {
+      localStorage.device_sn = res.resource.device_sn;
     });
 
     deviceready(() => {

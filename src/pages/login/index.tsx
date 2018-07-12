@@ -86,7 +86,7 @@ class Login extends React.Component<IProps, {}> {
       f7route: this.props.f7route
     };
     deviceready(() => {
-      this.$f7.statusbar.setBackgroundColor('#9bb1b3');
+      this.$f7.statusbar.setBackgroundColor('#8fa4a6');
     });
   }
 

@@ -81,6 +81,20 @@ const routes: any[] = [
       });
     },
   },
+  {
+    // 我的
+    path: '/my',
+    options: {
+      animate: false,
+      reloadAll: true
+    },
+    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+      const reactComponent = () => import('./pages/my');
+      reactComponent().then((rc) => {
+        resolve({ component: rc.default });
+      });
+    },
+  },
 ];
 
 export default routes;

@@ -116,11 +116,12 @@ class MyApp extends React.Component<{}, IState> {
         // } else {
         //   f7App.f7router.back();
         // }
+
         switch (page) {
           case '/home':
           case '/cloudClassroom':
           case '/discover':
-          case '/mine':
+          case '/my':
           case '/login':
           case '/dindInfo':
           case '/':

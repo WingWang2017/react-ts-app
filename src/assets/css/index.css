@@ -80,11 +80,16 @@ select option {
 }
 
 .ios .navbar-inner {
-  padding: 0;
+  padding: 0 .2rem;
 }
 
-.navbar > .left {
-  padding-left: 0;
+.ios .navbar .left ,
+.ios .navbar .right {
+  margin: 0;
+}
+
+.ios .navbar .right {
+  text-align: right;
 }
 
 .ios .navbar .title {
@@ -92,27 +97,29 @@ select option {
   font-weight: inherit !important;
 }
 
-.navbar > .right {
-  padding-right: 0;
+
+.ios .header a.link {
+  min-width: .78rem;
+  height: 100%;
+  line-height: 1.5;
 }
 
-.header .link {
-  width: .78rem;
-}
-
-.header .left .link {
-  padding-left: .2rem;
-}
+/* .header .left .link {
+} */
 
 .header .right .link {
   display: flex;
   justify-content: flex-end;
-  padding-right: .2rem;
   font-size: .3rem;
 }
 
 .toolbar-fixed .page-content {
   padding-bottom: .98rem;
+}
+
+.ios .home,
+.ios .home .page {
+  background-color: #fff;
 }
 
 .ios .ptr-preloader {
@@ -135,7 +142,7 @@ select option {
   left: 0;
   height: 1px;
   content: "";
-  transform: scaleY(.5);
+  transform: scaleY(.5) translateY(50%);
   background: #ebebeb;
 }
 

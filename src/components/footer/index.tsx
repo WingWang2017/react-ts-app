@@ -37,7 +37,7 @@ export default class Footer extends React.Component<IProps, {}> {
     //     cached[i].remove();
     //   }
     // }
-    this.$f7.router.navigate('/login');
+    // this.$f7.router.navigate('/login');
   }
 
   public render() {
@@ -54,7 +54,6 @@ export default class Footer extends React.Component<IProps, {}> {
               <StyledA
                 key={index}
                 href={item.link}
-                data-animate-pages={item.animatePages}
                 className={`link`}
                 theme={theme}
                 onClick={item.handle ? item.handle : this.handleClick} >
@@ -72,36 +71,31 @@ const data = [
     title: '校圈',
     link: '/home',
     icon: xiaoquanNormal,
-    currIcon: xiaoquanSelected,
-    animatePages: false
+    currIcon: xiaoquanSelected
   },
   {
     title: '云课堂',
     link: '/cloudClassroom',
     icon: yunketangNormal,
-    currIcon: yunketangSelected,
-    animatePages: false
+    currIcon: yunketangSelected
   },
   {
     title: '发布',
     link: '',
     icon: fabu,
-    animatePages: false,
     handle: () => { } // issue.default
   },
   {
     title: '发现',
     link: '/discover',
     icon: faxianNormal,
-    currIcon: faxianSelected,
-    animatePages: false
+    currIcon: faxianSelected
   },
   {
     title: '我的',
-    link: '/mine',
+    link: '/my',
     icon: wodeNormal,
-    currIcon: wodeSelected,
-    animatePages: false
+    currIcon: wodeSelected
   }
 ];
 

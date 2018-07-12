@@ -37,6 +37,10 @@ import Share from './share';
 // 校圈列表
 import ForumList from './forum-list';
 
+
+// 列表组件
+import ListItem from './list-item';
+
 export {
   InputText,
   InputPassword,
@@ -51,5 +55,6 @@ export {
   Ttitle,
   List,
   Share,
-  ForumList
+  ForumList,
+  ListItem
 };

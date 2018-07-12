@@ -41,6 +41,23 @@ import wodeSelected from './assets/img/footer/wode_selected.svg';
 
 import success from './assets/img/success.svg';
 
+import right_arrow from './assets/img/right_arrow.svg';
+
+// 我的
+import xiaoxizhongxin from './assets/img/mine/wode_xiaoxizhongxin.svg';
+import kebiao from './assets/img/mine/wode_kebiao.svg';
+import chengji from './assets/img/mine/wode_chengji.svg';
+import xiaoli from './assets/img/mine/wode_xiaoli.svg';
+import xiaoyuanrexian from './assets/img/mine/wode_xiaoyuanrexian.svg';
+import peiyangfangan from './assets/img/mine/wode_peiyangfangan.svg';
+import qingjiashenqing from './assets/img/mine/wode_qingjiashenqing.svg';
+import kechengpingjia from './assets/img/mine/wode_kechengpingjia.svg';
+import xuankezhinan from './assets/img/mine/wode_xuankezhinan.svg';
+import shiguanglvli from './assets/img/mine/wode_shiguanglvli.svg';
+import shujufenxi from './assets/img/mine/wode_shujufenxi.svg';
+import yijianfankui from './assets/img/mine/wode_yijianfankui.svg';
+import lianxiwomen from './assets/img/mine/wode_lianxiwomen.svg';
+
 
 export {
   login,
@@ -73,5 +90,20 @@ export {
   faxianSelected,
   wodeNormal,
   wodeSelected,
-  success
+  success,
+  right_arrow,
+
+  xiaoxizhongxin,
+  kebiao,
+  chengji,
+  xiaoli,
+  xiaoyuanrexian,
+  peiyangfangan,
+  qingjiashenqing,
+  kechengpingjia,
+  xuankezhinan,
+  shiguanglvli,
+  shujufenxi,
+  yijianfankui,
+  lianxiwomen
 };

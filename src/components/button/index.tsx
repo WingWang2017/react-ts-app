@@ -16,6 +16,7 @@ class Button extends React.Component<IProps, {}> {
     const theme = {
       width: this.props.width,
       height: this.props.height,
+      margin: this.props.margin,
       border: this.props.border,
       bgColor: this.props.bgColor,
       color: this.props.color,
@@ -37,6 +38,7 @@ class Button extends React.Component<IProps, {}> {
 interface IProps {
   width?: string;
   height?: string;
+  margin?: string;
   bgColor?: string;
   border?: string;
   borderRadius?: string;
@@ -54,6 +56,7 @@ interface IProps {
 const StyledButton = Styled.button`
   width: ${props => props.theme.width || '100%'};
   height: ${props => props.theme.height || '.88rem'};
+  margin: ${props => props.theme.margin || '0'};
   border: ${props => props.theme.border || '0'};
   border-radius: ${props => props.theme.borderRadius || '4px'};
   background-color: ${props => props.theme.bgColor || '#81D8D0'};

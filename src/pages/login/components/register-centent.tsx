@@ -67,6 +67,7 @@ class Register extends React.Component<IProps, {}> {
           <InputText
             placeholder='验证码'
             marginBottom={true}
+            clearHidden={false}
             length={6}
             onChange={this.onValidate}
             onClear={this.onClearCode} >
@@ -168,7 +169,8 @@ const StyledFooter = Styled.div`
   justify-content: space-between;
   margin-bottom: .3rem;
   font-size: .26rem;
-  color: #efefef;
+  color: #d8d8d8;
 `;
+// #ff2a2a
 
 export default Register;

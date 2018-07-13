@@ -76,6 +76,7 @@ class Login extends React.Component<IProps, {}> {
               onClick={this.onSignIn} />
           </StyledDiv>
         </LoginView>
+        <Footer>登录代表您已阅读并同意<a href='#'>《最青春网络使用协议》</a></Footer>
       </div>
     );
   }
@@ -152,6 +153,19 @@ const StyledFooter = Styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: .3rem;
+  font-size: .24rem;
+  > a {
+    color: #90F6EC;
+  }
+`;
+
+const Footer = Styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 95%;
+  text-align: center;
+  color: #fff;
   font-size: .24rem;
   > a {
     color: #90F6EC;

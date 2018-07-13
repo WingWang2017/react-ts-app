@@ -11,7 +11,7 @@ axios.interceptors.request.use(config => {
   return Promise.reject(error);
 });
 
-axios.interceptors.response.use(async (response) => {
+axios.interceptors.response.use((response) => {
 
   // if (response.data.errStatus === 102) {
   //   localStorage.removeItem('hasSchool');
@@ -23,7 +23,7 @@ axios.interceptors.response.use(async (response) => {
   //   });
   // }
 
-  return await response;
+  return response;
 }, error => {
   return Promise.resolve(error.response);
 });

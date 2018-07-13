@@ -109,7 +109,7 @@ const Footer = Styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  bottom: .44rem;
+  top: 95%;
   text-align: center;
   color: #fff;
   font-size: .24rem;

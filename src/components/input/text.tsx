@@ -30,6 +30,7 @@ class InputText extends React.Component<IProps, {}> {
     type: 'text',
     placeholder: '请输入',
     length: 11,
+    clearHidden: true,
     onChange: () => { },
     onClear: () => { },
     onBlur: () => { }
@@ -51,9 +52,12 @@ class InputText extends React.Component<IProps, {}> {
             value={this.store.state.value}
             onBlur={this.onBlur}
             onChange={this.onChange} />
-          <StyledImg onClick={this.onClear} styled-width='.28rem' hidden={this.store.state.value.length === 0} >
-            <img src={signin_delete} alt='' />
-          </StyledImg>
+          {
+            this.props.clearHidden &&
+            <StyledImg onClick={this.onClear} styled-width='.28rem' hidden={this.store.state.value.length === 0} >
+              <img src={signin_delete} alt='' />
+            </StyledImg>
+          }
         </StyledCentent>
         {
           this.props.children && this.props.children
@@ -100,6 +104,7 @@ interface IProps {
   type?: string;
   placeholder?: string;
   length?: number;
+  clearHidden?: boolean;
   marginBottom?: boolean;
   onChange?: any;
   onClear?: any;

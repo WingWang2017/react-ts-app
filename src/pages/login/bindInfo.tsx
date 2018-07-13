@@ -80,7 +80,7 @@ export default class DindInfo extends React.Component<{}, {}> {
               placeholder='教务密码'
               length={16}
               onChange={this.onPassword} />
-            <StyledText>首次登录需绑定学校与工号</StyledText>
+            <StyledText>首次登录需绑定学校与{this.store.state.type === 1 ? '学号' : '工号'}</StyledText>
 
             <Button
               content='绑定'
@@ -175,6 +175,6 @@ const StyledDiv = Styled.div`
 
 const StyledText = Styled.p`
   line-height: 2.8;
-  color: #fff;
+  color: #d8d8d8;
   font-size: .24rem;
 `;

@@ -30,7 +30,7 @@ class InputPassword extends React.Component<IProps, IState> {
           onChange={this.onChange} />
         <StyledImg onClick={this.onClear} styled-width='.36rem'>
           <img
-            src={this.state.type ? login_display : signin_hide}
+            src={this.state.type ? signin_hide : login_display}
             alt='' />
         </StyledImg>
       </StyledDiv>

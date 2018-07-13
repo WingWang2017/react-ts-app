@@ -135,7 +135,8 @@ select option {
   position: relative;
 }
 
-.border1px::after {
+.border1px::before,
+.not-border .border1px:not(:last-child)::before {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -143,7 +144,22 @@ select option {
   height: 1px;
   content: "";
   transform: scaleY(.5) translateY(50%);
-  background: #ebebeb;
+  background-color: #ebebeb;
+}
+
+.border-right {
+  position: relative;
+}
+
+.border-right:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #d8d8d8;
+  transform: scaleX(.5) translateX(50%);
 }
 
 

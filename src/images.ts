@@ -26,6 +26,8 @@ import copylink from './assets/img/fenxiang/copylink_icon.svg';
 
 import Boy from './assets/img/Boy.jpg';
 import Girl from './assets/img/Girl.jpg';
+import boy_icon from './assets/img/boy.svg';
+import girl_icon from './assets/img/girl.svg';
 
 import emojiIcon from './assets/img/emoji.svg';
 
@@ -80,6 +82,8 @@ export {
   copylink,
   Boy,
   Girl,
+  boy_icon,
+  girl_icon,
   emojiIcon,
   xiaoquanNormal,
   xiaoquanSelected,

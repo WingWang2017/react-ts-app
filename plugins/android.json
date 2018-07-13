@@ -7,9 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "com.joandilee.imeiplugin": {
-      "PACKAGE_NAME": "com.example.hello"
-    },
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "com.example.hello"
     },

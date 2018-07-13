@@ -3,20 +3,24 @@ import * as ReactDOM from 'react-dom';
 
 import Styled from 'styled-components';
 
+import MaskLayer from '../mask-layer';
+
 class WpAlert extends React.Component<Iprops, {}> {
 
   public static defaultProps = {
     content: '',
     icon: '',
-    time: 1500,
+    time: 2000,
     afterHide: () => { }
   };
 
   public state = {
   };
 
+  public time: any;
+
   public componentDidMount(): void {
-    setTimeout(() => {
+    this.time = setTimeout(() => {
       this.onHide();
     }, this.props.time);
   }
@@ -26,14 +30,22 @@ class WpAlert extends React.Component<Iprops, {}> {
     this.props.afterHide();
   }
 
+  public onClick = (): void => {
+    this.onHide();
+    clearTimeout(this.time);
+  }
+
   public render() {
     return (
-      <StyledDiv>
-        {
-          this.props.icon && <img src={this.props.icon} className='icon' />
-        }
-        <p>{this.props.content}</p>
-      </StyledDiv>
+      <>
+        <MaskLayer bgClolr='none' onClick={this.onClick} />
+        <StyledDiv>
+          {
+            this.props.icon && <img src={this.props.icon} className='icon' />
+          }
+          <p>{this.props.content}</p>
+        </StyledDiv>
+      </>
     );
   }
 }
@@ -51,7 +63,7 @@ const StyledDiv = Styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: .24rem;
+  padding: .48rem;
   border-radius: 6px;
   color: #fff;
   font-size: .28rem;

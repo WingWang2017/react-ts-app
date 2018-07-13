@@ -55,7 +55,7 @@ class SmsCode extends React.Component<IProps, IState> {
   public onCountdown(): void {
     this.setState((prevState: { content: string, time: number }) => {
       return {
-        content: `(${prevState.time--}s) 重新获取`
+        content: `${prevState.time--}s`
       };
     }, () => {
       if (this.state.time < 0) {

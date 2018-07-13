@@ -7,6 +7,8 @@ import { observer } from 'mobx-react';
 
 import { Header, Footer, ListItem as MyListItem } from 'src/components';
 
+import Head from './components/head';
+
 import {
   xiaoxizhongxin,
   kebiao,
@@ -15,9 +17,9 @@ import {
   peiyangfangan,
   xiaoli,
   qingjiashenqing,
-  kechengpingjia,
-  xuankezhinan,
-  shiguanglvli,
+  // kechengpingjia,
+  // xuankezhinan,
+  // shiguanglvli,
   shujufenxi,
   yijianfankui,
   lianxiwomen
@@ -44,6 +46,7 @@ export default class My extends React.Component<IProps, IState> {
             </a>
           } />
         <div className='page-content'>
+          <Head />
           <ul>
             <MyListItem link='#' title='消息中心' icon={xiaoxizhongxin} border={false} marginTop={true} marginBottom={true} />
             <MyListItem link='#' title='课表' icon={kebiao} />
@@ -52,9 +55,9 @@ export default class My extends React.Component<IProps, IState> {
             <MyListItem link='#' title='培养计划' icon={peiyangfangan} />
             <MyListItem link='#' title='校园热线' icon={xiaoyuanrexian} border={false} marginBottom={true} />
             <MyListItem link='#' title='请假管理' icon={qingjiashenqing} border={false} marginBottom={true} />
-            <MyListItem link='#' title='课程评价' icon={kechengpingjia} />
+            {/* <MyListItem link='#' title='课程评价' icon={kechengpingjia} />
             <MyListItem link='#' title='选课指南' icon={xuankezhinan} />
-            <MyListItem link='#' title='时光履历' icon={shiguanglvli} />
+            <MyListItem link='#' title='时光履历' icon={shiguanglvli} /> */}
             <MyListItem link='#' title='数据分析' icon={shujufenxi} border={false} marginBottom={true} />
             <MyListItem link='#' title='使用说明' icon={yijianfankui} />
             <MyListItem link='#' title='联系我们' icon={lianxiwomen} border={false} marginBottom={true} />

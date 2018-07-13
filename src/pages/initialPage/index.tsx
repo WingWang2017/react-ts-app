@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 // import { Header } from 'src/components';
 
 @observer
-class InitialPage extends React.Component<IProps, {}> {
+export default class InitialPage extends React.Component<IProps, {}> {
 
   public state = {};
 
@@ -37,6 +37,3 @@ interface IProps {
 // interface IState {
 //   user: any;
 // }
-
-
-export default InitialPage;

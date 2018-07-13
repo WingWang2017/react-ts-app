@@ -72,7 +72,7 @@ const StyledHead = Styled.dl`
     overflow: hidden;
     width: 1.28rem;
     height: 1.28rem;
-    margin-right: .18rem;
+    margin-right: .32rem;
   }
   dt img {
     display: block;
@@ -93,11 +93,11 @@ const StyledHead = Styled.dl`
     font-size: .4rem;
   }
   .number {
-    font-size: .28rem;
-    color: #999;
+    font-size: .24rem;
+    color: #119C8F;
   }
   .class {
-    font-size: .28rem;
+    font-size: .24rem;
     color: #999;
   }
 `;
@@ -105,7 +105,7 @@ const StyledHead = Styled.dl`
 const StyledUL = Styled.ul`
   display: flex;
   height: .36rem;
-  margin-top: .36rem;
+  margin-top: .48rem;
   li {
     position: relative;
     width: calc(100% / 3);

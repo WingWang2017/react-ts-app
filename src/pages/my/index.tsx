@@ -41,7 +41,7 @@ export default class My extends React.Component<IProps, IState> {
           left={null}
           center='我的'
           right={
-            <a href='/message' className='link'>
+            <a href='/my/setting' className='link'>
               设置
             </a>
           } />

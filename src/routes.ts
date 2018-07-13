@@ -94,6 +94,18 @@ const routes: any[] = [
         resolve({ component: rc.default });
       });
     },
+    routes: [
+      {
+        // 设置
+        path: '/setting',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/my/setting');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      },
+    ]
   },
 ];
 

@@ -9,6 +9,7 @@ class SmsCode extends React.Component<IProps, IState> {
 
   public static defaultProps = {
     time: 60,
+    color: '#90F6EC',
     onClick: () => { }
   };
 
@@ -21,7 +22,7 @@ class SmsCode extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <StyledButton onClick={this.onClick}>
+      <StyledButton onClick={this.onClick} theme={this.props.color}>
         {this.state.content}
       </StyledButton>
     );
@@ -81,6 +82,7 @@ interface IProps {
   time?: number;
   onClick?: any;
   onRef?: any;
+  color?: string;
 }
 
 interface IState {
@@ -92,7 +94,7 @@ const StyledButton = Styled.button`
   box-sizing: border-box;
   padding: 0 .3rem;
   text-align: right;
-  color: #90F6EC;
+  color: ${props => props.theme};
   font-size: .24rem;
 `;
 

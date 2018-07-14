@@ -23,19 +23,32 @@ class Button extends React.Component<IProps, {}> {
       borderRadius: this.props.borderRadius,
       fontSize: this.props.fontSize
     };
-    return (
-      <StyledButton
-        theme={theme}
-        disabled={this.props.disabled}
-        onClick={this.props.onClick}>
-        {this.props.content}
-      </StyledButton>
-    );
+
+    if (this.props.link) {
+      return (
+        <StyledLink
+          href={this.props.link}
+          theme={theme}
+          onClick={this.props.onClick}>
+          {this.props.content}
+        </StyledLink>
+      );
+    } else {
+      return (
+        <StyledButton
+          theme={theme}
+          disabled={this.props.disabled}
+          onClick={this.props.onClick}>
+          {this.props.content}
+        </StyledButton>
+      );
+    }
   }
 
 }
 
 interface IProps {
+  link?: string;
   width?: string;
   height?: string;
   margin?: string;
@@ -54,6 +67,22 @@ interface IProps {
 // }
 
 const StyledButton = Styled.button`
+  width: ${props => props.theme.width || '100%'};
+  height: ${props => props.theme.height || '.88rem'};
+  margin: ${props => props.theme.margin || '0'};
+  border: ${props => props.theme.border || '0'};
+  border-radius: ${props => props.theme.borderRadius || '4px'};
+  background-color: ${props => props.theme.bgColor || '#81D8D0'};
+  font-size: ${props => props.theme.fontSize || '.32rem'};
+  color: ${props => props.theme.color || '#fff'};
+`;
+
+// const StyledLink = StyledButton.withComponent('a');
+
+const StyledLink = Styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: ${props => props.theme.width || '100%'};
   height: ${props => props.theme.height || '.88rem'};
   margin: ${props => props.theme.margin || '0'};

@@ -10,7 +10,7 @@ import { right_arrow } from 'src/images';
 
 @observer
 
-export default class ListItem extends React.Component<IProps, {}> {
+export default class LinkList extends React.Component<IProps, {}> {
 
   public static defaultProps = {
     link: '#',
@@ -75,7 +75,7 @@ const StyledMian = Styled.li`
   position: relative;
   box-sizing: border-box;
   background-color: #fff;
-  min-height: .8rem;
+  min-height: .88rem;
   font-size: .32rem;
   margin-top: ${props => props.theme.marginTop ? '.24rem' : '0'};
   margin-bottom: ${props => props.theme.marginBottom ? '.24rem' : '0'};
@@ -86,7 +86,7 @@ const StyledMian = Styled.li`
   .list-link {
     display: flex;
     align-items: center;
-    height: .8rem;
+    height: .88rem;
     width: 100%;
     padding: 0 .6rem 0 .34rem;
     box-sizing: border-box;

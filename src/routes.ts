@@ -104,6 +104,28 @@ const routes: any[] = [
             resolve({ component: rc.default });
           });
         },
+        routes: [
+          {
+            // 绑定手机号
+            path: '/bindMobile',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/setting/bind-mobile');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          },
+          {
+            // 绑定手机号
+            path: '/changeMobile',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/setting/change-mobile');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          },
+        ]
       },
     ]
   },

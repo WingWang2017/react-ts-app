@@ -2,6 +2,8 @@ import login from './assets/img/login/bacground.png';
 import logo from './assets/img/login/logo.png';
 
 import signin_delete from './assets/img/login/signin_delete.svg';
+import search_delete from './assets/img/search/search_delete.svg';
+
 import signin_hide from './assets/img/login/signin_hide.svg';
 import login_display from './assets/img/login/login_display.svg';
 
@@ -60,11 +62,15 @@ import shujufenxi from './assets/img/mine/wode_shujufenxi.svg';
 import yijianfankui from './assets/img/mine/wode_yijianfankui.svg';
 import lianxiwomen from './assets/img/mine/wode_lianxiwomen.svg';
 
+// 绑定手机号
+import iphone from './assets/img/mine/iphone.png';
+
 
 export {
   login,
   logo,
   signin_delete,
+  search_delete,
   signin_hide,
   login_display,
   student,
@@ -109,5 +115,7 @@ export {
   shiguanglvli,
   shujufenxi,
   yijianfankui,
-  lianxiwomen
+  lianxiwomen,
+
+  iphone
 };

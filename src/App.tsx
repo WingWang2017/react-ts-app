@@ -59,7 +59,11 @@ class MyApp extends React.Component<{}, IState> {
 
   public componentDidMount(): void {
 
+
+
     this.$f7ready((f7: any): void => {
+
+      f7.router.navigate('/my');
 
       if (localStorage.user) {
 

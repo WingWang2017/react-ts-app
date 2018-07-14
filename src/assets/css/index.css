@@ -40,6 +40,10 @@ input::-webkit-input-placeholder {
   color: #d8d8d8;
 }
 
+.myblack input::-webkit-input-placeholder {
+  color: #999;
+}
+
 input[type=search]::-webkit-search-cancel-button {
   position: relative;
 

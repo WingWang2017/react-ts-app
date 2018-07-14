@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { observer } from 'mobx-react';
 
-import { Header, ListItem as MyListItem } from 'src/components';
+import { Header, LinkList } from 'src/components';
 
 import { Button, Actions, Alert } from 'src/components';
 
@@ -12,7 +12,7 @@ import Styled from 'styled-components';
 export default class Setting extends React.Component<IProps, IState> {
 
   public state = {
-    user: JSON.parse(localStorage.user)
+    user: localStorage.user && JSON.parse(localStorage.user)
   };
 
   public $f7: any;
@@ -26,17 +26,18 @@ export default class Setting extends React.Component<IProps, IState> {
           right={null} />
         <div className='page-content'>
           <ul>
-            <MyListItem link='#' title='手机号码' after={this.state.user.mobile} marginTop={true} />
-            <MyListItem link='#' title='修改密码' />
-            <MyListItem link='#' title='隐私设置' border={false} marginBottom={true} />
-            <MyListItem link='#' title='消息通知' border={false} marginBottom={true} />
-            <MyListItem link='#' title='关于最青春' border={false} marginBottom={true} />
-            <MyListItem link='#' title='清除缓存' after='10.21MB' arrow={false} border={false} />
+            <LinkList link='/my/setting/bindMobile' title='手机号码' after={this.state.user.mobile} marginTop={true} />
+            <LinkList link='#' title='修改密码' />
+            <LinkList link='#' title='隐私设置' border={false} marginBottom={true} />
+            <LinkList link='#' title='消息通知' border={false} marginBottom={true} />
+            <LinkList link='#' title='关于最青春' border={false} marginBottom={true} />
+            <LinkList link='#' title='清除缓存' after='10.21MB' arrow={false} border={false} />
           </ul>
           <StyledDiv>
             <Button
               content='退出登录'
               bgColor='#F7827C'
+              height='.96rem'
               onClick={this.onButton} />
           </StyledDiv>
 

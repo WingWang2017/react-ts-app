@@ -38,8 +38,12 @@ import Share from './share';
 import ForumList from './forum-list';
 
 
+// 链接列表组件
+import LinkList from './link-list';
+
+
 // 列表组件
-import ListItem from './list-item';
+import ItemList from './item-list';
 
 export {
   InputText,
@@ -56,5 +60,6 @@ export {
   List,
   Share,
   ForumList,
-  ListItem
+  LinkList,
+  ItemList
 };

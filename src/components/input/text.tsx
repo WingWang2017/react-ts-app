@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 
 import { StyledDiv, StyledCentent, Input, StyledImg } from './style';
 
-import { signin_delete } from 'src/images';
+import { signin_delete, search_delete } from 'src/images';
 
 class Store {
   @observable public state: IState = {
@@ -27,6 +27,9 @@ class Store {
 class InputText extends React.Component<IProps, {}> {
 
   public static defaultProps = {
+    imgSize: '.28rem',
+    inputSize: '.28rem',
+    themeColor: 'white',
     type: 'text',
     placeholder: '请输入',
     length: 11,
@@ -42,10 +45,18 @@ class InputText extends React.Component<IProps, {}> {
   public store: any = new Store;
 
   public render() {
+    const imgTheme = {
+      imgSize: this.props.imgSize,
+      inputSize: this.props.inputSize,
+      themeColor: this.props.themeColor // black 黑色
+    };
     return (
-      <StyledDiv margin-bottom={this.props.marginBottom}>
+      <StyledDiv
+        margin-bottom={this.props.marginBottom}
+        className={this.props.themeColor === 'white' ? 'mywhite' : 'myblack'} >
         <StyledCentent>
           <Input
+            theme={imgTheme}
             type={this.props.type}
             placeholder={this.props.placeholder}
             maxLength={this.props.length}
@@ -54,8 +65,11 @@ class InputText extends React.Component<IProps, {}> {
             onChange={this.onChange} />
           {
             this.props.clearHidden &&
-            <StyledImg onClick={this.onClear} styled-width='.28rem' hidden={this.store.state.value.length === 0} >
-              <img src={signin_delete} alt='' />
+            <StyledImg
+              onClick={this.onClear}
+              theme={imgTheme}
+              hidden={this.store.state.value.length === 0} >
+              <img src={this.props.themeColor === 'white' ? signin_delete : search_delete} alt='' />
             </StyledImg>
           }
         </StyledCentent>
@@ -106,6 +120,9 @@ interface IProps {
   length?: number;
   clearHidden?: boolean;
   marginBottom?: boolean;
+  themeColor?: string;
+  imgSize?: string;
+  inputSize?: string;
   onChange?: any;
   onClear?: any;
   onBlur?: any;

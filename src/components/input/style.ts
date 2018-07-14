@@ -23,8 +23,8 @@ const Input = Styled.input`
   padding: 0 .8rem 0 .26rem;
   border: 0;
   background-color: transparent;
-  font-size: .28rem;
-  color: #fff;
+  font-size: ${props => props.theme.inputSize};
+  color: ${props => props.theme.themeColor === 'white' ? '#fff' : '#333'};
 `;
 
 const StyledImg = Styled.div`
@@ -37,7 +37,7 @@ const StyledImg = Styled.div`
   justify-content: center;
   align-items: center;
   img {
-    width: ${props => props['styled-width']};
+    width: ${props => props.theme.imgSize};
     height: auto;
   }
 `;

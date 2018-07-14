@@ -10,6 +10,9 @@ import { signin_hide, login_display } from 'src/images';
 class InputPassword extends React.Component<IProps, IState> {
 
   public static defaultProps = {
+    imgSize: '.3rem',
+    inputSize: '.28rem',
+    themeColor: 'white',
     placeholder: '请输入',
     length: 11,
     onChange: () => { }
@@ -21,14 +24,20 @@ class InputPassword extends React.Component<IProps, IState> {
   };
 
   public render() {
+    const imgTheme = {
+      imgSize: this.props.imgSize,
+      inputSize: this.props.inputSize,
+      themeColor: this.props.themeColor // black 黑色
+    };
     return (
       <StyledDiv margin-bottom={this.props.marginBottom}>
         <Input
+          theme={imgTheme}
           type={this.state.type ? 'password' : 'type'}
           maxLength={this.props.length}
           placeholder={this.props.placeholder}
           onChange={this.onChange} />
-        <StyledImg onClick={this.onClear} styled-width='.36rem'>
+        <StyledImg onClick={this.onClear} theme={imgTheme}>
           <img
             src={this.state.type ? signin_hide : login_display}
             alt='' />
@@ -56,6 +65,9 @@ interface IProps {
   placeholder?: string;
   length?: number;
   marginBottom?: boolean;
+  themeColor?: string;
+  imgSize?: string;
+  inputSize?: string;
   onChange?: any;
 }
 

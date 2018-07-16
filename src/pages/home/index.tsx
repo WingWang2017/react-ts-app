@@ -23,7 +23,7 @@ class Home extends React.Component<IProps, IState> {
   public state = {
     user: JSON.parse(localStorage.user)
   };
-	
+
   public $f7: any;
 
   @observable private dynamicList: any[] = [];

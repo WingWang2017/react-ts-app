@@ -12,12 +12,12 @@ import Styled from 'styled-components';
 export default class Setting extends React.Component<IProps, IState> {
 
   public state = {
-    user: localStorage.user && JSON.parse(localStorage.user)
   };
 
   public $f7: any;
 
   public render() {
+    const user = localStorage.user && JSON.parse(localStorage.user);
     return (
       <div className='navbar-fixed page' data-name='setting'>
         <Header
@@ -26,8 +26,8 @@ export default class Setting extends React.Component<IProps, IState> {
           right={null} />
         <div className='page-content'>
           <ul>
-            <LinkList link='/my/setting/bindMobile' title='手机号码' after={this.state.user.mobile} marginTop={true} />
-            <LinkList link='#' title='修改密码' />
+            <LinkList link='/my/setting/bindMobile' title='手机号码' after={user && user.mobile} marginTop={true} />
+            <LinkList link='/my/setting/changePassword' title='修改密码' />
             <LinkList link='#' title='隐私设置' border={false} marginBottom={true} />
             <LinkList link='#' title='消息通知' border={false} marginBottom={true} />
             <LinkList link='#' title='关于最青春' border={false} marginBottom={true} />
@@ -76,7 +76,7 @@ interface IProps {
 }
 
 interface IState {
-  user: any;
+  user?: any;
 }
 
 const StyledDiv = Styled.div`

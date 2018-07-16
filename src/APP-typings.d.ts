@@ -13,6 +13,7 @@ declare module 'framework7-react';
 declare module 'react-loadable';
 declare module 'react-transition-group';
 
+
 declare var module: NodeModule;
 
 declare var StatusBar: any;

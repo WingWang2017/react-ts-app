@@ -116,7 +116,7 @@ const routes: any[] = [
             },
           },
           {
-            // 绑定手机号
+            // 更改手机号
             path: '/changeMobile',
             async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
               const reactComponent = () => import('./pages/my/setting/change-mobile');
@@ -125,6 +125,16 @@ const routes: any[] = [
               });
             },
           },
+          {
+            // 修改密码
+            path: '/changePassword',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/setting/change-password');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          }
         ]
       },
     ]

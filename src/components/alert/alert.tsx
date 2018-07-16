@@ -41,7 +41,7 @@ class WpAlert extends React.Component<Iprops, {}> {
         <MaskLayer bgClolr='none' onClick={this.onClick} />
         <StyledDiv>
           {
-            this.props.icon && <img src={this.props.icon} className='icon' />
+            this.props.icon && <p className='icon'><img src={this.props.icon} /></p>
           }
           <p>{this.props.content}</p>
         </StyledDiv>
@@ -63,6 +63,7 @@ const StyledDiv = Styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-width: 2.4rem;
   padding: .48rem;
   border-radius: 6px;
   color: #fff;
@@ -70,17 +71,22 @@ const StyledDiv = Styled.div`
   background: rgba(0, 0, 0, .5);
   z-index: 999999;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
 
   .icon {
     margin: .15rem 0;
+    flex: 0 0 auto;
   }
-
+  .icon img {
+    display: block;
+    margin: 0 auto;
+  }
   p {
-    width: 100%;
     text-align: center;
+    line-height: 1.5;
   }
 `;
 

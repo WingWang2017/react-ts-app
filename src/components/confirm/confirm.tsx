@@ -123,8 +123,19 @@ const Conmfirm = observer((props: any) => (
 			props.content
 			&& <div className='wpConmfirmContent' dangerouslySetInnerHTML={{ __html: props.content }} />
 		}
-		<button className='wpConmfirmDelete' onClick={props.onConfirm} >{props.confirmText}</button>
-		<button className='wpConmfirmCancel' onClick={props.onCancel}>{props.cancelText}</button>
+
+		{
+			props.type === 'important' ?
+				<>
+					<button className='wpConmfirmDelete' onClick={props.onConfirm} >{props.confirmText}</button>
+					<button className='wpConmfirmCancel' onClick={props.onCancel}>{props.cancelText}</button>
+				</>
+				:
+				<>
+					<button className='wpConmfirmCancel' onClick={props.onCancel}>{props.cancelText}</button>
+					<button className='wpConmfirmDelete' onClick={props.onConfirm} >{props.confirmText}</button>
+				</>
+		}
 	</StyledDiv>
 ));
 

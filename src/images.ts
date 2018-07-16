@@ -65,6 +65,9 @@ import lianxiwomen from './assets/img/mine/wode_lianxiwomen.svg';
 // 绑定手机号
 import iphone from './assets/img/mine/iphone.png';
 
+// 选定
+import selected from './assets/img/selected.svg';
+
 
 export {
   login,
@@ -117,5 +120,6 @@ export {
   yijianfankui,
   lianxiwomen,
 
-  iphone
+  iphone,
+  selected
 };

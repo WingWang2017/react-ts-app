@@ -10,6 +10,7 @@ import Styled from 'styled-components';
 export default class ItemList extends React.Component<IProps, {}> {
 
   public static defaultProps = {
+    padding: '0 .32rem'
   };
 
   public state = {};
@@ -17,16 +18,14 @@ export default class ItemList extends React.Component<IProps, {}> {
   public $f7: any;
 
   public render() {
-    // const theme = {
-    //   arrow: this.props.arrow,
-    //   marginBottom: this.props.marginBottom,
-    //   marginTop: this.props.marginTop
-    // };
+    const theme = {
+      padding: this.props.padding
+    };
     return (
-      <StyledDiv className='border1px'>
-        <div className='left'>{this.props.left}</div>
-        <div className='center'>{this.props.center}</div>
-        <div className='right'>{this.props.right}</div>
+      <StyledDiv className='border1px' theme={theme}>
+        {this.props.left && <div className='left'>{this.props.left}</div>}
+        {this.props.center && <div className='center'>{this.props.center}</div>}
+        {this.props.right && <div className='right'>{this.props.right}</div>}
       </StyledDiv>
     );
   }
@@ -43,6 +42,7 @@ interface IProps {
   left?: any;
   center?: any;
   right?: any;
+  padding?: any;
 }
 
 // interface IState {
@@ -51,9 +51,9 @@ interface IProps {
 
 const StyledDiv = Styled.li`
   display: flex;
-  align-items: center;
+  align-items: stretch;
   min-height: .88rem;
-  padding: 0 .32rem;
+  padding: ${ props => props.theme.padding};
   background-color: #fff;
   font-size: .32rem;
   color: #999;
@@ -63,15 +63,21 @@ const StyledDiv = Styled.li`
   }
 
   .left {
+    display: flex;
+    align-items: center;
     flex: 1 0 1.6rem;
   }
   .center {
+    display: flex;
+    align-items: center;
     flex: 1 1 100%;
   }
   .center input {
     padding: 0;
   }
   .right {
+    display: flex;
+    align-items: center;
     flex: 1 0 auto;
   }
   .right button {

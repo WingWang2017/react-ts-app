@@ -1,12 +1,34 @@
 import * as React from 'react';
 
+import { observable, action, computed } from "mobx";
 import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, ItemList, InputText, SmsCode } from 'src/components';
+import { Header, ItemList, InputText, SmsCode, Alert, Confirm } from 'src/components';
 
+class Store {
+  @observable public state: IState = {
+    mobile: '',
+    code: ''
+  };
 
+  @action public setState = (obj: object) => {
+    const keys = Object.keys(obj);
+
+    keys.forEach((key) => {
+      if (typeof obj[key] !== 'undefined') {
+        this.state[key] = obj[key];
+      }
+    });
+  }
+
+  @computed public get isDisabled(): boolean {
+    const { mobile, code } = this.state;
+    return mobile.length > 0 && code.length === 6;
+  }
+
+}
 @observer
 export default class ChangeMobile extends React.Component<IProps, {}> {
 
@@ -16,6 +38,8 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
 
   public child?: any = null;
 
+  public store: any = new Store();
+
   public render() {
     return (
       <div className='navbar-fixed page' data-name='chengeMobile'>
@@ -23,7 +47,12 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
           back={true}
           center='更换手机号'
           right={
-            <a href='#' className='link'>确定</a>
+            <button
+              className='link'
+              disabled={!this.store.isDisabled}
+              onClick={this.onConfirm} >
+              确定
+            </button>
           } />
         <div className='page-content'>
           <StyledText>更换手机号后，下次登录可使用新手机号登录</StyledText>
@@ -33,7 +62,9 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
               <InputText
                 placeholder='请输入新的手机号码'
                 themeColor='black'
-                inputSize='.32rem' />
+                inputSize='.32rem'
+                onChange={this.onMoblie}
+                onClear={this.onClearMoblie} />
             } />
           <ItemList
             left='验证码'
@@ -43,12 +74,15 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
                 themeColor='black'
                 inputSize='.32rem'
                 length={6}
-                clearHidden={false} />
+                clearHidden={false}
+                onChange={this.onCode}
+                onClear={this.onClearCode} />
             }
             right={
               <SmsCode
-                phone='13588118103'
+                phone={this.store.state.mobile}
                 onRef={this.onRef}
+                onClick={this.onGetCode}
                 color='#F3AF4E' />
             } />
         </div>
@@ -60,8 +94,73 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
 
   }
 
+  // 验证码组件的实例
   public onRef = (ref: any): void => {
     this.child = ref;
+  }
+
+  // 从input组件里获取value, 并保存在store数据里的moblie
+  public onMoblie = (mobile: string): void => {
+    this.store.setState({ mobile });
+  }
+
+  // 从input组件里获取value, 并保存在store数据里的code
+  public onCode = (code: string): void => {
+    this.store.setState({ code });
+  }
+
+  // input组件里清除按钮，清除store里的数据moblie
+  public onClearMoblie = (): void => {
+    this.store.setState({ mobile: '' });
+  }
+
+  // input组件里清除按钮，清除store里的数据code
+  public onClearCode = (): void => {
+    this.store.setState({ code: '' });
+  }
+
+  // 手机号校验成功后，发送验证码
+  public onGetCode = (): void => {
+    const { mobile } = this.store.state;
+
+    if (!mobile) {
+      return Alert.default({
+        content: `请输入手机号！`
+      });
+    }
+
+    if (!(/^1[34578]\d{9}$/.test(mobile))) {
+      return Alert.default({
+        content: '请输入正确的手机号!'
+      });
+    }
+
+    this.child.onStartCountdown();
+    Alert.default({
+      content: '验证码发送成功'
+    });
+  }
+
+  public onConfirm = (): void => {
+    const { mobile } = JSON.parse(localStorage.user);
+    const { mobile: newMobile } = this.store.state;
+    Confirm.default({
+      content: `确定将学号${mobile}与<br />手机号${newMobile}绑定？`,
+      onConfirm: () => {
+        Alert.success({
+          content: '手机更换成功',
+          afterHide: () => {
+            const user = JSON.parse(localStorage.user);
+            user.mobile = newMobile;
+            localStorage.user = JSON.stringify(user);
+            this.props.f7router.back('/my/setting', {
+              force: true,
+              ignoreCache: true
+            });
+          }
+        });
+      }
+    });
   }
 
 }
@@ -72,9 +171,10 @@ interface IProps {
   forumState: any;
 }
 
-// interface IState {
-//   user: any;
-// }
+interface IState {
+  mobile: string;
+  code: string;
+}
 
 const StyledText = Styled.p`
   margin: .16rem 0;

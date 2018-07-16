@@ -45,6 +45,9 @@ import LinkList from './link-list';
 // 列表组件
 import ItemList from './item-list';
 
+// radio组件
+import Radio from './radio';
+
 export {
   InputText,
   InputPassword,
@@ -61,5 +64,6 @@ export {
   Share,
   ForumList,
   LinkList,
-  ItemList
+  ItemList,
+  Radio
 };

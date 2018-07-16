@@ -16,6 +16,7 @@ export default class BindMobile extends React.Component<IProps, {}> {
   public $f7: any;
 
   public render() {
+    const user = localStorage.user && JSON.parse(localStorage.user);
     return (
       <div className='navbar-fixed page' data-name='bindMobile'>
         <Header
@@ -25,7 +26,7 @@ export default class BindMobile extends React.Component<IProps, {}> {
         <div className='page-content'>
           <StyledImg src={iphone} alt='' />
           <StyledText>已绑定手机号</StyledText>
-          <StyledMobile>17812340810</StyledMobile>
+          <StyledMobile>{user && user.mobile}</StyledMobile>
           <StyledDiv>
             <Button
               link='/my/setting/changeMobile'

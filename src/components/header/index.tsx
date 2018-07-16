@@ -24,13 +24,13 @@ class Header extends React.Component<IProps, {}> {
   public render() {
     return (
       <div className='navbar'>
-        <div className='navbar-inner header'>
+        <div className='navbar-inner header sliding'>
           <Left
             left={this.props.left}
             back={this.props.back}
             onBack={this.onBack} />
-          <div className='title'>{this.props.center}</div>
-          <div className='right'>{this.props.right}</div>
+          <div className='title sliding'>{this.props.center}</div>
+          <div className='right sliding'>{this.props.right}</div>
         </div>
       </div>
     );
@@ -55,7 +55,7 @@ const width = { width: '.22rem' };
 
 const Left = (props: any) => {
   return (
-    <div className='left'>
+    <div className='left sliding'>
       {
         props.back ?
           <a className={`link back`}

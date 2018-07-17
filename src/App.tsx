@@ -27,7 +27,7 @@ const f7Params = {
   // App id
   id: 'com.mostyouth.hdzz',
   // App版本
-  version: '1.0.0',
+  version: localStorage.version,
   // App应用主题
   theme: 'ios',
   params: {
@@ -59,11 +59,13 @@ class MyApp extends React.Component<{}, IState> {
 
   public componentDidMount(): void {
 
-
+    fetchAjax.getDevice().then((res: any) => {
+      if (!res.errcode && res.data) {
+        localStorage.device_sn = res.data.device_sn;
+      }
+    });
 
     this.$f7ready((f7: any): void => {
-
-      f7.router.navigate('/my');
 
       if (localStorage.user) {
 
@@ -89,12 +91,10 @@ class MyApp extends React.Component<{}, IState> {
         f7.router.navigate('/login');
       }
 
-    });
+      setTimeout(() => {
+        f7.router.navigate('/my/setting');
+      }, 1000);
 
-    fetchAjax.getDevice().then((res: any) => {
-      if (!res.errcode && res.data) {
-        localStorage.device_sn = res.data.device_sn;
-      }
     });
 
     deviceready(() => {
@@ -107,9 +107,8 @@ class MyApp extends React.Component<{}, IState> {
 
       // 获取app的版本号
       cordova.getAppVersion.getVersionNumber((version: any) => {
-        console.log(version);
+        localStorage.version = version;
       });
-
 
       // 主页面上安卓点击实体键后退直接退出app;
       document.addEventListener('backbutton', () => {

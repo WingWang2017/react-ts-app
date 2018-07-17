@@ -90,7 +90,7 @@ function entitiestoUtf16(str: string) {
 }
 
 // deviceready  设备加载完成后的回调
-const deviceready = (fun: any) => {
+const deviceready = (fun: any): void => {
   document.addEventListener('deviceready', () => {
     fun();
   }, false);

@@ -38,10 +38,12 @@ import xiaoquanSelected from './assets/img/footer/xiaoquan_selected.svg';
 import yunketangNormal from './assets/img/footer/yunketang_normal.svg';
 import yunketangSelected from './assets/img/footer/yunketang_selected.svg';
 import fabu from './assets/img/footer/fabu.svg';
+import fabu_bg from './assets/img/footer/fabu-bg.svg';
 import faxianNormal from './assets/img/footer/faxian_normal.svg';
 import faxianSelected from './assets/img/footer/faxian_selected.svg';
 import wodeNormal from './assets/img/footer/wode_normal.svg';
 import wodeSelected from './assets/img/footer/wode_selected.svg';
+
 
 import success from './assets/img/success.svg';
 
@@ -67,6 +69,13 @@ import iphone from './assets/img/mine/iphone.png';
 
 // 选定
 import selected from './assets/img/selected.svg';
+
+// 搜索图标
+import search_icon from './assets/img/search/search.svg';
+
+// 黑名单
+import balcklist_icon from './assets/img/mine/balcklist.png';
+
 
 
 export {
@@ -99,6 +108,7 @@ export {
   yunketangNormal,
   yunketangSelected,
   fabu,
+  fabu_bg,
   faxianNormal,
   faxianSelected,
   wodeNormal,
@@ -121,5 +131,7 @@ export {
   lianxiwomen,
 
   iphone,
-  selected
+  selected,
+  search_icon,
+  balcklist_icon
 };

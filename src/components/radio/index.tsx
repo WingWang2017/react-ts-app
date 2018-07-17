@@ -37,9 +37,7 @@ export default class Radio extends React.Component<IProps, {}> {
 
   public onChange = (e: any): void => {
     console.log(e.target.checked);
-    if (this.props.onChange) {
-      this.props.onChange(e.target.checked);
-    }
+    this.props.onChange!(e.target.checked);
   }
 
 }

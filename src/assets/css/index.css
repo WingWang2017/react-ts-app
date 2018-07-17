@@ -98,7 +98,6 @@ select option {
 
 .ios .navbar .title {
   font-size: .36rem;
-  font-weight: inherit !important;
 }
 
 
@@ -164,6 +163,32 @@ select option {
   width: 1px;
   background-color: #d8d8d8;
   transform: scaleX(.5) translateX(50%);
+}
+
+.boy,
+.girl {
+  background: no-repeat right center / .4rem .4rem;
+  padding-right: .5rem;
+  display: inline-block;
+}
+.boy {
+  background-image: url("../img/boy.svg");
+}
+.girl {
+  background-image: url("../img/girl.svg");
+}
+
+.name {
+  min-height: .48rem;
+  font-size: .32rem;
+  color: #333;
+}
+
+.class-name {
+  min-height: .48rem;
+  line-height: .48rem;
+  font-size: .28rem;
+  color: #999;
 }
 
 

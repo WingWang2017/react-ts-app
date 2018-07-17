@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 
 // import Styled from 'styled-components';
 
-import { Header, ItemList, InputText, Alert, Radio } from 'src/components';
+import { Header, ItemList, InputText, Alert } from 'src/components';
 
 class Store {
   @observable public state: IState = {
@@ -56,7 +56,7 @@ export default class ChangePassword extends React.Component<IProps, {}> {
           } />
         <div className='page-content'>
           <ItemList
-            left='新手机号'
+            left='手机号'
             center={user && user.mobile} />
           <ItemList
             left='旧密码'
@@ -65,7 +65,7 @@ export default class ChangePassword extends React.Component<IProps, {}> {
                 type='password'
                 placeholder='请输入密码'
                 themeColor='black'
-                inputSize='.32rem'
+                inputSize='.28rem'
                 length={16}
                 clearHidden={false}
                 onChange={this.onPassword('oldPassword')}
@@ -78,38 +78,26 @@ export default class ChangePassword extends React.Component<IProps, {}> {
                 type='password'
                 placeholder='6~16个字符，字母/数字/符号中至少两种'
                 themeColor='black'
-                inputSize='.32rem'
+                inputSize='.28rem'
                 length={16}
                 clearHidden={false}
                 onChange={this.onPassword('newPassword')}
                 onClear={this.onCleaPassword('newPassword')} />
             } />
           <ItemList
+            border={false}
             left='确认密码'
             center={
               <InputText
                 type='password'
                 placeholder='6~16个字符，字母/数字/符号中至少两种'
                 themeColor='black'
-                inputSize='.32rem'
+                inputSize='.28rem'
                 length={16}
                 clearHidden={false}
                 onChange={this.onPassword('confirmPassword')}
                 onClear={this.onCleaPassword('confirmPassword')} />
             } />
-
-          <ul className='list'>
-            <ItemList
-              padding='0'
-              center={
-                <Radio name='comm-radio' title='所有人' checked={true} onChange={this.onChange} />
-              } />
-            <ItemList
-              padding='0'
-              center={
-                <Radio name='comm-radio' title='我关注的人' onChange={this.onChange} />
-              } />
-          </ul>
         </div>
       </div>
     );
@@ -140,10 +128,6 @@ export default class ChangePassword extends React.Component<IProps, {}> {
         this.props.f7router.back();
       }
     });
-  }
-
-  public onChange = (): void => {
-
   }
 
 }

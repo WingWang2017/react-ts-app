@@ -29,7 +29,7 @@ export default class BindMobile extends React.Component<IProps, {}> {
           <StyledMobile>{user && user.mobile}</StyledMobile>
           <StyledDiv>
             <Button
-              link='/my/setting/changeMobile'
+              link='/my/setting/bindMobile/changeMobile'
               content='更换手机号'
               height='.96rem' />
           </StyledDiv>

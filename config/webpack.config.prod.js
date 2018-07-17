@@ -15,6 +15,8 @@ const getClientEnvironment = require('./env');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
 const publicPath = paths.servedPath;
@@ -368,6 +370,8 @@ module.exports = {
       tsconfig: paths.appTsProdConfig,
       tslint: paths.appTsLint,
     }),
+
+    new BundleAnalyzerPlugin(),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
@@ -378,4 +382,12 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty',
   },
+  externals: {
+    'axios': 'axios',
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'mobx': 'mobx',
+    'mobx-react': 'mobxReact',
+    'styled-components': 'styled'
+  }
 };

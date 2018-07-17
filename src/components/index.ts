@@ -1,5 +1,5 @@
 // 输入框 和 密码输入框
-import { InputText, InputPassword } from './input';
+import { InputText, InputPassword, InputSearch } from './input';
 
 // 按钮
 import Button from './button';
@@ -51,6 +51,7 @@ import Radio from './radio';
 export {
   InputText,
   InputPassword,
+  InputSearch,
   Button,
   SmsCode,
   Alert,

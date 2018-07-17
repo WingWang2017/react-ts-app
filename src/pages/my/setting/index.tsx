@@ -28,9 +28,9 @@ export default class Setting extends React.Component<IProps, IState> {
           <ul>
             <LinkList link='/my/setting/bindMobile' title='手机号码' after={user && user.mobile} marginTop={true} />
             <LinkList link='/my/setting/changePassword' title='修改密码' />
-            <LinkList link='#' title='隐私设置' border={false} marginBottom={true} />
-            <LinkList link='#' title='消息通知' border={false} marginBottom={true} />
-            <LinkList link='#' title='关于最青春' border={false} marginBottom={true} />
+            <LinkList link='/my/setting/privacy' title='隐私设置' border={false} marginBottom={true} />
+            <LinkList link='/my/setting/notification' title='消息通知' border={false} marginBottom={true} />
+            <LinkList link='/my/setting/about' title='关于最青春' border={false} marginBottom={true} />
             <LinkList link='#' title='清除缓存' after='10.21MB' arrow={false} border={false} />
           </ul>
           <StyledDiv>

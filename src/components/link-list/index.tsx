@@ -17,7 +17,8 @@ export default class LinkList extends React.Component<IProps, {}> {
     arrow: true,
     border: true,
     marginTop: false,
-    marginBottom: false
+    marginBottom: false,
+    imgSize: '.46rem'
   };
 
   public state = {};
@@ -28,15 +29,16 @@ export default class LinkList extends React.Component<IProps, {}> {
     const theme = {
       arrow: this.props.arrow,
       marginBottom: this.props.marginBottom,
-      marginTop: this.props.marginTop
+      marginTop: this.props.marginTop,
+      imgSize: this.props.imgSize,
+      padding: this.props.padding
     };
     return (
       <StyledMian className={this.props.border ? 'border1px' : ''} theme={theme}>
-        <a href={this.props.link} title={this.props.title} className='list-link'>
-
+        <a href={this.props.link} className='list-link'>
           {this.props.icon &&
             <div className='icon'>
-              <img src={this.props.icon} width='.46rem' />
+              <img src={this.props.icon} />
             </div>
           }
           <div className='list-title'>{this.props.title}</div>
@@ -56,13 +58,15 @@ interface IProps {
   f7router?: any;
   f7route?: any;
   link?: string;
-  title?: string;
+  title?: any;
   after?: string;
   icon?: string;
   arrow?: boolean;
   border?: boolean;
   marginTop?: boolean;
   marginBottom?: boolean;
+  padding?: string;
+  imgSize?: string;
 }
 
 // interface IState {
@@ -86,9 +90,9 @@ const StyledMian = Styled.li`
   .list-link {
     display: flex;
     align-items: center;
-    height: .88rem;
+    min-height: .88rem;
     width: 100%;
-    padding: 0 .6rem 0 .34rem;
+    padding: ${props => props.theme.padding || '0 .6rem 0 .34rem'};
     box-sizing: border-box;
     background-size: .18rem .3rem;
     background-repeat: no-repeat;
@@ -103,6 +107,13 @@ const StyledMian = Styled.li`
     align-items: center;
     height: 100%;
     flex: 0 1 .82rem;
+    padding-right: .16rem;
+    box-sizing: border-box;
+  }
+  .icon img {
+    width: ${props => props.theme.imgSize};
+    height: auto;
+    border-radius: 4px;
   }
   .list-title {
     min-width: 0;

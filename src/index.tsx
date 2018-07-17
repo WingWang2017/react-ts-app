@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+
+import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 
 import Framework7 from 'framework7/framework7.esm.bundle';
@@ -18,6 +20,8 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 Framework7.use(Framework7React);
+
+configure({ isolateGlobalState: true });
 
 ReactDOM.render(
   <Provider {...stores}>

@@ -10,7 +10,9 @@ import Styled from 'styled-components';
 export default class ItemList extends React.Component<IProps, {}> {
 
   public static defaultProps = {
-    padding: '0 .32rem'
+    padding: '0 .32rem',
+    darkColor: false,
+    border: true
   };
 
   public state = {};
@@ -19,10 +21,14 @@ export default class ItemList extends React.Component<IProps, {}> {
 
   public render() {
     const theme = {
-      padding: this.props.padding
+      darkColor: this.props.darkColor,
+      padding: this.props.padding,
+      marginTop: this.props.marginTop,
+      marginBottom: this.props.marginBottom,
+      justifyContent: this.props.justifyContent
     };
     return (
-      <StyledDiv className='border1px' theme={theme}>
+      <StyledDiv className={this.props.border ? 'border1px' : ''} theme={theme}>
         {this.props.left && <div className='left'>{this.props.left}</div>}
         {this.props.center && <div className='center'>{this.props.center}</div>}
         {this.props.right && <div className='right'>{this.props.right}</div>}
@@ -42,7 +48,12 @@ interface IProps {
   left?: any;
   center?: any;
   right?: any;
+  darkColor?: boolean;
+  border?: boolean;
   padding?: any;
+  marginTop?: string;
+  marginBottom?: string;
+  justifyContent?: string;
 }
 
 // interface IState {
@@ -52,11 +63,14 @@ interface IProps {
 const StyledDiv = Styled.li`
   display: flex;
   align-items: stretch;
+  justify-content: ${ props => props.theme.justifyContent || 'flex-start'};
   min-height: .88rem;
   padding: ${ props => props.theme.padding};
+  margin-top: ${ props => props.theme.marginTop || '0'};
+  margin-bottom: ${ props => props.theme.marginBottom || '0'};
   background-color: #fff;
   font-size: .32rem;
-  color: #999;
+  color: ${props => props.theme.darkColor ? '#333' : '#999'};
 
   &::before {
     left: .32rem;

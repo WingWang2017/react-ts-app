@@ -114,16 +114,18 @@ const routes: any[] = [
                 resolve({ component: rc.default });
               });
             },
-          },
-          {
-            // 更改手机号
-            path: '/changeMobile',
-            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
-              const reactComponent = () => import('./pages/my/setting/change-mobile');
-              reactComponent().then((rc) => {
-                resolve({ component: rc.default });
-              });
-            },
+            routes: [
+              {
+                // 更改手机号
+                path: '/changeMobile',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  const reactComponent = () => import('./pages/my/setting/change-mobile');
+                  reactComponent().then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                }
+              },
+            ]
           },
           {
             // 修改密码
@@ -133,7 +135,50 @@ const routes: any[] = [
               reactComponent().then((rc) => {
                 resolve({ component: rc.default });
               });
+            }
+          },
+          {
+            // 隐私设置
+            path: '/privacy',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/setting/privacy');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
             },
+            routes: [
+              {
+                // 黑名单
+                path: '/blacklist',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  const reactComponent = () => import('./pages/my/setting/blacklist');
+                  reactComponent().then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                }
+              }
+            ]
+          },
+          {
+            // 消息通知
+            path: '/notification',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/setting/notification');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            }
+          }
+          ,
+          {
+            // 关于最青春
+            path: '/about',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/setting/about');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            }
           }
         ]
       },

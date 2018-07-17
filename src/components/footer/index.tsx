@@ -10,6 +10,7 @@ import {
   yunketangNormal,
   yunketangSelected,
   fabu,
+  fabu_bg,
   faxianNormal,
   faxianSelected,
   wodeNormal,
@@ -54,7 +55,7 @@ export default class Footer extends React.Component<IProps, {}> {
               <StyledA
                 key={index}
                 href={item.link}
-                className={`link`}
+                className={`${item.link ? 'link' : ''}`}
                 theme={theme}
                 onClick={item.handle ? item.handle : this.handleClick} >
                 {item.title}
@@ -110,7 +111,18 @@ const StyledDiv = Styled.div`
   justify-content: center;
   height: .98rem;
   background: #fff;
-  box-shadow: 0 -2px 2px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 8px rgba(51,51,51,.1);
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -0.34rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    transform: translateX(-50%);
+    z-index: -1;
+    background: url("${fabu_bg}") no-repeat 0 0 / 100% 100%;
+  }
 `;
 
 const StyledA = Styled.a`

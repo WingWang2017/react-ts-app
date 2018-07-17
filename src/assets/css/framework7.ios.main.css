@@ -444,8 +444,8 @@ html.with-statusbar.device-iphone-x .framework7-root {
   text-overflow: ellipsis;
   white-space: nowrap;
   flex-shrink: 10;
-  font-weight: 500;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 .navbar .subtitle {
   display: block;
@@ -516,10 +516,10 @@ html.with-statusbar.device-iphone-x .framework7-root {
 .ios .navbar .right a + a {
   margin-left: 15px;
 }
-.ios .navbar b,
+/* .ios .navbar b,
 .ios .navbar .title {
   font-weight: 600;
-}
+} */
 .ios .navbar .left {
   margin-right: 10px;
 }
@@ -552,6 +552,7 @@ html.with-statusbar.device-iphone-x .framework7-root {
 .ios .navbar-inner {
   justify-content: space-between;
   padding: 0 8px;
+  align-items: stretch;
 }
 /* .ios .navbar ~ *:not(.no-navbar) .page-content,
 .ios .navbar ~ .page-content {
@@ -3382,7 +3383,7 @@ label.item-radio.disabled,
   height: 32px;
 }
 .ios .toggle input[type="checkbox"]:checked + .toggle-icon {
-  background: #4cd964;
+  background: #81D8D0;
 }
 .ios .toggle input[type="checkbox"]:checked + .toggle-icon:before {
   transform: scale(0);
@@ -3426,15 +3427,6 @@ label.item-radio.disabled,
 .ios .toggle-active-state input[type="checkbox"]:checked + .toggle-icon:after {
   width: 35px;
   transform: translateX(13px);
-}
-.ios .theme-dark .toggle-icon {
-  background-color: #fff;
-}
-.ios .theme-dark .toggle-icon:before {
-  background-color: #1c1c1d;
-}
-.ios .toggle.color-red input[type="checkbox"]:checked + .toggle-icon {
-  background-color: #ff3b30;
 }
 
 /* === Range Slider === */

@@ -68,6 +68,7 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
             } />
           <ItemList
             left='验证码'
+            border={false}
             center={
               <InputText
                 placeholder='请输入验证码'

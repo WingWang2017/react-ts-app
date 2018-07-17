@@ -31,7 +31,6 @@ export default class InitialPage extends React.Component<IProps, {}> {
 interface IProps {
   f7router?: any;
   f7route?: any;
-  forumState: any;
 }
 
 // interface IState {

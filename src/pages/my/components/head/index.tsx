@@ -6,31 +6,33 @@ import Styled from 'styled-components';
 
 import { Boy, Girl, boy_icon, girl_icon } from 'src/images';
 
-
 @observer
-export default class Head extends React.Component<IProps, {}> {
+export default class Head extends React.Component<IProps, IState> {
 
   public static defalutProps = {
     sex: 0
   };
 
-  public state = {};
+  public state = {
+    user: localStorage.user && JSON.parse(localStorage.user)
+  };
 
   public $f7: any;
 
   public render() {
+    const user = localStorage.user && JSON.parse(localStorage.user);
     const theme = {
-      sex: this.props.sex === 1 ? boy_icon : girl_icon
+      sex: user && user.sex === 1 ? boy_icon : girl_icon
     };
     return (
       <StyledDiv>
         <StyledHead theme={theme}>
           <dt>
-            <img src={this.props.head || this.props.sex === 1 ? Boy : Girl} alt='' />
+            <img src={this.props.head || user && user.sex === 1 ? Boy : Girl} alt='' />
           </dt>
           <dd>
-            <p className='name'>朱雪连</p>
-            <p className='number'>32252</p>
+            <p className='name'>{user && user.realname || '自己'}</p>
+            <p className='number'>{user && user.study_sn || '学号'}</p>
           </dd>
           <dd className='class'>数字媒体1402班</dd>
         </StyledHead>
@@ -56,9 +58,9 @@ interface IProps {
   sex?: number;
 }
 
-// interface IState {
-//   user: any;
-// }
+interface IState {
+  user: any;
+}
 
 const StyledDiv = Styled.div`
   padding: .34rem .32rem;

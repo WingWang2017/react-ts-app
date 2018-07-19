@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // import { observable, action } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 
 // import Styled from 'styled-components';
 
@@ -25,6 +25,7 @@ import {
   lianxiwomen
 } from 'src/images';
 
+@inject('userState')
 @observer
 export default class My extends React.Component<IProps, IState> {
 
@@ -48,7 +49,7 @@ export default class My extends React.Component<IProps, IState> {
         <div className='page-content'>
           <Head />
           <ul>
-            <LinkList link='#' title='消息中心' icon={xiaoxizhongxin} border={false} marginTop={true} marginBottom={true} />
+            <LinkList link='/message' title='消息中心' icon={xiaoxizhongxin} border={false} marginTop={true} marginBottom={true} />
             <LinkList link='#' title='课表' icon={kebiao} />
             <LinkList link='#' title='成绩' icon={chengji} />
             <LinkList link='#' title='校历' icon={xiaoli} />
@@ -70,7 +71,7 @@ export default class My extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-
+    console.log(this.props.userState.user);
   }
 
 }
@@ -78,7 +79,7 @@ export default class My extends React.Component<IProps, IState> {
 interface IProps {
   f7router?: any;
   f7route?: any;
-  forumState: any;
+  userState: any;
 }
 
 interface IState {

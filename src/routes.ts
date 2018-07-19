@@ -1,5 +1,7 @@
 import InitialPage from './pages/initialPage';
 
+// import Notice from './pages/message-center/notice';
+
 
 const routes: any[] = [
   {
@@ -183,6 +185,16 @@ const routes: any[] = [
         ]
       },
     ]
+  },
+  {
+    // 消息中心
+    path: '/message',
+    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+      const reactComponent = () => import('./pages/message-center');
+      reactComponent().then((rc) => {
+        resolve({ component: rc.default });
+      });
+    },
   },
 ];
 

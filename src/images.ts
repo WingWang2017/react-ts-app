@@ -76,7 +76,7 @@ import search_icon from './assets/img/search/search.svg';
 // 黑名单
 import balcklist_icon from './assets/img/mine/balcklist.png';
 
-
+import logo_img from './assets/img/mine/logo_80.png';
 
 export {
   login,
@@ -133,5 +133,6 @@ export {
   iphone,
   selected,
   search_icon,
-  balcklist_icon
+  balcklist_icon,
+  logo_img
 };

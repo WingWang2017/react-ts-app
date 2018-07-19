@@ -92,7 +92,7 @@ const StyledMian = Styled.li`
     align-items: center;
     min-height: .88rem;
     width: 100%;
-    padding: ${props => props.theme.padding || '0 .6rem 0 .34rem'};
+    padding: ${props => props.theme.padding || props.theme.arrow ? '0 .6rem 0 .34rem' : '0 .34rem'};
     box-sizing: border-box;
     background-size: .18rem .3rem;
     background-repeat: no-repeat;

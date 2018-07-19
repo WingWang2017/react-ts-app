@@ -320,9 +320,30 @@ select option {
   justify-content: center;
 }
 
+.navbar .tab-link {
+  width: 1.52rem;
+  height: 100%;
+}
+
+.active-line {
+  position: absolute;
+  left: 0;
+  bottom: .08rem;
+  width: 1.52rem;
+  height: .06rem;
+  padding: 0 .38rem;
+  box-sizing: border-box;
+  border-radius: 50px;
+  background: url("../img/line.svg") no-repeat center center;
+  background-size: .72rem .06rem;
+  transition: transform .6s ease;
+}
+
+.tab-link-active {
+  position: relative;
+}
 
 /* 动画 */
-
 .fade {
   transition: all .2s ease;
 }

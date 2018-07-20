@@ -26,7 +26,7 @@ export default class Setting extends React.Component<IProps, IState> {
           right={null} />
         <div className='page-content'>
           <ul>
-            <LinkList link='/my/setting/bindMobile' title='手机号码' after={user && user.mobile} marginTop={true} />
+            <LinkList link='/my/setting/bindMobile' title='手机号码' after={user && user.mobile} />
             <LinkList link='/my/setting/changePassword' title='修改密码' />
             <LinkList link='/my/setting/privacy' title='隐私设置' border={false} marginBottom={true} />
             <LinkList link='/my/setting/notification' title='消息通知' border={false} marginBottom={true} />

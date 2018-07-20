@@ -4107,7 +4107,7 @@ label.item-radio.disabled,
   transition-timing-function: ease-out;
 }
 .ios .picker-columns {
-  font-size: 24px;
+  font-size: .36rem;
 }
 .ios .picker-column-divider {
   color: #000;
@@ -4130,7 +4130,7 @@ label.item-radio.disabled,
 .ios .picker-popover .toolbar:after {
   content: '';
   position: absolute;
-  background-color: #c4c4c4;
+  background-color: #fff;
   display: block;
   z-index: 15;
   top: auto;
@@ -4200,6 +4200,27 @@ label.item-radio.disabled,
 .ios .theme-dark .picker-center-highlight:after {
   background-color: #282829;
 }
+.ios .picker .toolbar-inner {
+  padding: 0;
+}
+.picker .left .link,
+.picker .right .link {
+  padding: 0 .4rem;
+  font-size: .3rem;
+}
+
+.picker .left .link {
+  color: #888;
+}
+.picker .center {
+  font-size: .36rem;
+  color: #353535;
+}
+.picker .right .link {
+  color: #F3AF4E;
+}
+
+
 /* === Infinite === */
 .infinite-scroll-preloader {
   margin-left: auto;

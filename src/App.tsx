@@ -100,11 +100,13 @@ class MyApp extends React.Component<{}, IState> {
 
     deviceready(() => {
 
-      alert(`设备型号：${device.model}`);
-      alert(`操作系统名称：${device.platform}`);
-      alert(`设备的通用唯一标识符（UUID）：${device.uuid}`);
-      alert(`操作系统版本：${device.version}`);
-      alert(`设备硬件序列号：${device.serial}`);
+      navigator.splashscreen.hide();
+
+      // alert(`设备型号：${device.model}`);
+      // alert(`操作系统名称：${device.platform}`);
+      // alert(`设备的通用唯一标识符（UUID）：${device.uuid}`);
+      // alert(`操作系统版本：${device.version}`);
+      // alert(`设备硬件序列号：${device.serial}`);
 
       // 获取app的版本号
       cordova.getAppVersion.getVersionNumber((version: any) => {
@@ -120,7 +122,7 @@ class MyApp extends React.Component<{}, IState> {
         // } else {
         //   f7App.f7router.back();
         // }
-
+        alert(page);
         switch (page) {
           case '/home':
           case '/cloudClassroom':
@@ -129,7 +131,7 @@ class MyApp extends React.Component<{}, IState> {
           case '/login':
           case '/dindInfo':
           case '/':
-            navigator['app'].exitApp();
+            navigator.app.exitApp();
             break;
           default:
             f7App.f7router.back();

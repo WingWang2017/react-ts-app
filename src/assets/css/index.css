@@ -110,10 +110,10 @@ select option {
 /* .header .left .link {
 } */
 
-.header .right .link {
+.ios .header .right .link {
   display: flex;
   justify-content: flex-end;
-  font-size: .3rem;
+  font-size: .32rem;
 }
 
 .toolbar-fixed .page-content {
@@ -138,7 +138,7 @@ select option {
   position: relative;
 }
 
-.border1px::before,
+.border1px:not(:last-child)::before,
 .not-border .border1px:not(:last-child)::before {
   position: absolute;
   right: 0;
@@ -147,7 +147,7 @@ select option {
   height: 1px;
   content: "";
   transform: scaleY(.5) translateY(50%);
-  background-color: #ebebeb;
+  background-color: #efefef;
 }
 
 .border-right {
@@ -342,6 +342,141 @@ select option {
 .tab-link-active {
   position: relative;
 }
+
+/* 课表 */
+.picker-device {
+  background: url("../img/mine/img/wode_schedule_down_arrow.svg") no-repeat right center / .28rem .16rem;
+  padding-right: .38rem;
+}
+.curriculum {
+  width: 100%;
+  height: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.curriculum th {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 .1rem;
+  background: #fff;
+  font-weight: inherit;
+}
+.curriculum th::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  transform: scaleY(.5);
+  background: #dcdcdc;
+}
+.curriculum td {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 .1rem;
+  color: #fff;
+  font-size: .18rem;
+}
+.curriculum td::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  transform: scaleY(.5);
+  background: #dcdcdc;
+}
+.curriculum .title {
+  height: .96rem;
+  font-size: .26rem;
+}
+.curriculum .title:not(:first-child) {
+  width: calc(100%  / 7);
+}
+.curriculum .title:first-child {
+  min-width: .78rem;
+}
+.curriculum time {
+  display: block;
+  margin-top: .05rem;
+  color: #888;
+  font-size: .2rem;
+}
+.curriculum .session {
+  width: .78rem;
+  height: .74rem;
+  font-size: .28rem;
+  line-height: .74rem;
+}
+.curriculum .background1 {
+  background-color: #01b8e7;
+}
+.curriculum .background2 {
+  background-color: #cb5abe;
+}
+.curriculum .background3 {
+  background-color: #01b8e7;
+}
+.curriculum .background4 {
+  background-color: #ff9a00;
+}
+.curriculum .background5 {
+  background-color: #ff7281;
+}
+.curriculum .background6 {
+  background-color: #6388df;
+}
+
+.table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: .16rem .32rem .24rem;
+  background-color: #fff;
+}
+.table th,
+.table td {
+  border: 1px solid #999;
+}
+
+.table th {
+  height: .56rem;
+  font-size: .24rem;
+  font-weight: 500;
+  color: #999;
+}
+
+.table td {
+  padding: .24rem .1rem;
+  height: .88rem;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: .24rem;
+  color: #333;
+}
+
+.table th:first-child {
+  width: .6rem;
+}
+.table th:nth-child(2) {
+  width: 1.2rem;
+}
+.table th:nth-child(3) {
+  width: 3rem;
+}
+.table th:nth-child(4) {
+  width: .96rem;
+}
+.table th:last-child {
+  width: 1.2rem;
+}
+
+/* */
+.padding16 {
+  padding: .16rem 0;
+}
+
 
 /* 动画 */
 .fade {

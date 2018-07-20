@@ -18,7 +18,8 @@ export default class LinkList extends React.Component<IProps, {}> {
     border: true,
     marginTop: false,
     marginBottom: false,
-    imgSize: '.46rem'
+    imgSize: '.46rem',
+    onClick: () => { }
   };
 
   public state = {};
@@ -35,7 +36,7 @@ export default class LinkList extends React.Component<IProps, {}> {
     };
     return (
       <StyledMian className={this.props.border ? 'border1px' : ''} theme={theme}>
-        <a href={this.props.link} className='list-link'>
+        <a href={this.props.link} className='list-link' onClick={this.onClick}>
           {this.props.icon &&
             <div className='icon'>
               <img src={this.props.icon} />
@@ -50,6 +51,10 @@ export default class LinkList extends React.Component<IProps, {}> {
 
   public componentDidMount() {
 
+  }
+
+  public onClick = (): void => {
+    this.props.onClick!();
   }
 
 }
@@ -67,6 +72,7 @@ interface IProps {
   marginBottom?: boolean;
   padding?: string;
   imgSize?: string;
+  onClick?: () => void;
 }
 
 // interface IState {

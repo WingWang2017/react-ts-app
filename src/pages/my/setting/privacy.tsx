@@ -21,7 +21,7 @@ export default class Privacy extends React.Component<IProps, {}> {
           center='隐私设置'
           right={null} />
         <div className='page-content'>
-          <LinkList link='/my/setting/privacy/blacklist' title='黑名单' border={false} marginTop={true} />
+          <LinkList link='/my/setting/privacy/blacklist' title='黑名单' border={false} />
           <StyledText>哪些人可以评论我的校友圈</StyledText>
           <ul className='list'>
             <ItemList

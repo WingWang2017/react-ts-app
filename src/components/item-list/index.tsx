@@ -26,7 +26,8 @@ export default class ItemList extends React.Component<IProps, {}> {
       padding: this.props.padding,
       marginTop: this.props.marginTop,
       marginBottom: this.props.marginBottom,
-      justifyContent: this.props.justifyContent
+      justifyContent: this.props.justifyContent,
+      leftWidth: this.props.leftWidth
     };
     return (
       <StyledDiv className={this.props.border ? 'border1px' : ''} theme={theme}>
@@ -58,6 +59,7 @@ interface IProps {
   marginTop?: string;
   marginBottom?: string;
   justifyContent?: string;
+  leftWidth?: string;
 }
 
 // interface IState {
@@ -83,7 +85,8 @@ const StyledDiv = Styled.li`
   .left {
     display: flex;
     align-items: center;
-    flex: 1 0 1.6rem;
+    flex: 1 0 ${props => props.theme.leftWidth || '1.6rem'};
+    color: #999;
   }
   .center {
     display: flex;

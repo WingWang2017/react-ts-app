@@ -67,10 +67,10 @@
   width: 100%;
 }
 .ios .sheet-modal {
-  background: #cfd5da;
+  background: #fff;
 }
 .ios .sheet-modal .toolbar {
-  background: #f7f7f8;
+  background: #fff;
 }
 .ios .sheet-modal .toolbar + .sheet-modal-inner {
   height: calc(100% - 44px);
@@ -81,12 +81,26 @@
 .ios .sheet-modal .toolbar:before {
   content: '';
   position: absolute;
-  background-color: #929499;
+  background-color: #dcdcdc;
   display: block;
   z-index: 15;
   top: 0;
   right: auto;
   bottom: auto;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+.ios .sheet-modal .toolbar::after {
+  content: '';
+  position: absolute;
+  background-color: #dcdcdc;
+  display: block;
+  z-index: 15;
+  right: auto;
+  bottom: 0;
   left: 0;
   height: 1px;
   width: 100%;

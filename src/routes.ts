@@ -184,6 +184,72 @@ const routes: any[] = [
           }
         ]
       },
+      {
+        // 课表
+        path: '/timetable',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/my/timetable');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+        routes: [
+          {
+            // 课程详情
+            path: '/courseDetails',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/timetable/course-details');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          }
+        ]
+      },
+      {
+        // 成绩
+        path: '/result',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/my/result');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+        routes: [
+          {
+            // 成绩详情
+            path: '/details',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/result/details');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          },
+          {
+            // 等级考试
+            path: '/gradeTest',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/result/grade-test');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+            routes: [
+              {
+                // 等级考试详情
+                path: '/details',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  const reactComponent = () => import('./pages/my/result/grade-test-details');
+                  reactComponent().then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                },
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   {

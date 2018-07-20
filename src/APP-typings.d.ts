@@ -13,6 +13,16 @@ declare module 'framework7-react';
 declare module 'react-loadable';
 declare module 'react-transition-group';
 
+interface Navigator {
+  splashscreen: {
+    hide: () => void
+  };
+  app: {
+    exitApp: () => void
+  };
+}
+declare var navigator: Navigator;
+
 declare var module: NodeModule;
 
 declare var StatusBar: any;

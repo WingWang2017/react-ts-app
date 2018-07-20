@@ -11,6 +11,7 @@ import Framework7React from 'framework7-react';
 import * as stores from './stores';
 
 import './assets/css/framework7.ios.main.css';
+import './assets/css/f7-css/sheet-modal.css';
 import './assets/css/f7-css/popup.css';
 import './assets/css/f7-css/tabs.css';
 // import './assets/css/typography.css';

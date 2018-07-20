@@ -91,9 +91,11 @@ function entitiestoUtf16(str: string) {
 
 // deviceready  设备加载完成后的回调
 const deviceready = (fun: any): void => {
-  document.addEventListener('deviceready', () => {
-    fun();
-  }, false);
+  document.addEventListener('deviceready', () => { fun(); }, false);
+};
+
+const removeDeviceready = (fun: any): void => {
+  document.removeEventListener('deviceready', () => { fun(); }, false);
 };
 
 
@@ -128,5 +130,6 @@ export {
   monthAndDayHours,
   utf16toEntities,
   entitiestoUtf16,
-  deviceready
+  deviceready,
+  removeDeviceready
 };

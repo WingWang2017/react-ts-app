@@ -23,7 +23,10 @@ export default class InitialPage extends React.Component<IProps, {}> {
   }
 
   public componentDidMount() {
-
+    f7App = {
+      f7router: this.props.f7router,
+      f7route: this.props.f7route
+    };
   }
 
 }

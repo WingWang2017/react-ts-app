@@ -63,7 +63,7 @@ const StyledDiv = Styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 2.4rem;
+  max-width: 2.8rem;
   padding: .48rem;
   border-radius: 6px;
   color: #fff;

@@ -11,7 +11,7 @@ import { scanIcon, messageIcon } from 'src/images';
 
 import fetchAjax from 'src/fetch';
 
-import { dateC, deviceready } from 'src/utils';
+import { dateC } from 'src/utils';
 
 import HOCRefreshLoad from 'src/hocComponents/refresh-load';
 
@@ -21,7 +21,7 @@ import HOCRefreshLoad from 'src/hocComponents/refresh-load';
 class Home extends React.Component<IProps, IState> {
 
   public state = {
-    user: JSON.parse(localStorage.user)
+    user: localStorage.user && JSON.parse(localStorage.user)
   };
 
   public $f7: any;
@@ -42,7 +42,7 @@ class Home extends React.Component<IProps, IState> {
               <img src={scanIcon} width='.42rem' height='auto' />
             </a>
           }
-          center={this.state.user.school_name}
+          center={this.state.user && this.state.user.school_name}
           right={
             <a href='/message' className='link'>
               <img src={messageIcon} width='.42rem' height='auto' />
@@ -66,18 +66,18 @@ class Home extends React.Component<IProps, IState> {
     );
   }
 
-  public componentDidMount() {
-    f7App = {
-      f7router: this.props.f7router,
-      f7route: this.props.f7route
-    };
-    deviceready(() => {
-      this.$f7.$('.navbar').removeClass('navbar-hidden');
-      this.$f7.statusbar.setBackgroundColor('#81D8D0');
-    });
+  public componentDidMount(): void {
+    document.addEventListener('deviceready', this.deviceready.bind(this), false);
+    // this.getAjax(1);
+  }
 
-    this.getAjax(1);
+  public componentWillUnmount(): void {
+    document.removeEventListener('deviceready', this.deviceready.bind(this), false);
+  }
 
+  public deviceready() {
+    this.$f7.$('.navbar').removeClass('navbar-hidden');
+    this.$f7.statusbar.setBackgroundColor('#81D8D0');
   }
 
   public async getAjax(page: number): Promise<any> {

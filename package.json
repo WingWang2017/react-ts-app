@@ -69,7 +69,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "ios": "node scripts/build.js && cordova run ios",
-    "android": "node scripts/build.js && cordova build android",
+    "android": "node scripts/build.js && cordova run android",
+    "build android": "node scripts/build.js && cordova build android",
     "browser": "node scripts/build.js && cordova run browser"
   },
   "devDependencies": {

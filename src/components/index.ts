@@ -22,14 +22,14 @@ import List from './list';
 // 提示框
 import Alert from './alert';
 
-// 选择框
+// 选择框;
 import Confirm from './confirm';
 
 // 消息发送框
 import SendBox from './send-box';
 
 // 操作表
-import Actions from './actions';
+// import Actions from './actions';
 
 // 分享框
 import Share from './share';
@@ -57,7 +57,7 @@ export {
   Alert,
   Confirm,
   SendBox,
-  Actions,
+  // Actions,
   Header,
   Footer,
   Ttitle,

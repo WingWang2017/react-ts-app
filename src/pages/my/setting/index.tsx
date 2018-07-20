@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import { Header, LinkList } from 'src/components';
 
-import { Button, Actions, Alert } from 'src/components';
+import { Button, Alert } from 'src/components';
 
 import Styled from 'styled-components';
 
@@ -51,19 +51,21 @@ export default class Setting extends React.Component<IProps, IState> {
   }
 
   public onButton = (): void => {
-    Actions.default({
-      title: '确定退出登录吗？',
-      confirmText: '确定',
-      color: '#F7827C',
-      onConfirm: () => {
-        localStorage.clear();
-        Alert.default({
-          content: '退出成功',
-          afterHide: () => {
-            this.props.f7router.navigate('/login');
-          }
-        });
-      }
+    import('src/components/actions').then(({ default: actions }) => {
+      actions.default({
+        title: '确定退出登录吗？',
+        confirmText: '确定',
+        color: '#F7827C',
+        onConfirm: () => {
+          localStorage.clear();
+          Alert.default({
+            content: '退出成功',
+            afterHide: () => {
+              this.props.f7router.navigate('/login');
+            }
+          });
+        }
+      });
     });
   }
 

@@ -98,47 +98,46 @@ class MyApp extends React.Component<{}, IState> {
 
     });
 
-    deviceready(() => {
+    deviceready(() => { this.deviceready(); });
+  }
 
-      navigator.splashscreen.hide();
+  public deviceready(): void {
+    navigator.splashscreen.hide();
 
-      // alert(`设备型号：${device.model}`);
-      // alert(`操作系统名称：${device.platform}`);
-      // alert(`设备的通用唯一标识符（UUID）：${device.uuid}`);
-      // alert(`操作系统版本：${device.version}`);
-      // alert(`设备硬件序列号：${device.serial}`);
+    // alert(`设备型号：${device.model}`);
+    // alert(`操作系统名称：${device.platform}`);
+    // alert(`设备的通用唯一标识符（UUID）：${device.uuid}`);
+    // alert(`操作系统版本：${device.version}`);
+    // alert(`设备硬件序列号：${device.serial}`);
 
-      // 获取app的版本号
-      cordova.getAppVersion.getVersionNumber((version: any) => {
-        localStorage.version = version;
-      });
-
-      // 主页面上安卓点击实体键后退直接退出app;
-      document.addEventListener('backbutton', () => {
-        const page = f7App.f7router.currentRoute.url;
-        // const isPage = page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login' || page === '/dindInfo' || !page || page === '/';
-        // if (isPage) {
-        //   navigator['app'].exitApp();
-        // } else {
-        //   f7App.f7router.back();
-        // }
-        alert(page);
-        switch (page) {
-          case '/home':
-          case '/cloudClassroom':
-          case '/discover':
-          case '/my':
-          case '/login':
-          case '/dindInfo':
-          case '/':
-            navigator.app.exitApp();
-            break;
-          default:
-            f7App.f7router.back();
-        }
-      }, false);
-
+    // 获取app的版本号
+    cordova.getAppVersion.getVersionNumber((version: any) => {
+      localStorage.version = version;
     });
+
+    // 主页面上安卓点击实体键后退直接退出app;
+    document.addEventListener('backbutton', () => {
+      const page = f7App.f7router.currentRoute.url;
+      // const isPage = page === '/home' || page === '/cloudClassroom' || page === '/discover' || page === '/mine' || page === '/login' || page === '/dindInfo' || !page || page === '/';
+      // if (isPage) {
+      //   navigator['app'].exitApp();
+      // } else {
+      //   f7App.f7router.back();
+      // }
+      switch (page) {
+        case '/home':
+        case '/cloudClassroom':
+        case '/discover':
+        case '/my':
+        case '/login':
+        case '/dindInfo':
+        case '/':
+          navigator.app.exitApp();
+          break;
+        default:
+          f7App.f7router.back();
+      }
+    }, false);
   }
 
 

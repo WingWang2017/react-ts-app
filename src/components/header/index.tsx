@@ -4,8 +4,6 @@ import { observer } from 'mobx-react';
 
 // import Styled from 'styled-components';
 
-// import { LoginView, InputText, InputPassword, Button, Select, Back, Alert } from './../../components';
-
 import { backIcon } from 'src/images';
 
 @observer

@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 import Styled from 'styled-components';
 
 import Like from '../like';
-import { Confirm, SendBox, Actions } from 'src/components';
+import { Confirm, SendBox } from 'src/components';
 
 import { dateC, entitiestoUtf16, deviceready } from 'src/utils';
 
@@ -98,12 +98,15 @@ class ForumList extends React.Component<Iprops, {}> {
     console.log(item);
     const user = JSON.parse(localStorage.user);
     if (item.comment_user_id === user.user_id) {
-      Actions.default({
-        title: '删除我的评论？',
-        onConfirm: () => {
-          this.props.onDeleteThisComment(item.scf_id, item.comment_id);
-        }
+      import('src/components/actions').then(({ default: actions }) => {
+        actions.default({
+          title: '删除我的评论？',
+          onConfirm: () => {
+            this.props.onDeleteThisComment(item.scf_id, item.comment_id);
+          }
+        });
       });
+
     } else {
       SendBox.default({
         onSureSendMes: this.onSureSendMes(item.scf_id, item.comment_id),

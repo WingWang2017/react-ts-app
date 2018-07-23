@@ -21,6 +21,7 @@ interface Navigator {
     exitApp: () => void
   };
 }
+
 declare var navigator: Navigator;
 
 declare var module: NodeModule;

@@ -23,16 +23,16 @@ import List from './list';
 import Alert from './alert';
 
 // 选择框;
-import Confirm from './confirm';
+// import Confirm from './confirm';
 
 // 消息发送框
-import SendBox from './send-box';
+// import SendBox from './send-box';
 
 // 操作表
 // import Actions from './actions';
 
 // 分享框
-import Share from './share';
+// import Share from './share';
 
 // 校圈列表
 import ForumList from './forum-list';
@@ -55,14 +55,14 @@ export {
   Button,
   SmsCode,
   Alert,
-  Confirm,
-  SendBox,
+  // Confirm,
+  // SendBox,
   // Actions,
   Header,
   Footer,
   Ttitle,
   List,
-  Share,
+  // Share,
   ForumList,
   LinkList,
   ItemList,

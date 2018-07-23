@@ -149,6 +149,9 @@ select option {
   transform: scaleY(.5) translateY(50%);
   background-color: #efefef;
 }
+.border-left-34 .border1px:not(:last-child)::before {
+  left: .34rem;
+}
 
 .border-right {
   position: relative;
@@ -472,9 +475,25 @@ select option {
   width: 1.2rem;
 }
 
+/* 手风琴 */
+.accordion-item-title {
+  background-color: #fff;
+  padding-left: .34rem;
+}
+.accordion-item-title .item-inner {
+  min-height: .88rem;
+}
+
+
+
 /* */
 .padding16 {
   padding: .16rem 0;
+}
+
+.navbar-fixed .paddingTop {
+  position: relative;
+  padding-top: calc(.92rem + .88rem);
 }
 
 

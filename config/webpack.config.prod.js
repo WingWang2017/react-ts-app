@@ -60,7 +60,10 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: false,   // shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the polyfills and the app code.
-  entry: [require.resolve('./polyfills'), paths.appIndexJs],
+  entry: {
+    commons: ['framework7', 'framework7-react', 'react-transition-group', 'axios', 'react', 'react-dom', 'mobx', 'mobx-react', 'styled-components'],
+    app: [require.resolve('./polyfills'), paths.appIndexJs]
+  },
   output: {
     // The build folder.
     path: paths.appBuild,
@@ -371,7 +374,22 @@ module.exports = {
       tslint: paths.appTsLint,
     }),
 
-    new BundleAnalyzerPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      // (the commons chunk name)
+
+      // filename: 'static/js/commons.js',
+      minChunks: Infinity,
+      // (the filename of the commons chunk)
+
+      // minChunks: 3,
+      // (Modules must be shared between 3 entries)
+
+      // chunks: ["pageA", "pageB"],
+      // (Only use these entries)
+    }),
+
+    // new BundleAnalyzerPlugin(),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
@@ -382,12 +400,12 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty',
   },
-  externals: {
-    'axios': 'axios',
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    'mobx': 'mobx',
-    'mobx-react': 'mobxReact',
-    'styled-components': 'styled'
-  }
+  // externals: {
+  //   'axios': 'axios',
+  //   'react': 'React',
+  //   'react-dom': 'ReactDOM',
+  //   'mobx': 'mobx',
+  //   'mobx-react': 'mobxReact',
+  //   'styled-components': 'styled'
+  // }
 };

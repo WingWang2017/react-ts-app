@@ -5,7 +5,9 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, ItemList, InputText, SmsCode, Alert, Confirm } from 'src/components';
+import { Header, ItemList, InputText, SmsCode, Alert } from 'src/components';
+
+import fetchAjax from 'src/fetch';
 
 class Store {
   @observable public state: IState = {
@@ -25,7 +27,7 @@ class Store {
 
   @computed public get isDisabled(): boolean {
     const { mobile, code } = this.state;
-    return mobile.length > 0 && code.length === 6;
+    return mobile.length > 0 && code.length >= 4;
   }
 
 }
@@ -58,6 +60,7 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
           <StyledText>更换手机号后，下次登录可使用新手机号登录</StyledText>
           <ItemList
             left='新手机号'
+            padding='0 0 0 .32rem'
             center={
               <InputText
                 placeholder='请输入新的手机号码'
@@ -136,32 +139,53 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
       });
     }
 
-    this.child.onStartCountdown();
-    Alert.default({
-      content: '验证码发送成功'
+    fetchAjax.edcode(mobile).then((res) => {
+      if (!res.errcode && res.data) {
+        alert(res.data.code);
+        console.log(this.child);
+        this.child.onStartCountdown();
+      }
+      Alert.default({
+        content: res.msg
+      });
     });
+
   }
 
   public onConfirm = (): void => {
-    const { mobile } = JSON.parse(localStorage.user);
-    const { mobile: newMobile } = this.store.state;
-    Confirm.default({
-      content: `确定将学号${mobile}与<br />手机号${newMobile}绑定？`,
-      onConfirm: () => {
-        Alert.success({
-          content: '手机更换成功',
-          afterHide: () => {
-            const user = JSON.parse(localStorage.user);
-            user.mobile = newMobile;
-            localStorage.user = JSON.stringify(user);
-            this.props.f7router.back('/my/setting', {
-              force: true,
-              ignoreCache: true
+    const user = localStorage.user && JSON.parse(localStorage.user);
+    const { mobile: newMobile, code } = this.store.state;
+    import('src/components/confirm').then(({ default: confirm }) => {
+      confirm.default({
+        content: `确定将学号${user.mobile}与<br />手机号${newMobile}绑定？`,
+        onConfirm: () => {
+          fetchAjax.changeMobile({
+            old_mobile: user.mobile,
+            mobile: newMobile,
+            code
+          }).then((res: any) => {
+            if (!res.errcode) {
+              Alert.success({
+                content: '手机更换成功',
+                afterHide: () => {
+                  user.mobile = newMobile;
+                  localStorage.user = JSON.stringify(user);
+                  this.props.f7router.back('/my/setting', {
+                    force: true,
+                    ignoreCache: true
+                  });
+                }
+              });
+              return;
+            }
+            Alert.default({
+              content: res.msg
             });
-          }
-        });
-      }
+          });
+        }
+      });
     });
+
   }
 
 }

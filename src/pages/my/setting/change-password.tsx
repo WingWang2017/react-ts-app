@@ -7,6 +7,8 @@ import { observer } from 'mobx-react';
 
 import { Header, ItemList, InputText, Alert } from 'src/components';
 
+import fetchAjax from 'src/fetch';
+
 class Store {
   @observable public state: IState = {
     oldPassword: '',
@@ -37,7 +39,7 @@ export default class ChangePassword extends React.Component<IProps, {}> {
 
   public $f7: any;
 
-  public store: any = new Store();
+  public store: IStore = new Store();
 
   public render() {
     const user = localStorage.user && JSON.parse(localStorage.user);
@@ -116,18 +118,33 @@ export default class ChangePassword extends React.Component<IProps, {}> {
   }
 
   public onConfirm = (): void => {
-    const { newPassword, confirmPassword } = this.store.state;
+    const { mobile }: { mobile: string } = JSON.parse(localStorage.user);
+    const { oldPassword, newPassword, confirmPassword } = this.store.state;
     if (newPassword !== confirmPassword) {
       return Alert.default({
         content: '新密码两次输入不一致，请重新输入'
       });
     }
-    Alert.success({
-      content: '密码修改成功',
-      afterHide: () => {
-        this.props.f7router.back();
+
+    fetchAjax.changePassword({
+      mobile,
+      old_password: oldPassword,
+      new_password: newPassword
+    }).then((res: { errcode: number, msg: string; data?: object }) => {
+      if (!res.errcode) {
+        Alert.success({
+          content: '密码修改成功',
+          afterHide: () => {
+            this.props.f7router.back();
+          }
+        });
+        return;
       }
+      Alert.default({
+        content: res.msg
+      });
     });
+
   }
 
 }
@@ -136,6 +153,12 @@ interface IProps {
   f7router?: any;
   f7route?: any;
   forumState: any;
+}
+
+interface IStore {
+  state: IState;
+  isDisabled: boolean;
+  setState: (obj: object) => void;
 }
 
 interface IState {

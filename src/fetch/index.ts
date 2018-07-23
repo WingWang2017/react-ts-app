@@ -63,7 +63,7 @@ class FetchAjax {
         imei: '',
         os_type: 'Android',
         os_info: '8.2.0',
-        version: '1.0.0',
+        version: '1.0.1',
         device_sn
       }
     );
@@ -152,6 +152,44 @@ class FetchAjax {
     return await http.post('/gettoken',
       {
         token
+      }
+    );
+  }
+
+  // 更改绑定手机号时获取验证码
+  public async edcode(mobile: string): Promise<any> {
+    const { token } = JSON.parse(localStorage.user);
+    return await http.post('/edcode',
+      {
+        token,
+        mobile
+      }
+    );
+  }
+
+  // 更改绑定手机号
+  public async changeMobile(obj: { mobile: string, old_mobile: string, code: string }): Promise<any> {
+    const { token } = JSON.parse(localStorage.user);
+    return await http.post('/mobile/change',
+      {
+        token,
+        ...obj
+      }
+    );
+  }
+
+  // 修改密码
+  public async changePassword(
+    obj: {
+      mobile: string,
+      old_password: string,
+      new_password: string
+    }): Promise<any> {
+    const { token } = JSON.parse(localStorage.user);
+    return await http.post('/password/change',
+      {
+        token,
+        ...obj
       }
     );
   }

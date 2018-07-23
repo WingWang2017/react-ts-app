@@ -54,9 +54,9 @@ export default class My extends React.Component<IProps, IState> {
             <LinkList link='/my/result' title='成绩' icon={chengji} />
             <LinkList link='#' title='校历' icon={xiaoli} />
             <LinkList link='#' title='培养计划' icon={peiyangfangan} />
-            <LinkList link='#' title='校园热线' icon={xiaoyuanrexian} border={false} marginBottom={true} />
+            <LinkList link='/my/campusHotline' title='校园热线' icon={xiaoyuanrexian} border={false} marginBottom={true} />
             <LinkList link='#' title='请假管理' icon={qingjiashenqing} border={false} marginBottom={true} />
-            <LinkList link='#' title='课程评价' icon={kechengpingjia} />
+            <LinkList link='/my/courseEvaluation' title='课程评价' icon={kechengpingjia} />
             <LinkList link='#' title='选课指南' icon={xuankezhinan} border={false} marginBottom={true} />
             {/* <LinkList link='#' title='时光履历' icon={shiguanglvli} /> */}
             {/*  <LinkList link='#' title='数据分析' icon={shujufenxi} border={false} marginBottom={true} /> */}

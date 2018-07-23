@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, Share } from 'src/components';
+import { Header } from 'src/components';
 
 import { fenxiangIcon } from 'src/images';
 
@@ -80,7 +80,9 @@ export default class Details extends React.Component<IProps, {}> {
   }
 
   public onShare = (): void => {
-    Share({});
+    import('src/components/share').then(({ default: share }) => {
+      share({});
+    });
   }
 
 }

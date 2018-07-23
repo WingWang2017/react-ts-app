@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, Share } from 'src/components';
+import { Header } from 'src/components';
 
 import { monthAndDayHours } from 'src/utils';
 
@@ -42,7 +42,9 @@ export default class Announcement extends React.Component<IProps, IState> {
 	}
 
 	public onShare = (): void => {
-		Share({});
+		import('src/components/share').then(({ default: share }) => {
+			share({});
+		});
 	}
 
 	public getInfoData(): void {

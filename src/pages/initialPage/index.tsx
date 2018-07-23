@@ -29,6 +29,15 @@ export default class InitialPage extends React.Component<IProps, {}> {
     };
   }
 
+  public componentWillUnmount(): void {
+    document.addEventListener('deviceready', this.deviceready.bind(this), false);
+    document.removeEventListener('deviceready', this.deviceready.bind(this), false);
+  }
+
+  public deviceready() {
+    navigator.splashscreen.hide();
+  }
+
 }
 
 interface IProps {

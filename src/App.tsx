@@ -60,7 +60,7 @@ class MyApp extends React.Component<{}, IState> {
 
   public componentDidMount(): void {
 
-    fetchAjax.getDevice().then((res: any) => {
+    fetchAjax.getDevice().then((res) => {
       if (!res.errcode && res.data) {
         localStorage.device_sn = res.data.device_sn;
       }
@@ -68,32 +68,32 @@ class MyApp extends React.Component<{}, IState> {
 
     this.$f7ready((f7: any): void => {
 
-      // if (localStorage.user) {
+      if (localStorage.user) {
 
-      //   const user: any = JSON.parse(localStorage.user);
-      //   const hasSchool: boolean = localStorage.hasSchool;
+        const user: any = JSON.parse(localStorage.user);
+        const hasSchool: boolean = localStorage.hasSchool;
 
-      //   fetchAjax.isToken(user.token).then((res: any) => {
-      //     if (!res.errcode) {
-      //       if (hasSchool && user) {
-      //         localStorage.hasSchool = true;
-      //         setTimeout(() => {
-      //           f7.router.navigate('/home');
-      //         }, 100);
-      //       }
-      //     } else {
-      //       f7.router.navigate('/login');
-      //     }
-      //   });
+        fetchAjax.isToken(user.token).then((res: any) => {
+          if (!res.errcode) {
+            if (hasSchool && user) {
+              localStorage.hasSchool = true;
+              setTimeout(() => {
+                f7.router.navigate('/home');
+              }, 100);
+            }
+          } else {
+            f7.router.navigate('/login');
+          }
+        });
 
-      // }
+      }
 
-      // if (!localStorage.hasSchool) {
-      //   f7.router.navigate('/login');
-      // }
+      if (!localStorage.hasSchool) {
+        f7.router.navigate('/login');
+      }
 
       setTimeout(() => {
-        f7.router.navigate('/my');
+        f7.router.navigate('/my/setting');
       }, 1000);
 
     });
@@ -102,7 +102,6 @@ class MyApp extends React.Component<{}, IState> {
   }
 
   public deviceready(): void {
-    navigator.splashscreen.hide();
 
     // alert(`设备型号：${device.model}`);
     // alert(`操作系统名称：${device.platform}`);

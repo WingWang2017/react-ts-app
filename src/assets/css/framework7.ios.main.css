@@ -1795,7 +1795,7 @@ li.list-group-title:before {
 .ios .list .list-button:after {
   content: '';
   position: absolute;
-  background-color: #c8c7cc;
+  background-color: #efefef;
   display: block;
   z-index: 15;
   top: auto;
@@ -1815,7 +1815,7 @@ li.list-group-title:before {
 .ios .list .item-inner:after {
   content: '';
   position: absolute;
-  background-color: #c8c7cc;
+  background-color: #efefef;
   display: block;
   z-index: 15;
   top: auto;

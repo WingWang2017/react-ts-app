@@ -5,7 +5,6 @@ import { observer } from 'mobx-react';
 import Styled from 'styled-components';
 
 import Like from '../like';
-import { Confirm, SendBox } from 'src/components';
 
 import { dateC, entitiestoUtf16, deviceready } from 'src/utils';
 
@@ -73,11 +72,13 @@ class ForumList extends React.Component<Iprops, {}> {
 
   public onDelete = (item: any) => (): void => {
     // console.log(item);
-    Confirm.default({
-      title: '确定删除吗？',
-      onConfirm: () => {
-        this.props.onDelete(item);
-      }
+    import('src/components/confirm').then(({ default: confirm }) => {
+      confirm.default({
+        title: '确定删除吗？',
+        onConfirm: () => {
+          this.props.onDelete(item);
+        }
+      });
     });
   }
 
@@ -87,10 +88,12 @@ class ForumList extends React.Component<Iprops, {}> {
 
   public onComment = (item: any) => (): void => {
     console.log(item);
-    SendBox.default({
-      onSureSendMes: this.onSureSendMes(item.id, 0),
-      placeholder: '评论',
-      messageType: 'comment'
+    import('src/components/send-box').then(({ default: sendbox }) => {
+      sendbox.default({
+        onSureSendMes: this.onSureSendMes(item.id, 0),
+        placeholder: '评论',
+        messageType: 'comment'
+      });
     });
   }
 
@@ -108,10 +111,12 @@ class ForumList extends React.Component<Iprops, {}> {
       });
 
     } else {
-      SendBox.default({
-        onSureSendMes: this.onSureSendMes(item.scf_id, item.comment_id),
-        placeholder: `回复${item.comment_user_name}：`,
-        messageType: 'reply'
+      import('src/components/send-box').then(({ default: sendbox }) => {
+        sendbox.default({
+          onSureSendMes: this.onSureSendMes(item.scf_id, item.comment_id),
+          placeholder: `回复${item.comment_user_name}：`,
+          messageType: 'reply'
+        });
       });
     }
   }

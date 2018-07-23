@@ -1,4 +1,4 @@
-import InitialPage from './pages/initialPage';
+// import InitialPage from './pages/initialPage';
 
 // import Notice from './pages/message-center/notice';
 
@@ -11,7 +11,12 @@ const routes: any[] = [
       animate: false,
       reloadAll: true
     },
-    component: InitialPage
+    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+      const reactComponent = () => import('./pages/initialPage');
+      reactComponent().then((rc) => {
+        resolve({ component: rc.default });
+      });
+    },
   },
   {
     // 登录
@@ -249,6 +254,26 @@ const routes: any[] = [
             ]
           }
         ]
+      },
+      {
+        // 校园热线
+        path: '/campusHotline',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/my/campus-hotline');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      },
+      {
+        // 校园热线
+        path: '/courseEvaluation',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/my/course-evaluation');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
       }
     ]
   },

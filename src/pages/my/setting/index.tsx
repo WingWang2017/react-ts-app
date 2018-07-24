@@ -25,7 +25,7 @@ export default class Setting extends React.Component<IProps, IState> {
           center='设置'
           right={null} />
         <div className='page-content'>
-          <ul>
+          <ul className='border-left-34'>
             <LinkList link='/my/setting/bindMobile' title='手机号码' after={user && user.mobile} />
             <LinkList link='/my/setting/changePassword' title='修改密码' />
             <LinkList link='/my/setting/privacy' title='隐私设置' border={false} marginBottom={true} />

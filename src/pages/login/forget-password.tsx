@@ -35,7 +35,7 @@ class ForgetPassword extends React.Component<IProps, {}> {
 
   // 发送找回密码的验证码
   public onCode = async (phone: string): Promise<any> => {
-    const res = await fetchAjax.getSmsBackCode(phone);
+    const res: Ajax.AjaxResponse = await fetchAjax.getSmsBackCode(phone);
     console.log(res);
     if (!res.errcode) {
       alert(res.data.code);
@@ -51,7 +51,7 @@ class ForgetPassword extends React.Component<IProps, {}> {
   // 重置密码的提交
   public onSubmit = async (data: IState): Promise<any> => {
     const { phone, password, code } = data;
-    const res = await fetchAjax.pwdback(phone, password, code);
+    const res: Ajax.AjaxResponse = await fetchAjax.pwdback(phone, password, code);
 
     if (!res.errcode) {
       Alert.success({

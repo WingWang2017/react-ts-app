@@ -29,7 +29,7 @@ export default class About extends React.Component<IProps, {}> {
             <p className='text'>最青春</p>
             <p className='text'>Most Youth</p>
           </StyledDiv>
-          <ul>
+          <ul className='border-left-34'>
             <LinkList link='#' title='当前版本' after={localStorage.version} arrow={false} />
             <LinkList link='#' title='评价最青春' border={false} />
           </ul>

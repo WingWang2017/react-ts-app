@@ -58,37 +58,39 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
           } />
         <div className='page-content'>
           <StyledText>更换手机号后，下次登录可使用新手机号登录</StyledText>
-          <ItemList
-            left='新手机号'
-            padding='0 0 0 .32rem'
-            center={
-              <InputText
-                placeholder='请输入新的手机号码'
-                themeColor='black'
-                inputSize='.32rem'
-                onChange={this.onMoblie}
-                onClear={this.onClearMoblie} />
-            } />
-          <ItemList
-            left='验证码'
-            border={false}
-            center={
-              <InputText
-                placeholder='请输入验证码'
-                themeColor='black'
-                inputSize='.32rem'
-                length={6}
-                clearHidden={false}
-                onChange={this.onCode}
-                onClear={this.onClearCode} />
-            }
-            right={
-              <SmsCode
-                phone={this.store.state.mobile}
-                onRef={this.onRef}
-                onClick={this.onGetCode}
-                color='#F3AF4E' />
-            } />
+          <ul className='border-left-34'>
+            <ItemList
+              left='新手机号'
+              padding='0 0 0 .32rem'
+              center={
+                <InputText
+                  placeholder='请输入新的手机号码'
+                  themeColor='black'
+                  inputSize='.32rem'
+                  onChange={this.onMoblie}
+                  onClear={this.onClearMoblie} />
+              } />
+            <ItemList
+              left='验证码'
+              border={false}
+              center={
+                <InputText
+                  placeholder='请输入验证码'
+                  themeColor='black'
+                  inputSize='.32rem'
+                  length={6}
+                  clearHidden={false}
+                  onChange={this.onCode}
+                  onClear={this.onClearCode} />
+              }
+              right={
+                <SmsCode
+                  phone={this.store.state.mobile}
+                  onRef={this.onRef}
+                  onClick={this.onGetCode}
+                  color='#F3AF4E' />
+              } />
+          </ul>
         </div>
       </div>
     );

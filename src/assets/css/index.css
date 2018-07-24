@@ -149,6 +149,11 @@ select option {
   transform: scaleY(.5) translateY(50%);
   background-color: #efefef;
 }
+
+.border-color-d8 .border1px:not(:last-child)::before {
+  background-color: #d8d8d8;
+}
+
 .border-left-34 .border1px:not(:last-child)::before {
   left: .34rem;
 }
@@ -474,6 +479,7 @@ select option {
 .table th:last-child {
   width: 1.2rem;
 }
+
 
 /* 手风琴 */
 .accordion-item-title {

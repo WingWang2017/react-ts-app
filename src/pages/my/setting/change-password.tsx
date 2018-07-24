@@ -57,49 +57,51 @@ export default class ChangePassword extends React.Component<IProps, {}> {
             </button>
           } />
         <div className='page-content'>
-          <ItemList
-            left='手机号'
-            center={user && user.mobile} />
-          <ItemList
-            left='旧密码'
-            center={
-              <InputText
-                type='password'
-                placeholder='请输入密码'
-                themeColor='black'
-                inputSize='.28rem'
-                length={16}
-                clearHidden={false}
-                onChange={this.onPassword('oldPassword')}
-                onClear={this.onCleaPassword('oldPassword')} />
-            } />
-          <ItemList
-            left='新密码'
-            center={
-              <InputText
-                type='password'
-                placeholder='6~16个字符，字母/数字/符号中至少两种'
-                themeColor='black'
-                inputSize='.28rem'
-                length={16}
-                clearHidden={false}
-                onChange={this.onPassword('newPassword')}
-                onClear={this.onCleaPassword('newPassword')} />
-            } />
-          <ItemList
-            border={false}
-            left='确认密码'
-            center={
-              <InputText
-                type='password'
-                placeholder='6~16个字符，字母/数字/符号中至少两种'
-                themeColor='black'
-                inputSize='.28rem'
-                length={16}
-                clearHidden={false}
-                onChange={this.onPassword('confirmPassword')}
-                onClear={this.onCleaPassword('confirmPassword')} />
-            } />
+          <ul className='border-left-34'>
+            <ItemList
+              left='手机号'
+              center={user && user.mobile} />
+            <ItemList
+              left='旧密码'
+              center={
+                <InputText
+                  type='password'
+                  placeholder='请输入密码'
+                  themeColor='black'
+                  inputSize='.28rem'
+                  length={16}
+                  clearHidden={false}
+                  onChange={this.onPassword('oldPassword')}
+                  onClear={this.onCleaPassword('oldPassword')} />
+              } />
+            <ItemList
+              left='新密码'
+              center={
+                <InputText
+                  type='password'
+                  placeholder='6~16个字符，字母/数字/符号中至少两种'
+                  themeColor='black'
+                  inputSize='.28rem'
+                  length={16}
+                  clearHidden={false}
+                  onChange={this.onPassword('newPassword')}
+                  onClear={this.onCleaPassword('newPassword')} />
+              } />
+            <ItemList
+              border={false}
+              left='确认密码'
+              center={
+                <InputText
+                  type='password'
+                  placeholder='6~16个字符，字母/数字/符号中至少两种'
+                  themeColor='black'
+                  inputSize='.28rem'
+                  length={16}
+                  clearHidden={false}
+                  onChange={this.onPassword('confirmPassword')}
+                  onClear={this.onCleaPassword('confirmPassword')} />
+              } />
+          </ul>
         </div>
       </div>
     );

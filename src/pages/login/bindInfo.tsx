@@ -128,7 +128,7 @@ export default class DindInfo extends React.Component<{}, {}> {
     const { user_id } = JSON.parse(localStorage.user);
     const { school_id, type, account, password } = this.store.state;
 
-    const res = await fetchAjax.bindInfo({
+    const res: Ajax.AjaxResponse = await fetchAjax.bindInfo({
       user_id,
       school_id,
       type,

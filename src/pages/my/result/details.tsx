@@ -27,47 +27,43 @@ export default class Details extends React.Component<IProps, {}> {
             </a>
           } />
         <div className='page-content'>
-          <table className='table'>
-            <tbody>
-              <tr>
-                <th />
-                <th>性质</th>
-                <th>科目名称</th>
-                <th>学分</th>
-                <th>成绩</th>
-              </tr>
-              <tr>
-                <th>1</th>
-                <td>必修课</td>
-                <td>毛泽东思想和中国特色社会主义理论体系概论Ⅰ</td>
-                <td>3</td>
-                <td>98</td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>必修课</td>
-                <td>计算机组成原理</td>
-                <td>3</td>
-                <td>不及格</td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>必修课</td>
-                <td>计算机组成原理</td>
-                <td>3</td>
-                <td>不及格</td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>必修课</td>
-                <td>计算机组成原理</td>
-                <td>3</td>
-                <td>不及格</td>
-              </tr>
-            </tbody>
-          </table>
+          <ul>
+            <StyledList className='border1px'>
+              <div className='title'>
+                <span className='number'>01</span>
+                毛泽东思想和中国特色社会主义理论体系概论Ⅰ
+              </div>
+              <div className='content'>
+                <p><span>性质：</span>必修课</p>
+                <p><span>学分：</span>3分</p>
+                <p><span>成绩：</span>98分</p>
+              </div>
+            </StyledList>
+            <StyledList className='border1px'>
+              <div className='title'>
+                <span className='number'>02</span>
+                毛泽东思想和中国特色社会主义理论体系概论Ⅰ
+              </div>
+              <div className='content'>
+                <p><span>性质：</span>必修课</p>
+                <p><span>学分：</span>3分</p>
+                <p><span>成绩：</span>98分</p>
+              </div>
+            </StyledList>
+            <StyledList className='border1px'>
+              <div className='title'>
+                <span className='number'>03</span>
+                毛泽东思想和中国特色社会主义理论体系概论Ⅰ
+              </div>
+              <div className='content'>
+                <p><span>性质：</span>必修课</p>
+                <p><span>学分：</span>3分</p>
+                <p><span>成绩：</span>98分</p>
+              </div>
+            </StyledList>
+          </ul>
           <StyledDiv>
-            <StyledTitle>班主任评语</StyledTitle>
+            <StyledTitle className='border1px'>班主任评语</StyledTitle>
             <StyledCentent>公司内部研发了一套UI框架，在配合ts使用的时候，发现很多方法缺少声明，所以我们需要编写声明文件，官方地址如下</StyledCentent>
           </StyledDiv>
         </div>
@@ -95,25 +91,49 @@ interface IProps {
 // interface IState {
 //   user: any;
 // }
-const StyledDiv = Styled.div`
-  margin: 0 .32rem;
+const StyledList = Styled.li`
+  padding: .32rem;
   background-color: #fff;
-  border: 1px solid #999;
+  font-size: .28rem;
+
+  & span {
+    color: #999;
+    font-weight: 500;
+  }
+
+  & .number {
+    width: .44rem;
+    margin-right: .08rem;
+  }
+
+  & .title {
+    width: 100%;
+    margin-bottom: .32rem;
+  }
+
+  & .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+`;
+
+const StyledDiv = Styled.div`
+  margin-top: .16rem;
+  background-color: #fff;
   min-height: 2rem;
+  font-size: .28rem;
 `;
 
 const StyledTitle = Styled.div`
   display: flex;
   align-items: center;
-  height: .56rem;
-  padding: 0 .16rem;
-  border-bottom: 1px solid #999;
-  font-size: .24rem;
+  height: 1.05rem;
+  padding: 0 .32rem;
   color: #999
 `;
 
 const StyledCentent = Styled.div`
-  padding: .16rem;
-  line-height: 1.5;
-  font-size: .32rem;
+  padding: .32rem;
+  line-height: 1.6;
 `;

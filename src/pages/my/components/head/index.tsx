@@ -37,9 +37,9 @@ export default class Head extends React.Component<IProps, IState> {
           <dd className='class'>数字媒体1402班</dd>
         </StyledHead>
         <StyledUL>
-          <li className='border-right'><a href='#' title='' className='link'>校友圈 1</a></li>
-          <li className='border-right'><a href='#' title='' className='link'>关注 2</a></li>
-          <li className='border-right'><a href='#' title='' className='link'>粉丝 3</a></li>
+          <li className='border-right'><a href='#' title=''>校友圈 1</a></li>
+          <li className='border-right'><a href='#' title=''>关注 2</a></li>
+          <li className='border-right'><a href='#' title=''>粉丝 3</a></li>
         </StyledUL>
       </StyledDiv>
     );
@@ -63,7 +63,7 @@ interface IState {
 }
 
 const StyledDiv = Styled.div`
-  padding: .34rem .32rem;
+  padding: .34rem .32rem 0;
   background-color: #fff;
 `;
 
@@ -79,6 +79,8 @@ const StyledHead = Styled.dl`
   dt img {
     display: block;
     border-radius: 4px;
+    width: 100%;
+    height: auto;
   }
   dd {
     display: flex;
@@ -106,11 +108,13 @@ const StyledHead = Styled.dl`
 
 const StyledUL = Styled.ul`
   display: flex;
-  height: .36rem;
-  margin-top: .48rem;
+  height: .88rem;
+  padding: .24rem 0;
+  margin-top: .32rem;
+  box-sizing: border-box;
   li {
     position: relative;
-    width: calc(100% / 3);
+    width: 33.3%;
     text-align: center;
   }
   a {

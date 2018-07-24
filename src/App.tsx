@@ -68,32 +68,32 @@ class MyApp extends React.Component<{}, IState> {
 
     this.$f7ready((f7: any): void => {
 
-      if (localStorage.user) {
+      // if (localStorage.user) {
 
-        const user: any = JSON.parse(localStorage.user);
-        const hasSchool: boolean = localStorage.hasSchool;
+      //   const user: any = JSON.parse(localStorage.user);
+      //   const hasSchool: boolean = localStorage.hasSchool;
 
-        fetchAjax.isToken(user.token).then((res: any) => {
-          if (!res.errcode) {
-            if (hasSchool && user) {
-              localStorage.hasSchool = true;
-              setTimeout(() => {
-                f7.router.navigate('/home');
-              }, 100);
-            }
-          } else {
-            f7.router.navigate('/login');
-          }
-        });
+      //   fetchAjax.isToken(user.token).then((res: any) => {
+      //     if (!res.errcode) {
+      //       if (hasSchool && user) {
+      //         localStorage.hasSchool = true;
+      //         setTimeout(() => {
+      //           f7.router.navigate('/home');
+      //         }, 100);
+      //       }
+      //     } else {
+      //       f7.router.navigate('/login');
+      //     }
+      //   });
 
-      }
+      // }
 
-      if (!localStorage.hasSchool) {
-        f7.router.navigate('/login');
-      }
+      // if (!localStorage.hasSchool) {
+      //   f7.router.navigate('/login');
+      // }
 
       setTimeout(() => {
-        f7.router.navigate('/my/setting');
+        f7.router.navigate('/my');
       }, 1000);
 
     });

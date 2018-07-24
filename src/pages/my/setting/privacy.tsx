@@ -23,7 +23,7 @@ export default class Privacy extends React.Component<IProps, {}> {
         <div className='page-content'>
           <LinkList link='/my/setting/privacy/blacklist' title='黑名单' border={false} />
           <StyledText>哪些人可以评论我的校友圈</StyledText>
-          <ul className='list'>
+          <ul className='list border-left-34'>
             <ItemList
               padding='0'
               center={

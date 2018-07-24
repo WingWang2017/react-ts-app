@@ -107,7 +107,7 @@ class Login extends React.Component<IProps, {}> {
 
     const { phone, password } = this.store.state;
 
-    fetchAjax.signin(phone, password).then(res => {
+    fetchAjax.signin(phone, password).then((res: Ajax.AjaxResponse) => {
       console.log(res);
       if (!res.errcode && res.data) {
         // Alert.success({

@@ -89,10 +89,6 @@ const StyledMian = Styled.li`
   font-size: .32rem;
   margin-top: ${props => props.theme.marginTop ? '.24rem' : '0'};
   margin-bottom: ${props => props.theme.marginBottom ? '.24rem' : '0'};
-  &::before {
-    left: .34rem;
-    background: #d8d8d8;
-  }
   .list-link {
     display: flex;
     align-items: center;

@@ -45,7 +45,7 @@ class Register extends React.Component<IProps, {}> {
 
   // 发送注册的验证码
   public onCode = async (phone: string): Promise<any> => {
-    const res = await fetchAjax.getSmscode(phone);
+    const res: Ajax.AjaxResponse = await fetchAjax.getSmscode(phone);
     console.log(res);
     if (!res.errcode) {
       alert(res.data.code);
@@ -67,7 +67,7 @@ class Register extends React.Component<IProps, {}> {
       token: string;
     }
     const { phone, password, code } = data;
-    const res = await fetchAjax.register(phone, password, code);
+    const res: Ajax.AjaxResponse = await fetchAjax.register(phone, password, code);
 
     if (!res.errcode) {
       Alert.success({

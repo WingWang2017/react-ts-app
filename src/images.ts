@@ -78,6 +78,9 @@ import balcklist_icon from './assets/img/mine/balcklist.png';
 
 import logo_img from './assets/img/mine/logo_80.png';
 
+import leave_teacher_icon from './assets/img/mine/img/wode_leave_class_teacher.svg';
+import leave_time_icon from './assets/img/mine/img/wode_leave_class_time.svg';
+
 export {
   login,
   logo,
@@ -134,5 +137,7 @@ export {
   selected,
   search_icon,
   balcklist_icon,
-  logo_img
+  logo_img,
+  leave_teacher_icon,
+  leave_time_icon
 };

@@ -438,14 +438,23 @@ select option {
 }
 
 .table {
+  width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
-  margin: .16rem .32rem .24rem;
+  margin: .16rem 0 .24rem;
   background-color: #fff;
 }
 .table th,
 .table td {
-  border: 1px solid #999;
+  border: 1px solid #dcdcdc;
+}
+
+.table td:first-child {
+  border-width: 1px 1px 1px 0;
+}
+
+.table td:last-child {
+  border-width: 1px 0 1px 1px;
 }
 
 .table th {

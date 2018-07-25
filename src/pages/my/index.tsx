@@ -71,6 +71,7 @@ export default class My extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
+
   }
 
 }

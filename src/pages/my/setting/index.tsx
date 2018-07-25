@@ -50,14 +50,17 @@ export default class Setting extends React.Component<IProps, IState> {
 
   }
 
-  public onButton = (): void => {
+  private onButton = (): void => {
     import('src/components/actions').then(({ default: actions }) => {
       actions.default({
         title: '确定退出登录吗？',
         confirmText: '确定',
         color: '#F7827C',
         onConfirm: () => {
-          localStorage.clear();
+          // localStorage.clear();
+          localStorage.removeItem('user');
+          localStorage.removeItem('hasSchool');
+
           Alert.default({
             content: '退出成功',
             afterHide: () => {

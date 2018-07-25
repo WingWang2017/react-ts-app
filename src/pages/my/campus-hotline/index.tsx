@@ -8,8 +8,12 @@ import Styled from 'styled-components';
 
 import { Header, LinkList, InputSearch } from 'src/components';
 
+import fecthAjax from 'src/fetch';
+
 class Store {
   @observable public state: IState = {
+    list: [],
+    searchList: [],
     isHide: false
   };
 
@@ -51,24 +55,18 @@ export default class CampusHotline extends React.Component<IProps, {}> {
               <StyledText>最佳匹配</StyledText>
               <table className='table'>
                 <tbody>
-                  <tr>
-                    <td>教务处/督导</td>
-                    <td>欧阳天天</td>
-                    <td>副处长</td>
-                    <td>178-1687-5246</td>
-                  </tr>
-                  <tr>
-                    <td>教务处/督导</td>
-                    <td>欧阳天天</td>
-                    <td>副处长</td>
-                    <td>178-1687-5246</td>
-                  </tr>
-                  <tr>
-                    <td>教务处/督导</td>
-                    <td>欧阳天天</td>
-                    <td>副处长</td>
-                    <td>178-1687-5246</td>
-                  </tr>
+                  {
+                    this.store.state.searchList.map((item: any) => {
+                      return (
+                        <tr key={item.id}>
+                          <td>{item.title}</td>
+                          <td>{item.name}</td>
+                          <td>{item.position}</td>
+                          <td>{item.mobile}</td>
+                        </tr>
+                      );
+                    })
+                  }
                 </tbody>
               </table>
             </>
@@ -76,39 +74,24 @@ export default class CampusHotline extends React.Component<IProps, {}> {
           {
             !this.store.state.isHide &&
             <>
-              <StyledText>朝晖校区</StyledText>
-              <ul className='border-left-34'>
-                <LinkList link='#' title='教务处' />
-                <LinkList link='#' title='后勤处' />
-                <LinkList link='#' title='信息处' />
-                <LinkList link='#' title='建筑学院' />
-                <LinkList link='#' title='化工学院' />
-                <LinkList link='#' title='党支部' />
-                <LinkList link='#' title='信息处' />
-                <LinkList link='#' title='教务处' />
-              </ul>
-              <StyledText>屏峰校区</StyledText>
-              <ul className='border-left-34'>
-                <LinkList link='#' title='教务处' />
-                <LinkList link='#' title='后勤处' />
-                <LinkList link='#' title='信息处' />
-                <LinkList link='#' title='建筑学院' />
-                <LinkList link='#' title='化工学院' />
-                <LinkList link='#' title='党支部' />
-                <LinkList link='#' title='信息处' />
-                <LinkList link='#' title='教务处' />
-              </ul>
-              <StyledText>玉泉校区</StyledText>
-              <ul className='border-left-34'>
-                <LinkList link='#' title='教务处' />
-                <LinkList link='#' title='后勤处' />
-                <LinkList link='#' title='信息处' />
-                <LinkList link='#' title='建筑学院' />
-                <LinkList link='#' title='化工学院' />
-                <LinkList link='#' title='党支部' />
-                <LinkList link='#' title='信息处' />
-                <LinkList link='#' title='教务处' />
-              </ul>
+              {
+                this.store.state.list.map((item: any) => {
+                  return (
+                    <React.Fragment key={item.id}>
+                      <StyledText>{item.campus}</StyledText>
+                      <ul className='border-left-34'>
+                        {
+                          item.list.map((value: any) => {
+                            return (
+                              <LinkList key={value.id} link='#' title={value.title} />
+                            );
+                          })
+                        }
+                      </ul>
+                    </React.Fragment>
+                  );
+                })
+              }
             </>
           }
         </div>
@@ -116,12 +99,23 @@ export default class CampusHotline extends React.Component<IProps, {}> {
     );
   }
 
-  public componentDidMount(): void {
-
+  public componentDidMount() {
+    fecthAjax.getCampusHotlineList().then((res: Ajax.AjaxResponse) => {
+      if (!res.errcode && res.data) {
+        this.store.setState({
+          list: res.data
+        });
+      }
+    });
   }
 
   public onChange = (value: string): void => {
     if (value) {
+      fecthAjax.getCampusHotlineSearchList().then((res: Ajax.AjaxResponse) => {
+        this.store.setState({
+          searchList: res.data
+        });
+      });
       this.store.setState({ isHide: true });
     } else {
       this.store.setState({ isHide: false });
@@ -136,6 +130,8 @@ interface IProps {
 }
 
 interface IState {
+  list: any[];
+  searchList: any[];
   isHide: boolean;
 }
 

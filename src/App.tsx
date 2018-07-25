@@ -48,11 +48,9 @@ const f7Params = {
 };
 
 @observer
-class MyApp extends React.Component<{}, IState> {
+class MyApp extends React.Component<{}, {}> {
 
   public state = {
-    index: '1',
-    data: []
   };
 
   public $f7: any;
@@ -101,7 +99,24 @@ class MyApp extends React.Component<{}, IState> {
     deviceready(() => { this.deviceready(); });
   }
 
-  public deviceready(): void {
+
+  public render() {
+    return (
+      <App params={f7Params} >
+
+        <Statusbar />
+
+        <Views>
+          <View
+            url='/'
+            main={true} />
+        </Views>
+
+      </App>
+    );
+  }
+
+  private deviceready(): void {
 
     // alert(`设备型号：${device.model}`);
     // alert(`操作系统名称：${device.platform}`);
@@ -138,28 +153,10 @@ class MyApp extends React.Component<{}, IState> {
       }
     }, false);
   }
-
-
-  public render() {
-    return (
-      <App params={f7Params} >
-
-        <Statusbar />
-
-        <Views>
-          <View
-            url='/'
-            main={true} />
-        </Views>
-
-      </App>
-    );
-  }
 }
 
-interface IState {
-  index: string;
-  data: any[];
-}
+// interface IState {
+
+// }
 
 export default MyApp;

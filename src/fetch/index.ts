@@ -194,6 +194,30 @@ class FetchAjax {
     );
   }
 
+  // 获取课程评价的学期列表
+  public async getSemesterList(): Promise<any> {
+    return await http.post('/semester/list', {});
+  }
+
+  // 获取课程列表
+  public async getCourseList(): Promise<any> {
+    return await http.post('/course/list', {});
+  }
+
+  // 获取校园热线列表
+  public async getCampusHotlineList(): Promise<any> {
+    return await http.post('/campus/hotline', {});
+  }
+
+  // 获取校园热线搜索列表
+  public async getCampusHotlineSearchList(): Promise<any> {
+    return await http.post('/campus/hotline/search', {});
+  }
+
+
+
+
+  // 废弃的接口
   // 获取动态校园展示
   public async getDynamicCampus(accessToken?: string, schoolType?: string): Promise<any> {
     return await this.ajaxPost('/dynamic/campus',

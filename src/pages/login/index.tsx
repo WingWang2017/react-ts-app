@@ -44,7 +44,7 @@ class Login extends React.Component<IProps, {}> {
 
   public state = {};
 
-  public $f7: any;
+  public $f7: F7.Dom;
 
   public store: any = new Store();
 
@@ -117,14 +117,14 @@ class Login extends React.Component<IProps, {}> {
           ...res.data
         });
         localStorage.hasSchool = true;
-        this.$f7.router.navigate('/home');
+        this.props.f7router.navigate('/home');
       } else if (res.errcode === 2) {
         localStorage.user = JSON.stringify({
           mobile: phone,
           user_id: res.data.user_id,
           token: res.data.token
         });
-        this.$f7.router.navigate('/login/bindInfo');
+        this.props.f7router.navigate('/login/bindInfo');
       } else {
         Alert.default({
           content: res.msg
@@ -136,8 +136,8 @@ class Login extends React.Component<IProps, {}> {
 }
 
 interface IProps {
-  f7router?: any;
-  f7route?: any;
+  f7router: F7.F7router;
+  f7route: F7.F7route;
 }
 
 interface IState {

@@ -68,7 +68,7 @@ class Home extends React.Component<IProps, IState> {
 
   public componentDidMount(): void {
     document.addEventListener('deviceready', this.deviceready.bind(this), false);
-    // this.getAjax(1);
+    this.getAjax(1);
   }
 
   public componentWillUnmount(): void {
@@ -97,22 +97,23 @@ class Home extends React.Component<IProps, IState> {
 
   // 获取动态校园数据，并把数据放在 this.dynamicList 里
   public async getDynamicCampus(): Promise<any> {
-    const res = await fetchAjax.getDynamicCampus();
-    if (res.errcode) {
-      this.setData('dynamicList', res.resource.data);
+    const res: Ajax.AjaxResponse = await fetchAjax.getDynamicCampus();
+    if (!res.errcode && res.data) {
+      this.setData('dynamicList', res.data);
     }
     return res;
   }
 
   // 获取校内论坛，并把数据放在 this.props.forumState 里
   public async getSchoolForum(page: number): Promise<any> {
-    const user = JSON.parse(localStorage.user);
-    const res = await fetchAjax.getSchoolForum(user.user_id, page);
-    if (res.errcode) {
+    // const user = localStorage.user && JSON.parse(localStorage.user);
+    const res: Ajax.AjaxResponse = await fetchAjax.getSchoolForum('1', page);
+    console.log(res.data);
+    if (!res.errcode && res.data) {
       page === 1
-        ? this.props.forumState.setData(res.resource.data)
-        : this.props.forumState.pushData(res.resource.data);
-      this.setData('lastPage', res.resource.lastPage);
+        ? this.props.forumState.setData(res.data.list)
+        : this.props.forumState.pushData(res.data.list);
+      this.setData('lastPage', res.data.lastPage);
       this.$f7.lazy.create('.page-content');
     }
     return res;
@@ -121,7 +122,7 @@ class Home extends React.Component<IProps, IState> {
   // 点击删除自己发的论坛
   public onDelete = (item: any): void => {
     // console.log(this.props.forumState);
-    const user = JSON.parse(localStorage.user);
+    const user = localStorage.user && JSON.parse(localStorage.user);
     fetchAjax.getSchoolForumDelete(user.user_id, item.id).then((res: any) => {
       if (res.errcode) {
         this.props.forumState.removeData(item);
@@ -131,7 +132,7 @@ class Home extends React.Component<IProps, IState> {
 
   // 点赞和取消点赞
   public onLike = async (item: any): Promise<any> => {
-    const user = JSON.parse(localStorage.user);
+    const user = localStorage.user && JSON.parse(localStorage.user);
     const res = item.zan_status
       ? await fetchAjax.getSchoolForumUnspott(user.user_id, item.id)
       : await fetchAjax.getSchoolForumSpot(user.user_id, item.id);
@@ -161,7 +162,7 @@ class Home extends React.Component<IProps, IState> {
   }
 
   public sendComments = (centent: string, mesType: string, scfID: number, commentID: number): void => {
-    const user = JSON.parse(localStorage.user);
+    const user = localStorage.user && JSON.parse(localStorage.user);
     const parentID = mesType === 'comment' ? 0 : commentID;
     fetchAjax.getSchoolForumPublicComment(user.user_id, scfID, centent, parentID).then((res: any) => {
       if (res.errcode) {
@@ -171,7 +172,7 @@ class Home extends React.Component<IProps, IState> {
   }
 
   public onDeleteThisComment = (scfID: number, id: number): void => {
-    const user = JSON.parse(localStorage.user);
+    const user = localStorage.user && JSON.parse(localStorage.user);
     fetchAjax.getSchoolForumDelComment(user.user_id, scfID, id).then((res: any) => {
       if (res.errcode) {
         this.props.forumState.commentRemoveData(id);
@@ -186,9 +187,9 @@ const HomeCentent = observer(HOCRefreshLoad((props: any) => {
     <>
       <div>
         <Ttitle centent='动态校园' link='#' />
-        <ul>
+        <StyledUL className='border-left-34'>
           <DynamicList data={props.dynamicList} />
-        </ul>
+        </StyledUL>
       </div>
       <StyledDiv>
         <Ttitle centent='校内论坛' />
@@ -204,9 +205,10 @@ const HomeCentent = observer(HOCRefreshLoad((props: any) => {
 }));
 
 const DynamicList = observer((props: any) => {
+  console.log(props.data);
   return (
     props.data.map((item: any) =>
-      <li key={item.id}>
+      <li key={item.id} className='border1px'>
         <List link={`/announcement/${item.id}`} linkName={item.title} rightName={dateC(item.public_time)} />
       </li>
     )
@@ -222,6 +224,10 @@ interface IProps {
 interface IState {
   user: any;
 }
+
+const StyledUL = Styled.ul`
+  background-color: #fff;
+`;
 
 const StyledDiv = Styled.div`
   margin: .2rem 0;

@@ -12,7 +12,16 @@ import { leave_teacher_icon, leave_time_icon } from 'src/images';
 export default class ItemList extends React.Component<IProps, IState> {
 
   public readonly state = {
-    courseList: [],
+    courseList: [
+      {
+        id: 0,
+        title: 'asdasd',
+        teacher: 'asdasd',
+        weekly: '11',
+        node: '11',
+        class_place: '5222'
+      }
+    ],
     isHide: true
   };
 
@@ -32,7 +41,7 @@ export default class ItemList extends React.Component<IProps, IState> {
             {
               this.state.courseList.map((value: any) => {
                 return (
-                  <StyledItem key={value.id} href='#'>
+                  <StyledItem key={value.id} href='/my/courseEvaluation/evaluationDetails'>
                     <StyledTitle>{value.title}</StyledTitle>
                     <StyledText>{value.teacher}</StyledText>
                     <StyledText>{value.weekly} {value.node}，{value.class_place}</StyledText>

@@ -77,6 +77,18 @@ const routes: any[] = [
         resolve({ component: rc.default });
       });
     },
+    routes: [
+      {
+        // 校园论坛详情
+        path: '/campusForumDetails/:id',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/home/campus-forum-details');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      }
+    ]
   },
   {
     // 公告
@@ -266,7 +278,7 @@ const routes: any[] = [
         },
       },
       {
-        // 校园热线
+        // 课程评价
         path: '/courseEvaluation',
         async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
           const reactComponent = () => import('./pages/my/course-evaluation');
@@ -274,6 +286,30 @@ const routes: any[] = [
             resolve({ component: rc.default });
           });
         },
+        routes: [
+          {
+            // 课程评价详情页
+            path: '/evaluationDetails',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/my/course-evaluation/evaluation-details');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+            routes: [
+              {
+                // 课程评价页
+                path: '/evaluate',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  const reactComponent = () => import('./pages/my/course-evaluation/evaluate');
+                  reactComponent().then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                },
+              }
+            ]
+          }
+        ]
       }
     ]
   },

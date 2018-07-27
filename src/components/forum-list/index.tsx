@@ -6,10 +6,18 @@ import Styled from 'styled-components';
 
 import Like from '../like';
 
-import { dateC, entitiestoUtf16, deviceready } from 'src/utils';
+import Header from './header';
+import Centent from './centent';
 
-import { Boy, Girl } from 'src/images';
+import { dateC } from 'src/utils';
 
+interface Iprops {
+  data: any;
+  onDelete: any;
+  onLike: any;
+  sendComments: any;
+  onDeleteThisComment: any;
+}
 
 @observer
 class ForumList extends React.Component<Iprops, {}> {
@@ -22,45 +30,26 @@ class ForumList extends React.Component<Iprops, {}> {
     onDeleteThisComment: () => { }
   };
 
-  public $f7: any;
+  public $f7: F7.Dom;
 
   public render() {
     return (
       <ul>
         {
-          this.props.data && this.props.data.data.map((item: any) =>
-            <StyledLi className='border1px' key={item.id}>
-              <StyledHead href={`/detailed/${item.user_id}`} className={item.sex}>
-                <img src={item.avatar} alt='' />
-              </StyledHead>
-              <StyledCentent>
-                <StyledName>
-                  {item.user_name || item.nickname}
-                  {item.type_name && <span>{item.type_name}</span>}
-                </StyledName>
-                {item.title && <StyledTitle>{item.title}</StyledTitle>}
-                {item.content && <StyledText>{item.content}</StyledText>}
-                {item.details && <p className='wpForumText'>{item.details}</p>}
-                {
-                  item.price &&
-                  <p className='wpInfo'>
-                    <span className='wpPrice'>¥{item.price}</span>|<span className='wpStatus'>{item.newold_name}</span>
-                  </p>
-                }
-                <ImgList
-                  imgs={item.images}
-                  onPhotoPage={this.onPhotoPage} />
+          this.props.data.data.map((item: any) => {
+            return (
+              <StyledLi className='border1px' key={item.id}>
+                <Header item={item} onDelete={this.onDelete} />
+                <Centent
+                  item={item}
+                  link={`/home/campusForumDetails/${item.id}`} />
                 <ForumFeatures
                   item={item}
-                  onDelete={this.onDelete}
                   onLike={this.onLike}
                   onComment={this.onComment} />
-                <Comments
-                  data={item.comments}
-                  onReply={this.onReply} />
-              </StyledCentent>
-            </StyledLi>
-          )
+              </StyledLi>
+            );
+          })
         }
       </ul>
     );
@@ -70,8 +59,7 @@ class ForumList extends React.Component<Iprops, {}> {
 
   }
 
-  public onDelete = (item: any) => (): void => {
-    // console.log(item);
+  private onDelete = (item: any) => (): void => {
     import('src/components/confirm').then(({ default: confirm }) => {
       confirm.default({
         title: '确定删除吗？',
@@ -82,12 +70,11 @@ class ForumList extends React.Component<Iprops, {}> {
     });
   }
 
-  public onLike = (item: any) => (): void => {
+  private onLike = (item: any) => (): void => {
     this.props.onLike(item);
   }
 
-  public onComment = (item: any) => (): void => {
-    console.log(item);
+  private onComment = (item: any) => (): void => {
     import('src/components/send-box').then(({ default: sendbox }) => {
       sendbox.default({
         onSureSendMes: this.onSureSendMes(item.id, 0),
@@ -97,185 +84,38 @@ class ForumList extends React.Component<Iprops, {}> {
     });
   }
 
-  public onReply = (item: any) => (): void => {
-    console.log(item);
-    const user = JSON.parse(localStorage.user);
-    if (item.comment_user_id === user.user_id) {
-      import('src/components/actions').then(({ default: actions }) => {
-        actions.default({
-          title: '删除我的评论？',
-          onConfirm: () => {
-            this.props.onDeleteThisComment(item.scf_id, item.comment_id);
-          }
-        });
-      });
-
-    } else {
-      import('src/components/send-box').then(({ default: sendbox }) => {
-        sendbox.default({
-          onSureSendMes: this.onSureSendMes(item.scf_id, item.comment_id),
-          placeholder: `回复${item.comment_user_name}：`,
-          messageType: 'reply'
-        });
-      });
-    }
-  }
-
-  public onSureSendMes = (scfID: number, commentID: number) => (centent: string, mesType: string) => {
+  private onSureSendMes = (scfID: number, commentID: number) => (centent: string, mesType: string) => {
     if (centent) {
       this.props.sendComments(centent, mesType, scfID, commentID);
     }
   }
 
-  public onPhotoPage = (imgs: string, index: number) => () => {
-    const photoBrowser = this.$f7.photoBrowser.create({
-      photos: imgs.slice(),
-      theme: 'dark',
-      type: 'standalone',
-      exposition: true,
-      navbar: false,
-      toolbar: false,
-      on: {
-        open: () => {
-          deviceready(() => {
-            StatusBar.backgroundColorByHexString("#000000");
-            // StatusBar.hide();
-          });
-        },
-        closed: () => {
-          deviceready(() => {
-            // StatusBar.show();
-            StatusBar.backgroundColorByHexString("#81D8D0");
-          });
-          photoBrowser.destroy();
-        },
-        click: () => {
-          photoBrowser.close();
-        }
-      }
-    });
-    photoBrowser.open(index);
-  }
 
 }
 
-interface Iprops {
-  data: any;
-  onDelete: any;
-  onLike: any;
-  sendComments: any;
-  onDeleteThisComment: any;
-}
-
-// 图片展示区
-const ImgList = observer((props) =>
-  props.imgs &&
-  <div className={`wpForumImg ${props.imgs.length === 1 ? 'wpForumOneImg' : ''}`} >
-    {
-      props.imgs.map((img: any, imgIndex: number) =>
-        <img
-          data-src={img}
-          key={imgIndex}
-          className={`lazy ${props.imgs.length === 1 ? 'oneImg' : ''}`}
-          onClick={props.onPhotoPage(props.imgs, imgIndex)} />
-      )
-    }
-  </div>
-);
 
 // 点赞，评论 区
 const ForumFeatures = observer((props: any) => {
-  const { create_time, user_id, comments } = props.item;
-  const user = JSON.parse(localStorage.user);
+  const { create_time, comments } = props.item;
   return (
     <div className='wpForumFunction'>
       <time className='wpTime'>{dateC(create_time)}</time>
-      {
-        user.user_id === user_id
-        && <button className='wpDelete' onClick={props.onDelete(props.item)} >删除</button>
-      }
       <button
         className='wpComment'
         onClick={props.onComment(props.item)}>
         {comments.comment_count}
       </button>
-
-      <Like data={props.item} onLike={props.onLike(props.item)} />
+      <Like
+        data={props.item}
+        onLike={props.onLike(props.item)} />
     </div>
-  );
-});
-
-// 评论消息
-const Comments = observer((props: any) => {
-
-  if (props.data.comment_data.length > 0) {
-    return (
-      <div className='wpCommentMes'>
-        {
-          props.data.comment_data.map((item: any) =>
-            <CommentMes
-              key={item.comment_id}
-              data={item}
-              onReply={props.onReply(item)} />
-          )
-        }
-      </div>
-    );
-  } else {
-    return null;
-  }
-});
-
-// 评论消息列表
-const CommentMes = observer(({ data, onReply }) => {
-  const dom = <span>回复<button className='wpButton' >{data.parent_name}</button>：</span>;
-  return (
-    <a href="#" className='wpMes border1px' onClick={onReply} >
-      <div className='wpMesName'>{data.comment_user_name}</div>
-      <time className='wpMesTime'>{dateC(data.created_time)}</time>
-      <div className='wpMesText'>
-        {data.parent_name && dom}
-        {entitiestoUtf16(data.content)}
-      </div>
-    </a>
   );
 });
 
 
 const StyledLi = Styled.li`
-  display: flex;
-  padding: .2rem;
-`;
-
-const StyledHead = Styled.a`
-  flex: 1 0 0.84rem;
-  height: .84rem;
-  overflow: hidden;
-  background-size: 100% 100%;
-  background-image: url('${props => props.className === 'female' ? Girl : Boy}');
-`;
-
-const StyledCentent = Styled.div`
-  flex: 0 1 100%;
-  padding-left: .2rem;
-  box-sizing: border-box;
-`;
-
-const StyledName = Styled.p`
-  font-size: .3rem;
-  color: #119c8f;
-`;
-
-const StyledTitle = Styled.p`
-  padding-bottom: .1rem;
-  line-height: 1.4;
-  font-size: .32rem;
-  color: #000;
-`;
-
-const StyledText = Styled.p`
-  line-height: 1.6;
-  font-size: .3rem;
+  margin-bottom: .08rem;
+  background-color: #fff;
 `;
 
 

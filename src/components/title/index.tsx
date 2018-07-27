@@ -18,7 +18,7 @@ class Title extends React.Component<IProps, {}> {
 
   public render() {
     return (
-      <StyledDiv>
+      <StyledDiv className='border1px'>
         <p>{this.props.centent}</p>
         {
           this.props.link &&
@@ -53,7 +53,13 @@ const StyledDiv = Styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 .2rem;
-  line-height: 2.2;
+  min-height: 1.2rem;
+  font-size: .4rem;
+  background-color: #fff;
+  > p {
+    display: flex;
+    align-items: center;
+  }
   > .link {
     color: #119c8f;
     font-size: .3rem;

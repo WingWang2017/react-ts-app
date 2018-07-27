@@ -9,7 +9,7 @@ export default class InitialPage extends React.Component<IProps, {}> {
 
   public state = {};
 
-  public $f7: any;
+  public $f7: F7.Dom;
 
   public render() {
     return (
@@ -41,8 +41,8 @@ export default class InitialPage extends React.Component<IProps, {}> {
 }
 
 interface IProps {
-  f7router?: any;
-  f7route?: any;
+  f7router: F7.F7router;
+  f7route: F7.F7route;
 }
 
 // interface IState {

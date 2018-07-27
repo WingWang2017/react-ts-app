@@ -108,6 +108,7 @@ const StyledDiv = Styled.li`
   .right {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     flex: 1 0 auto;
   }
   .right button {

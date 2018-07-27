@@ -120,11 +120,6 @@ select option {
   padding-bottom: .98rem;
 }
 
-.ios .home,
-.ios .home .page {
-  background-color: #fff;
-}
-
 .ios .ptr-preloader {
   height: .88rem;
   margin-top: -.88rem;
@@ -199,6 +194,12 @@ select option {
   color: #999;
 }
 
+.wpDelete{
+  align-self: center;
+  width: .4rem;
+  height: .4rem;
+  background: url("../img/faxian/faxian_daiban_delete.svg") no-repeat center center / .4rem .4rem;
+}
 
 .wpForumText{
 	line-height: 1.6;
@@ -207,40 +208,40 @@ select option {
 }
 
 .wpForumFunction{
-	line-height: 0.63rem;
-	margin: 0.05rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 1.04rem;
+  padding: 0 .32rem;
+  font-size: .24rem;
+  color: #999;
 }
 .wpTime{
 	line-height: .63rem;
-	font-size: 0.28rem;
-	color: #5b5b5d;
 }
-.wpDelete{
-	line-height: .63rem;
-	font-size: 0.26rem;
-  color: #E64340;
-  padding: 0 .2rem;
-}
+
 .wpLikes{
 	background: url('../img/like_normal.svg') no-repeat left center;
 	background-size: 0.3rem 0.26rem;
-  padding: 0 .2rem 0 .39rem;
+  padding-left: .5rem;
 }
 .wpLikes-on{
-	background-image: url('../img/like_selected.svg');
+  background-image: url('../img/like_selected.svg');
+  color: #F15171;
 }
 
 .wpComment{
 	background: url('../img/comment.svg') no-repeat left center;
 	background-size: 0.28rem 0.28rem;
-	padding-left: 0.35rem;
+  padding-left: .5rem;
 }
 .wpForumFunction .wpLikes,
 .wpForumFunction .wpComment{
-	float: right;
-	height: 0.63rem;
-	font-size: 0.28rem;
-	color: #353535;
+  min-width: 1rem;
+  height: 0.63rem;
+  text-align: left;
+	font-size: .24rem;
+  color: #999;
 }
 
 .wpCommentMes{
@@ -298,15 +299,20 @@ select option {
 }
 
 .wpForumImg img{
-	width: 1.6rem;
-	height: 1.6rem;
-	margin: 0.14rem 0.14rem 0 0;
+  display: block;
+	width: 2.2rem;
+	height: 2.2rem;
+	margin: .12rem .12rem 0 0;
+}
+
+.wpForumImg img:nth-child(3n){
+	margin-right: 0;
 }
 
 .wpForumImg .oneImg{
-	width: 2.88rem;
+	width: 3.44rem;
 	height: auto;
-	max-height: 3.88rem;
+	max-height: 4.62rem;
 }
 .noData{
 	text-align: center;

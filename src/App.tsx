@@ -53,7 +53,7 @@ class MyApp extends React.Component<{}, {}> {
   public state = {
   };
 
-  public $f7: any;
+  public $f7: F7.Dom;
   public $f7ready: (f7: any) => void;
 
   public componentDidMount(): void {
@@ -91,7 +91,7 @@ class MyApp extends React.Component<{}, {}> {
       // }
 
       setTimeout(() => {
-        f7.router.navigate('/my');
+        f7.router.navigate('/home');
       }, 1000);
 
     });

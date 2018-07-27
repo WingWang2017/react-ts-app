@@ -446,6 +446,7 @@ html.with-statusbar.device-iphone-x .framework7-root {
   flex-shrink: 10;
   display: flex;
   align-items: center;
+  max-width: 3.6rem;
 }
 .navbar .subtitle {
   display: block;

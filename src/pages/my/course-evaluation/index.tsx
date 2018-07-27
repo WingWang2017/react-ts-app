@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import { Header } from 'src/components';
 
-import ItemList from './item-list';
+import ItemList from './components/item-list';
 
 import fetchAjax from 'src/fetch';
 
@@ -12,7 +12,13 @@ import fetchAjax from 'src/fetch';
 export default class CourseEvaluation extends React.Component<IProps, IState> {
 
   public readonly state = {
-    item: []
+    item: [
+      {
+        time: 'asd',
+        title: 'asdasdad',
+        id: 0
+      }
+    ]
   };
 
   public $f7: any;

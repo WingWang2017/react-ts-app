@@ -32,7 +32,7 @@ export default class My extends React.Component<IProps, IState> {
 
   };
 
-  public $f7: any;
+  public $f7: F7.Dom;
 
   public render() {
     return (
@@ -71,7 +71,7 @@ export default class My extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-
+    console.log(this.$f7);
   }
 
 }

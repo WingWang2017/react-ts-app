@@ -48,6 +48,9 @@ import ItemList from './item-list';
 // radio组件
 import Radio from './radio';
 
+// 评星组件
+import Star from './star';
+
 export {
   InputText,
   InputPassword,
@@ -66,5 +69,6 @@ export {
   ForumList,
   LinkList,
   ItemList,
-  Radio
+  Radio,
+  Star
 };

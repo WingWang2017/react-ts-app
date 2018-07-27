@@ -31,7 +31,12 @@ declare var cordova: any;
 declare var device: any;
 
 
-declare var f7App: any;
+interface F7App {
+  f7router: F7.F7router;
+  f7route: F7.F7route;
+}
+
+declare var f7App: F7App;
 
 declare namespace Ajax {
   // axios 返回数据
@@ -44,5 +49,33 @@ declare namespace Ajax {
     errcode: number,
     data: any,
     msg: string
+  }
+}
+
+declare namespace F7 {
+
+  export interface Dom {
+    $: any;
+    router: F7router;
+    statusbar: any;
+    params: any;
+    photoBrowser: any;
+  }
+
+  export interface F7router {
+    back(args?: any): void;
+    load(args?: any): void;
+    loadBack(args?: any): void;
+    navigate(args?: any): void;
+    url: string;
+    currentRoute: any;
+  }
+
+  export interface F7route {
+    params: any;
+    path: string;
+    query: any;
+    route: any;
+    url: string;
   }
 }

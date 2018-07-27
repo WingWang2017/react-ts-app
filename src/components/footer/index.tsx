@@ -81,7 +81,7 @@ const data = [
     currIcon: yunketangSelected
   },
   {
-    title: '发布',
+    title: '',
     link: '',
     icon: fabu,
     handle: () => { } // issue.default
@@ -137,8 +137,9 @@ const StyledA = Styled.a`
   font-size: .18rem;
   line-height: 1.4;
   &:nth-child(3) {
-    margin-top: -.20rem;
-    padding-top: .8rem;
-    background-size: .74rem .74rem;
+    margin-top: -.16rem;
+    padding-top: 0;
+    height: .92rem;
+    background-size: .92rem .92rem;
   }
 `;

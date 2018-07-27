@@ -1,52 +1,7 @@
 import http from 'src/utils/http';
-import { Alert } from 'src/components';
+// import { Alert } from 'src/components';
 
 class FetchAjax {
-
-  //  ajaxPost
-  public async ajaxPost(url: string, dataObj: any): Promise<any> {
-    const user = JSON.parse(localStorage.user);
-    const data = {
-      ...dataObj,
-      access_token: user.access_token,
-      school_type: user.school_type
-    };
-    const res = await http.post(url, data);
-
-    if (res.errStatus === 101 || res.errStatus === 102) {
-      return await this.getAccessToken(url, data);
-    }
-
-    return await res;
-
-  }
-
-  // token过期获取新的access_token
-  public async getAccessToken(url: string, data: any): Promise<any> {
-    const user = JSON.parse(localStorage.user);
-
-    const res = await http.post('/gettoken', { token: user.token });
-
-    if (!res.errcode) {
-      localStorage.removeItem('hasSchool');
-      Alert.default({
-        content: '已过期，重新登录！',
-        afterHide: () => {
-          f7App.f7router.navigate('/login');
-        }
-      });
-      return res;
-    }
-
-    user.access_token = res.resource.access_token;
-    localStorage.user = JSON.stringify(user);
-    // access_token change
-    const dataObj = {
-      ...data,
-      access_token: res.resource.access_token
-    };
-    return await this.ajaxPost(url, dataObj);
-  }
 
   // 判断token 是否失效
   public async isToken(token: string): Promise<any> {
@@ -158,7 +113,7 @@ class FetchAjax {
 
   // 更改绑定手机号时获取验证码
   public async edcode(mobile: string): Promise<any> {
-    const { token } = JSON.parse(localStorage.user);
+    const { token } = localStorage.user && JSON.parse(localStorage.user);
     return await http.post('/edcode',
       {
         token,
@@ -169,7 +124,7 @@ class FetchAjax {
 
   // 更改绑定手机号
   public async changeMobile(obj: { mobile: string, old_mobile: string, code: string }): Promise<any> {
-    const { token } = JSON.parse(localStorage.user);
+    const { token } = localStorage.user && JSON.parse(localStorage.user);
     return await http.post('/mobile/change',
       {
         token,
@@ -185,7 +140,7 @@ class FetchAjax {
       old_password: string,
       new_password: string
     }): Promise<any> {
-    const { token } = JSON.parse(localStorage.user);
+    const { token } = localStorage.user && JSON.parse(localStorage.user);
     return await http.post('/password/change',
       {
         token,
@@ -220,7 +175,7 @@ class FetchAjax {
   // 废弃的接口
   // 获取动态校园展示
   public async getDynamicCampus(accessToken?: string, schoolType?: string): Promise<any> {
-    return await this.ajaxPost('/dynamic/campus',
+    return await http.post('/dynamic/campus',
       {
         access_token: accessToken,
         school_type: schoolType,
@@ -230,18 +185,18 @@ class FetchAjax {
 
   // 获取动态校园展示
   public async getDynamicCampusInfo(id: string): Promise<any> {
-    return await this.ajaxPost('/dynamic/campus/info', { id });
+    return await http.post('/dynamic/campus/info', { id });
   }
 
   // 获取校内论坛接口
   public async getSchoolForum(userId: string, page: number): Promise<any> {
-    return await this.ajaxPost('/school/forum', { user_id: userId, page }
+    return await http.post('/school/forum', { user_id: userId, page }
     );
   }
 
   // 删除校内论坛的接口
   public async getSchoolForumDelete(currentId: string, scfId: number): Promise<any> {
-    return await this.ajaxPost('/school/forum/delete',
+    return await http.post('/school/forum/delete',
       {
         current_id: currentId,
         scf_id: scfId
@@ -251,7 +206,7 @@ class FetchAjax {
 
   // 校内论坛的点赞接口
   public async getSchoolForumSpot(userID: string, scfID: number): Promise<any> {
-    return await this.ajaxPost('/school/forum/spot',
+    return await http.post('/school/forum/spot',
       {
         user_id: userID,
         scf_id: scfID
@@ -261,7 +216,7 @@ class FetchAjax {
 
   // 校内论坛的取消点赞接口
   public async getSchoolForumUnspott(userID: string, scfID: number): Promise<any> {
-    return await this.ajaxPost('/school/forum/unspot',
+    return await http.post('/school/forum/unspot',
       {
         user_id: userID,
         scf_id: scfID
@@ -271,7 +226,7 @@ class FetchAjax {
 
   // 发布/回复校内论坛评论接口
   public async getSchoolForumPublicComment(userID: string, scfID: number, content: string, parentID: number): Promise<any> {
-    return await this.ajaxPost('/school/forum/public/comment',
+    return await http.post('/school/forum/public/comment',
       {
         user_id: userID,
         scf_id: scfID,
@@ -283,7 +238,7 @@ class FetchAjax {
 
   // 发布/回复校内论坛评论接口
   public async getSchoolForumDelComment(userID: string, scfID: number, id: number): Promise<any> {
-    return await this.ajaxPost('/school/forum/comment/del',
+    return await http.post('/school/forum/comment/del',
       {
         current_id: userID,
         scf_id: scfID,

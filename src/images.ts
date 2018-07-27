@@ -81,6 +81,10 @@ import logo_img from './assets/img/mine/logo_80.png';
 import leave_teacher_icon from './assets/img/mine/img/wode_leave_class_teacher.svg';
 import leave_time_icon from './assets/img/mine/img/wode_leave_class_time.svg';
 
+// 星星
+import star_white_icon from './assets/img/Star_white.svg';
+import star_yellow_icon from './assets/img/Star_yellow.svg';
+
 export {
   login,
   logo,
@@ -139,5 +143,8 @@ export {
   balcklist_icon,
   logo_img,
   leave_teacher_icon,
-  leave_time_icon
+  leave_time_icon,
+
+  star_white_icon,
+  star_yellow_icon
 };

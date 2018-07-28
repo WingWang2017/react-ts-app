@@ -58,7 +58,7 @@ export default class MainCentent extends React.Component<IProps, {}> {
           });
           photoBrowser.destroy();
         },
-        click: () => {
+        tap: () => {
           photoBrowser.close();
         }
       }

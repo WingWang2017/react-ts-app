@@ -101,7 +101,9 @@ select option {
 }
 
 
-.ios .header a.link {
+.ios .header a.links {
+  display: flex;
+  align-items: center;
   min-width: .78rem;
   height: 100%;
   line-height: 1.5;
@@ -110,8 +112,7 @@ select option {
 /* .header .left .link {
 } */
 
-.ios .header .right .link {
-  display: flex;
+.ios .header .right .links {
   justify-content: flex-end;
   font-size: .32rem;
 }
@@ -196,8 +197,8 @@ select option {
 
 .wpDelete{
   align-self: center;
-  width: .4rem;
-  height: .4rem;
+  flex: 0 1 .6rem;
+  height: .6rem;
   background: url("../img/faxian/faxian_daiban_delete.svg") no-repeat center center / .4rem .4rem;
 }
 

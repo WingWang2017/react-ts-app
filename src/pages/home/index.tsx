@@ -38,13 +38,13 @@ class Home extends React.Component<IProps, IState> {
       <div className='navbar-fixed toolbar-fixed page home' data-name='home'>
         <Header
           left={
-            <a href='/qrscanner' data-animate-pages={false} className='link'>
+            <a href='/qrscanner' className='links'>
               <img src={scanIcon} width='.42rem' height='auto' />
             </a>
           }
           center={this.state.user && this.state.user.school_name}
           right={
-            <a href='/message' className='link'>
+            <a href='/message' className='links'>
               <img src={messageIcon} width='.42rem' height='auto' />
             </a>
           } />

@@ -4,19 +4,16 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Boy, Girl } from 'src/images';
+import { Avatar } from 'src/components';
 
 // header
 
 export default observer((props) => {
   return (
     <StyledDIV>
-      <StyledHead href={`/detailed/${props.item.user_id}`} className={props.item.sex}>
-        <img src={props.item.avatar} alt='' />
-      </StyledHead>
+      <Avatar user_id={props.item.user_id} sex={props.item.sex} avatar={props.item.avatar} />
       <StyledName>
-        {props.item.user_name || props.item.nickname}
-        {props.item.type_name && <span>{props.item.type_name}</span>}
+        {props.item.user_name}
       </StyledName>
       <button className='wpDelete' onClick={props.onDelete(props.item)} />
     </StyledDIV>
@@ -27,19 +24,6 @@ const StyledDIV = Styled.div`
   display: flex;
   padding: .32rem .32rem .24rem;
   background-color: #fff;
-`;
-
-const StyledHead = Styled.a`
-  flex: 0 0 .8rem;
-  height: .8rem;
-  overflow: hidden;
-  margin-right: .16rem;
-  background-size: 100% 100%;
-  background-image: url('${props => props.className === 'female' ? Girl : Boy}');
-  & img {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 const StyledName = Styled.p`

@@ -55,7 +55,6 @@ export default class Footer extends React.Component<IProps, {}> {
               <StyledA
                 key={index}
                 href={item.link}
-                className={`${item.link ? 'link' : ''}`}
                 theme={theme}
                 onClick={item.handle ? item.handle : this.handleClick} >
                 {item.title}

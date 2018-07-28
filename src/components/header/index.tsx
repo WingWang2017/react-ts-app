@@ -56,7 +56,7 @@ const Left = (props: any) => {
     <div className='left sliding'>
       {
         props.back ?
-          <a className={`link back`}
+          <a className={`links back`}
             onClick={props.onBack} >
             <img src={backIcon} className='wpIcon' style={width} />
           </a>

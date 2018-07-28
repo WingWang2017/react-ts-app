@@ -24,7 +24,8 @@ export default class MaskLayer extends React.Component<Iprops, {}> {
     );
   }
 
-  public touchstart = (e: any) => {
+  public touchstart = (e: React.TouchEvent<Element>) => {
+    e.stopPropagation();
     e.preventDefault();
   }
 }

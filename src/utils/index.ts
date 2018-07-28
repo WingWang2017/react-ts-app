@@ -121,6 +121,26 @@ const enToCh = (value: string) => {
   }
 };
 
+// 节流函数
+const throttle = (fn: any, delay: number, isDebounce?: boolean) => {
+  let timer: any;
+  let lastCall = 0;
+  function onThrottle(...args: any[]) {
+    if (isDebounce) {
+      if (timer) { clearTimeout(timer); }
+      timer = setTimeout(() => {
+        fn(...args);
+      }, delay);
+    } else {
+      const now = new Date().getTime();
+      if (now - lastCall < delay) { return; }
+      lastCall = now;
+      fn(...args);
+    }
+  }
+  return onThrottle;
+};
+
 export {
   fmtDate,
   dateC,
@@ -131,5 +151,6 @@ export {
   utf16toEntities,
   entitiestoUtf16,
   deviceready,
-  removeDeviceready
+  removeDeviceready,
+  throttle
 };

@@ -51,6 +51,9 @@ import Radio from './radio';
 // 评星组件
 import Star from './star';
 
+// 头像组件
+import Avatar from './avatar';
+
 export {
   InputText,
   InputPassword,
@@ -70,5 +73,6 @@ export {
   LinkList,
   ItemList,
   Radio,
-  Star
+  Star,
+  Avatar
 };

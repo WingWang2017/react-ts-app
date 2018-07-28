@@ -24,8 +24,7 @@ class Title extends React.Component<IProps, {}> {
           this.props.link &&
           <a
             href={this.props.link}
-            title={this.props.linkName}
-            className='link'>
+            title={this.props.linkName} >
             {this.props.linkName}
           </a>
         }
@@ -60,7 +59,9 @@ const StyledDiv = Styled.div`
     display: flex;
     align-items: center;
   }
-  > .link {
+  > a {
+    display: flex;
+    align-items: center;
     color: #119c8f;
     font-size: .3rem;
   }

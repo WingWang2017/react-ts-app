@@ -50,7 +50,7 @@ export default class MessageCenter extends React.Component<IProps, {}> {
             </>
           }
           right='' />
-        <div className="tabs page-content  not-border">
+        <div className="tabs page-content not-border">
           <div id="tab-1" className="tab tab-active">
             <Notice />
           </div>

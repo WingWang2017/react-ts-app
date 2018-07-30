@@ -22,6 +22,7 @@ import {
 interface IProps {
   activedLink: number;
   f7route?: any;
+  slot?: any;
 }
 
 @observer

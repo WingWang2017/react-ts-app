@@ -16,16 +16,16 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.example.hello"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.example.hello"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.example.hello"
-    },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.example.hello"
     },
     "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.example.hello"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.example.hello"
+    },
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.example.hello"
     }
   },

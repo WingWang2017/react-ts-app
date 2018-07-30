@@ -97,6 +97,12 @@ class MyApp extends React.Component<{}, {}> {
     });
 
     deviceready(() => { this.deviceready(); });
+
+    // this.$f7.$('#root').on('click', (e: any) => {
+    //   // alert(e.target.className);
+    //   alert(this.$f7.$('.page-content').attr('style'));
+    //   console.log(e);
+    // });
   }
 
 

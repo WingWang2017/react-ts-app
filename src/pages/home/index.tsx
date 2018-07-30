@@ -73,6 +73,9 @@ class Home extends React.Component<IProps, IState> {
 
   public componentWillUnmount(): void {
     document.removeEventListener('deviceready', this.deviceready.bind(this), false);
+
+    // 组件销毁后 销毁/禁用延迟加载
+    this.$f7.lazy.destroy('.page-content');
   }
 
   public deviceready() {
@@ -87,6 +90,7 @@ class Home extends React.Component<IProps, IState> {
 
   // 下拉刷新后的回调
   public onRefresh = (page: number) => {
+    console.log(page);
     this.getAjax(page);
   }
 
@@ -110,11 +114,18 @@ class Home extends React.Component<IProps, IState> {
     const res: Ajax.AjaxResponse = await fetchAjax.getSchoolForum('1', page);
     console.log(res.data);
     if (!res.errcode && res.data) {
-      page === 1
-        ? this.props.forumState.setData(res.data.list)
-        : this.props.forumState.pushData(res.data.list);
-      this.setData('lastPage', res.data.lastPage);
-      this.$f7.lazy.create('.page-content');
+
+      if (page === 1) {
+        this.props.forumState.setData(res.data.list);
+        this.setData('lastPage', res.data.lastPage);
+
+        // 初始化页面上的img延迟加载
+        this.$f7.lazy.create('.page-content');
+      } else if (page > 1) {
+        this.props.forumState.pushData(res.data.list);
+      }
+
+
     }
     return res;
   }

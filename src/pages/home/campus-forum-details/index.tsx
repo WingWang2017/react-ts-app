@@ -74,13 +74,21 @@ export default class CampusForumDetails extends React.Component<IProps, {}> {
 
   public componentDidMount() {
     // this.props.forumState.getData(this.props.f7route.params.id);
-    this.props.forumState.data.map((item: any) => {
-      if (item.id + '' === this.props.f7route.params.id) {
-        this.setState({
-          item
-        });
-      }
+    // this.props.forumState.data.map((item: any) => {
+    //   if (item.id + '' === this.props.f7route.params.id) {
+    //     this.setState({
+    //       item
+    //     });
+    //   }
+    // });
+    const { forumState, f7route } = this.props;
+
+    const item = forumState.data.filter((value: { id: number }) => (value.id + '' === f7route.params.id))[0];
+
+    this.setState({
+      item
     });
+
     this.tabsTitle = this.$f7.$('.page .page-content .tabs-title');
     this.tabs = this.$f7.$('.page .page-content .tabs');
     this.$f7.$('.page .scroll').on('scroll', throttle(this.onScroll.bind(this), 100, false), false);

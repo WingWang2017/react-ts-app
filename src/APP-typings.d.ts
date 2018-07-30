@@ -60,6 +60,7 @@ declare namespace F7 {
     statusbar: any;
     params: any;
     photoBrowser: any;
+    lazy: any;
   }
 
   export interface F7router {

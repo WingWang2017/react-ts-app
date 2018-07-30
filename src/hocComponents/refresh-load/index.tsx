@@ -7,6 +7,7 @@ const HOCRefreshLoad = (Component: any) => {
 
     public state = {
       allowInfinite: true,
+      ptrPreloader: true,
       showPreloader: true,
       page: 1
     };
@@ -18,6 +19,7 @@ const HOCRefreshLoad = (Component: any) => {
       return (
         <Page
           infinite={true}
+          ptrPreloader={this.state.ptrPreloader}
           infiniteDistance={0}
           infinitePreloader={this.state.showPreloader}
           onInfinite={this.onScroll}
@@ -32,13 +34,38 @@ const HOCRefreshLoad = (Component: any) => {
 
     public componentDidMount(): void {
       // this.refreshLoad();
+      const el = this.$f7.$(`.${this.props.pageName}`)[0];
+      el.addEventListener('page:beforeout', this.onPageBeforeOut.bind(this), false);
+      el.addEventListener('page:afterin', this.onPageAfterIn.bind(this), false);
+    }
+
+    public componentWillUnmount() {
+      const el = this.$f7.$(`.${this.props.pageName}`)[0];
+      el.removeEventListener('page:beforeout', this.onPageBeforeOut.bind(this), false);
+      el.removeEventListener('page:afterin', this.onPageAfterIn.bind(this), false);
+    }
+
+    private onPageBeforeOut(): void {
+      this.setState({
+        ptrPreloader: false,
+        showPreloader: false
+      });
+    }
+
+    private onPageAfterIn(): void {
+      this.setState({
+        ptrPreloader: true,
+        showPreloader: true
+      });
     }
 
     // 下拉刷新
-    public onPtrRefresh = (event: any, done: any): void => {
+    private onPtrRefresh = (event: any, done: any): void => {
       setTimeout(() => {
         this.setState({
-          page: 1
+          page: 1,
+          showPreloader: true,
+          allowInfinite: true
         }, () => {
           this.props.onRefresh(this.state.page);
         });
@@ -47,7 +74,7 @@ const HOCRefreshLoad = (Component: any) => {
     }
 
     // 滚动到底触发事件
-    public onScroll = (): void => {
+    private onScroll = (): void => {
       if (!this.state.allowInfinite) { return; }
       this.setState({ allowInfinite: false });
 

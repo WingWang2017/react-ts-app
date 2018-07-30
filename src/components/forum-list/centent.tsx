@@ -4,8 +4,6 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { deviceready } from 'src/utils';
-
 interface IProps {
   link?: string;
   item: any;
@@ -16,6 +14,8 @@ export default class MainCentent extends React.Component<IProps, {}> {
 
 
   public $f7: F7.Dom;
+
+  public photoBrowser: any;
 
   public render() {
     return (
@@ -38,8 +38,16 @@ export default class MainCentent extends React.Component<IProps, {}> {
     );
   }
 
+  public componentDidMount() {
+
+  }
+
+  public componentWillUnmount(): void {
+    document.removeEventListener('deviceready', this.deviceready.bind(this), false);
+  }
+
   private onPhotoPage = (imgs: string, index: number) => () => {
-    const photoBrowser = this.$f7.photoBrowser.create({
+    this.photoBrowser = this.$f7.photoBrowser.create({
       photos: imgs.slice(),
       theme: 'dark',
       type: 'standalone',
@@ -48,22 +56,26 @@ export default class MainCentent extends React.Component<IProps, {}> {
       toolbar: false,
       on: {
         open: () => {
-          deviceready(() => {
-            StatusBar.backgroundColorByHexString("#000000");
-          });
+          this.onStatusBar('#000000');
         },
         closed: () => {
-          deviceready(() => {
-            StatusBar.backgroundColorByHexString("#81D8D0");
-          });
-          photoBrowser.destroy();
+          this.onStatusBar('#81D8D0');
+          this.photoBrowser.destroy();
         },
-        tap: () => {
-          photoBrowser.close();
+        click: () => {
+          this.photoBrowser.close();
         }
       }
     });
-    photoBrowser.open(index);
+    this.photoBrowser.open(index);
+  }
+
+  private onStatusBar(color: string): void {
+    document.addEventListener('deviceready', this.deviceready.bind(this, color), false);
+  }
+
+  private deviceready(color: string): void {
+    StatusBar.backgroundColorByHexString(color);
   }
 
 }

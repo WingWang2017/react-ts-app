@@ -295,26 +295,32 @@ select option {
 	display: flex;
 	flex-wrap: wrap;
 }
-.wpForumOneImg{
-	display: block;
-}
-
-.wpForumImg img{
-  display: block;
+.wpForumImg li{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 	width: 2.2rem;
 	height: 2.2rem;
-	margin: .12rem .12rem 0 0;
+  margin: .12rem .12rem 0 0;
+  overflow: hidden;
 }
 
-.wpForumImg img:nth-child(3n){
+.wpForumImg li:nth-child(3n){
 	margin-right: 0;
 }
 
 .wpForumImg .oneImg{
 	width: 3.44rem;
-	height: auto;
-	max-height: 4.62rem;
+	height: 3.44rem;
 }
+
+.wpForumImg img {
+  width: auto;
+  height: auto;
+  min-height: 100%;
+}
+
+
 .noData{
 	text-align: center;
 	line-height: 2;

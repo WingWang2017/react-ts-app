@@ -116,9 +116,9 @@ const StyledDiv = Styled.div`
     content: '';
     position: absolute;
     left: 50%;
-    top: -0.34rem;
-    width: 1.2rem;
-    height: 1.2rem;
+    top: -0.25rem;
+    width: 1.36rem;
+    height: 1.36rem;
     transform: translateX(-50%);
     z-index: -1;
     background: url("${fabu_bg}") no-repeat 0 0 / 100% 100%;
@@ -137,7 +137,7 @@ const StyledA = Styled.a`
   font-size: .18rem;
   line-height: 1.4;
   &:nth-child(3) {
-    margin-top: -.16rem;
+    margin-top: -.08rem;
     padding-top: 0;
     height: .92rem;
     background-size: .92rem .92rem;

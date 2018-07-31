@@ -13,12 +13,21 @@ import fetchAjax from 'src/fetch';
 
 import { dateC } from 'src/utils';
 
-import HOCRefreshLoad from 'src/hocComponents/refresh-load';
+import { HOCRefreshLoad } from 'src/hocComponents/refresh-load';
 
+interface IProps {
+  f7router?: any;
+  f7route?: any;
+  forumState: any;
+}
+
+interface IState {
+  user: any;
+}
 
 @inject('forumState')
 @observer
-class Home extends React.Component<IProps, IState> {
+export default class Home extends React.Component<IProps, IState> {
 
   public state = {
     user: localStorage.user && JSON.parse(localStorage.user)
@@ -84,8 +93,8 @@ class Home extends React.Component<IProps, IState> {
   }
 
   public async getAjax(page: number): Promise<any> {
-    await this.getDynamicCampus();
-    await this.getSchoolForum(page);
+    this.getDynamicCampus();
+    this.getSchoolForum(page);
   }
 
   // 下拉刷新后的回调
@@ -193,7 +202,20 @@ class Home extends React.Component<IProps, IState> {
 
 }
 
-const HomeCentent = observer(HOCRefreshLoad((props: any) => {
+interface IHomeCententProps {
+  pageName: string;
+  lastPage: number;
+  dynamicList: any;
+  forumState: any;
+  onDelete: any;
+  onLike: any;
+  sendComments: any;
+  onDeleteThisComment: any;
+  onRefresh(page: number): void;
+  onPullUp(page: number): void;
+}
+
+const HomeCentent = observer(HOCRefreshLoad((props: IHomeCententProps) => {
   return (
     <>
       <div>
@@ -215,26 +237,20 @@ const HomeCentent = observer(HOCRefreshLoad((props: any) => {
   );
 }));
 
-const DynamicList = observer((props: any) => {
-  console.log(props.data);
+
+const DynamicList = observer((props: { data: any[] }) => {
   return (
-    props.data.map((item: any) =>
-      <li key={item.id} className='border1px'>
-        <List link={`/announcement/${item.id}`} linkName={item.title} rightName={dateC(item.public_time)} />
-      </li>
-    )
+    <>
+      {
+        props.data.map((item: { id: string | number, title: string, public_time: string }) =>
+          <li key={item.id} className='border1px'>
+            <List link={`/announcement/${item.id}`} linkName={item.title} rightName={dateC(item.public_time)} />
+          </li>
+        )
+      }
+    </>
   );
 });
-
-interface IProps {
-  f7router?: any;
-  f7route?: any;
-  forumState: any;
-}
-
-interface IState {
-  user: any;
-}
 
 const StyledUL = Styled.ul`
   background-color: #fff;
@@ -243,5 +259,3 @@ const StyledUL = Styled.ul`
 const StyledDiv = Styled.div`
   margin: .2rem 0;
 `;
-
-export default Home;

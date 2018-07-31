@@ -85,6 +85,14 @@ import leave_time_icon from './assets/img/mine/img/wode_leave_class_time.svg';
 import star_white_icon from './assets/img/Star_white.svg';
 import star_yellow_icon from './assets/img/Star_yellow.svg';
 
+// 评论
+import faqiliaotian_icon from './assets/img/faqiliaotian.svg';
+
+// 点赞
+import like_normal_red_icon from './assets/img/like_normal_red.svg';
+import like_normal_icon from './assets/img/like_normal.svg';
+import like_selected_icon from './assets/img/like_selected.svg';
+
 export {
   login,
   logo,
@@ -146,5 +154,10 @@ export {
   leave_time_icon,
 
   star_white_icon,
-  star_yellow_icon
+  star_yellow_icon,
+
+  faqiliaotian_icon,
+  like_normal_red_icon,
+  like_normal_icon,
+  like_selected_icon
 };

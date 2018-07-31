@@ -2,8 +2,22 @@ import * as React from 'react';
 
 import { Page } from 'framework7-react';
 
-const HOCRefreshLoad = (Component: any) => {
-  return class RefreshLoad extends React.Component<any, {}> {
+interface IProps {
+  pageName: string;
+  lastPage: string | number;
+  onRefresh(page: number): void;
+  onPullUp(page: number): void;
+}
+
+export type IReactComponent<P = any> =
+  | React.StatelessComponent<P>
+  | React.ComponentClass<P>
+  | React.ClassicComponentClass<P>;
+
+export function HOCRefreshLoad<T extends IReactComponent>(target: T): T;
+
+export function HOCRefreshLoad(Component: IReactComponent) {
+  return class RefreshLoad extends React.Component<IProps, {}> {
 
     public state = {
       allowInfinite: true,
@@ -12,10 +26,10 @@ const HOCRefreshLoad = (Component: any) => {
       page: 1
     };
 
-    public $f7: any;
+    public $f7: F7.Dom;
 
     public render() {
-      const { className, ptrDistance, distance, lastPage, ...iProps } = this.props;
+      const { pageName, lastPage, onRefresh, onPullUp, ...props } = this.props;
       return (
         <Page
           infinite={true}
@@ -26,7 +40,7 @@ const HOCRefreshLoad = (Component: any) => {
           ptr={true}
           onPtrRefresh={this.onPtrRefresh}>
 
-          <Component {...iProps} />
+          <Component {...props} />
 
         </Page>
       );
@@ -48,14 +62,14 @@ const HOCRefreshLoad = (Component: any) => {
     private onPageBeforeOut(): void {
       this.setState({
         ptrPreloader: false,
-        showPreloader: false
+        showPreloader: false,
       });
     }
 
     private onPageAfterIn(): void {
       this.setState({
         ptrPreloader: true,
-        showPreloader: true
+        showPreloader: true,
       });
     }
 
@@ -65,7 +79,7 @@ const HOCRefreshLoad = (Component: any) => {
         this.setState({
           page: 1,
           showPreloader: true,
-          allowInfinite: true
+          allowInfinite: true,
         }, () => {
           this.props.onRefresh(this.state.page);
         });
@@ -87,7 +101,7 @@ const HOCRefreshLoad = (Component: any) => {
         this.setState({ allowInfinite: true });
         this.setState((prevState: { page: number }) => {
           return {
-            page: prevState.page + 1
+            page: prevState.page + 1,
           };
         }, () => {
           this.props.onPullUp(this.state.page);
@@ -172,6 +186,4 @@ const HOCRefreshLoad = (Component: any) => {
 
     // }
   };
-};
-
-export default HOCRefreshLoad;
+}

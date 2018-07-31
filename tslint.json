@@ -16,7 +16,6 @@
       true,
       "always"
     ],
-    "locale": "zh-CN",
     "max-classes-per-file": [
       true,
       2,

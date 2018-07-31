@@ -19,6 +19,9 @@ import Ttitle from './title';
 // 动态校园类型列表组件
 import List from './list';
 
+// 点赞
+import Like from './like';
+
 // 提示框
 import Alert from './alert';
 
@@ -60,6 +63,7 @@ export {
   InputSearch,
   Button,
   SmsCode,
+  Like,
   Alert,
   // Confirm,
   // SendBox,

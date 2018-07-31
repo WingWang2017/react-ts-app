@@ -87,17 +87,17 @@ const ImgList = observer((props) => {
     return null;
   }
   return (
-    <div className={`wpForumImg ${props.imgs.length === 1 ? 'wpForumOneImg' : ''}`} >
+    <ul className={`wpForumImg`} >
       {
-        props.imgs.map((img: any, imgIndex: number) =>
-          <img
-            data-src={img}
-            key={imgIndex}
-            className={`lazy ${props.imgs.length === 1 ? 'oneImg' : ''}`}
-            onClick={props.onPhotoPage(props.imgs, imgIndex)} />
-        )
+        props.imgs.map((img: string, imgIndex: number) => {
+          return (
+            <li key={imgIndex} className={`${props.imgs.length === 1 ? 'oneImg' : ''}`}>
+              <img data-src={img} className='lazy' onClick={props.onPhotoPage(props.imgs, imgIndex)} />
+            </li>
+          );
+        })
       }
-    </div>
+    </ul>
   );
 });
 

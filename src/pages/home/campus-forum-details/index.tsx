@@ -8,6 +8,7 @@ import { Header } from 'src/components';
 
 import MainHeader from 'src/components/forum-list/header';
 import MainCentent from 'src/components/forum-list/centent';
+import MainFooter from 'src/components/forum-list/footer';
 
 import CommentList from 'src/pages/home/components/comment';
 import LikesList from 'src/pages/home/components/likes-list';
@@ -64,10 +65,7 @@ export default class CampusForumDetails extends React.Component<IProps, {}> {
             <LikesList />
           </StyledTabs>
         </div>
-        <StyledDiv>
-          <StyledButton className='border-right'>评论</StyledButton>
-          <StyledButton>点赞</StyledButton>
-        </StyledDiv>
+        <MainFooter />
       </div>
     );
   }
@@ -155,43 +153,27 @@ const StyledTabsTitle = Styled.ul`
       justify-content: center;
       width: 100%;
       height: 100%;
+      position: relative;
     }
+
+  }
+
+  & .tab-link-active:before {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    content: '';
+    width: 1rem;
+    height: .04rem;
+    transform: translateX(-50%);
+    background-color: #81D8D0;
   }
 
 `;
 
 const StyledTabs = Styled.div`
+  margin-bottom: .32rem;
   &.margin {
     margin-top: .8rem;
-  }
-`;
-
-const StyledDiv = Styled.div`
-  position: absolute;
-  z-index: 999;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: .98rem;
-  background: #fff;
-  box-shadow: 0 0 8px rgba(51,51,51,.1);
-`;
-
-const StyledButton = Styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  font-size: .28rem;
-
-  &:first-child {
-    color: #119C8F;
-  }
-  &:last-child {
-    color: #F15171;
   }
 `;

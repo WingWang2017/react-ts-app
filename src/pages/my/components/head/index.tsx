@@ -6,6 +6,7 @@ import Styled from 'styled-components';
 
 import { Boy, Girl, boy_icon, girl_icon } from 'src/images';
 
+// || user && user.sex === 1 ? Boy : Girl
 @observer
 export default class Head extends React.Component<IProps, IState> {
 
@@ -14,10 +15,13 @@ export default class Head extends React.Component<IProps, IState> {
   };
 
   public state = {
-    user: localStorage.user && JSON.parse(localStorage.user)
+    user: localStorage.user && JSON.parse(localStorage.user),
+    head: this.props.head || Boy || Girl
   };
 
   public $f7: any;
+
+  public photoBrowser: any;
 
   public render() {
     const user = localStorage.user && JSON.parse(localStorage.user);
@@ -28,7 +32,7 @@ export default class Head extends React.Component<IProps, IState> {
       <StyledDiv>
         <StyledHead theme={theme}>
           <dt>
-            <img src={this.props.head || user && user.sex === 1 ? Boy : Girl} alt='' />
+            <img src={this.state.head} alt='' onClick={this.onClick} />
           </dt>
           <dd>
             <p className='name'>{user && user.realname || '自己'}</p>
@@ -49,6 +53,118 @@ export default class Head extends React.Component<IProps, IState> {
 
   }
 
+  public componentWillUnmount(): void {
+    document.removeEventListener('deviceready', this.deviceready.bind(this), false);
+  }
+
+  private onClick = (): void => {
+    this.photoBrowser = this.$f7.photoBrowser.create({
+      photos: [`${this.state.head}`],
+      theme: 'dark',
+      type: 'standalone',
+      exposition: true,
+      navbar: true,
+      toolbar: false,
+      renderNavbar: () => {
+        return `<div class='photoBrowser-header'>
+          <div class='left'></div>
+          <div class='center'>我的头像</div>
+          <div class='right'></div>
+        </div>`;
+      },
+      on: {
+        open: () => {
+          this.onStatusBar('#333333');
+          this.$f7.$('.photoBrowser-header .left').on('click', () => {
+            this.photoBrowser.close();
+          });
+          this.$f7.$('.photoBrowser-header .right').on('click', () => {
+            import('src/components/actions').then(({ default: actions }) => {
+              actions.customize({
+                title: '拍照',
+                confirmText: '从手机相册选择',
+                onDefine: this.openCamera,
+                onConfirm: this.openFilePicker
+              });
+            });
+          });
+        },
+        closed: () => {
+          this.onStatusBar('#81D8D0');
+          this.photoBrowser.destroy();
+        },
+        click: () => {
+          this.photoBrowser.close();
+        }
+      }
+    });
+    this.photoBrowser.open();
+  }
+
+  private openCamera = (): void => {
+    const srcType = Camera.PictureSourceType.CAMERA;
+    const options = this.setOptions(srcType, true);
+    this.getPicture(options);
+  }
+
+  private openFilePicker = (): void => {
+    const srcType = Camera.PictureSourceType.PHOTOLIBRARY;
+    const options = this.setOptions(srcType, false);
+    this.getPicture(options);
+  }
+
+  private getPicture(options: any) {
+    navigator.camera.getPicture((imageUri: any) => {
+      this.cameraSuccess(imageUri);
+    }, (error: any) => {
+      this.cameraError(error);
+    }, options);
+  }
+
+  // 提供图像数据的回调函数。
+  private cameraSuccess(imageUri: any) {
+    this.photoBrowser.close();
+    setTimeout(() => {
+      this.setState({
+        head: imageUri
+      });
+    }, 5000);
+    // alert(imageUri);
+  }
+
+  // 回调函数，提供相机错误消息。
+  private cameraError(error: any) {
+    // alert("Unable to obtain picture: " + error);
+  }
+
+  // 自定义相机设置参数
+  private setOptions(srcType: any, allowEdit: boolean) {
+    return {
+      // 保存图像的质量，一些常见的设置是20, 50和100。
+      quality: 50,
+      // 图片选择返回值的格式。 DATA_URL => base64, FILE_URI => 文件uri, NATIVE_URI => 返回原生uri
+      destinationType: Camera.DestinationType.NATIVE_URI,
+      // 在这个应用程序中，动态设置图片源、相机或照片库。
+      sourceType: srcType,
+      // 选择返回图片的格式
+      encodingType: Camera.EncodingType.JPEG,
+      // 选择展示的文件， PICTURE => 图片， VIDEO => 视频， ALLMEDIA => 所有媒体类型
+      mediaType: Camera.MediaType.PICTURE,
+      // 在选择之前允许简单编辑图像
+      allowEdit,
+      // 修正Android定位怪癖
+      correctOrientation: true
+    };
+  }
+
+  private onStatusBar(color: string): void {
+    document.addEventListener('deviceready', this.deviceready.bind(this, color), false);
+  }
+
+  private deviceready(color: string): void {
+    StatusBar.backgroundColorByHexString(color);
+  }
+
 }
 
 interface IProps {
@@ -60,6 +176,7 @@ interface IProps {
 
 interface IState {
   user: any;
+  head: any;
 }
 
 const StyledDiv = Styled.div`
@@ -75,6 +192,7 @@ const StyledHead = Styled.dl`
     width: 1.28rem;
     height: 1.28rem;
     margin-right: .32rem;
+    border-radius: 4px;
   }
   dt img {
     display: block;

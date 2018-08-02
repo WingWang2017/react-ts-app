@@ -8,6 +8,7 @@ import Styled from 'styled-components';
 import MaskLayer from '../mask-layer';
 
 interface IProps {
+  type: string;
   title?: string;
   confirmText?: string;
   cancelText?: string;
@@ -73,15 +74,27 @@ class WpActions extends React.Component<IProps, {}> {
             <MaskLayer onClick={this.onCancel} className={`mask mask-${status}`} />
             <StyledDiv className={`fade fade-${status}`}>
               {
-                this.props.isDefine
-                  ? <button className='actionsButton border1px' onClick={this.props.onDefine}>{this.props.title}</button>
-                  : <p className='actionsTitle border1px'>{this.props.title}</p>
+                this.props.type === 'default' &&
+                <>
+                  <p className='actionsTitle border1px'>{this.props.title}</p>
+                  <StyledButtonTwo
+                    theme={theme}
+                    onClick={this.onConfirm} >
+                    {this.props.confirmText}
+                  </StyledButtonTwo>
+                </>
               }
-              <StyledButtonTwo
-                theme={theme}
-                onClick={this.onConfirm} >
-                {this.props.confirmText}
-              </StyledButtonTwo>
+              {
+                this.props.type === 'customize' &&
+                <>
+                  <StyledButton className='border1px' onClick={this.props.onDefine}>{this.props.title}</StyledButton>
+                  <StyledButtonTwo
+                    theme={theme}
+                    onClick={this.onConfirm} >
+                    {this.props.confirmText}
+                  </StyledButtonTwo>
+                </>
+              }
               <StyledButton
                 onClick={this.onCancel}>
                 {this.props.cancelText}
@@ -118,7 +131,7 @@ const StyledDiv = Styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 99999;
   background: #EFEFF4;
   text-align: center;
   .actionsTitle{

@@ -5,7 +5,6 @@ import { observer } from 'mobx-react';
 import Styled from 'styled-components';
 
 interface IProps {
-  link?: string;
   item: any;
 }
 
@@ -20,10 +19,8 @@ export default class MainCentent extends React.Component<IProps, {}> {
   public render() {
     return (
       <StyledCentent className='border1px'>
-        <a href={this.props.link} title=''>
-          {this.props.item.title && <StyledTitle>{this.props.item.title}</StyledTitle>}
-          {this.props.item.content && <StyledText>{this.props.item.content}</StyledText>}
-        </a>
+        {this.props.item.title && <StyledTitle>{this.props.item.title}</StyledTitle>}
+        {this.props.item.content && <StyledText>{this.props.item.content}</StyledText>}
         {this.props.item.details && <p className='wpForumText'>{this.props.item.details}</p>}
         {
           this.props.item.price &&
@@ -46,7 +43,9 @@ export default class MainCentent extends React.Component<IProps, {}> {
     document.removeEventListener('deviceready', this.deviceready.bind(this), false);
   }
 
-  private onPhotoPage = (imgs: string, index: number) => () => {
+  private onPhotoPage = (imgs: string, index: number) => (e: React.MouseEvent<Element>) => {
+    e.stopPropagation();
+    e.preventDefault();
     this.photoBrowser = this.$f7.photoBrowser.create({
       photos: imgs.slice(),
       theme: 'dark',
@@ -105,7 +104,6 @@ const ImgList = observer((props) => {
 const StyledCentent = Styled.div`
   padding: 0 .32rem .32rem;
   box-sizing: border-box;
-  background-color: #fff;
 `;
 
 const StyledTitle = Styled.p`

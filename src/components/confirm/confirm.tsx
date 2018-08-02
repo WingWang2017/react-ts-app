@@ -160,7 +160,7 @@ export default function ContainerConfirm(config: any) {
 
 const StyledDiv = Styled.div`
   position: relative;
-  z-index: 9999;
+  z-index: 99999;
   overflow: hidden;
   box-sizing: border-box;
   width: 5.6rem;

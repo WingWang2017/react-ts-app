@@ -23,7 +23,6 @@ export default observer((props) => {
 const StyledDIV = Styled.div`
   display: flex;
   padding: .32rem .32rem .24rem;
-  background-color: #fff;
 `;
 
 const StyledName = Styled.p`

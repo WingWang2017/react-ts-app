@@ -42,6 +42,6 @@ const StyledDiv = Styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 99998;
   background-color: ${ props => props.theme.bgColor || 'rgba(0, 0, 0, .4)'};
 `;

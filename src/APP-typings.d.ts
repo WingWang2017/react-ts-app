@@ -20,6 +20,7 @@ interface Navigator {
   app: {
     exitApp: () => void
   };
+  camera: any;
 }
 
 declare var navigator: Navigator;
@@ -29,6 +30,16 @@ declare var module: NodeModule;
 declare var StatusBar: any;
 declare var cordova: any;
 declare var device: any;
+declare var Camera: any;
+
+interface Storage {
+  version: string;
+  device_sn: string;
+  user: string;
+  hasSchool: boolean;
+}
+
+declare var localStorage: Storage;
 
 
 interface F7App {

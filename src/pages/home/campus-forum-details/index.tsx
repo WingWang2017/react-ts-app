@@ -47,9 +47,9 @@ export default class CampusForumDetails extends React.Component<IProps, {}> {
           center='详情'
           right='' />
         <div className='page-content scroll'>
-          <div className='content-header'>
+          <div className='content-header bg-white'>
             <MainHeader item={this.state.item} onDelete={this.onDelete} />
-            <MainCentent item={this.state.item} link='#' />
+            <MainCentent item={this.state.item} />
           </div>
           <StyledTabsTitle className='border1px tabs-title'>
             <li className='li'>10/16</li>

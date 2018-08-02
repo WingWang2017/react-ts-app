@@ -44,7 +44,7 @@ export default class Home extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <div className='navbar-fixed toolbar-fixed page home' data-name='home'>
+      <div className='navbar-fixed toolbar-fixed page' data-name='home'>
         <Header
           left={
             <a href='/qrscanner' className='links'>

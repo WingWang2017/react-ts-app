@@ -57,6 +57,9 @@ import Star from './star';
 // 头像组件
 import Avatar from './avatar';
 
+// page 的头部
+import PageHeader from './page-header';
+
 export {
   InputText,
   InputPassword,
@@ -78,5 +81,6 @@ export {
   ItemList,
   Radio,
   Star,
-  Avatar
+  Avatar,
+  PageHeader
 };

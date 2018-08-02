@@ -101,7 +101,7 @@ const StyledDiv = Styled.div`
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: 10000;
+	z-index: 99999;
 	height: 3.84rem;
 	background: #f5f5f5;
 

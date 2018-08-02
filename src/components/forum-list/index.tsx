@@ -9,6 +9,8 @@ import Like from '../like';
 import Header from './header';
 import Centent from './centent';
 
+import { yinzhang_icon } from 'src/images';
+
 import { dateC } from 'src/utils';
 
 interface Iprops {
@@ -19,6 +21,7 @@ interface Iprops {
   onDeleteThisComment: any;
 }
 
+// href={`/home/campusForumDetails/${item.id}`}
 @observer
 class ForumList extends React.Component<Iprops, {}> {
 
@@ -39,10 +42,10 @@ class ForumList extends React.Component<Iprops, {}> {
           this.props.data.data.map((item: any) => {
             return (
               <StyledLi className='border1px' key={item.id}>
-                <Header item={item} onDelete={this.onDelete} />
-                <Centent
-                  item={item}
-                  link={`/home/campusForumDetails/${item.id}`} />
+                <a href='#' onClick={this.onClick(item.id)}>
+                  <Header item={item} onDelete={this.onDelete} />
+                  <Centent item={item} />
+                </a>
                 <ForumFeatures
                   item={item}
                   onLike={this.onLike}
@@ -59,7 +62,15 @@ class ForumList extends React.Component<Iprops, {}> {
 
   }
 
-  private onDelete = (item: any) => (): void => {
+  private onClick = (id: string | number) => (e: React.MouseEvent<Element>): void => {
+    e.stopPropagation();
+    e.preventDefault();
+    this.$f7.router.navigate(`/home/campusForumDetails/${id}`);
+  }
+
+  private onDelete = (item: any) => (e: React.MouseEvent<Element>): void => {
+    e.stopPropagation();
+    e.preventDefault();
     import('src/components/confirm').then(({ default: confirm }) => {
       confirm.default({
         title: '确定删除吗？',
@@ -90,7 +101,6 @@ class ForumList extends React.Component<Iprops, {}> {
     }
   }
 
-
 }
 
 
@@ -116,6 +126,20 @@ const ForumFeatures = observer((props: any) => {
 const StyledLi = Styled.li`
   margin-bottom: .08rem;
   background-color: #fff;
+
+  & a {
+    display: block;
+  }
+  & a.active-state {
+    background-color: #e3e4e8;
+  }
+
+  .campus-forum & a {
+    background-image: url("${yinzhang_icon}");
+    background-repeat: no-repeat;
+    background-position: 3.4rem .2rem;
+    background-size: 2.64rem 1.92rem;
+  }
 `;
 
 

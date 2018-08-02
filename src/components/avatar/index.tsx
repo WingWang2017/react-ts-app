@@ -7,14 +7,35 @@ import Styled from 'styled-components';
 import { Boy, Girl } from 'src/images';
 
 // 头像 Avatar
+// /detailed/${props.user_id}
 
-export default observer((props: IProps) => {
-  return (
-    <StyledHead href={`/detailed/${props.user_id}`} className={props.sex}>
-      <img src={props.avatar} alt='' />
-    </StyledHead>
-  );
-});
+// export default observer((props: IProps) => {
+//   return (
+//     <StyledHead href={`/my`} className={props.sex}>
+//       <img src={props.avatar} alt='' />
+//     </StyledHead>
+//   );
+// });
+@observer
+export default class Avatar extends React.Component<IProps, {}> {
+
+  public $f7: F7.Dom;
+
+  public render() {
+    return (
+      <StyledHead className={this.props.sex} onClick={this.onClick}>
+        <img src={this.props.avatar} alt='' />
+      </StyledHead>
+    );
+  }
+
+  private onClick = (e: React.MouseEvent<Element>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    this.$f7.router.navigate(`/my`);
+  }
+
+}
 
 
 interface IProps {
@@ -23,7 +44,7 @@ interface IProps {
   avatar?: string;
 }
 
-const StyledHead = Styled.a`
+const StyledHead = Styled.p`
   flex: 0 0 .8rem;
   height: .8rem;
   overflow: hidden;

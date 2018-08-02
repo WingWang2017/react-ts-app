@@ -50,6 +50,7 @@ import success from './assets/img/success.svg';
 import right_arrow from './assets/img/right_arrow.svg';
 
 // 我的
+import campus_forum_icon from './assets/img/mine/campus_forum.svg';
 import xiaoxizhongxin from './assets/img/mine/wode_xiaoxizhongxin.svg';
 import kebiao from './assets/img/mine/wode_kebiao.svg';
 import chengji from './assets/img/mine/wode_chengji.svg';
@@ -93,6 +94,13 @@ import like_normal_red_icon from './assets/img/like_normal_red.svg';
 import like_normal_icon from './assets/img/like_normal.svg';
 import like_selected_icon from './assets/img/like_selected.svg';
 
+// 下拉
+import downarrow_icon from './assets/img/faxian_downarrow.svg';
+import downarrow_seleced_icon from './assets/img/faxian_downarrow_seleced.svg';
+
+// 已解答印章
+import yinzhang_icon from './assets/img/mine/yinzhang.svg';
+
 export {
   login,
   logo,
@@ -131,6 +139,7 @@ export {
   success,
   right_arrow,
 
+  campus_forum_icon,
   xiaoxizhongxin,
   kebiao,
   chengji,
@@ -159,5 +168,10 @@ export {
   faqiliaotian_icon,
   like_normal_red_icon,
   like_normal_icon,
-  like_selected_icon
+  like_selected_icon,
+
+  downarrow_icon,
+  downarrow_seleced_icon,
+
+  yinzhang_icon
 };

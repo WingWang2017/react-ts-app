@@ -41,6 +41,10 @@
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
-    <engine name="ios" spec="^4.5.4" />
-    <engine name="android" spec="^6.2.3" />
+    <plugin name="cordova-plugin-camera" spec="^2.4.1">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
+    </plugin>
+    <engine name="ios" spec="^4.5.5" />
+    <engine name="android" spec="^6.4.0" />
 </widget>

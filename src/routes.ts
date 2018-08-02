@@ -310,7 +310,17 @@ const routes: any[] = [
             ]
           }
         ]
-      }
+      },
+      {
+        // 校园论坛
+        path: '/campusForum',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/my/campus-forum');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      },
     ]
   },
   {

@@ -32,6 +32,7 @@ export function HOCRefreshLoad(Component: IReactComponent) {
       const { pageName, lastPage, onRefresh, onPullUp, ...props } = this.props;
       return (
         <Page
+          className={this.props.pageName}
           infinite={true}
           ptrPreloader={this.state.ptrPreloader}
           infiniteDistance={0}

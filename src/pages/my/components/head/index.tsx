@@ -55,6 +55,7 @@ export default class Head extends React.Component<IProps, IState> {
 
   public componentWillUnmount(): void {
     document.removeEventListener('deviceready', this.deviceready.bind(this), false);
+    document.removeEventListener('deviceready', this.onListClick.bind(this), false);
   }
 
   private onClick = (): void => {
@@ -81,10 +82,10 @@ export default class Head extends React.Component<IProps, IState> {
           this.$f7.$('.photoBrowser-header .right').on('click', () => {
             import('src/components/actions').then(({ default: actions }) => {
               actions.customize({
-                title: '拍照',
-                confirmText: '从手机相册选择',
-                onDefine: this.openCamera,
-                onConfirm: this.openFilePicker
+                textList: ['拍照', '从手机相册选择', '保存图片'],
+                onListClick: (index: number) => {
+                  document.addEventListener('deviceready', this.onListClick.bind(this, index), false);
+                }
               });
             });
           });
@@ -101,19 +102,29 @@ export default class Head extends React.Component<IProps, IState> {
     this.photoBrowser.open();
   }
 
-  private openCamera = (): void => {
+  private onListClick = (index: number): void => {
+    if (index === 0) {
+      this.openCamera();
+    } else if (index === 1) {
+      this.openFilePicker();
+    } else if (index === 2) {
+
+    }
+  }
+
+  private openCamera(): void {
     const srcType = Camera.PictureSourceType.CAMERA;
     const options = this.setOptions(srcType, true);
     this.getPicture(options);
   }
 
-  private openFilePicker = (): void => {
+  private openFilePicker(): void {
     const srcType = Camera.PictureSourceType.PHOTOLIBRARY;
     const options = this.setOptions(srcType, false);
     this.getPicture(options);
   }
 
-  private getPicture(options: any) {
+  private getPicture(options: any): void {
     navigator.camera.getPicture((imageUri: any) => {
       this.cameraSuccess(imageUri);
     }, (error: any) => {

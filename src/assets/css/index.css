@@ -536,7 +536,6 @@ select option {
 }
 
 
-
 /* */
 .padding16 {
   padding: .16rem 0;
@@ -573,7 +572,7 @@ select option {
 }
 
 .mask {
-  transition: all .2s ease;
+  transition: all .6s ease;
 }
 .mask-entering {
   opacity: 0;
@@ -607,4 +606,23 @@ select option {
 }
 .zooming-unmounted {
   transform: scale(.5);
+}
+
+.drop-down {
+  transition: all .2s ease;
+}
+.drop-down-entering {
+  transform: translate3d(0, -100%, 0);
+}
+.drop-down-entered {
+  transform: translate3d(0, 0, 0);
+}
+.drop-down-exiting {
+  transform: translate3d(0, 0, 0);
+}
+.drop-down-exited {
+  transform: translate3d(0, -100%, 0);
+}
+.drop-down-unmounted {
+  transform: translate3d(0, -100%, 0);
 }

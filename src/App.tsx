@@ -91,7 +91,7 @@ class MyApp extends React.Component<{}, {}> {
       // }
 
       setTimeout(() => {
-        f7.router.navigate('/home');
+        f7.router.navigate('/discover/activity');
       }, 1000);
 
     });

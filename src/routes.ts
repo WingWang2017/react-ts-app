@@ -333,6 +333,32 @@ const routes: any[] = [
       });
     },
   },
+  {
+    // 发现
+    path: '/discover',
+    options: {
+      animate: false,
+      reloadAll: true
+    },
+    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+      const reactComponent = () => import('./pages/discover');
+      reactComponent().then((rc) => {
+        resolve({ component: rc.default });
+      });
+    },
+    routes: [
+      {
+        // 活动报名
+        path: '/activity',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/discover/activity');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      }
+    ]
+  },
 ];
 
 export default routes;

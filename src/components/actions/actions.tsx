@@ -6,65 +6,38 @@ import { Transition } from 'react-transition-group';
 import Styled from 'styled-components';
 
 import MaskLayer from '../mask-layer';
+import { observer } from 'mobx-react';
 
 interface IProps {
   type: string;
   title?: string;
+  color?: string;
   confirmText?: string;
   cancelText?: string;
-  isDefine?: boolean;
-  onDefine?: any;
-  onConfirm?: any;
-  removeChild?: any;
-  color?: string;
-}
+  onConfirm: () => void;
+  removeChild: () => void;
 
+  textList?: string;
+  onListClick: (index: number) => void;
+}
+@observer
 class WpActions extends React.Component<IProps, {}> {
 
   public static defaultProps = {
     title: '提示',
     confirmText: '删除',
     cancelText: '取消',
-    isDefine: false,
-    onDefine: () => { },
-    onConfirm: () => { }
+    onConfirm: () => { },
+    onListClick: () => { }
   };
 
   public state = {
     in: false
   };
 
-  public hide() {
-    this.setState({
-      in: false
-    });
-    this.props.removeChild();
-  }
-
-  public onConfirm = () => {
-    this.hide();
-    this.props.onConfirm();
-  }
-
-  public onCancel = () => {
-    this.hide();
-  }
-
-  public componentDidMount() {
-    this.setState({
-      in: true
-    });
-    document.addEventListener('backbutton', this.hide.bind(this), false);
-  }
-
-  public componentWillUnmount() {
-    document.removeEventListener('backbutton', this.hide.bind(this), false);
-  }
-
   public render() {
     const theme = {
-      color: this.props.color || '#333',
-      margin_bottom: this.props.isDefine
+      color: this.props.color || '#333'
     };
     return (
       <Transition
@@ -79,21 +52,15 @@ class WpActions extends React.Component<IProps, {}> {
                   <p className='actionsTitle border1px'>{this.props.title}</p>
                   <StyledButtonTwo
                     theme={theme}
+                    className='border1px'
                     onClick={this.onConfirm} >
                     {this.props.confirmText}
                   </StyledButtonTwo>
                 </>
               }
               {
-                this.props.type === 'customize' &&
-                <>
-                  <StyledButton className='border1px' onClick={this.props.onDefine}>{this.props.title}</StyledButton>
-                  <StyledButtonTwo
-                    theme={theme}
-                    onClick={this.onConfirm} >
-                    {this.props.confirmText}
-                  </StyledButtonTwo>
-                </>
+                this.props.type === 'customize' && <Customize textList={this.props.textList} onListClick={this.onListClick} />
+
               }
               <StyledButton
                 onClick={this.onCancel}>
@@ -105,7 +72,59 @@ class WpActions extends React.Component<IProps, {}> {
       </Transition>
     );
   }
+
+  public componentDidMount() {
+    this.setState({
+      in: true
+    });
+    document.addEventListener('backbutton', this.hide.bind(this), false);
+  }
+
+  public componentWillUnmount() {
+    document.removeEventListener('backbutton', this.hide.bind(this), false);
+  }
+
+  private hide() {
+    this.setState({
+      in: false
+    });
+    this.props.removeChild();
+  }
+
+  private onConfirm = () => {
+    this.hide();
+    this.props.onConfirm();
+  }
+
+  private onCancel = () => {
+    this.hide();
+  }
+
+  private onListClick = (index: number) => (): void => {
+    this.hide();
+    this.props.onListClick(index);
+  }
+
 }
+
+const Customize = observer((props: any) => {
+  return (
+    <>
+      {
+        props.textList.map((item: any, index: number) => {
+          return (
+            <StyledButton
+              key={index}
+              className={`border1px`}
+              onClick={props.onListClick(index)}>
+              {item}
+            </StyledButton>
+          );
+        })
+      }
+    </>
+  );
+});
 
 export default function ContainerWpActions(config: any) {
   const div = document.createElement('div');
@@ -153,9 +172,11 @@ const StyledButton = Styled.button`
   &.active-state{
     background: #F0F1F4;
   }
+  &:not(.border1px) {
+    margin-top: .14rem;
+  }
 `;
 
 const StyledButtonTwo = StyledButton.extend`
   color: ${props => props.theme.color};
-  margin-bottom: ${props => props.theme.margin_bottom ? '0' : '.14rem'};
 `;

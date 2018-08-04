@@ -101,6 +101,12 @@ import downarrow_seleced_icon from './assets/img/faxian_downarrow_seleced.svg';
 // 已解答印章
 import yinzhang_icon from './assets/img/mine/yinzhang.svg';
 
+// 发现
+import huodong_icon from './assets/img/fanxian-home/faxian_huodong_45_45.svg';
+import ershou_icon from './assets/img/fanxian-home/faxian_ershou_45_45.svg';
+import huzhu_icon from './assets/img/fanxian-home/faxian_huzhu_45_45.svg';
+import shenghuo_icon from './assets/img/fanxian-home/faxian_shenghuo_45_45.svg';
+
 export {
   login,
   logo,
@@ -173,5 +179,10 @@ export {
   downarrow_icon,
   downarrow_seleced_icon,
 
-  yinzhang_icon
+  yinzhang_icon,
+
+  huodong_icon,
+  ershou_icon,
+  huzhu_icon,
+  shenghuo_icon
 };

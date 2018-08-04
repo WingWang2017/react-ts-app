@@ -86,6 +86,7 @@ const StyledList = Styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid transparent;
   font-size: .28rem;

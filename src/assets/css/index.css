@@ -535,6 +535,33 @@ select option {
   background: url("../img/mine/more.svg") no-repeat center center / .4rem .08rem;
 }
 
+.activity-list {
+  margin-bottom: .16rem;
+}
+
+.activity-list a {
+  display: block;
+  padding: .32rem;
+  background-color: #fff;
+}
+
+.activity-list a.active-state {
+  background-color: #e3e4e8;
+}
+
+.activity-list .title {
+  margin-bottom: .32rem;
+  line-height: 1.5;
+  font-size: .32rem;
+}
+
+.activity-list .text {
+  margin-bottom: .08rem;
+  line-height: 1.7;
+  font-size: .24rem;
+  color: #999;
+}
+
 
 /* */
 .padding16 {
@@ -571,23 +598,30 @@ select option {
   transform: translate3d(0, 100%, 0);
 }
 
-.mask {
-  transition: all .6s ease;
-}
+/* .mask {
+
+} */
 .mask-entering {
   opacity: 0;
+  transform: translate3d(0, -100%, 0);
 }
 .mask-entered {
+  transition: opacity .6s ease, transform 0;
   opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 .mask-exiting {
   opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 .mask-exited {
+  transition: opacity .6s ease, transform .6s ease 1s;
   opacity: 0;
+  transform: translate3d(0, -100%, 0);
 }
 .mask-unmounted {
   opacity: 0;
+  transform: translate3d(0, -100%, 0);
 }
 
 

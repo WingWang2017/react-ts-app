@@ -15,7 +15,8 @@ body {
   background: #fff;
   overflow: hidden;
   font-size: 14px;
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
   -webkit-font-smoothing: antialiased;
   user-select: none; /* 禁止选择文本 */
   -webkit-touch-callout: none; /* 系统默认菜单被禁用 */

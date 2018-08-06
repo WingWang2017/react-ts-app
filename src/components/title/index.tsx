@@ -19,7 +19,7 @@ class Title extends React.Component<IProps, {}> {
   public render() {
     return (
       <StyledDiv className='border1px'>
-        <p>{this.props.centent}</p>
+        <p>{this.props.content}</p>
         {
           this.props.link &&
           <a
@@ -41,7 +41,7 @@ class Title extends React.Component<IProps, {}> {
 interface IProps {
   link?: string;
   linkName?: string;
-  centent?: string;
+  content?: string;
 }
 
 // interface IState {

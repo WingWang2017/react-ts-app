@@ -5,7 +5,7 @@ import { observer, inject } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, Footer, Ttitle, List, ForumList } from 'src/components';
+import { Header, Footer, Title, List, ForumList } from 'src/components';
 
 import { scanIcon, messageIcon } from 'src/images';
 
@@ -219,13 +219,13 @@ const HomeCentent = observer(HOCRefreshLoad((props: IHomeCententProps) => {
   return (
     <>
       <div>
-        <Ttitle centent='动态校园' link='#' />
+        <Title content='动态校园' link='#' />
         <StyledUL className='border-left-34'>
           <DynamicList data={props.dynamicList} />
         </StyledUL>
       </div>
       <StyledDiv>
-        <Ttitle centent='校内论坛' />
+        <Title content='校内论坛' />
         <ForumList
           data={props.forumState}
           onDelete={props.onDelete}

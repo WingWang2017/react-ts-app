@@ -41,7 +41,7 @@ export default class Discover extends React.Component<IProps, {}> {
         <div className='page-content'>
           <StyledDiv>
             <StyledLink href='/discover/activity' title='' theme={{ icon: huodong_icon }}>活动报名</StyledLink>
-            <StyledLink href='#' title='' theme={{ icon: ershou_icon }}>二手闲置</StyledLink>
+            <StyledLink href='/discover/used-idle' title='' theme={{ icon: ershou_icon }}>二手闲置</StyledLink>
             <StyledLink href='#' title='' theme={{ icon: huzhu_icon }}>互助代办</StyledLink>
             <StyledLink href='#' title='' theme={{ icon: shenghuo_icon }}>生活精选</StyledLink>
           </StyledDiv>

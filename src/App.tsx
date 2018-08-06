@@ -11,14 +11,11 @@ import { deviceready } from 'src/utils';
 import fetchAjax from 'src/fetch';
 
 
-// import Home from './pages/home';
-
 // if (process.env.NODE_ENV !== 'production') {
 //   const { whyDidYouUpdate } = require('why-did-you-update');
 //   whyDidYouUpdate(React);
 // }
 
-// $$ = Dom7;
 
 const f7Params = {
   // Array with app routes
@@ -91,8 +88,9 @@ class MyApp extends React.Component<{}, {}> {
       // }
 
       setTimeout(() => {
-        f7.router.navigate('/discover/activity');
+        f7.router.navigate('/discover');
       }, 1000);
+
 
     });
 

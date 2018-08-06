@@ -356,6 +356,28 @@ const routes: any[] = [
             resolve({ component: rc.default });
           });
         },
+        routes: [
+          {
+            // 活动详情
+            path: '/details',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/discover/activity/details');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          }
+        ]
+      },
+      {
+        // 二手闲置
+        path: '/used-idle',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/discover/used-idle');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
       }
     ]
   },

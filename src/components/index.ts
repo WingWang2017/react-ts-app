@@ -14,7 +14,7 @@ import Header from './header';
 import Footer from './footer';
 
 // 标题
-import Ttitle from './title';
+import Title from './title';
 
 // 动态校园类型列表组件
 import List from './list';
@@ -76,7 +76,7 @@ export {
   // Actions,
   Header,
   Footer,
-  Ttitle,
+  Title,
   List,
   // Share,
   ForumList,

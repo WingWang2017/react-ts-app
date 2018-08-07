@@ -1,23 +1,16 @@
 import * as React from 'react';
 
-import { observable, action } from "mobx";
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, InputSearch, PageHeader, DropDownBox } from 'src/components';
+import { Header, InputSearch, PageHeaderDown } from 'src/components';
 
 import Content from './content';
 
 interface IProps {
   f7router: F7.F7router;
   f7route: F7.F7route;
-  dropDown: IDropDown;
-}
-
-interface IDropDown {
-  state: any;
-  setState(ags?: any): void;
 }
 
 interface Iitem {
@@ -25,43 +18,7 @@ interface Iitem {
   title: string;
 }
 
-class Store {
 
-  @observable public state = {
-    item: [
-      {
-        title: '校内',
-        arrow: true
-      },
-      {
-        title: '校外',
-        arrow: true
-      },
-      {
-        title: '我的',
-        arrow: false
-      }
-    ],
-    index: 0
-  };
-
-  @action public setState = (obj: object) => {
-    const keys = Object.keys(obj);
-
-    keys.forEach((key) => {
-      if (typeof obj[key] !== 'undefined') {
-        this.state[key] = obj[key];
-      }
-    });
-  }
-
-  @action public setTitle = (title: string) => {
-    this.state.item[this.state.index].title = title;
-  }
-
-}
-
-@inject('dropDown')
 @observer
 export default class Activity extends React.Component<IProps, {}> {
 
@@ -70,8 +27,6 @@ export default class Activity extends React.Component<IProps, {}> {
   };
 
   public $f7: F7.Dom;
-
-  public store = new Store();
 
   public render() {
     return (
@@ -85,16 +40,16 @@ export default class Activity extends React.Component<IProps, {}> {
           <InputSearch placeholder='活动名称/编号' onChange={this.onChange} />
         </StyeldDiv>
 
-        <PageHeader item={this.store.state.item} onClick={this.onClick} />
+        <PageHeaderDown
+          headerItem={HEADER_ITEM}
+          leftItem={TYPE}
+          rightItem={TIME}
+          onHeaderClick={this.onHeaderClick}
+          onLeftClick={this.onLeftClick}
+          onRightClick={this.onRightClick} />
 
         <Content />
 
-        <DropDownBox
-          key={this.store.state.index}
-          leftItem={TYPE}
-          rightItem={TIME}
-          onLeftClick={this.onLeftClick}
-          onRightClick={this.onRightClick} />
       </div>
     );
   }
@@ -111,50 +66,34 @@ export default class Activity extends React.Component<IProps, {}> {
 
   }
 
-  private onClick = (index: number): void => {
-    const { state } = this.props.dropDown;
-
-    if (this.store.state.index === index) {
-      if (state.in) {
-        this.onHide();
-      } else {
-        if (this.store.state.item[index].arrow) {
-          this.onShow();
-        }
-      }
-    } else {
-      this.onHide();
-
-      if (this.store.state.index === 0) {
-        this.store.setTitle('校内');
-      }
-      if (this.store.state.index === 1) {
-        this.store.setTitle('校外');
-      }
-    }
-
-    this.store.setState({ index });
-  }
-
-  private onShow(): void {
-    this.props.dropDown!.setState({ in: true });
-  }
-
-  private onHide(): void {
-    this.props.dropDown!.setState({ in: false });
+  private onHeaderClick = (index: number): void => {
+    console.log(index);
   }
 
   private onLeftClick = (item: Iitem): void => {
-    // console.log(item);
-
-    this.store.setTitle(item.title);
+    console.log(item);
   }
 
   private onRightClick = (item: Iitem): void => {
-    // console.log(item);
+    console.log(item);
   }
 
 }
+
+const HEADER_ITEM = [
+  {
+    title: '校内',
+    arrow: true
+  },
+  {
+    title: '校外',
+    arrow: true
+  },
+  {
+    title: '我的',
+    arrow: false
+  }
+];
 
 const TYPE = [
   {

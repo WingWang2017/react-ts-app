@@ -381,6 +381,32 @@ const routes: any[] = [
       }
     ]
   },
+  {
+    // 云课堂
+    path: '/classroom',
+    options: {
+      animate: false,
+      reloadAll: true
+    },
+    async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+      const reactComponent = () => import('./pages/cloud-classroom');
+      reactComponent().then((rc) => {
+        resolve({ component: rc.default });
+      });
+    },
+    routes: [
+      {
+        // 云课堂 学生页
+        path: '/student',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/cloud-classroom/student');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      }
+    ]
+  }
 ];
 
 export default routes;

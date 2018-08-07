@@ -63,6 +63,9 @@ import PageHeader from './page-header';
 // PageHeader 下拉列表
 import DropDownBox from './drop-down-box';
 
+// page 的头部 + PageHeader 下拉列表
+import PageHeaderDown from './page-header-down';
+
 export {
   InputText,
   InputPassword,
@@ -86,5 +89,6 @@ export {
   Star,
   Avatar,
   PageHeader,
-  DropDownBox
+  DropDownBox,
+  PageHeaderDown
 };

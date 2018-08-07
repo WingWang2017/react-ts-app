@@ -76,7 +76,7 @@ const data = [
   },
   {
     title: '云课堂',
-    link: '/cloudClassroom',
+    link: '/classroom',
     icon: yunketangNormal,
     currIcon: yunketangSelected
   },

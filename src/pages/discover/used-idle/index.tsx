@@ -1,53 +1,15 @@
 import * as React from 'react';
 
-import { observable, action } from "mobx";
 import { observer, inject } from 'mobx-react';
 
-import { Header, PageHeader, DropDownBox } from 'src/components';
-
-
-class Store {
-
-  @observable public state = {
-    item: [
-      {
-        title: '新鲜的',
-        arrow: true
-      },
-      {
-        title: '我的',
-        arrow: false
-      }
-    ],
-    index: 0
-  };
-
-  @action public setState = (obj: object) => {
-    const keys = Object.keys(obj);
-
-    keys.forEach((key) => {
-      if (typeof obj[key] !== 'undefined') {
-        this.state[key] = obj[key];
-      }
-    });
-  }
-
-  @action public setTitle = (title: string) => {
-    this.state.item[this.state.index].title = title;
-  }
-
-}
-
-
-@inject('dropDown')
+import { Header, PageHeaderDown, ForumList } from 'src/components';
+@inject('forumState')
 @observer
 export default class UsedIdle extends React.Component<IProps, {}> {
 
   public state = {};
 
   public $f7: F7.Dom;
-
-  public store = new Store();
 
   public render() {
     return (
@@ -59,16 +21,22 @@ export default class UsedIdle extends React.Component<IProps, {}> {
             <a href='#' title=''>发布</a>
           } />
 
-        <PageHeader item={this.store.state.item} onClick={this.onClick} />
-
-        <div className='page-content'>asdasd</div>
-
-        <DropDownBox
-          key={this.store.state.index}
+        <PageHeaderDown
+          headerItem={HEADER_ITEM}
           leftItem={TYPE}
           rightItem={TIME}
+          onHeaderClick={this.onHeaderClick}
           onLeftClick={this.onLeftClick}
           onRightClick={this.onRightClick} />
+
+        <div className='page-content'>
+          <ForumList
+            data={this.props.forumState}
+            onDelete={this.onDelete}
+            onLike={this.onLike}
+            sendComments={this.sendComments}
+            onDeleteThisComment={this.onDeleteThisComment} />
+        </div>
 
       </div>
     );
@@ -82,42 +50,31 @@ export default class UsedIdle extends React.Component<IProps, {}> {
 
   }
 
-  private onClick = (index: number): void => {
-    const { state } = this.props.dropDown;
-
-    if (this.store.state.index === index) {
-      if (state.in) {
-        this.onHide();
-      } else {
-        if (this.store.state.item[index].arrow) {
-          this.onShow();
-        }
-      }
-    } else {
-      this.onHide();
-
-      if (this.store.state.index === 0) {
-        this.store.setTitle('新鲜的');
-      }
-
-    }
-
-    this.store.setState({ index });
+  private onHeaderClick = (index: number): void => {
+    console.log(index);
   }
 
-  private onShow(): void {
-    this.props.dropDown!.setState({ in: true });
+  private onLeftClick = (item: Iitem): void => {
+    console.log(item);
   }
 
-  private onHide(): void {
-    this.props.dropDown!.setState({ in: false });
+  private onRightClick = (item: Iitem): void => {
+    console.log(item);
   }
 
-  private onLeftClick = () => {
+  private onDelete = (): void => {
 
   }
 
-  private onRightClick = () => {
+  private onLike = (): void => {
+
+  }
+
+  private sendComments = (): void => {
+
+  }
+
+  private onDeleteThisComment = () => {
 
   }
 
@@ -126,18 +83,29 @@ export default class UsedIdle extends React.Component<IProps, {}> {
 interface IProps {
   f7router: F7.F7router;
   f7route: F7.F7route;
-  dropDown: IDropDown;
+  forumState: any;
 }
 
-interface IDropDown {
-  state: any;
-  setState(ags?: any): void;
+interface Iitem {
+  id: number;
+  title: string;
 }
 
 
 // interface IState {
 //   user: any;
 // }
+
+const HEADER_ITEM = [
+  {
+    title: '新鲜的',
+    arrow: true
+  },
+  {
+    title: '我的',
+    arrow: false
+  }
+];
 
 const TYPE = [
   {

@@ -18,6 +18,8 @@ import './assets/css/f7-css/tabs.css';
 // import './assets/css/typography.css';
 import './assets/css/index.css';
 
+import './assets/css/iconfont.css';
+
 import App from './App';
 
 import registerServiceWorker from './registerServiceWorker';

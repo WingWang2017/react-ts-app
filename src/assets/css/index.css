@@ -563,6 +563,35 @@ select option {
 }
 
 
+.classroom-list {
+  margin-bottom: .08rem;
+}
+
+.classroom-list a {
+  display: block;
+  padding: .24rem .32rem;
+  background-color: #fff;
+}
+
+.classroom-list a.active-state {
+  background-color: #e3e4e8;
+}
+
+.classroom-list .title {
+  margin-bottom: .24rem;
+  font-size: .4rem;
+}
+
+.classroom-list .name {
+  font-size: .28rem;
+}
+
+.classroom-list .address {
+  font-size: .28rem;
+  color: #666;
+}
+
+
 /* */
 .padding16 {
   padding: .16rem 0;

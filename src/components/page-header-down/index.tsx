@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { observable, action } from "mobx";
+import { observable, action } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
 import { PageHeader, DropDownBox } from 'src/components';

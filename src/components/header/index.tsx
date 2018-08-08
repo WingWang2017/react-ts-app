@@ -21,7 +21,7 @@ class Header extends React.Component<IProps, {}> {
 
   public render() {
     return (
-      <div className='navbar' slot="fixed">
+      <div className='navbar' slot='fixed'>
         <div className='navbar-inner header sliding'>
           <Left
             left={this.props.left}

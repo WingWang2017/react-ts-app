@@ -19,7 +19,7 @@ export default class Comment extends React.Component<IProps, {}> {
 
   public render() {
     return (
-      <ul className='tab tab-active' id="comment-list">
+      <ul className='tab tab-active' id='comment-list'>
         <StyledList>
           <StyledDIV>
             <Avatar user_id={1} sex='female' avatar='' />

@@ -51,7 +51,7 @@ interface IProps {
 const StyledDiv = Styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 .2rem;
+  padding: 0 .32rem;
   min-height: 1.2rem;
   font-size: .4rem;
   background-color: #fff;

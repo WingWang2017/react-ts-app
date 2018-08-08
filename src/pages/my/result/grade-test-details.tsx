@@ -19,7 +19,7 @@ export default class GradeTestDetails extends React.Component<IProps, {}> {
           center='等级考试'
           right='' />
         <div className='page-content'>
-          <iframe src="http://cjcx.neea.edu.cn/html1/folder/1508/206-1.htm?sid=280" width="100%" height="100%" frameBorder="0" />
+          <iframe src='http://cjcx.neea.edu.cn/html1/folder/1508/206-1.htm?sid=280' width='100%' height='100%' frameBorder='0' />
         </div>
       </div>
     );

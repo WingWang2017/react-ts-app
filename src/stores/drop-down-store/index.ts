@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+import { observable, action } from 'mobx';
 
 interface IState {
   in: boolean;

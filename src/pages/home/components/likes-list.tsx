@@ -15,7 +15,7 @@ export default class LikesList extends React.Component<IProps, {}> {
 
   public render() {
     return (
-      <ul className='tab' id="like-list">
+      <ul className='tab' id='like-list'>
         <StyledDIV className='border1px'>
           <Avatar user_id={1} sex='female' avatar='' />
           <StyledName>平凡</StyledName>

@@ -373,8 +373,7 @@ const routes: any[] = [
         // 二手闲置
         path: '/used-idle',
         async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
-          const reactComponent = () => import('./pages/discover/used-idle');
-          reactComponent().then((rc) => {
+          import('./pages/discover/used-idle').then((rc) => {
             resolve({ component: rc.default });
           });
         },
@@ -389,8 +388,7 @@ const routes: any[] = [
       reloadAll: true
     },
     async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
-      const reactComponent = () => import('./pages/cloud-classroom');
-      reactComponent().then((rc) => {
+      import('./pages/cloud-classroom').then((rc) => {
         resolve({ component: rc.default });
       });
     },
@@ -399,8 +397,7 @@ const routes: any[] = [
         // 云课堂 学生页
         path: '/student',
         async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
-          const reactComponent = () => import('./pages/cloud-classroom/student');
-          reactComponent().then((rc) => {
+          import('./pages/cloud-classroom/student').then((rc) => {
             resolve({ component: rc.default });
           });
         },

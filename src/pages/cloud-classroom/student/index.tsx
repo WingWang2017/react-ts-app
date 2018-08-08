@@ -2,7 +2,9 @@ import * as React from 'react';
 
 import { observer } from 'mobx-react';
 
-import { Header } from 'src/components';
+import Styled from 'styled-components';
+
+import { Header, Title } from 'src/components';
 
 @observer
 export default class Student extends React.Component<IProps, {}> {
@@ -18,8 +20,23 @@ export default class Student extends React.Component<IProps, {}> {
           back={true}
           center='计算机组成原理'
           right={
-            <a href='#' title=''>课程详情</a>
+            <a href='/my/timetable/courseDetails' title=''>课程详情</a>
           } />
+        <div className='page-content'>
+          <StyledList>
+            <li><a href='#'>历史考勤</a></li>
+            <li><a href='#'>课程公告</a></li>
+            <li><a href='#'>课程公告</a></li>
+            <li><a href='#'>同步放映</a></li>
+            <li><a href='#'>问卷测验</a></li>
+            <li><a href='#'>教学评价</a></li>
+            <li><a href='#'>作业缴交</a></li>
+            <li><a href='#'>通讯录</a></li>
+          </StyledList>
+          <div>
+            <Title content='叫醒课题' />
+          </div>
+        </div>
       </div>
     );
   }
@@ -42,3 +59,24 @@ interface IProps {
 // interface IState {
 //   user: any;
 // }
+
+const StyledList = Styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: .16rem;
+  background-color: #fff;
+
+  & li {
+    width: 25%;
+    height: 1.7rem;
+  }
+
+  & a {
+    display: block;
+    height: 100%;
+    padding-top: 1.14rem;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: .24rem;
+  }
+`;

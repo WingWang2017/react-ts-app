@@ -58,7 +58,7 @@ function utf16toEntities(str: string) {
       // 取出低位
       code = (H - 0xD800) * 0x400 + 0x10000 + L - 0xDC00;
       // 转换算法
-      return "&#" + code + ";";
+      return '&#' + code + ';';
     } else {
       return char;
     }
@@ -82,7 +82,7 @@ function entitiestoUtf16(str: string) {
     H = Math.floor((code - 0x10000) / 0x400) + 0xD800;
     // 低位
     L = (code - 0x10000) % 0x400 + 0xDC00;
-    code = "&#" + code + ";";
+    code = '&#' + code + ';';
     const s: string = String.fromCharCode(H, L);
     strObj = strObj.replace(code, s);
   }

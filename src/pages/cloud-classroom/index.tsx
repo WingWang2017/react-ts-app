@@ -26,11 +26,11 @@ export default class CloudClassroom extends React.Component<IProps, {}> {
               <a href='/classroom/student' title=''>
                 <p className='title'>毛泽东思想和中国特色社会主义理论体系概论</p>
                 <p className='name'>
-                  <StyledIcon className="iconfont icon-name" />
+                  <StyledIcon className='iconfont icon-name' />
                   李燕如
                 </p>
                 <p className='address'>
-                  <StyledIcon1 className="iconfont icon-time-location" />
+                  <StyledIcon1 className='iconfont icon-time-location' />
                   1-16周 周二3-4节，周三6-8节，教学楼320
                 </p>
               </a>

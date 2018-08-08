@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { observable, action, computed } from "mobx";
+import { observable, action, computed } from 'mobx';
 import { observer } from 'mobx-react';
 
 // import Styled from 'styled-components';

@@ -20,6 +20,11 @@
       true,
       2,
       "exclude-class-expressions"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-single"
     ]
   },
   "linterOptions": {

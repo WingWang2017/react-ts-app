@@ -56,7 +56,7 @@ const StyledA = Styled.a`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 .2rem;
+  padding: 0 .32rem;
   height: ${props => props.theme.height || '.8rem'};
   font-size: .3rem;
 

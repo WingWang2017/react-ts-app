@@ -106,10 +106,8 @@ interface IState {
 
 
 const Footer = Styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 95%;
+  margin-top: -.7rem;
+  position: relative;
   text-align: center;
   color: #fff;
   font-size: .24rem;

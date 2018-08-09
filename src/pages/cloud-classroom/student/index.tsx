@@ -4,7 +4,7 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-import { Header, Title } from 'src/components';
+import { Header, Title, LinkList } from 'src/components';
 
 @observer
 export default class Student extends React.Component<IProps, {}> {
@@ -35,6 +35,14 @@ export default class Student extends React.Component<IProps, {}> {
           </StyledList>
           <div>
             <Title content='叫醒课题' />
+            <ul>
+              <LinkList title='1 第一周 星期一 第3～4节' arrow={false} />
+              <LinkList title='1 第一周 星期一 第3～4节' arrow={false} />
+              <LinkList title='1 第一周 星期一 第3～4节' arrow={false} />
+              <LinkList title='1 第一周 星期一 第3～4节' arrow={false} />
+              <LinkList title='1 第一周 星期一 第3～4节' arrow={false} />
+              <LinkList title='1 第一周 星期一 第3～4节' arrow={false} />
+            </ul>
           </div>
         </div>
       </div>

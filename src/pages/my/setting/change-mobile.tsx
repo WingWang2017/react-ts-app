@@ -58,7 +58,7 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
           } />
         <div className='page-content'>
           <StyledText>更换手机号后，下次登录可使用新手机号登录</StyledText>
-          <ul className='border-left-34'>
+          <ul className='border-left-32'>
             <ItemList
               left='新手机号'
               padding='0 0 0 .32rem'

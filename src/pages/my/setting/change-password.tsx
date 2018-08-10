@@ -57,7 +57,7 @@ export default class ChangePassword extends React.Component<IProps, {}> {
             </button>
           } />
         <div className='page-content'>
-          <ul className='border-left-34'>
+          <ul className='border-left-32'>
             <ItemList
               left='手机号'
               center={user && user.mobile} />

@@ -401,6 +401,46 @@ const routes: any[] = [
             resolve({ component: rc.default });
           });
         },
+        routes: [
+          {
+            // 云课堂 学生页 历史考勤
+            path: '/history-attendance',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              import('./pages/cloud-classroom/student/history-attendance').then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          },
+          {
+            // 云课堂 学生页 课程公告
+            path: '/course-announcement',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              import('./pages/cloud-classroom/student/course-announcement').then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+            routes: [
+              {
+                // 云课堂 学生页 课程公告 详情
+                path: '/details',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  import('./pages/cloud-classroom/student/course-announcement/details').then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                },
+              }
+            ]
+          },
+          {
+            // 云课堂 学生页 课程公告
+            path: '/course-resources',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              import('./pages/cloud-classroom/student/course-resources').then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          }
+        ]
       }
     ]
   }

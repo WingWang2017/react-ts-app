@@ -24,7 +24,7 @@ export default class Notification extends React.Component<IProps, {}> {
           right={null} />
         <div className='page-content'>
           <StyledText>通知提醒</StyledText>
-          <ul className='border-left-34'>
+          <ul className='border-left-32'>
             <ItemList
               darkColor={true}
               border={false}

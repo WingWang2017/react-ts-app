@@ -48,7 +48,7 @@ export default class My extends React.Component<IProps, IState> {
           } />
         <div className='page-content'>
           <Head />
-          <ul className='border-left-34'>
+          <ul className='border-left-32'>
             <LinkList link='/message' title='消息中心' icon={xiaoxizhongxin} marginTop={true} />
             <LinkList link='/my/campusForum' title='校内论坛' icon={campus_forum_icon} border={false} marginBottom={true} />
             <LinkList link='/my/timetable' title='课表' icon={kebiao} />

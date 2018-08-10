@@ -107,6 +107,9 @@ import ershou_icon from './assets/img/fanxian-home/faxian_ershou_45_45.svg';
 import huzhu_icon from './assets/img/fanxian-home/faxian_huzhu_45_45.svg';
 import shenghuo_icon from './assets/img/fanxian-home/faxian_shenghuo_45_45.svg';
 
+// 课程资源
+import word_icon from './assets/img/word_icon.svg';
+
 export {
   login,
   logo,
@@ -184,5 +187,7 @@ export {
   huodong_icon,
   ershou_icon,
   huzhu_icon,
-  shenghuo_icon
+  shenghuo_icon,
+
+  word_icon
 };

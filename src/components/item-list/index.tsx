@@ -86,7 +86,7 @@ const StyledDiv = Styled.li`
     display: flex;
     align-items: center;
     flex: 1 0 ${props => props.theme.leftWidth || '1.6rem'};
-    color: #999;
+    color: ${props => props.theme.darkColor ? '#333' : '#999'};
   }
   .center {
     display: flex;

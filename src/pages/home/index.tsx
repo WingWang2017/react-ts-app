@@ -220,7 +220,7 @@ const HomeCentent = observer(HOCRefreshLoad((props: IHomeCententProps) => {
     <>
       <div>
         <Title content='动态校园' link='#' />
-        <StyledUL className='border-left-34'>
+        <StyledUL className='border-left-32'>
           <DynamicList data={props.dynamicList} />
         </StyledUL>
       </div>

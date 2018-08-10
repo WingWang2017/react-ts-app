@@ -150,8 +150,8 @@ select option {
   background-color: #d8d8d8;
 }
 
-.border-left-34 .border1px:not(:last-child)::before {
-  left: .34rem;
+.border-left-32 .border1px:not(:last-child)::before {
+  left: .32rem;
 }
 
 .border-right {

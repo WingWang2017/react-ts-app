@@ -4,8 +4,6 @@ import { observer } from 'mobx-react';
 
 import Styled from 'styled-components';
 
-// import { Header } from 'src/components';
-
 import { right_arrow } from 'src/images';
 
 @observer
@@ -94,7 +92,7 @@ const StyledMian = Styled.li`
     align-items: center;
     min-height: .88rem;
     width: 100%;
-    padding: ${props => props.theme.padding || props.theme.arrow ? '0 .6rem 0 .34rem' : '0 .34rem'};
+    padding: ${props => props.theme.padding ? props.theme.padding : props.theme.arrow ? '.2rem .6rem .2rem .32rem' : '.2rem .32rem'};
     box-sizing: border-box;
     background-size: .18rem .3rem;
     background-repeat: no-repeat;

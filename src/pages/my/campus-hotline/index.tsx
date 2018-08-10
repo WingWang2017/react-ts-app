@@ -79,7 +79,7 @@ export default class CampusHotline extends React.Component<IProps, {}> {
                   return (
                     <React.Fragment key={item.id}>
                       <StyledText>{item.campus}</StyledText>
-                      <ul className='border-left-34'>
+                      <ul className='border-left-32'>
                         {
                           item.list.map((value: any) => {
                             return (

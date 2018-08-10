@@ -47,7 +47,7 @@ export default class Evaluate extends React.Component<IProps, {}>{
 
           <StyledDiv className='margin-bottom-8'>
             <StyledTitle>评分</StyledTitle>
-            <ul className='border-left-34 border-color-d8'>
+            <ul className='border-left-32 border-color-d8'>
               <ItemList
                 left='考试次数：'
                 right={
@@ -60,7 +60,7 @@ export default class Evaluate extends React.Component<IProps, {}>{
                 } />
             </ul>
           </StyledDiv>
-          <StyledUL className='border-left-34 border-color-d8 margin-bottom-8'>
+          <StyledUL className='border-left-32 border-color-d8 margin-bottom-8'>
             <ItemList
               left='作业次数：'
               right={
@@ -72,7 +72,7 @@ export default class Evaluate extends React.Component<IProps, {}>{
                 <Star data={['很简单', '简单', '一般', '比较难', '非常难']} />
               } />
           </StyledUL>
-          <StyledUL className='border-left-34 border-color-d8 margin-bottom-8'>
+          <StyledUL className='border-left-32 border-color-d8 margin-bottom-8'>
             <ItemList
               left='点名次数：'
               right={
@@ -84,7 +84,7 @@ export default class Evaluate extends React.Component<IProps, {}>{
                 <Star data={['很严肃', '严肃', '一般', '亲切', '非常亲切']} />
               } />
           </StyledUL>
-          <StyledUL className='border-left-34 border-color-d8 margin-bottom-8'>
+          <StyledUL className='border-left-32 border-color-d8 margin-bottom-8'>
             <ItemList
               left='教师专业度：'
               right={
@@ -96,7 +96,7 @@ export default class Evaluate extends React.Component<IProps, {}>{
                 <Star data={['很不实用', '不太实用', '一般', '实用', '非常实用']} />
               } />
           </StyledUL>
-          <StyledUL className='border-left-34 border-color-d8 margin-bottom-8'>
+          <StyledUL className='border-left-32 border-color-d8 margin-bottom-8'>
             <ItemList
               left='整体满意度：'
               right={

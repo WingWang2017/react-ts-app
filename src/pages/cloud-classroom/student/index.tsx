@@ -27,7 +27,7 @@ export default class Student extends React.Component<IProps, {}> {
             <li><a href='/classroom/student/history-attendance'>历史考勤</a></li>
             <li><a href='/classroom/student/course-announcement'>课程公告</a></li>
             <li><a href='/classroom/student/course-resources'>课程资源</a></li>
-            <li><a href='#'>同步放映</a></li>
+            <li><a href='/classroom/student/sync-show'>同步放映</a></li>
             <li><a href='#'>问卷测验</a></li>
             <li><a href='#'>教学评价</a></li>
             <li><a href='#'>作业缴交</a></li>

@@ -17,6 +17,7 @@ export default class LinkList extends React.Component<IProps, {}> {
     marginTop: false,
     marginBottom: false,
     imgSize: '.46rem',
+    afterSize: '',
     onClick: () => { }
   };
 
@@ -30,7 +31,8 @@ export default class LinkList extends React.Component<IProps, {}> {
       marginBottom: this.props.marginBottom,
       marginTop: this.props.marginTop,
       imgSize: this.props.imgSize,
-      padding: this.props.padding
+      padding: this.props.padding,
+      afterSize: this.props.afterSize
     };
     return (
       <StyledMian className={this.props.border ? 'border1px' : ''} theme={theme}>
@@ -70,6 +72,7 @@ interface IProps {
   marginBottom?: boolean;
   padding?: string;
   imgSize?: string;
+  afterSize?: string;
   onClick?: () => void;
 }
 
@@ -107,7 +110,7 @@ const StyledMian = Styled.li`
     align-items: center;
     height: 100%;
     flex: 0 1 .82rem;
-    padding-right: .16rem;
+    padding-right: .32rem;
     box-sizing: border-box;
   }
   .icon img {
@@ -130,5 +133,6 @@ const StyledMian = Styled.li`
     display: flex;
     margin-left: auto;
     color: #999;
+    ${props => props.theme.afterSize && `font-size: ${props.theme.afterSize}`}
   }
 `;

@@ -4,10 +4,10 @@ import { observer } from 'mobx-react';
 
 import { Header, LinkList } from 'src/components';
 
-import { word_icon } from 'src/images';
+import { ppt_icon } from 'src/images';
 
 @observer
-export default class CourseResources extends React.Component<IProps, {}> {
+export default class SyncShow extends React.Component<IProps, {}> {
 
   public state = {};
 
@@ -15,15 +15,15 @@ export default class CourseResources extends React.Component<IProps, {}> {
 
   public render() {
     return (
-      <div className='navbar-fixed page' data-name='course-resources'>
+      <div className='navbar-fixed page' data-name='sync-show'>
         <Header
           back={true}
-          center='课程资源'
+          center='同步放映'
           right='' />
         <div className='page-content'>
           <ul>
-            <LinkList link='#' padding='.24rem .32rem' icon={word_icon} imgSize='.96rem' title='调停课：本周课程调整' after='08:53' afterSize='.24rem' arrow={false} />
-            <LinkList link='#' padding='.24rem .32rem' icon={word_icon} imgSize='.96rem' title='调停课：本周课程调整' after='08:53' afterSize='.24rem' arrow={false} />
+            <LinkList link='#' padding='.24rem .32rem' icon={ppt_icon} imgSize='.96rem' title='调停课：本周课程调整' after='08:53' afterSize='.24rem' arrow={false} />
+            <LinkList link='#' padding='.24rem .32rem' icon={ppt_icon} imgSize='.96rem' title='调停课：本周课程调整' after='08:53' afterSize='.24rem' arrow={false} />
           </ul>
         </div>
       </div>

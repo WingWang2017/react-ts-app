@@ -110,6 +110,9 @@ import shenghuo_icon from './assets/img/fanxian-home/faxian_shenghuo_45_45.svg';
 // 课程资源
 import word_icon from './assets/img/word_icon.svg';
 
+// 同步放映
+import ppt_icon from './assets/img/ppt_icon.svg';
+
 export {
   login,
   logo,
@@ -189,5 +192,6 @@ export {
   huzhu_icon,
   shenghuo_icon,
 
-  word_icon
+  word_icon,
+  ppt_icon
 };

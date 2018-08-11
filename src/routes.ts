@@ -432,10 +432,19 @@ const routes: any[] = [
             ]
           },
           {
-            // 云课堂 学生页 课程公告
+            // 云课堂 学生页 课程资源
             path: '/course-resources',
             async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
               import('./pages/cloud-classroom/student/course-resources').then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          },
+          {
+            // 云课堂 学生页 同步放映
+            path: '/sync-show',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              import('./pages/cloud-classroom/student/sync-show').then((rc) => {
                 resolve({ component: rc.default });
               });
             },

@@ -50,7 +50,6 @@ export default class ChangePassword extends React.Component<IProps, {}> {
           center='修改密码'
           right={
             <button
-              className='link'
               disabled={!this.store.isDisabled}
               onClick={this.onConfirm} >
               确定

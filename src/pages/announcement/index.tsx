@@ -68,7 +68,7 @@ export default class Announcement extends React.Component<IProps, IState> {
 					center='公告'
 					back={true}
 					right={
-						<a href='#' className='link' onClick={this.onShare} >
+						<a href='#' onClick={this.onShare} >
 							<img src={fenxiangIcon} alt='点击分享' className='wpIcon' width='.36rem' />
 						</a>
 					}

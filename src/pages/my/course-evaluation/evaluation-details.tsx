@@ -22,7 +22,7 @@ export default class EvaluationDetails extends React.Component<IProps, {}>{
           back={true}
           center='毛泽东思想和中国特色社会主义理论体系概论'
           right={
-            <a href='/my/courseEvaluation/evaluationDetails/evaluate' className='link'>匿名评价</a>
+            <a href='/my/courseEvaluation/evaluationDetails/evaluate'>匿名评价</a>
           } />
         <div className='page-content'>
           <StyledDiv className='margin-bottom-12'>

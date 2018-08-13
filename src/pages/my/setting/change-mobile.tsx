@@ -50,7 +50,6 @@ export default class ChangeMobile extends React.Component<IProps, {}> {
           center='更换手机号'
           right={
             <button
-              className='link'
               disabled={!this.store.isDisabled}
               onClick={this.onConfirm} >
               确定

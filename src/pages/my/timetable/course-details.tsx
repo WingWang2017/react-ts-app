@@ -20,7 +20,7 @@ export default class CourseDetails extends React.Component<IProps, {}> {
           back={true}
           center='课程详情'
           right={
-            <a href='#' className='link'>课程评价</a>
+            <a href='#'>课程评价</a>
           } />
         <div className='page-content'>
           <StyledText>通知提醒</StyledText>

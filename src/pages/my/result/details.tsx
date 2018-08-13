@@ -22,7 +22,7 @@ export default class Details extends React.Component<IProps, {}> {
           back={true}
           center='2016/2017 第二学期'
           right={
-            <a href='#' className='link' onClick={this.onShare} >
+            <a href='#' onClick={this.onShare} >
               <img src={fenxiangIcon} alt='点击分享' className='wpIcon' width='.36rem' />
             </a>
           } />

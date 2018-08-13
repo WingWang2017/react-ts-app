@@ -144,7 +144,7 @@ class MyApp extends React.Component<{}, {}> {
       // }
       switch (page) {
         case '/home':
-        case '/cloudClassroom':
+        case '/classroom':
         case '/discover':
         case '/my':
         case '/login':

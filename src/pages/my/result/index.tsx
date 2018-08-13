@@ -18,7 +18,7 @@ export default class Result extends React.Component<IProps, {}> {
           back={true}
           center='成绩'
           right={
-            <a href='/my/result/gradeTest' className='link'>等级考试</a>
+            <a href='/my/result/gradeTest'>等级考试</a>
           } />
         <div className='page-content'>
           <ul className='not-border'>

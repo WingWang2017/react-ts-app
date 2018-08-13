@@ -24,7 +24,7 @@ export default class Evaluate extends React.Component<IProps, {}>{
           back={true}
           center='匿名评价'
           right={
-            <a href='#' className='link'>确定</a>
+            <a href='#'>确定</a>
           } />
         <div className='page-content'>
           <StyledDiv className='margin-bottom-12'>

@@ -45,24 +45,26 @@ export default class Footer extends React.Component<IProps, {}> {
   public render() {
     return (
       <StyledDiv>
-        {
-          data.map((item, index) => {
-            const theme = {
-              icon: item.icon,
-              currIcon: item.currIcon,
-              actived: this.props.activedLink === index + 1
-            };
-            return (
-              <StyledA
-                key={index}
-                href={item.link}
-                theme={theme}
-                onClick={item.handle ? item.handle : this.handleClick} >
-                {item.title}
-              </StyledA>
-            );
-          })
-        }
+        <div className='main'>
+          {
+            data.map((item, index) => {
+              const theme = {
+                icon: item.icon,
+                currIcon: item.currIcon,
+                actived: this.props.activedLink === index + 1
+              };
+              return (
+                <StyledA
+                  key={index}
+                  href={item.link}
+                  theme={theme}
+                  onClick={item.handle ? item.handle : this.handleClick} >
+                  {item.title}
+                </StyledA>
+              );
+            })
+          }
+        </div>
       </StyledDiv>
     );
   }
@@ -106,9 +108,6 @@ const StyledDiv = Styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: .98rem;
   background: #fff;
   box-shadow: 0 0 8px rgba(51,51,51,.1);
@@ -120,8 +119,18 @@ const StyledDiv = Styled.div`
     width: 1.36rem;
     height: 1.36rem;
     transform: translateX(-50%);
-    z-index: -1;
+    z-index: 0;
     background: url("${fabu_bg}") no-repeat 0 0 / 100% 100%;
+  }
+
+  & .main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
   }
 `;
 
@@ -136,10 +145,31 @@ const StyledA = Styled.a`
   background-size: .6rem .6rem;
   font-size: .18rem;
   line-height: 1.4;
+  position: relative;
+
   &:nth-child(3) {
-    margin-top: -.08rem;
+    margin-top: -.05rem;
     padding-top: 0;
     height: .92rem;
     background-size: .92rem .92rem;
+  }
+
+  &::after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    content: '';
+    width: 0;
+    height: 0;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    transition: all 50ms ease-out;
+    background: #f5f5f5;
+  }
+
+  &.active-state::after {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 `;

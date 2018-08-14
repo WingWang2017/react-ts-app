@@ -6,14 +6,14 @@ import Styled from 'styled-components';
 
 
 @observer
-
 export default class ItemList extends React.Component<IProps, {}> {
 
   public static defaultProps = {
     padding: '0 .32rem',
     ellipsis: false,
     darkColor: false,
-    border: true
+    border: true,
+    onClick: () => { }
   };
 
   public state = {};
@@ -30,7 +30,7 @@ export default class ItemList extends React.Component<IProps, {}> {
       leftWidth: this.props.leftWidth
     };
     return (
-      <StyledDiv className={this.props.border ? 'border1px' : ''} theme={theme}>
+      <StyledDiv className={this.props.border ? 'border1px' : ''} theme={theme} onClick={this.onClick} >
         {this.props.left && <div className='left'>{this.props.left}</div>}
         {this.props.icon}
         {this.props.center && <div className={`center ${this.props.ellipsis ? 'ellipsis' : ''}`}>{this.props.center}</div>}
@@ -41,6 +41,10 @@ export default class ItemList extends React.Component<IProps, {}> {
 
   public componentDidMount() {
 
+  }
+
+  private onClick = () => {
+    this.props.onClick();
   }
 
 }
@@ -60,6 +64,7 @@ interface IProps {
   marginBottom?: string;
   justifyContent?: string;
   leftWidth?: string;
+  onClick(): void;
 }
 
 // interface IState {
@@ -91,6 +96,7 @@ const StyledDiv = Styled.li`
   .center {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     flex: 1 1 100%;
   }
   .ellipsis {

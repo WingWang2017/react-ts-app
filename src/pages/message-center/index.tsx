@@ -7,7 +7,11 @@ import Styled from 'styled-components';
 
 import { Header } from 'src/components';
 
-import Notice from './notice';
+import { add_icon } from 'src/images';
+
+import Notice from './components/notice';
+import Chat from './components/chat';
+import Interactive from './components/interactive';
 
 class Store {
 
@@ -49,20 +53,20 @@ export default class MessageCenter extends React.Component<IProps, {}> {
               <StyledActiveLine className='active-line' theme={this.store.state.activeIndex} />
             </>
           }
-          right='' />
+          right={
+            <a href='#' title='' onClick={this.onMenu}>
+              <img src={add_icon} alt='' width='.42rem' height='auto' />
+            </a>
+          } />
         <div className='tabs page-content not-border'>
           <div id='tab-1' className='tab tab-active'>
             <Notice />
           </div>
           <div id='tab-2' className='tab'>
-            <div className='block'>
-              <p>Tab 2 content</p>
-            </div>
+            <Chat />
           </div>
           <div id='tab-3' className='tab'>
-            <div className='block'>
-              <p>Tab 3 content</p>
-            </div>
+            <Interactive />
           </div>
         </div>
       </div>
@@ -75,6 +79,23 @@ export default class MessageCenter extends React.Component<IProps, {}> {
 
   public onClick = (activeIndex: number) => () => {
     this.store.setState({ activeIndex });
+  }
+
+  private onMenu = (): void => {
+    import('src/components/menu').then(({ default: menu }) => {
+      menu.default({
+        data: [
+          {
+            title: '同校搜索',
+            link: '#'
+          },
+          {
+            title: '发起聊天',
+            link: '#'
+          }
+        ]
+      });
+    });
   }
 
 }

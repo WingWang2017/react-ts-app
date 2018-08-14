@@ -113,6 +113,8 @@ import word_icon from './assets/img/word_icon.svg';
 // 同步放映
 import ppt_icon from './assets/img/ppt_icon.svg';
 
+import add_icon from './assets/img/nav/add.svg';
+
 export {
   login,
   logo,
@@ -193,5 +195,7 @@ export {
   shenghuo_icon,
 
   word_icon,
-  ppt_icon
+  ppt_icon,
+
+  add_icon
 };

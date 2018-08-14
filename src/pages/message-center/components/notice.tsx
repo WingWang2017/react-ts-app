@@ -15,7 +15,7 @@ export default class Notice extends React.Component<IProps, {}> {
 
   public render() {
     return (
-      <>
+      <ul>
         <ItemList
           darkColor={true}
           ellipsis={true}
@@ -148,7 +148,7 @@ export default class Notice extends React.Component<IProps, {}> {
           right={
             <StyledTime>3:24</StyledTime>
           } />
-      </>
+      </ul>
     );
   }
 

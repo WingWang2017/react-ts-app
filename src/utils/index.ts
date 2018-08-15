@@ -38,6 +38,37 @@ const yearAndMonthAndDayHours = (time: any) => {
   return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
 };
 
+
+// t=结束时间-现在
+const timeLeft = (time: any) => {
+  let ts = time - new Date().getTime() / 1000;
+  const dateLeft = parseInt(ts / 86400 + '', 10); // 折合天数
+  ts = ts - dateLeft * 86400; // 剩余秒数
+  const hourLeft = parseInt(ts / 3600 + '', 10); // 折合小时
+  ts = ts - hourLeft * 3600; // 剩余秒数
+  const minuteLeft = parseInt(ts / 60 + '', 10); // 折合分钟
+  const secondLeft = parseInt(ts - minuteLeft * 60 + '', 10); // 剩余秒数
+  if (dateLeft <= 0) {
+    if (hourLeft <= 0) {
+      if (minuteLeft <= 0) {
+        if (secondLeft <= 0) {
+          return '已结束';
+        } else {
+          return '剩余' + secondLeft + '秒';
+        }
+      } else {
+        return '剩余' + minuteLeft + '分' + secondLeft + '秒';
+      }
+    } else {
+      return '剩余' + hourLeft + '时' + minuteLeft + '分' + secondLeft + '秒';
+    }
+  } else {
+    return '剩余' + dateLeft + '天' + hourLeft + '时' + minuteLeft + '分' + secondLeft + '秒';
+  }
+
+};
+
+
 const monthAndDayHours = (ns: any) => {
   const date: Date = new Date(ns * 1000);
   return ` ${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
@@ -148,6 +179,7 @@ export {
   enToCh,
   yearAndMonthAndDayHours,
   monthAndDayHours,
+  timeLeft,
   utf16toEntities,
   entitiestoUtf16,
   deviceready,

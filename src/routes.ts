@@ -332,6 +332,18 @@ const routes: any[] = [
         resolve({ component: rc.default });
       });
     },
+    routes: [
+      {
+        // 消息中心 => 聊天界面
+        path: '/chat',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/message-center/chat');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      }
+    ]
   },
   {
     // 发现
@@ -445,6 +457,15 @@ const routes: any[] = [
             path: '/sync-show',
             async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
               import('./pages/cloud-classroom/student/sync-show').then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+          },
+          {
+            // 云课堂 学生页 问卷测验
+            path: '/questionnaire-test',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              import('./pages/cloud-classroom/student/questionnaire-test').then((rc) => {
                 resolve({ component: rc.default });
               });
             },

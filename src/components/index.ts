@@ -66,6 +66,12 @@ import DropDownBox from './drop-down-box';
 // page 的头部 + PageHeader 下拉列表
 import PageHeaderDown from './page-header-down';
 
+// page 的列表
+import PageList from './page-list';
+
+// 聊天的底部
+import ChatFooter from './chat-footer';
+
 export {
   InputText,
   InputPassword,
@@ -90,5 +96,7 @@ export {
   Avatar,
   PageHeader,
   DropDownBox,
-  PageHeaderDown
+  PageHeaderDown,
+  PageList,
+  ChatFooter
 };

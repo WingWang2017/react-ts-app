@@ -115,6 +115,17 @@ import ppt_icon from './assets/img/ppt_icon.svg';
 
 import add_icon from './assets/img/nav/add.svg';
 
+// 聊天
+import voiceMessage from './assets/img/chat/voice_message.svg';
+import emoji from './assets/img/emoji.svg';
+import voiceMessageKeyboard from './assets/img/chat/voiceMessageKeyboard.svg';
+import chat_more from './assets/img/chat/chat_more.svg';
+import send_selected from './assets/img/chat/send_selected.svg';
+
+import photo from './assets/img/chat/photo.svg';
+import takephoto from './assets/img/chat/takephoto.svg';
+import position from './assets/img/chat/position.svg';
+
 export {
   login,
   logo,
@@ -197,5 +208,14 @@ export {
   word_icon,
   ppt_icon,
 
-  add_icon
+  add_icon,
+
+  voiceMessage,
+  emoji,
+  voiceMessageKeyboard,
+  chat_more,
+  send_selected,
+  photo,
+  takephoto,
+  position
 };

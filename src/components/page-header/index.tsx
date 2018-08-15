@@ -18,7 +18,7 @@ interface IState {
 
 interface Iitem {
   title: string;
-  arrow: boolean;
+  arrow?: boolean;
 }
 
 @observer
@@ -26,6 +26,12 @@ export default class CampusForum extends React.Component<IProps, IState> {
 
   public static defaultProps = {
     index: 0,
+    item: [
+      {
+        title: '',
+        arrow: false
+      }
+    ],
     onClick: () => { }
   };
 

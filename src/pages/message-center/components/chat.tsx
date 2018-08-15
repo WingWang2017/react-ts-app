@@ -57,7 +57,7 @@ export default class Chat extends React.Component<IProps, {}> {
   }
 
   private onClick = () => {
-    alert(1);
+    f7App.f7router.navigate('/message/chat');
   }
 
   private onHead = (e: React.MouseEvent<Element>) => {
@@ -69,8 +69,8 @@ export default class Chat extends React.Component<IProps, {}> {
 }
 
 interface IProps {
-  f7router?: any;
-  f7route?: any;
+  f7router?: F7.F7router;
+  f7route?: F7.F7route;
 }
 
 // interface IState {

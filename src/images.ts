@@ -126,6 +126,9 @@ import photo from './assets/img/chat/photo.svg';
 import takephoto from './assets/img/chat/takephoto.svg';
 import position from './assets/img/chat/position.svg';
 
+import person from './assets/img/nav/person.svg';
+import yuyinIcon from './assets/img/chat/chat_yuyin_14_18.svg';
+
 export {
   login,
   logo,
@@ -217,5 +220,7 @@ export {
   send_selected,
   photo,
   takephoto,
-  position
+  position,
+  yuyinIcon,
+  person
 };

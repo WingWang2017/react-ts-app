@@ -31,7 +31,7 @@ export default class Chat extends React.Component<IProps, {}> {
           right={
             <StyledTime>3:24</StyledTime>
           }
-          onClick={this.onClick} />
+          onClick={this.onClick(0)} />
         <ItemList
           darkColor={true}
           padding='.24rem .32rem'
@@ -40,14 +40,14 @@ export default class Chat extends React.Component<IProps, {}> {
           }
           center={
             <>
-              <StyledName>平凡</StyledName>
+              <StyledName>平凡，张三</StyledName>
               <StyledText>你好，在干什么呢？我这边有</StyledText>
             </>
           }
           right={
             <StyledTime>3:24</StyledTime>
           }
-          onClick={this.onClick} />
+          onClick={this.onClick(1)} />
       </ul>
     );
   }
@@ -56,8 +56,12 @@ export default class Chat extends React.Component<IProps, {}> {
 
   }
 
-  private onClick = () => {
-    f7App.f7router.navigate('/message/chat');
+  private onClick = (index: number) => () => {
+    if (index) {
+      f7App.f7router.navigate('/message/group-chat');
+    } else {
+      f7App.f7router.navigate('/message/chat');
+    }
   }
 
   private onHead = (e: React.MouseEvent<Element>) => {

@@ -342,6 +342,16 @@ const routes: any[] = [
             resolve({ component: rc.default });
           });
         },
+      },
+      {
+        // 消息中心 => 群聊界面
+        path: '/group-chat',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/message-center/group-chat');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
       }
     ]
   },

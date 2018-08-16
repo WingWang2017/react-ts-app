@@ -127,6 +127,7 @@ import takephoto from './assets/img/chat/takephoto.svg';
 import position from './assets/img/chat/position.svg';
 
 import person from './assets/img/nav/person.svg';
+import groupchat from './assets/img/nav/groupchat.svg';
 import yuyinIcon from './assets/img/chat/chat_yuyin_14_18.svg';
 
 export {
@@ -222,5 +223,6 @@ export {
   takephoto,
   position,
   yuyinIcon,
-  person
+  person,
+  groupchat
 };

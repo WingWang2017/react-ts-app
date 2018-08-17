@@ -72,6 +72,9 @@ import PageList from './page-list';
 // 聊天的底部
 import ChatFooter from './chat-footer';
 
+// check
+import CheckList from './check-list';
+
 export {
   InputText,
   InputPassword,
@@ -98,5 +101,6 @@ export {
   DropDownBox,
   PageHeaderDown,
   PageList,
-  ChatFooter
+  ChatFooter,
+  CheckList
 };

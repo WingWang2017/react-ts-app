@@ -623,6 +623,10 @@ select option {
 
 
 /* */
+.margin-bottom-16 {
+  margin-bottom: .16rem;
+}
+
 .padding16 {
   padding: .16rem 0;
 }
@@ -634,6 +638,12 @@ select option {
 .navbar-fixed .paddingTop {
   position: relative;
   padding-top: calc(.92rem + .88rem);
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 

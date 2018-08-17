@@ -23,7 +23,7 @@ export default class Chat extends React.Component<IProps, {}> {
           back={true}
           center='平凡'
           right={
-            <a href='/detailed/3' className='link'>
+            <a href='/detailed/3'>
               <img src={person} alt='' style={width} />
             </a>
           } />

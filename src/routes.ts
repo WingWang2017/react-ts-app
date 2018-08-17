@@ -352,6 +352,50 @@ const routes: any[] = [
             resolve({ component: rc.default });
           });
         },
+        routes: [
+          {
+            // 消息中心 => 群聊界面 => 群信息
+            path: '/information',
+            async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+              const reactComponent = () => import('./pages/message-center/group-chat/information');
+              reactComponent().then((rc) => {
+                resolve({ component: rc.default });
+              });
+            },
+            routes: [
+              {
+                // 消息中心 => 群聊界面 => 群信息 => 新增成员
+                path: '/new-members',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  const reactComponent = () => import('./pages/message-center/group-chat/new-members');
+                  reactComponent().then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                },
+              },
+              {
+                // 消息中心 => 群聊界面 => 群信息 => 删除成员
+                path: '/delete-members',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  const reactComponent = () => import('./pages/message-center/group-chat/delete-members');
+                  reactComponent().then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                },
+              }
+            ]
+          }
+        ]
+      },
+      {
+        // 消息中心 => 聊天界面
+        path: '/select-contacts',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/message-center/select-contacts');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
       }
     ]
   },

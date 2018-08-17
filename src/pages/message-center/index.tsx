@@ -91,7 +91,7 @@ export default class MessageCenter extends React.Component<IProps, {}> {
           },
           {
             title: '发起聊天',
-            link: '#'
+            link: '/message/select-contacts'
           }
         ]
       });

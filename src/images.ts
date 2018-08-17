@@ -130,6 +130,12 @@ import person from './assets/img/nav/person.svg';
 import groupchat from './assets/img/nav/groupchat.svg';
 import yuyinIcon from './assets/img/chat/chat_yuyin_14_18.svg';
 
+import qunliao_add_icon from './assets/img/qunliao/groupmember_add.svg';
+import qunliao_delete_icon from './assets/img/qunliao/groupmember_delete.svg';
+
+import pick_normal from './assets/img/pick_normal.svg';
+import pick_selected from './assets/img/pick_selected.svg';
+
 export {
   login,
   logo,
@@ -224,5 +230,9 @@ export {
   position,
   yuyinIcon,
   person,
-  groupchat
+  groupchat,
+  qunliao_add_icon,
+  qunliao_delete_icon,
+  pick_normal,
+  pick_selected
 };

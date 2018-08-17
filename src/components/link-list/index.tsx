@@ -64,7 +64,7 @@ interface IProps {
   f7route?: any;
   link?: string;
   title?: any;
-  after?: string;
+  after?: string | JSX.Element;
   icon?: string;
   arrow?: boolean;
   border?: boolean;

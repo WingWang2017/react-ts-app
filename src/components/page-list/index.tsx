@@ -8,7 +8,7 @@ import Styled from 'styled-components';
 export default class PageList extends React.Component<IProps, {}> {
 
   public static defaultProps = {
-    link: '#',
+    link: '',
     onClick: () => { }
   };
 
@@ -25,12 +25,14 @@ export default class PageList extends React.Component<IProps, {}> {
       activeBgColor: this.props.activeBgColor
     };
     return (
-      <li className='border1px'>
-        <StyledLink href={this.props.link} title='' theme={theme} onClick={this.onClick}>
+      <li className='border1px' onClick={this.onClick}>
+
+        <StyledLink href={this.props.link} title='' theme={theme}>
           {
             this.props.children
           }
         </StyledLink>
+
       </li>
     );
   }

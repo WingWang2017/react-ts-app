@@ -19,12 +19,19 @@ import { Boy, Girl } from 'src/images';
 @observer
 export default class Avatar extends React.Component<IProps, {}> {
 
+  public static defaultProps = {
+    size: 'small'
+  };
+
   public $f7: F7.Dom;
 
   public render() {
+    const Theme = {
+      size: this.props.size
+    };
     return (
-      <StyledHead className={this.props.sex} onClick={this.onClick}>
-        <img src={this.props.avatar} alt='' />
+      <StyledHead className={this.props.sex} onClick={this.onClick} theme={Theme}>
+        {this.props.avatar && <img src={this.props.avatar} alt='' />}
       </StyledHead>
     );
   }
@@ -42,16 +49,20 @@ interface IProps {
   user_id?: string | number;
   sex?: string;
   avatar?: string;
+  size?: 'large' | 'small';
 }
 
-const StyledHead = Styled.p`
-  flex: 0 0 .8rem;
-  height: .8rem;
+const StyledHead = Styled.p.attrs({
+  className: (props: any) => props.theme.className === 'female' ? Girl : Boy,
+  size: (props: any) => props.theme.size === 'small' ? '.8rem' : '.96rem'
+})`
+  width: ${props => props.size};
+  height: ${props => props.size};
   overflow: hidden;
   border-radius: 4px;
   margin-right: .16rem;
   background-size: 100% 100%;
-  background-image: url('${props => props.className === 'female' ? Girl : Boy}');
+  background-image: url('${props => props.className}');
   & img {
     width: 100%;
     height: 100%;

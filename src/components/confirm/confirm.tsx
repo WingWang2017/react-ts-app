@@ -18,6 +18,10 @@ interface IProps {
 	removeChild?: any;
 	onCancel?: any;
 	onConfirm?: any;
+	tipsType?: string;
+
+	placeholder?: string;
+	maxLength?: number;
 }
 
 @observer
@@ -25,8 +29,10 @@ class Confirm extends React.Component<IProps, {}> {
 
 	public static defaultProps = {
 		type: 'default',
-		title: null,
-		content: null,
+		title: '',
+		content: '',
+		placeholder: '限15个字',
+		maxLength: 15,
 		confirmText: '确定',
 		cancelText: '取消',
 		onConfirm: () => { },
@@ -85,19 +91,36 @@ class Confirm extends React.Component<IProps, {}> {
 	}
 
 	public render() {
-		const { onConfirm, onCancel, ...others } = this.props;
 		return (
 			<Transition
 				in={this.state.in} timeout={100} >
 				{(status: any) => (
 					<>
 						<MaskLayer onClick={this.onClose} className={`mask mask-${status}`} />
-						<Conmfirm
-							onConfirm={this.onConfirm}
-							onCancel={this.onCancel}
-							onChange={this.onChange}
-							className={`fade zooming-${status}`}
-							{...others} />
+
+						<StyledDiv onTouchStart={this.touchstart} className={`fade zooming-${status}`}>
+							{
+								this.props.title && <div className='text'>{this.props.title}</div>
+							}
+							{
+								this.props.type === 'edit'
+								&& <input
+									type='text'
+									className='Input'
+									placeholder={this.props.placeholder}
+									maxLength={this.props.maxLength}
+									onChange={this.onChange} />
+							}
+							{
+								this.props.content
+								&& <div className='content' dangerouslySetInnerHTML={{ __html: this.props.content }} />
+							}
+
+							<StyledButtons theme={{ direction: this.props.tipsType === 'important' ? 'row-reverse' : 'row' }}>
+								<button className='cancel' onClick={this.onCancel}>{this.props.cancelText}</button>
+								<button className='delete' onClick={this.onConfirm} >{this.props.confirmText}</button>
+							</StyledButtons>
+						</StyledDiv>
 					</>
 				)}
 			</Transition>
@@ -105,39 +128,6 @@ class Confirm extends React.Component<IProps, {}> {
 	}
 }
 
-const Conmfirm = observer((props: any) => (
-	<StyledDiv onTouchStart={props.onTouchStart} className={props.className}>
-		{
-			props.title && <div className='wpConmfirmText'>{props.title}</div>
-		}
-		{
-			props.type === 'edit'
-			&& <input
-				type='text'
-				className='wpConmfirmInput'
-				placeholder={props.placeholder}
-				maxLength={props.maxLength}
-				onChange={props.onChange} />
-		}
-		{
-			props.content
-			&& <div className='wpConmfirmContent' dangerouslySetInnerHTML={{ __html: props.content }} />
-		}
-
-		{
-			props.type === 'important' ?
-				<>
-					<button className='wpConmfirmDelete' onClick={props.onConfirm} >{props.confirmText}</button>
-					<button className='wpConmfirmCancel' onClick={props.onCancel}>{props.cancelText}</button>
-				</>
-				:
-				<>
-					<button className='wpConmfirmCancel' onClick={props.onCancel}>{props.cancelText}</button>
-					<button className='wpConmfirmDelete' onClick={props.onConfirm} >{props.confirmText}</button>
-				</>
-		}
-	</StyledDiv>
-));
 
 export default function ContainerConfirm(config: any) {
 	const div = document.createElement('div');
@@ -168,60 +158,66 @@ const StyledDiv = Styled.div`
   border-radius: 8px;
   background: #fff;
 
-.wpConmfirmText {
-  position: relative;
-  text-align: center;
-  color: #000;
-  font-size: .36rem;
-  line-height: 1rem;
-}
+	.text {
+		position: relative;
+		text-align: center;
+		color: #000;
+		font-size: .36rem;
+		line-height: 1rem;
+	}
 
-.wpConmfirmContent {
-  text-align: center;
-  color: #000;
-  font-size: .32rem;
-  line-height: 1.6;
-  & span {
-    color: #1ab6a0;
-  }
-}
+	.content {
+		text-align: center;
+		color: #000;
+		font-size: .32rem;
+		line-height: 1.6;
+		& span {
+			color: #1ab6a0;
+		}
+	}
 
-.wpConmfirmInput {
-  box-sizing: border-box;
-  width: 100%;
-  height: .74rem;
-  margin: .15rem 0 0;
-  padding: 0 .2rem;
-  border: .5px solid #b2b2b2;
-  border-radius: 3px;
-}
+	.Input {
+		box-sizing: border-box;
+		width: 100%;
+		height: .74rem;
+		margin: .15rem 0 0;
+		padding: 0 .2rem;
+		border: .5px solid #b2b2b2;
+		border-radius: 3px;
+		font-size: .32rem;
+	}
 
-.wpConmfirmDelete,
-.wpConmfirmCancel {
-  display: block;
-  float: left;
-  box-sizing: border-box;
-  width: 50%;
-  height: .78rem;
-  margin-top: .35rem;
-  text-align: center;
-  color: #52d3c7  ;
-  border: 1px solid #52d3c7 ;
-  font-size: .3rem;
-  line-height: .78rem;
-}
+`;
 
-.wpConmfirmDelete {
-  color: #fff;
-  background: #52d3c7 ;
-}
-.wpConmfirmDelete.active-state {
-  color: #52d3c7 ;
-  background: #fff;
-}
-.wpConmfirmCancel.active-state {
-  color: #fff;
-  background: #52d3c7 ;
-}
+const StyledButtons = Styled.div`
+	display: flex;
+	flex-direction: row-reverse;
 
+	.delete,
+	.cancel {
+		display: block;
+		float: left;
+		box-sizing: border-box;
+		width: 50%;
+		height: .78rem;
+		margin-top: .35rem;
+		text-align: center;
+		color: #52d3c7  ;
+		border: 1px solid #52d3c7;
+		font-size: .3rem;
+		line-height: .78rem;
+	}
+
+	.delete {
+		color: #fff;
+		background: #52d3c7 ;
+	}
+	.delete.active-state {
+		color: #52d3c7 ;
+		background: #fff;
+	}
+	.cancel.active-state {
+		color: #fff;
+		background: #52d3c7 ;
+	}
 `;

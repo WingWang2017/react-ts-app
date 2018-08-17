@@ -18,16 +18,15 @@ export default class MaskLayer extends React.Component<Iprops, {}> {
     return (
       <StyledDiv
         className={this.props.className}
-        onClick={this.props.onClick}
-        onTouchStart={this.touchstart}
+        onClick={this.onClick}
         theme={theme} />
     );
   }
 
-  public touchstart = (e: React.TouchEvent<Element>) => {
-    e.stopPropagation();
-    e.preventDefault();
+  private onClick = () => {
+    this.props.onClick();
   }
+
 }
 
 interface Iprops {

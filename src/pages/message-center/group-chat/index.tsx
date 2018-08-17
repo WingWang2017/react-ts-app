@@ -23,7 +23,7 @@ export default class GroupChat extends React.Component<IProps, {}> {
           back={true}
           center='群聊(2)'
           right={
-            <a href='/detailed/3' className='link'>
+            <a href='/message/group-chat/information'>
               <img src={groupchat} alt='' style={width} />
             </a>
           } />

@@ -32,7 +32,7 @@ export function HOCRefreshLoad(Component: IReactComponent) {
       const { pageName, lastPage, onRefresh, onPullUp, ...props } = this.props;
       return (
         <Page
-          className={this.props.pageName}
+          // className={this.props.pageName}
           infinite={true}
           ptrPreloader={this.state.ptrPreloader}
           infiniteDistance={0}
@@ -48,14 +48,15 @@ export function HOCRefreshLoad(Component: IReactComponent) {
     }
 
     public componentDidMount(): void {
+      // console.log(this.$f7.$(`.${this.props.pageName}`)[0]);
       // this.refreshLoad();
-      const el = this.$f7.$(`.${this.props.pageName}`)[0];
+      const el = this.$f7.$(`.page[data-name="${this.props.pageName}"]`)[0];
       el.addEventListener('page:beforeout', this.onPageBeforeOut.bind(this), false);
       el.addEventListener('page:afterin', this.onPageAfterIn.bind(this), false);
     }
 
     public componentWillUnmount() {
-      const el = this.$f7.$(`.${this.props.pageName}`)[0];
+      const el = this.$f7.$(`.page[data-name="${this.props.pageName}"]`)[0];
       el.removeEventListener('page:beforeout', this.onPageBeforeOut.bind(this), false);
       el.removeEventListener('page:afterin', this.onPageAfterIn.bind(this), false);
     }

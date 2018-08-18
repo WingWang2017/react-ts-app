@@ -141,6 +141,17 @@ import follow_icon from './assets/img/follow.svg';
 import yiguanzhu_icon from './assets/img/guanzhu/yiguanzhu.svg';
 import huxiang_guanzhu_icon from './assets/img/guanzhu/huxiang_guanzhu.svg';
 
+
+// 云课程 学生
+import attendencehistory_icon from './assets/img/cloudcourse/attendencehistory.svg';
+import notice_icon from './assets/img/cloudcourse/notice.svg';
+import course_word_icon from './assets/img/cloudcourse/word.svg';
+import course_ppt_icon from './assets/img/cloudcourse/ppt.svg';
+import questionare_icon from './assets/img/cloudcourse/questionare.svg';
+import teaching_evaluation_icon from './assets/img/cloudcourse/teaching-evaluation.svg';
+import homework_icon from './assets/img/cloudcourse/homework.svg';
+import contacts_icon from './assets/img/cloudcourse/contacts.svg';
+
 export {
   login,
   logo,
@@ -243,5 +254,14 @@ export {
 
   follow_icon,
   yiguanzhu_icon,
-  huxiang_guanzhu_icon
+  huxiang_guanzhu_icon,
+
+  attendencehistory_icon,
+  notice_icon,
+  course_word_icon,
+  course_ppt_icon,
+  questionare_icon,
+  teaching_evaluation_icon,
+  homework_icon,
+  contacts_icon
 };

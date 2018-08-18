@@ -88,7 +88,7 @@ class MyApp extends React.Component<{}, {}> {
       // }
 
       setTimeout(() => {
-        f7.router.navigate('/message');
+        f7.router.navigate('/home');
       }, 1000);
 
 

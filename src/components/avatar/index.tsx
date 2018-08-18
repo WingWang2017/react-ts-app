@@ -56,6 +56,7 @@ const StyledHead = Styled.p.attrs({
   className: (props: any) => props.theme.className === 'female' ? Girl : Boy,
   size: (props: any) => props.theme.size === 'small' ? '.8rem' : '.96rem'
 })`
+  flex: 0 0 auto;
   width: ${props => props.size};
   height: ${props => props.size};
   overflow: hidden;

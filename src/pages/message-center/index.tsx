@@ -87,7 +87,7 @@ export default class MessageCenter extends React.Component<IProps, {}> {
         data: [
           {
             title: '同校搜索',
-            link: '#'
+            link: '/message/school-search'
           },
           {
             title: '发起聊天',

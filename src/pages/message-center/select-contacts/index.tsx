@@ -6,8 +6,6 @@ import Styled from 'styled-components';
 
 import { Header, InputSearch, CheckList } from 'src/components';
 
-
-
 @observer
 export default class NewMembers extends React.Component<IProps, {}> {
 

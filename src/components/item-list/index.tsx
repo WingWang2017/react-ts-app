@@ -33,7 +33,7 @@ export default class ItemList extends React.Component<IProps, {}> {
       <StyledDiv className={this.props.border ? 'border1px' : ''} theme={theme} onClick={this.onClick} >
         {this.props.left && <div className='left'>{this.props.left}</div>}
         {this.props.icon}
-        {this.props.center && <div className={`center ${this.props.ellipsis ? 'ellipsis' : ''}`}>{this.props.center}</div>}
+        {this.props.center && <div className={`center ${this.props.ellipsis ? 'ellipsis-box' : ''}`}>{this.props.center}</div>}
         {this.props.right && <div className='right'>{this.props.right}</div>}
       </StyledDiv>
     );
@@ -99,7 +99,7 @@ const StyledDiv = Styled.li`
     flex-wrap: wrap;
     flex: 1 1 100%;
   }
-  .ellipsis {
+  .ellipsis-box {
     line-height: 1.5;
     -webkit-box-align: start;
     overflow: hidden;

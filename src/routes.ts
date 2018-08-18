@@ -396,6 +396,16 @@ const routes: any[] = [
             resolve({ component: rc.default });
           });
         },
+      },
+      {
+        // 消息中心 => 同校搜索
+        path: '/school-search',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          const reactComponent = () => import('./pages/message-center/school-search');
+          reactComponent().then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
       }
     ]
   },

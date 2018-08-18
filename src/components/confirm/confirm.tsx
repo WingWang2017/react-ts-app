@@ -49,7 +49,9 @@ class Confirm extends React.Component<IProps, {}> {
 		this.setState({
 			in: false
 		});
-		this.props.removeChild();
+		setTimeout(() => {
+			this.props.removeChild();
+		}, 500);
 	}
 
 	public onClose = () => {
@@ -93,7 +95,8 @@ class Confirm extends React.Component<IProps, {}> {
 	public render() {
 		return (
 			<Transition
-				in={this.state.in} timeout={100} >
+				in={this.state.in}
+				timeout={0} >
 				{(status: any) => (
 					<>
 						<MaskLayer onClick={this.onClose} className={`mask mask-${status}`} />
@@ -134,13 +137,10 @@ export default function ContainerConfirm(config: any) {
 	div.className = 'flexBox';
 	document.body.appendChild(div);
 	const removeChild = () => {
-
-		setTimeout(() => {
-			const unmountResult = ReactDOM.findDOMNode(div);
-			if (unmountResult && div.parentNode) {
-				div.parentNode.removeChild(div);
-			}
-		}, 800);
+		const unmountResult = ReactDOM.findDOMNode(div);
+		if (unmountResult && div.parentNode) {
+			div.parentNode.removeChild(div);
+		}
 	};
 	ReactDOM.render(
 		<Confirm removeChild={removeChild.bind(this, div)} {...config} />,

@@ -136,6 +136,11 @@ import qunliao_delete_icon from './assets/img/qunliao/groupmember_delete.svg';
 import pick_normal from './assets/img/pick_normal.svg';
 import pick_selected from './assets/img/pick_selected.svg';
 
+// 关注
+import follow_icon from './assets/img/follow.svg';
+import yiguanzhu_icon from './assets/img/guanzhu/yiguanzhu.svg';
+import huxiang_guanzhu_icon from './assets/img/guanzhu/huxiang_guanzhu.svg';
+
 export {
   login,
   logo,
@@ -234,5 +239,9 @@ export {
   qunliao_add_icon,
   qunliao_delete_icon,
   pick_normal,
-  pick_selected
+  pick_selected,
+
+  follow_icon,
+  yiguanzhu_icon,
+  huxiang_guanzhu_icon
 };

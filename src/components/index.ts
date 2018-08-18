@@ -75,6 +75,9 @@ import ChatFooter from './chat-footer';
 // check
 import CheckList from './check-list';
 
+// 关注按钮
+import FollowButton from './follow-button';
+
 export {
   InputText,
   InputPassword,
@@ -102,5 +105,6 @@ export {
   PageHeaderDown,
   PageList,
   ChatFooter,
-  CheckList
+  CheckList,
+  FollowButton
 };

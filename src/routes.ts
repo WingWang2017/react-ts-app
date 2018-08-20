@@ -321,6 +321,33 @@ const routes: any[] = [
           });
         },
       },
+      {
+        // 我的 => 我的校友圈
+        path: '/alumni-circle',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          import('./pages/my/alumni-circle').then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      },
+      {
+        // 我的 => 我的关注
+        path: '/follow',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          import('./pages/my/follow').then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      },
+      {
+        // 我的 => 我的粉丝
+        path: '/fans',
+        async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+          import('./pages/my/fans').then((rc) => {
+            resolve({ component: rc.default });
+          });
+        },
+      },
     ]
   },
   {

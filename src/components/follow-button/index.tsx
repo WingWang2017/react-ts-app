@@ -9,8 +9,12 @@ import { follow_icon, yiguanzhu_icon } from 'src/images';
 @observer
 export default class InitialPage extends React.Component<IProps, {}> {
 
-  public state = {
+  public static defaultProps = {
     follow: false
+  };
+
+  public state = {
+    follow: this.props.follow
   };
 
   public $f7: F7.Dom;
@@ -41,8 +45,7 @@ export default class InitialPage extends React.Component<IProps, {}> {
 }
 
 interface IProps {
-  f7router?: F7.F7router;
-  f7route?: F7.F7route;
+  follow: boolean;
 }
 
 // interface IState {

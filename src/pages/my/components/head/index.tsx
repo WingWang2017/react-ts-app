@@ -41,9 +41,9 @@ export default class Head extends React.Component<IProps, IState> {
           <dd className='class'>数字媒体1402班</dd>
         </StyledHead>
         <StyledUL>
-          <li className='border-right'><a href='#' title=''>校友圈 1</a></li>
-          <li className='border-right'><a href='#' title=''>关注 2</a></li>
-          <li className='border-right'><a href='#' title=''>粉丝 3</a></li>
+          <li className='border-right'><a href='/my/alumni-circle' title=''>校友圈 1</a></li>
+          <li className='border-right'><a href='/my/follow' title=''>关注 2</a></li>
+          <li className='border-right'><a href='/my/fans' title=''>粉丝 3</a></li>
         </StyledUL>
       </StyledDiv>
     );

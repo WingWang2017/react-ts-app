@@ -560,6 +560,17 @@ const routes: any[] = [
                 resolve({ component: rc.default });
               });
             },
+            routes: [
+              {
+                // 云课堂 学生页 测验详情页
+                path: '/test-details',
+                async(routeTo: any, routeFrom: any, resolve: any, reject: any) {
+                  import('./pages/cloud-classroom/student/questionnaire-test/test/details').then((rc) => {
+                    resolve({ component: rc.default });
+                  });
+                },
+              }
+            ]
           }
         ]
       }

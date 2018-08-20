@@ -78,6 +78,9 @@ import CheckList from './check-list';
 // 关注按钮
 import FollowButton from './follow-button';
 
+// 倒计时
+import CountDown from './count-down';
+
 export {
   InputText,
   InputPassword,
@@ -106,5 +109,6 @@ export {
   PageList,
   ChatFooter,
   CheckList,
-  FollowButton
+  FollowButton,
+  CountDown
 };

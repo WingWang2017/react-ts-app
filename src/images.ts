@@ -152,6 +152,9 @@ import teaching_evaluation_icon from './assets/img/cloudcourse/teaching-evaluati
 import homework_icon from './assets/img/cloudcourse/homework.svg';
 import contacts_icon from './assets/img/cloudcourse/contacts.svg';
 
+// 时间
+import time_icon from './assets/img/faxian/faxian_huodong_time.svg';
+
 export {
   login,
   logo,
@@ -263,5 +266,7 @@ export {
   questionare_icon,
   teaching_evaluation_icon,
   homework_icon,
-  contacts_icon
+  contacts_icon,
+
+  time_icon
 };

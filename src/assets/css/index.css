@@ -553,13 +553,51 @@ select option {
   border: 1px solid #999;
   border-radius: 50%;
   color: #999;
-  font-size: .24rem;
+  font-size: .28rem;
+}
+
+.test-header a.tab-link-active {
+  color: #fff;
+  background-color: #81D8D0;
+  border-color: #81D8D0;
 }
 
 .test-content {
   height: auto;
   min-height: calc(100% - 1.04rem);
   background-color: #fff;
+}
+
+.test-title {
+  padding: .32rem;
+  min-height: .64rem;
+  line-height: 1.5;
+  font-size: .32rem;
+}
+
+.test-list {
+  height: .96rem;
+}
+
+.test-list-content {
+  display: block;
+  height: 100%;
+}
+
+.test-list-content .radio {
+  display: none;
+}
+
+.test-list-content p {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 .32rem;
+  font-size: .32rem;
+}
+
+.radio:checked + p {
+  background-color: #81D8D0;
 }
 
 

@@ -72,6 +72,7 @@ declare namespace F7 {
     params: any;
     photoBrowser: any;
     lazy: any;
+    tab: any;
   }
 
   export interface F7router {

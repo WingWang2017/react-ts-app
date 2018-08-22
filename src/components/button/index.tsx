@@ -29,6 +29,7 @@ class Button extends React.Component<IProps, {}> {
         <StyledLink
           href={this.props.link}
           theme={theme}
+          className={this.props.className}
           onClick={this.props.onClick}>
           {this.props.content}
         </StyledLink>
@@ -38,6 +39,7 @@ class Button extends React.Component<IProps, {}> {
         <StyledButton
           theme={theme}
           disabled={this.props.disabled}
+          className={this.props.className}
           onClick={this.props.onClick}>
           {this.props.content}
         </StyledButton>
@@ -49,6 +51,7 @@ class Button extends React.Component<IProps, {}> {
 
 interface IProps {
   link?: string;
+  className?: string;
   width?: string;
   height?: string;
   margin?: string;

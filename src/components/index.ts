@@ -81,6 +81,9 @@ import FollowButton from './follow-button';
 // 倒计时
 import CountDown from './count-down';
 
+// 试题
+import TestQuestions from './test-questions';
+
 export {
   InputText,
   InputPassword,
@@ -110,5 +113,6 @@ export {
   ChatFooter,
   CheckList,
   FollowButton,
-  CountDown
+  CountDown,
+  TestQuestions
 };

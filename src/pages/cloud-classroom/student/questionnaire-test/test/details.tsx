@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { observer } from 'mobx-react';
 
-import { Header, TestQuestions, Button } from 'src/components';
+import { Header, TestQuestions, Button, CountDown } from 'src/components';
 
 import Styled from 'styled-components';
 
@@ -39,10 +39,13 @@ export default class Details extends React.Component<IProps, {}> {
 
             <TestTabs data={TEST} index={this.state.index} />
 
-            <StyledDiv>
+            <StyledDiv className='color'>
               <Button content='下一题' onClick={this.onClick} />
             </StyledDiv>
 
+            <StyledFooter>
+              <CountDown time={1534761663} onEndTime={this.onEndTime} />
+            </StyledFooter>
 
           </div>
         </div>
@@ -51,7 +54,15 @@ export default class Details extends React.Component<IProps, {}> {
   }
 
   public componentDidMount() {
-
+    this.$f7.$('.tab').on('tab:show', (e: any) => {
+      const currIndex = parseInt(e.target.id.slice(4), 10);
+      if (currIndex === this.state.currIndex) {
+        return;
+      }
+      this.setState({
+        currIndex
+      });
+    });
   }
 
   public componentWillUnmount(): void {
@@ -82,6 +93,10 @@ export default class Details extends React.Component<IProps, {}> {
       console.log(this.state.currIndex);
       this.$f7.tab.show(`#test${this.state.currIndex}`);
     });
+
+  }
+
+  private onEndTime = () => {
 
   }
 
@@ -130,4 +145,10 @@ const TEST = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const StyledDiv = Styled.div`
   padding: .8rem .4rem;
+`;
+
+const StyledFooter = Styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 .4rem;
 `;

@@ -1,8 +1,10 @@
+
 html {
   box-sizing: border-box;
   font-size: calc(100vw / 7.5); /* 设计稿计算公式 */
   overscroll-behavior: contain;
 }
+
 @media screen and (min-width: 750px) {
   html {
     font-size: 100px;

@@ -28,7 +28,7 @@ axios.interceptors.response.use((response) => {
 
   return response;
 }, error => {
-  return Promise.resolve(error.response);
+  return Promise.reject(error.response);
 });
 
 function checkStatus(response: any) {
@@ -40,29 +40,26 @@ function checkStatus(response: any) {
   }
 
   // 异常状态下，把错误信息返回去
-  return {
-    msg: response && response.statusText,
-    status: response && response.status
-  };
+  // return {
+  //   msg: response && response.statusText,
+  //   status: response && response.status
+  // };
 }
 
 function checkCode(res: any) {
   // 如果code异常(这里已经包括网络错误，服务器错误，后端抛出的错误)，可以弹出一个错误提示，告诉用户
-  if (res.status >= 400 || res.status <= 505) {
-    Alert.default({
-      content: res.msg
-    });
-  }
+  Alert.default({
+    content: res ? res.statusText : '网络错误'
+  });
 
-  // 正确请求有数据
-  // if (res.data && (!res.data.errcode)) {
-  //     alert(res.data.errmsg)
-  // }
-  return res;
+  return {
+    msg: res && res.statusText,
+    status: res && res.status
+  };
 }
 
 export default {
-  post(url: string, data: any) {
+  post(url: string, data?: any) {
     return axios({
       baseURL: BASE_URL,
       data: qs.stringify(data),
@@ -76,11 +73,11 @@ export default {
       }
     }).then((response) => {
       return checkStatus(response);
-    }).then((res) => {
-      return checkCode(res);
+    }).catch((error) => {
+      return checkCode(error);
     });
   },
-  get(url: string, params: any) {
+  get(url: string, params?: any) {
     return axios({
       baseURL: BASE_URL,
       method: 'get',
@@ -93,8 +90,8 @@ export default {
       }
     }).then((response) => {
       return checkStatus(response);
-    }).then((res) => {
-      return checkCode(res);
+    }).catch((error) => {
+      return checkCode(error);
     });
   }
 

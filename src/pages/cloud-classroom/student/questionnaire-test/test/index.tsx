@@ -28,7 +28,7 @@ export default class Test extends React.Component<IProps, {}> {
             </div>
           </StyledDiv>
         </PageList>
-        <PageList padding='.16rem .32rem'>
+        <PageList padding='.16rem .32rem' link='/classroom/student/questionnaire-test/test-details'>
           <StyledDiv>
             <div className='title'>第一章 随堂小测</div>
             <div className='title'>95分</div>

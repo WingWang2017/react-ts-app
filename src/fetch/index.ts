@@ -151,22 +151,22 @@ class FetchAjax {
 
   // 获取课程评价的学期列表
   public async getSemesterList(): Promise<any> {
-    return await http.post('/semester/list', {});
+    return await http.post('/semester/list');
   }
 
   // 获取课程列表
   public async getCourseList(): Promise<any> {
-    return await http.post('/course/list', {});
+    return await http.post('/course/list');
   }
 
   // 获取校园热线列表
   public async getCampusHotlineList(): Promise<any> {
-    return await http.post('/campus/hotline', {});
+    return await http.post('/campus/hotline');
   }
 
   // 获取校园热线搜索列表
   public async getCampusHotlineSearchList(): Promise<any> {
-    return await http.post('/campus/hotline/search', {});
+    return await http.post('/campus/hotline/search');
   }
 
 

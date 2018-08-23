@@ -53,9 +53,25 @@ class MyApp extends React.Component<{}, {}> {
   public $f7: F7.Dom;
   public $f7ready: (f7: any) => void;
 
+  public render() {
+    return (
+      <App params={f7Params} >
+
+        <Statusbar />
+
+        <Views>
+          <View
+            url='/'
+            main={true} />
+        </Views>
+
+      </App>
+    );
+  }
+
   public componentDidMount(): void {
 
-    fetchAjax.getDevice().then((res) => {
+    fetchAjax.getDevice().then((res: Ajax.AjaxResponse) => {
       if (!res.errcode && res.data) {
         localStorage.device_sn = res.data.device_sn;
       }
@@ -68,7 +84,7 @@ class MyApp extends React.Component<{}, {}> {
       //   const user: any = JSON.parse(localStorage.user);
       //   const hasSchool: boolean = localStorage.hasSchool;
 
-      //   fetchAjax.isToken(user.token).then((res: any) => {
+      //   fetchAjax.isToken(user.token).then((res: Ajax.AjaxResponse) => {
       //     if (!res.errcode) {
       //       if (hasSchool && user) {
       //         localStorage.hasSchool = true;
@@ -101,23 +117,6 @@ class MyApp extends React.Component<{}, {}> {
     //   alert(this.$f7.$('.page-content').attr('style'));
     //   console.log(e);
     // });
-  }
-
-
-  public render() {
-    return (
-      <App params={f7Params} >
-
-        <Statusbar />
-
-        <Views>
-          <View
-            url='/'
-            main={true} />
-        </Views>
-
-      </App>
-    );
   }
 
   private deviceready(): void {

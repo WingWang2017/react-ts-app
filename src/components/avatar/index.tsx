@@ -31,7 +31,7 @@ export default class Avatar extends React.Component<IProps, {}> {
       size: this.props.size,
     };
     return (
-      <StyledHead className={this.props.sex} onClick={this.onClick} theme={Theme}>
+      <StyledHead className={this.props.sex === 'female' ? 'avatar_girl' : 'avatar_boy'} onClick={this.onClick} theme={Theme}>
         {this.props.avatar && <img src={this.props.avatar} alt='' />}
       </StyledHead>
     );
@@ -53,13 +53,10 @@ interface IProps {
   size?: 'large' | 'small';
 }
 
-const StyledHead = Styled.p.attrs({
-  className: (props: any) => props.theme.className === 'female' ? 'avatar_girl' : 'avatar_boy',
-  size: (props: any) => props.theme.size === 'small' ? '.8rem' : '.96rem'
-})`
+const StyledHead = Styled.p`
   flex: 0 0 auto;
-  width: ${props => props.size};
-  height: ${props => props.size};
+  width: ${props => props.theme.size === 'small' ? '.8rem' : '.96rem'};
+  height: ${props => props.theme.size === 'small' ? '.8rem' : '.96rem'};
   overflow: hidden;
   border-radius: 4px;
   margin-right: .16rem;

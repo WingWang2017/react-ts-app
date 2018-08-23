@@ -37,51 +37,61 @@ export default class Student extends React.Component<IProps, {}> {
           <StyledList>
             <li>
               <StyledLink
-                bgImg={attendencehistory_icon}
+                theme={
+                  { bgImg: attendencehistory_icon }
+                }
                 href='/classroom/student/history-attendance'>
                 历史考勤
               </StyledLink>
             </li>
             <li>
               <StyledLink
-                bgImg={notice_icon}
+                theme={
+                  { bgImg: notice_icon }
+                }
                 href='/classroom/student/course-announcement'>
                 课程公告
               </StyledLink>
             </li>
             <li>
               <StyledLink
-                bgImg={course_word_icon}
+                theme={
+                  { bgImg: course_word_icon }
+                }
                 href='/classroom/student/course-resources'>
                 课程资源
               </StyledLink>
             </li>
             <li>
               <StyledLink
-                bgImg={course_ppt_icon}
+                theme={
+                  { bgImg: course_ppt_icon }
+                }
                 href='/classroom/student/sync-show'>
                 同步放映
               </StyledLink>
             </li>
             <li>
               <StyledLink
-                bgImg={questionare_icon}
+                theme={
+                  { bgImg: questionare_icon }
+                }
                 href='/classroom/student/questionnaire-test'>
                 问卷测验
               </StyledLink>
             </li>
             <li>
-              <StyledLink bgImg={teaching_evaluation_icon} href='#'>
+              <StyledLink theme={{ bgImg: teaching_evaluation_icon }} href='#'>
                 教学评价
               </StyledLink>
             </li>
             <li>
-              <StyledLink bgImg={homework_icon} href='#'>
+              <StyledLink theme={{ bgImg: homework_icon }} href='#'>
                 作业缴交
               </StyledLink>
             </li>
             <li>
-              <StyledLink bgImg={contacts_icon} href='#'>
+              <StyledLink theme={{ bgImg: contacts_icon }} href='#'>
                 通讯录
               </StyledLink>
             </li>
@@ -143,5 +153,5 @@ const StyledList = Styled.ul`
 `;
 
 const StyledLink = Styled.a`
-  background: url("${(props: any) => props.bgImg}") no-repeat center .16rem / .9rem .9rem;
+  background: url("${(props: any) => props.theme.bgImg}") no-repeat center .16rem / .9rem .9rem;
 `;

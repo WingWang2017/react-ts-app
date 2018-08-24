@@ -11,11 +11,27 @@ interface IProps {
   f7route: F7.F7route;
 }
 
-// interface IState {
-//   user: any;
-// }
+/**
+ *
+ *
+ * @interface IState
+ * @enum {index, currIndex}
+ */
+interface IState {
+  index: number;
+  currIndex: number;
+}
+
+
+/**
+ * 测验的详情页
+ *
+ * @export
+ * @class Details
+ * @extends {React.Component<IProps, {}>}
+ */
 @observer
-export default class Details extends React.Component<IProps, {}> {
+export default class Details extends React.Component<IProps, IState> {
 
   public state = {
     index: 0,
@@ -30,7 +46,9 @@ export default class Details extends React.Component<IProps, {}> {
         <Header
           back={true}
           center='第一章 随堂小测'
-          right='' />
+          right={
+            <button disabled={true}>提交</button>
+          } />
         <div className='page-content'>
 
           <TestHeader data={TEST} onClick={this.onTab} index={this.state.index} />
@@ -69,6 +87,10 @@ export default class Details extends React.Component<IProps, {}> {
 
   }
 
+  /**
+   * 根据点击的tab的index显示testTab
+   * @param {number} currIndex 当前选择的index
+   */
   private onTab = (currIndex: number) => () => {
     if (!this.state.index) {
       this.setState({ index: -1 });
@@ -78,6 +100,13 @@ export default class Details extends React.Component<IProps, {}> {
     });
   }
 
+
+  /**
+   *
+   * 点击下一题，显示下一个TastTab
+   * @private
+   * @memberof Details
+   */
   private onClick = (): void => {
     if (!this.state.index) {
       this.setState({ index: -1 });
@@ -96,12 +125,24 @@ export default class Details extends React.Component<IProps, {}> {
 
   }
 
+
+  /**
+   *
+   *  倒计时结束触发的事件
+   * @private
+   * @memberof Details
+   */
   private onEndTime = () => {
 
   }
 
 }
 
+
+/**
+ * Test的头部组件
+ * @param {any} props
+ */
 const TestHeader = observer((props: any) => {
   return (
     <div className='test-header tabs'>
@@ -122,6 +163,12 @@ const TestHeader = observer((props: any) => {
   );
 });
 
+/**
+ * Test的主体组件
+ * @param {data} props
+ * @param {any} item
+ * @param {number} index
+ */
 const TestTabs = observer((props: any) => {
   return (
     <div className='tabs'>

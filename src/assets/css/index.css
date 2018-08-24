@@ -82,7 +82,7 @@ select {
 
 
 select option {
-  color:#222;
+  color:#333;
 }
 
 .ios .navbar-inner {
@@ -115,6 +115,7 @@ select option {
   line-height: 1.5;
   position: relative;
   overflow: hidden;
+  font-size: .32rem;
 }
 
 .ios .header .left a::after,
